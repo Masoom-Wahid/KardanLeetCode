@@ -12,7 +12,7 @@ html, body {
 .login-background {
   background: url('../../Assets/bg.png') no-repeat center center fixed; 
   background-size: cover;
-  position: fixed; /* Fixes the background to cover the whole screen */
+  position: fixed; 
   top: 0;
   left: 0;
   width: 100%;
@@ -20,20 +20,20 @@ html, body {
 }
 
 .login-container {
-  position: absolute; /* Position the container to the right */
+  position: absolute;
   right: 0;
   height: 100%;
-  width: 30%; /* Adjust the width as per your design */
-  background: rgba(0, 0, 0, 0.75); /* Adjust the background as needed */
-  backdrop-filter: blur(5px); /* This will give the blur effect */
+  width: 30%; 
+  background: rgba(0, 0, 0, 0.75); 
+  backdrop-filter: blur(5px); 
   display: flex;
-  flex-direction: column; /* Stack the children vertically */
+  flex-direction: column; 
   justify-content: center;
   align-items: center;
 }
 
 .login-form {
-  width: 80%; /* Adjust the width as per your design */
+  width: 80%; 
 }
 
 .logo {
@@ -52,7 +52,7 @@ html, body {
   padding: 0.5rem;
   margin-bottom: 1rem;
   border-radius: 5px;
-  border: none; /* Removed the border */
+  border: none; 
   background: #f1f1f1;
 }
 
@@ -74,7 +74,7 @@ html, body {
 
 .input-group input {
   width: 100%;
-  padding: 0.5rem 2.5rem 0.5rem 2.5rem; /* Added padding on the left for the email icon */
+  padding: 0.5rem 2.5rem 0.5rem 2.5rem; 
   margin-bottom: 1rem;
   border-radius: 5px;
   border: 1px solid #ccc;
@@ -93,7 +93,7 @@ html, body {
 .password-icon {
   position: absolute;
   left: 61px;
-  top: 54%; /* Adjust the top position by 1px */
+  top: 54%; 
   transform: translateY(-50%);
   color: #555; 
   cursor: pointer;
