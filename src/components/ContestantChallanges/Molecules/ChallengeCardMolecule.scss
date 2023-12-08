@@ -1,0 +1,67 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.challenge-card-container {
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+}
+
+.challenge-card {
+  width: calc(100% - 100px); 
+  margin-bottom: 2rem; 
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  &:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    .challenge-content {
+      background-color: rgba(33, 150, 243, 0.1); 
+    }
+  }
+}
+
+.challenge-content {
+  padding: 1rem;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.challenge-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+  justify-content: space-between;
+  margin-bottom: 1rem; 
+
+  .challenge-name {
+    font-size: 1.5rem;
+    color: #0D47A1;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .challenge-details {
+    font-size: 1rem;
+    color: #64B5F6; 
+    margin-bottom: 0.5rem;
+  }
+
+  .challenge-description {
+    font-size: 0.875rem;
+    color: #536D8A; 
+  }
+}
+
+@media (max-width: 768px) {
+  .challenge-card-container {
+    margin: 25px;
+  }
+
+  .challenge-card {
+    width: calc(100% - 50px);
+  }
+}
+
+

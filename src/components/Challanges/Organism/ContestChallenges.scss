@@ -1,0 +1,104 @@
+// ContestChallenges.scss
+.contest-challenges {
+  margin-top: 2rem;
+  color: #0A192F;
+
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #0D47A1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+
+    // Responsive font-size for smaller screens
+    @media (max-width: 768px) {
+      font-size: 2rem; // Smaller font size for tablets
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1.5rem; // Even smaller font size for mobile phones
+    }
+  }
+
+  .description {
+    font-size: 1.1rem;
+    color: #536D8A;
+    margin-bottom: 2rem;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+    // Adjust width for smaller screens to have more side padding
+    @media (max-width: 768px) {
+      max-width: 90%;
+    }
+  }
+
+  .challenge-table-container {
+    padding: 2rem;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 2rem auto;
+    border: 1px solid #0D47A1;
+
+    // Adjust padding and margin for smaller screens
+    @media (max-width: 768px) {
+      padding: 1rem;
+      margin: 1rem;
+    }
+
+    .MuiTableCell-root {
+      padding: 1rem;
+      color: #0A192F;
+
+      // Reduce padding for smaller screens
+      @media (max-width: 768px) {
+        padding: 0.5rem;
+      }
+    }
+
+    .MuiTableHead-root {
+      .MuiTableCell-root {
+        background-color: #2196F3;
+        color: #fff;
+      }
+    }
+
+    .MuiTableRow-root:hover {
+      background-color: #E3F2FD;
+    }
+  }
+
+  position: relative;
+
+  .logo-placeholder {
+    position: absolute;
+    top: 16px; // Uniform padding from the top
+    left: 16px; // Uniform padding from the left
+    width: 100px;
+    height: 100px;
+
+    // Adjust logo size and positioning for smaller screens
+    @media (max-width: 768px) {
+      top: 8px;
+      left: 8px;
+      width: 80px;
+      height: 80px;
+    }
+
+    @media (max-width: 480px) {
+      top: 4px;
+      left: 4px;
+      width: 60px;
+      height: 60px;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 50%;
+    }
+  }
+}
