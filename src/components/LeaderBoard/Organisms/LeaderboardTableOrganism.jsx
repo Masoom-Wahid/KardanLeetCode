@@ -42,6 +42,41 @@ const mockLeaderboardData = [
     time: "7:17:22",
     country: "CountryFlag.png",
   },
+  {
+    rank: 2,
+    user: "Silab007",
+    score: "81.11",
+    time: "7:17:22",
+    country: "CountryFlag.png",
+  },
+  {
+    rank: 3,
+    user: "Silab007",
+    score: "81.11",
+    time: "7:17:22",
+    country: "CountryFlag.png",
+  },
+  {
+    rank: 4,
+    user: "Silab007",
+    score: "81.11",
+    time: "7:17:22",
+    country: "CountryFlag.png",
+  },
+  {
+    rank: 5,
+    user: "Silab007",
+    score: "81.11",
+    time: "7:17:22",
+    country: "CountryFlag.png",
+  },
+  {
+    rank: 6,
+    user: "Silab007",
+    score: "81.11",
+    time: "7:17:22",
+    country: "CountryFlag.png",
+  },
 ];
 
 const LeaderboardTableOrganism = () => {
