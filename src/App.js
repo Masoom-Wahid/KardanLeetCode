@@ -7,6 +7,7 @@ import ChallengeTableOrganism from "./components/Challanges/Organism/ChallengeTa
 import ChallengesListOrganism from "./components/ContestantChallanges/Organisms/ChallengesListOrganism";
 import ChallengesPage from "./components/ContestantChallanges/Organisms/Challenges";
 import LeaderboardPage from "./components/LeaderBoard/Organisms/LeaderboardPage";
+import EditorPage from "./components/ChallengeSolve/Organisms/EditorPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/challenges" element={<ContestChallenges />} />
           <Route path="/challenges-list" element={<ChallengesPage />} />
           <Route path="/leaderboard" element={<LeaderboardPage />} />
+          <Route path="/editor" element={<EditorPage />} />
         </Routes>
       </div>
     </Router>
