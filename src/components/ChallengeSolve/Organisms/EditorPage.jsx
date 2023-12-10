@@ -1,11 +1,23 @@
-import React from "react";
-import { Box, CssBaseline } from "@mui/material";
+import React, { useState } from "react";
+import { Box, CssBaseline, createTheme, ThemeProvider } from "@mui/material";
 import MainHeader from "./MainHeader";
 import DescriptionBox from "./DescriptionBox";
 import CodeEditor from "./CodeEditor";
 import TestCases from "./TestCases";
 
 const EditorPage = () => {
+  const [mode, setMode] = useState("light");
+
+  const theme = createTheme({
+    palette: {
+      mode: mode,
+    },
+  });
+
+  const toggleTheme = () => {
+    setMode(mode === "light" ? "dark" : "light");
+  };
+
   return (
     <>
       <div className="editor-page">
@@ -15,6 +27,7 @@ const EditorPage = () => {
             height: "100vh",
             paddingBottom: "5px",
             marginBottom: "5px",
+
             flexDirection: "column",
             m: 0,
           }}
