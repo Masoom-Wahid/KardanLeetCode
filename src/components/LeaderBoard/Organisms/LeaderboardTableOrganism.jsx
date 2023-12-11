@@ -89,7 +89,6 @@ const LeaderboardTableOrganism = () => {
   });
 
   const StyledButton = styled(Button)({
-    margin: "0 20px",
     height: "36px",
   });
 
@@ -114,18 +113,12 @@ const LeaderboardTableOrganism = () => {
             marginBottom: "20px",
           }}
         >
-          <Box sx={{ display: "flex", gap: "10px" }}>
+          <Box sx={{ display: "flex", gap: "10px", marginRight: "-30px" }}>
             <StyledButton
               variant={filter === "all" ? "contained" : "outlined"}
               color="primary"
             >
               All
-            </StyledButton>
-            <StyledButton
-              variant={filter === "friends" ? "contained" : "outlined"}
-              color="secondary"
-            >
-              Friends
             </StyledButton>
           </Box>
           <Box sx={{ display: "flex", gap: "20px" }}>
@@ -143,16 +136,6 @@ const LeaderboardTableOrganism = () => {
                 ))}
               </Select>
             </StyledFormControl>
-            <TextField
-              size="small"
-              placeholder="Type username to compare"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              style={{ marginLeft: "8px" }}
-            />
-            <StyledButton onClick={() => console.log("Compare", searchTerm)}>
-              Compare
-            </StyledButton>
           </Box>
         </Box>
         <StyledTable>

@@ -1,11 +1,93 @@
 import React from "react";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, IconButton } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faUpload } from "@fortawesome/free-solid-svg-icons";
-import "./MainHeader.scss";
+import {
+  faPlay,
+  faUpload,
+  faChevronRight,
+  faMoon,
+  faSun,
+} from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { styled } from "@mui/material/styles";
 
-const MainHeader = () => {
+const StyledComponentContainer = styled(Box)(({ theme }) => ({
+  border: "1px solid #e0e0e0",
+  boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.2)",
+  borderRadius: "10px",
+  overflow: "hidden",
+  background: "linear-gradient(145deg, #e6faff, #bde4ff)",
+  padding: "10px 20px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  transition: "all 0.3s ease-in-out",
+  "&:hover": {
+    background: "linear-gradient(145deg, #bde4ff, #e6faff)",
+    boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.25)",
+  },
+}));
+
+const StyledButton = styled(Button)(({ theme }) => ({
+  color: "#333", // Color close to black
+  textTransform: "none",
+  fontWeight: 600,
+  margin: "0 10px",
+  padding: "8px 16px",
+  borderRadius: "20px",
+  background: theme.palette.primary.light,
+  boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
+  transition: "all 0.3s ease-in-out",
+  "&:hover": {
+    background: theme.palette.primary.main,
+    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+  },
+  "& .MuiButton-startIcon": {
+    marginRight: "8px",
+  },
+}));
+
+const RectangleButton = styled(Button)(({ theme }) => ({
+  height: "28px",
+  padding: "0 20px",
+  borderRadius: "20px",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  backgroundColor: theme.palette.primary.light,
+  color: theme.palette.primary.contrastText,
+  textTransform: "none",
+  fontWeight: 600,
+  margin: "0 10px",
+  boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
+  transition: "all 0.3s ease-in-out",
+  "&:hover": {
+    backgroundColor: theme.palette.primary.main,
+    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+  },
+}));
+
+const BreathingIconButton = styled(IconButton)(({ theme }) => ({
+  width: "50px",
+  height: "50px",
+  borderRadius: "50%",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  backgroundColor: theme.palette.mode === "light" ? "#333" : "#f5f5f5",
+  color: theme.palette.primary.contrastText,
+  animation: "breathing 2s infinite",
+  "@keyframes breathing": {
+    "0%": { transform: "scale(1)" },
+    "50%": { transform: "scale(1.1)" },
+    "100%": { transform: "scale(1)" },
+  },
+  "&:hover": {
+    backgroundColor: theme.palette.mode === "light" ? "#555" : "#ddd",
+  },
+}));
+
+const MainHeader = ({ onToggleDarkMode, isDarkMode }) => {
   const navigate = useNavigate();
 
   const handleProblemList = () => {
@@ -13,34 +95,26 @@ const MainHeader = () => {
   };
 
   return (
-    <div className="component-container">
-      <Box
-        sx={{
-          marginTop: "5px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          height: "30px",
-          width: "100%",
-        }}
-      >
-        <Button variant="text" color="primary" onClick={handleProblemList}>
-          Problem List
-        </Button>
-        <Box>
-          <Button startIcon={<FontAwesomeIcon icon={faPlay} />} color="primary">
-            Run
-          </Button>
-          <Button
-            startIcon={<FontAwesomeIcon icon={faUpload} />}
-            color="primary"
-          >
-            Submit
-          </Button>
-        </Box>
-        <Box> {/* Placeholder for right-aligned content if any */} </Box>
+    <StyledComponentContainer>
+      <RectangleButton onClick={handleProblemList}>
+        Problem List <FontAwesomeIcon icon={faChevronRight} />
+      </RectangleButton>
+      <Box>
+        <StyledButton startIcon={<FontAwesomeIcon icon={faPlay} />}>
+          Run
+        </StyledButton>
+        <StyledButton startIcon={<FontAwesomeIcon icon={faUpload} />}>
+          Submit
+        </StyledButton>
       </Box>
-    </div>
+      <BreathingIconButton onClick={onToggleDarkMode}>
+        {isDarkMode ? (
+          <FontAwesomeIcon icon={faSun} />
+        ) : (
+          <FontAwesomeIcon icon={faMoon} />
+        )}
+      </BreathingIconButton>
+    </StyledComponentContainer>
   );
 };
 
