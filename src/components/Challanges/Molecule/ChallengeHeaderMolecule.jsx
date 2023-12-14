@@ -24,55 +24,57 @@ const HeaderCell = styled(TableCell)(({ theme }) => ({
 
 const ChallengeHeaderMolecule = () => {
   return (
-    <TableHead>
-      <TableRow>
-        <HeaderCell>No.</HeaderCell>
-        <HeaderCell>Name</HeaderCell>
-        <HeaderCell>
-          <Typography variant="inherit" noWrap>
-            Max Score
-            <Tooltip title="Maximum score for this challenge">
-              <InfoIcon
-                sx={{
-                  fontSize: "1rem",
-                  marginLeft: "5px",
-                  verticalAlign: "middle",
-                }}
-              />
-            </Tooltip>
-          </Typography>
-        </HeaderCell>
-        <HeaderCell>
-          <Typography variant="inherit" noWrap>
-            Binary
-            <Tooltip title="Binary scoring">
-              <InfoIcon
-                sx={{
-                  fontSize: "1rem",
-                  marginLeft: "5px",
-                  verticalAlign: "middle",
-                }}
-              />
-            </Tooltip>
-          </Typography>
-        </HeaderCell>
-        <HeaderCell>
-          <Typography variant="inherit" noWrap>
-            Editorial
-            <Tooltip title="Link to editorial">
-              <InfoIcon
-                sx={{
-                  fontSize: "1rem",
-                  marginLeft: "5px",
-                  verticalAlign: "middle",
-                }}
-              />
-            </Tooltip>
-          </Typography>
-        </HeaderCell>
-        <HeaderCell>Action</HeaderCell>
-      </TableRow>
-    </TableHead>
+    <>
+      <TableHead>
+        <TableRow>
+          <HeaderCell>No.</HeaderCell>
+          <HeaderCell>Name</HeaderCell>
+          <HeaderCell>
+            <Typography variant="inherit" noWrap>
+              Max Score
+              <Tooltip title="Maximum score for this challenge">
+                <InfoIcon
+                  sx={{
+                    fontSize: "1rem",
+                    marginLeft: "5px",
+                    verticalAlign: "middle",
+                  }}
+                />
+              </Tooltip>
+            </Typography>
+          </HeaderCell>
+          <HeaderCell>
+            <Typography variant="inherit" noWrap>
+              Binary
+              <Tooltip title="Binary scoring">
+                <InfoIcon
+                  sx={{
+                    fontSize: "1rem",
+                    marginLeft: "5px",
+                    verticalAlign: "middle",
+                  }}
+                />
+              </Tooltip>
+            </Typography>
+          </HeaderCell>
+          <HeaderCell>
+            <Typography variant="inherit" noWrap>
+              Editorial
+              <Tooltip title="Link to editorial">
+                <InfoIcon
+                  sx={{
+                    fontSize: "1rem",
+                    marginLeft: "5px",
+                    verticalAlign: "middle",
+                  }}
+                />
+              </Tooltip>
+            </Typography>
+          </HeaderCell>
+          <HeaderCell>Action</HeaderCell>
+        </TableRow>
+      </TableHead>
+    </>
   );
 };
 
