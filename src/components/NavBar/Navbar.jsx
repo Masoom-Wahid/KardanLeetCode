@@ -9,12 +9,10 @@ import {
   Typography,
 } from "@material-ui/core";
 import { styled, keyframes } from "@mui/material/styles";
-// import { keyframes } from "@emotion/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faBell } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
-// Keyframes for animations
 const gradientAnimation = keyframes`
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -31,7 +29,6 @@ const rotateAnimation = keyframes`
   100% { transform: rotate(360deg); }
 `;
 
-// Styled Components using Emotion
 const StyledAppBar = styled(AppBar)({
   background:
     "linear-gradient(270deg, #0000FF, 	#0047AB, 	#1F51FF,  #007bff,  #6f42c1)",
@@ -56,13 +53,13 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
   letterSpacing: "0.05em",
   fontSize: "1.2rem",
   animation: `${pulseAnimation} 2s infinite`,
-  background: "rgba(0, 71, 171, 0.5)", // More subtle background
+  background: "rgba(0, 71, 171, 0.5)",
   padding: "6px 12px",
   borderRadius: "6px",
   margin: "0 5px",
   transition: "all 0.3s ease-in-out, background-color 0.6s ease",
   "&:hover": {
-    background: "rgba(0, 123, 255, 0.7)", // Gently intensified on hover
+    background: "rgba(0, 123, 255, 0.7)",
     boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.3)",
     transform: "translateY(-2px)",
   },
@@ -85,7 +82,6 @@ const IconButtonAnimated = styled(IconButton)({
   },
 });
 
-// The NavigationBar component
 const NavigationBar = () => {
   const navigate = useNavigate();
 
@@ -111,18 +107,10 @@ const NavigationBar = () => {
           </Button>
         </FlexGrowBox>
         <IconsBox>
-          <IconButtonAnimated
-            onClick={() => {
-              /* handle notification click */
-            }}
-          >
+          <IconButtonAnimated onClick={() => {}}>
             <FontAwesomeIcon icon={faBell} />
           </IconButtonAnimated>
-          <IconButtonAnimated
-            onClick={() => {
-              /* handle profile click */
-            }}
-          >
+          <IconButtonAnimated onClick={() => {}}>
             <FontAwesomeIcon icon={faUser} />
           </IconButtonAnimated>
         </IconsBox>
