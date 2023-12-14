@@ -7,7 +7,7 @@ import {
   Button,
   Box,
   Typography,
-} from "@material-ui/core";
+} from "@mui/material";
 import { styled, keyframes } from "@mui/material/styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faBell } from "@fortawesome/free-solid-svg-icons";
