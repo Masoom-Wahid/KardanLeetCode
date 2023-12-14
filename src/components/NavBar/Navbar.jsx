@@ -30,8 +30,7 @@ const rotateAnimation = keyframes`
 `;
 
 const StyledAppBar = styled(AppBar)({
-  background:
-    "linear-gradient(270deg, #0000FF, 	#0047AB, 	#1F51FF,  #007bff,  #6f42c1)",
+  background: "linear-gradient(#1565c0)",
   backgroundSize: "400% 400%",
   animation: `${gradientAnimation} 30s ease infinite`,
 });
@@ -48,12 +47,7 @@ const IconsBox = styled(Box)({
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
   color: "white",
-  fontWeight: "bold",
-  textShadow: "0px 2px 4px rgba(0, 0, 0, 0.6)",
   letterSpacing: "0.05em",
-  fontSize: "1.2rem",
-  animation: `${pulseAnimation} 2s infinite`,
-  background: "rgba(0, 71, 171, 0.5)",
   padding: "6px 12px",
   borderRadius: "6px",
   margin: "0 5px",
@@ -70,7 +64,7 @@ const LogoIcon = styled("img")({
   height: "50px",
   transition: "transform 0.3s ease-in-out",
   "&:hover": {
-    transform: "rotate(-20deg)",
+    transform: "rotate(20deg)",
   },
 });
 
@@ -78,7 +72,7 @@ const IconButtonAnimated = styled(IconButton)({
   transition: "transform 0.3s ease-in-out",
   "&:hover": {
     transform: "scale(1.2)",
-    color: "#ffd700",
+    color: "#fff",
   },
 });
 
