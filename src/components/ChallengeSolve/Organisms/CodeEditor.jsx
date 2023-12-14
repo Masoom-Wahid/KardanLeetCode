@@ -37,6 +37,7 @@ const CodeEditor = () => {
       "using System;\n\nclass Program {\n    static void Main() {\n        Console.WriteLine('Hello, World!');\n    }\n}",
     javascript: "console.log('Hello, World!');\n",
     typescript: "console.log('Hello, World!');\n",
+    php: "something",
   };
 
   useEffect(() => {
@@ -84,6 +85,7 @@ const CodeEditor = () => {
           <MenuItem value="csharp">C#</MenuItem>
           <MenuItem value="javascript">JavaScript</MenuItem>
           <MenuItem value="typescript">TypeScript</MenuItem>
+          <MenuItem value="php">PHP</MenuItem>
         </StyledSelect>
         <StyledIconButton onClick={handleReset} color="primary">
           <FontAwesomeIcon icon={faUndo} />

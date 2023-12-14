@@ -4,6 +4,7 @@ import MainHeader from "./MainHeader";
 import DescriptionBox from "./DescriptionBox";
 import CodeEditor from "./CodeEditor";
 import TestCases from "./TestCases";
+import NavigationBar from "../../NavBar/Navbar";
 
 const EditorPage = () => {
   const [mode, setMode] = useState("light");

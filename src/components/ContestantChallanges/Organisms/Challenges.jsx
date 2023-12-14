@@ -3,6 +3,7 @@ import { Box, Grid, Typography } from "@mui/material";
 import ChallengeCardMolecule from "../Molecules/ChallengeCardMolecule";
 import { styled } from "@mui/material/styles";
 import "./Challenges.scss";
+import NavigationBar from "../../NavBar/Navbar";
 
 const PageTitle = styled(Typography)(({ theme }) => ({
   fontSize: "2.5rem",
@@ -44,23 +45,26 @@ const ChallengesPage = () => {
   ];
 
   return (
-    <ChallengesContainer>
-      <Box className="challenges-page">
-        <Box className="header-section">
-          <Typography variant="h4" className="page-title">
-            Artificial Intelligence
-          </Typography>
-          <Typography variant="subtitle1" className="page-info">
-            Points: 0 | Rank: 126268
-          </Typography>
+    <>
+      <NavigationBar />
+      <ChallengesContainer>
+        <Box className="challenges-page">
+          <Box className="header-section">
+            <Typography variant="h4" className="page-title">
+              Artificial Intelligence
+            </Typography>
+            <Typography variant="subtitle1" className="page-info">
+              Points: 0 | Rank: 126268
+            </Typography>
+          </Box>
         </Box>
-      </Box>
-      <div>
-        {challengesData.map((challenge) => (
-          <ChallengeCardMolecule key={challenge.id} challenge={challenge} />
-        ))}
-      </div>
-    </ChallengesContainer>
+        <div>
+          {challengesData.map((challenge) => (
+            <ChallengeCardMolecule key={challenge.id} challenge={challenge} />
+          ))}
+        </div>
+      </ChallengesContainer>
+    </>
   );
 };
 

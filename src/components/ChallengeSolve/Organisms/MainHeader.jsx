@@ -48,7 +48,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
 }));
 
 const RectangleButton = styled(Button)(({ theme }) => ({
-  height: "28px",
+  height: "45px",
   padding: "0 20px",
   borderRadius: "20px",
   display: "flex",
