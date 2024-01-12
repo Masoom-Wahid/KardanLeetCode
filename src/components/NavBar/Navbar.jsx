@@ -30,7 +30,7 @@ const rotateAnimation = keyframes`
 `;
 
 const StyledAppBar = styled(AppBar)({
-  background: "linear-gradient(#1565c0)",
+  background: "linear-gradient(#2196F3)",
   backgroundSize: "400% 400%",
   animation: `${gradientAnimation} 30s ease infinite`,
 });
