@@ -12,7 +12,7 @@
 .top-section {
   background-image: url("../../Assets/key.jpg");
   background-repeat: no-repeat;
-  background-size: 1620px 1080px;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
