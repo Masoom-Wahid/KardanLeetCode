@@ -51,7 +51,7 @@ const HomePage = ({ email }) => {
         <hr className="section-divider" />
         <div className="vision-section">
           <h2 className="section-title">VISION</h2>
-          <p className="section-content">
+          <p className="section-content vision-content">
             At this contest, we envision a world where every student, regardless
             of their background, can access a dynamic and inclusive platform
             that fuels their passion for programming. We strive to be the

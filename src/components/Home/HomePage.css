@@ -100,6 +100,11 @@
   font-size: 1rem;
 }
 
+.vision-content {
+  margin-left: 135px;
+  margin-right: 20px;
+}
+
 .section-divider {
   border: 0;
   height: 1px;
