@@ -13,7 +13,7 @@ import UserRows from "./components/LeaderboardUI/Organisms/UserRows";
 // import LeaderboardPage from "./components/LeaderboardUI/Pages/LeaderboardPage";
 import LeaderboardTable from "./components/LeaderboardUI/Organisms/LeaderboardTable";
 import HomePage from "./components/Home/HomePage";
-
+import Dashboard from "./components/Dashboard/Dashboard";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -28,6 +28,7 @@ function App() {
           <Route path="/leaderboard" element={<LeaderboardPage />} />
           <Route path="/editor" element={<EditorPage />} />
           <Route path="/home" element={<HomePage email={email} />} />
+          <Route path="/admin" element={<Dashboard />} />
         </Routes>
       </div>
     </Router>

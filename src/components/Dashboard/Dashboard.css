@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:wght@300&family=Raleway:wght@300&display=swap');
+
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Raleway' ,'Roboto', sans-serif;
+}
+
+.sidebar {
+  width: 350px;
+  background-color: #f0f2f5;
+  padding: 20px;
+}
+
+.logo-dashboard {
+  width: 100%; /* Adjust as necessary */
+  margin-bottom: 50px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.nav-item svg {
+  margin-right: 10px;
+}
+
+.logout-button {
+  background: linear-gradient(145deg, #030B57 0%, #0E43AB 100%);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 13px;
+  cursor: pointer;
+  margin-top: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.logout-button svg {
+  margin-right: 10px;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #e1e5ea;
+}
+
+.welcome-card {
+  background-color: #0E43AB;
+  color: white;
+  height: 400px;
+  padding: 30px 0px 0px 30px;
+  border-radius: 20px 0px 0px 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+
+.welcome-title {
+  width: auto;
+  direction: ltr;
+  text-align: left;
+  font-size: 45px;
+  font-weight: bolder;
+  margin-bottom: 25px;
+}
+
+.welcome-description {
+  width: 60%;
+  direction: ltr;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 300;
+  margin-bottom: 80px;
+}
+
+.card-buttons {
+  display: flex;
+  justify-content: start;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.card-button {
+  background-color: #2965FF;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.card-button svg {
+  margin-right: 10px;
+}
+
+.stats-card {
+height: 10rem;
+width: 25%;
+background: linear-gradient(145deg, #4facfe 0%, #00f2fe 100%);
+color: white;
+padding: 20px;
+border-radius: 8px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.column-align{
+  flex-direction: column;
+  text-align: left;
+  direction: ltr;
+}
+
+.stats-card svg {
+  font-size: 3rem;
+  margin-right: 60px;
+  margin-bottom: 10px;
+}
+
+.stats-number {
+  text-align: left;
+  direction: ltr;
+font-size: 20px;
+font-weight: bold;
+}
+
+.stats-label {
+  text-align: left;
+  direction: ltr;
+font-size: 20px;
+opacity: 0.9;
+}
+
+.stats-term {
+  flex-direction: column;
+  margin-bottom: 55px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.stats-change {
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+font-size: 20px;
+}
+
+.stats-change-number {
+  font-weight: bolder;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+.dashboard-container {
+flex-direction: column;
+}
+
+.sidebar {
+width: 100%;
+height: auto;
+}
+
+.main-content {
+padding: 10px;
+}
+
+.card-buttons {
+flex-direction: column;
+}
+
+.card-button {
+width: 100%;
+}
+}
