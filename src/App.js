@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 // import Login from "./components/Login/Login";
@@ -17,6 +17,9 @@ import Dashboard from "./components/Dashboard/Dashboard";
 
 function App() {
   const [email, setEmail] = useState("");
+  useEffect(() => {
+    document.title = "KPC";
+  }, []);
 
   return (
     <Router>

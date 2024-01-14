@@ -31,6 +31,9 @@ const Dashboard = () => {
     <div className="dashboard-container">
       <Sidebar />
       <main className="main-content">
+        <div className="admin-title">
+          <h1>Admin Panel</h1>
+        </div>
         <div className="welcome-card">
           <div className="welcome-content">
             <h1 className="welcome-title">

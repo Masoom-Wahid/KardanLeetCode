@@ -19,3 +19,20 @@
 .nav-item svg {
   margin-right: 10px;
 }
+
+
+.logout-button {
+  background: linear-gradient(145deg, #030B57 0%, #0E43AB 100%);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 13px;
+  cursor: pointer;
+  margin-top: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.logout-button svg {
+  margin-right: 10px;
+}

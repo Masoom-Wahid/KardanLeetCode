@@ -6,20 +6,14 @@
   font-family: 'Raleway' ,'Roboto', sans-serif;
 }
 
-.logout-button {
-  background: linear-gradient(145deg, #030B57 0%, #0E43AB 100%);
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 13px;
-  cursor: pointer;
-  margin-top: 300px;
-  display: flex;
-  align-items: center;
-}
-
-.logout-button svg {
-  margin-right: 10px;
+.admin-title {
+  font-size: 58px;
+  font-weight: 800;
+  text-align: left;
+  direction: ltr;
+  color: #343a40;
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 .main-content {
