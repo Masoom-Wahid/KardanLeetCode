@@ -6,28 +6,6 @@
   font-family: 'Raleway' ,'Roboto', sans-serif;
 }
 
-.sidebar {
-  width: 350px;
-  background-color: #f0f2f5;
-  padding: 20px;
-}
-
-.logo-dashboard {
-  width: 100%; /* Adjust as necessary */
-  margin-bottom: 50px;
-}
-
-.nav-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 30px;
-  cursor: pointer;
-}
-
-.nav-item svg {
-  margin-right: 10px;
-}
-
 .logout-button {
   background: linear-gradient(145deg, #030B57 0%, #0E43AB 100%);
   color: white;
@@ -101,6 +79,7 @@
   margin-right: 10px;
 }
 
+
 .stats-card {
 height: 10rem;
 width: 25%;
@@ -109,7 +88,8 @@ color: white;
 padding: 20px;
 border-radius: 8px;
 display: flex;
-align-items: center;
+flex-direction: row;
+margin-right: 20px;
 justify-content: space-between;
 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }

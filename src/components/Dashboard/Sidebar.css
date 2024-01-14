@@ -1,0 +1,21 @@
+.sidebar {
+  width: 350px;
+  background-color: #f0f2f5;
+  padding: 20px;
+}
+
+.logo-dashboard {
+  width: 100%; /* Adjust as necessary */
+  margin-bottom: 50px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.nav-item svg {
+  margin-right: 10px;
+}

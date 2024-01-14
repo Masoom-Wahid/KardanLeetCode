@@ -1,50 +1,35 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faChartLine,
   faPlus,
   faTasks,
-  faUserPlus,
-  faSignOutAlt,
-  faTachometerAlt,
   faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import "./Dashboard.css";
+import Sidebar from "./Sidebar";
+
+const stats = [
+  { label: "Contestants", number: 1000, change: "1.2%", term: "This Term" },
+];
+
+const StatsCard = ({ label, number, change, term }) => (
+  <div className="stats-card">
+    <div className="colum-align">
+      <FontAwesomeIcon icon={faUserCircle} />
+      <div className="stats-label">{label}</div>
+      <div className="stats-number">{number}</div>
+    </div>
+    <div className="stats-term">
+      <div className="stats-change stats-change-number">{change}</div>
+      <div className="stats-change">{term}</div>
+    </div>
+  </div>
+);
 
 const Dashboard = () => {
   return (
     <div className="dashboard-container">
-      <nav className="sidebar">
-        <img
-          src="/kardanLogo.png"
-          alt="Kardan University Logo"
-          className="logo-dashboard"
-        />
-        <div className="nav-item">
-          <FontAwesomeIcon icon={faTachometerAlt} />
-          Dashboard
-        </div>
-        <div className="nav-item">
-          <FontAwesomeIcon icon={faPlus} />
-          Create Contest
-        </div>
-        <div className="nav-item">
-          <FontAwesomeIcon icon={faTasks} />
-          Show Contest
-        </div>
-        <div className="nav-item">
-          <FontAwesomeIcon icon={faUserPlus} />
-          Create Users
-        </div>
-        <div className="nav-item">
-          <FontAwesomeIcon icon={faChartLine} />
-          Results
-        </div>
-        <button className="logout-button">
-          <FontAwesomeIcon icon={faSignOutAlt} />
-          Log Out
-        </button>
-      </nav>
+      <Sidebar />
       <main className="main-content">
         <div className="welcome-card">
           <div className="welcome-content">
@@ -52,7 +37,7 @@ const Dashboard = () => {
               Welcome to the Kardan University Contest Web App.
             </h1>
             <p className="welcome-description">
-              As a website adminstrator, your role involves organizing a
+              As a website administrator, your role involves organizing a
               balanced contest for students to showcase their programming
               skills, positively influencing the university's academic standing.
               Crafting an engaging event reflects the institution's commitment
@@ -72,17 +57,15 @@ const Dashboard = () => {
             </button>
           </div>
         </div>
-        <div className="stats-card">
-          <div className="colum-align">
-            <FontAwesomeIcon icon={faUserCircle} />
-            <div className="stats-label">Contestants</div>
-            <div className="stats-number">1000 </div>
-          </div>
-          <div className="stats-term">
-            <div className="stats-change stats-change-number">1.2% </div>
-            <div className="stats-change">This Term</div>
-          </div>
-        </div>
+        {stats.map((stat) => (
+          <StatsCard
+            key={stat.label}
+            label={stat.label}
+            number={stat.number}
+            change={stat.change}
+            term={stat.term}
+          />
+        ))}
       </main>
     </div>
   );
