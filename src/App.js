@@ -1,7 +1,8 @@
 import { React, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Login from "./components/Login/Login";
+// import Login from "./components/Login/Login";
+import Login from "./components/LoginPage/Login";
 import ContestChallenges from "./components/Challanges/Organism/ContestChallenges";
 import ChallengeTableOrganism from "./components/Challanges/Organism/ChallengeTableOrganism";
 import ChallengesListOrganism from "./components/ContestantChallanges/Organisms/ChallengesListOrganism";
@@ -12,6 +13,7 @@ import UserRows from "./components/LeaderboardUI/Organisms/UserRows";
 // import LeaderboardPage from "./components/LeaderboardUI/Pages/LeaderboardPage";
 import LeaderboardTable from "./components/LeaderboardUI/Organisms/LeaderboardTable";
 import HomePage from "./components/Home/HomePage";
+
 
 function App() {
   const [email, setEmail] = useState("");
