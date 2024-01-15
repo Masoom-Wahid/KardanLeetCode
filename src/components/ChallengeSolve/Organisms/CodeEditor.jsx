@@ -37,8 +37,6 @@ const CodeEditor = () => {
 
   const checkForForbiddenCode = useCallback((content) => {
     if (content.includes("import os")) {
-      // Display warning or error
-      // For example, using Monaco's editor markers
       return [
         {
           startLineNumber:
@@ -60,7 +58,6 @@ const CodeEditor = () => {
   }, []);
 
   useEffect(() => {
-    // Assuming you have access to the monaco instance and the editor instance
     if (monaco && editorRef.current) {
       const model = editorRef.current.getModel();
       const markers = checkForForbiddenCode(editorContent);
@@ -68,8 +65,6 @@ const CodeEditor = () => {
     }
   }, [editorContent, monaco, checkForForbiddenCode]);
 
-  // ... languageBoilerplates and other functions
-  // Boilerplate code for each language
   const languageBoilerplates = useMemo(
     () => ({
       python:
@@ -191,7 +186,6 @@ const CodeEditor = () => {
           lineNumbers: "on",
           tabCompletion: "on",
           wordWrap: "on",
-          // Add or remove options as needed for your application
         }}
       />
     </Box>
