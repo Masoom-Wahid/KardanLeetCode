@@ -6,18 +6,20 @@ import {
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
 import "./Login.css";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setPasswordShown((passwordShown) => !passwordShown);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = () => {
+    navigate("/home");
     console.log("Login submitted", { email, password });
   };
 
@@ -50,7 +52,7 @@ const Login = () => {
               className="password-icon"
             />
           </div>
-          <button type="submit" className="login-button">
+          <button type="submit" className="login-button" onClick={handleSubmit}>
             LOGIN
           </button>
         </form>

@@ -9,6 +9,19 @@
   margin-bottom: 50px;
 }
 
+@keyframes breathing {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.logo-dashboard:hover {
+  animation: breathing 2s ease-in-out infinite;
+}
+
 .nav-item {
   display: flex;
   align-items: center;
