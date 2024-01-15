@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from "react";
-import Editor from "@monaco-editor/react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useMemo,
+  useCallback,
+} from "react";
+import Editor, { useMonaco } from "@monaco-editor/react";
 import { Box, IconButton, Select, MenuItem, styled } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUndo } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "@mui/material/styles";
-import { useMemo } from "react";
 
 const StyledSelect = styled(Select)(({ theme }) => ({
   height: "30px",
-  backgroundColor: theme.palette.primary.main,
+  backgroundColor: "#0E43AB",
   color: theme.palette.primary.contrastText,
   "&:hover": {
     backgroundColor: theme.palette.primary.dark,
@@ -27,7 +32,43 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
 const CodeEditor = () => {
   const [language, setLanguage] = useState("python");
   const [editorContent, setEditorContent] = useState("");
+  const monaco = useMonaco();
+  const editorRef = useRef(null);
 
+  const checkForForbiddenCode = useCallback((content) => {
+    if (content.includes("import os")) {
+      // Display warning or error
+      // For example, using Monaco's editor markers
+      return [
+        {
+          startLineNumber:
+            content
+              .split("\n")
+              .findIndex((line) => line.includes("import os")) + 1,
+          startColumn: 1,
+          endLineNumber:
+            content
+              .split("\n")
+              .findIndex((line) => line.includes("import os")) + 1,
+          endColumn: 1,
+          message: '"import os" is not allowed',
+          severity: monaco.MarkerSeverity.Warning,
+        },
+      ];
+    }
+    return []; // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    // Assuming you have access to the monaco instance and the editor instance
+    if (monaco && editorRef.current) {
+      const model = editorRef.current.getModel();
+      const markers = checkForForbiddenCode(editorContent);
+      monaco.editor.setModelMarkers(model, "owner", markers);
+    }
+  }, [editorContent, monaco, checkForForbiddenCode]);
+
+  // ... languageBoilerplates and other functions
   // Boilerplate code for each language
   const languageBoilerplates = useMemo(
     () => ({
@@ -47,6 +88,34 @@ const CodeEditor = () => {
     }),
     []
   );
+
+  useEffect(() => {
+    setEditorContent(languageBoilerplates[language]);
+
+    if (monaco) {
+      // Setup your language configurations here
+      // For example, for JavaScript:
+      monaco.languages.typescript.javascriptDefaults.setDiagnosticsOptions({
+        noSemanticValidation: false,
+        noSyntaxValidation: false,
+      });
+      monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({
+        noSemanticValidation: false,
+        noSyntaxValidation: false,
+      });
+
+      ["python", "java", "c", "cpp", "csharp", "php", "rust"].forEach(
+        (lang) => {
+          monaco.languages[lang]?.setMonarchTokensProvider({}); // Replace with actual configuration if available
+        }
+      );
+      // Add more configurations as needed
+    }
+  }, [language, monaco, languageBoilerplates]);
+
+  const handleEditorDidMount = (editor, monaco) => {
+    editorRef.current = editor;
+  };
 
   useEffect(() => {
     setEditorContent(languageBoilerplates[language]);
@@ -105,6 +174,25 @@ const CodeEditor = () => {
         theme="vs-light"
         value={editorContent}
         onChange={setEditorContent}
+        onMount={handleEditorDidMount}
+        options={{
+          value: { editorContent },
+          autoClosingBrackets: "always",
+          autoClosingQuotes: "always",
+          autoSurround: "languageDefined",
+          automaticLayout: true,
+          folding: true,
+          dragAndDrop: true,
+          highlightActiveIndentGuide: true,
+          minimap: { enabled: true },
+          readOnly: false,
+          renderWhitespace: "boundary",
+          scrollBeyondLastLine: true,
+          lineNumbers: "on",
+          tabCompletion: "on",
+          wordWrap: "on",
+          // Add or remove options as needed for your application
+        }}
       />
     </Box>
   );
