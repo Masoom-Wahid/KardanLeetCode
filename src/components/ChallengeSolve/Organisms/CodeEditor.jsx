@@ -4,6 +4,7 @@ import { Box, IconButton, Select, MenuItem, styled } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUndo } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "@mui/material/styles";
+import { useMemo } from "react";
 
 const StyledSelect = styled(Select)(({ theme }) => ({
   height: "30px",
@@ -28,26 +29,28 @@ const CodeEditor = () => {
   const [editorContent, setEditorContent] = useState("");
 
   // Boilerplate code for each language
-  const languageBoilerplates = {
-    python:
-      "# Do Not Print Unnecesary Stuff and let the input function to \n# empty or '' ie: input()\ntestcases = int(input())\nprint(testcases)",
-    java: "import java.util.Scanner;\npublic class Solution{\n  public static void main(String[] args){\n  Scanner input = new Scanner(System.in);\n  int testCases = input.nextInt();\n  System.out.println(testCases);\n}",
-    c: "#include <stdio.h>\n// Do Not Print Unnecesary Stuff.ie : For Getting Input\nint main(){\n  int testcases;\n  scanf('%d',&testcases);\n  printf('%d\\n',testcases);\n  return 0;\n}",
-    cpp: "#include <iostream>\nusing namespace std;\n//Do Not Print UnRelated Stuff(ie: for Getting Input)\nint main(){\n  int testCases;\n  cin>>testCases;\n  cout<<testCases<<endl;\n}",
-    csharp:
-      "using System;\n\nclass Program {\n    static void Main() {\n        Console.WriteLine('Hello, World!');\n    }\n}",
-    javascript:
-      "//Make Sure Your Input Field is always ''\nconst readline = require('readline');\n\nconst rl = readline.createInterface({\n  input : process.stdin,\n  output : process.stdout,\n});\n\nrl.question('',(tst)=> {\n  const numoftestcases = parseInt(tst);\n\n  const numoftestcases;\n  rl.close();\n})",
-    typescript:
-      "//Make Sure Your Input Field is always ''\n\nconst readline = require('readline');\n\nconst rl = readline.createInterface({\n  input : process.stdin,\n  output : process.stdout,\n});\n\nconst testCases : number[] = [];\nrl.question('',(tst : string)=> {\n  const numoftestcases : number = parseInt(tst);\n\n  console.log(numoftestcases);\n  rl.close();\n})",
-    php: "<?php\n// Make Sure Your Input Field is always empty or set to ''\n$tst = intval(readline());\necho $tst . PHP_EOL;\n?>",
-    rust: "// // Do Not Print Unnecesary Stuff.ie : For Getting Input\nuse std::io;\n\nfn main() {\n    let mut testcases = String::new();\n\n    io::stdin()\n        .read_line(&mut testcases)\n        .expect('Failed to read line');\n\n    let testcases: i32 = testcases\n        .trim()\n        .parse()\n        .expect('Invalid input. Please enter a valid integer.');\n\n    println!('{}', testcases);\n}",
-  };
-  
+  const languageBoilerplates = useMemo(
+    () => ({
+      python:
+        "# Do Not Print Unnecesary Stuff and let the input function to \n# empty or '' ie: input()\ntestcases = int(input())\nprint(testcases)",
+      java: "import java.util.Scanner;\npublic class Solution{\n  public static void main(String[] args){\n  Scanner input = new Scanner(System.in);\n  int testCases = input.nextInt();\n  System.out.println(testCases);\n}",
+      c: "#include <stdio.h>\n// Do Not Print Unnecesary Stuff.ie : For Getting Input\nint main(){\n  int testcases;\n  scanf('%d',&testcases);\n  printf('%d\\n',testcases);\n  return 0;\n}",
+      cpp: "#include <iostream>\nusing namespace std;\n//Do Not Print UnRelated Stuff(ie: for Getting Input)\nint main(){\n  int testCases;\n  cin>>testCases;\n  cout<<testCases<<endl;\n}",
+      csharp:
+        "using System;\n\nclass Program {\n    static void Main() {\n        Console.WriteLine('Hello, World!');\n    }\n}",
+      javascript:
+        "//Make Sure Your Input Field is always ''\nconst readline = require('readline');\n\nconst rl = readline.createInterface({\n  input : process.stdin,\n  output : process.stdout,\n});\n\nrl.question('',(tst)=> {\n  const numoftestcases = parseInt(tst);\n\n  const numoftestcases;\n  rl.close();\n})",
+      typescript:
+        "//Make Sure Your Input Field is always ''\n\nconst readline = require('readline');\n\nconst rl = readline.createInterface({\n  input : process.stdin,\n  output : process.stdout,\n});\n\nconst testCases : number[] = [];\nrl.question('',(tst : string)=> {\n  const numoftestcases : number = parseInt(tst);\n\n  console.log(numoftestcases);\n  rl.close();\n})",
+      php: "<?php\n// Make Sure Your Input Field is always empty or set to ''\n$tst = intval(readline());\necho $tst . PHP_EOL;\n?>",
+      rust: "// // Do Not Print Unnecesary Stuff.ie : For Getting Input\nuse std::io;\n\nfn main() {\n    let mut testcases = String::new();\n\n    io::stdin()\n        .read_line(&mut testcases)\n        .expect('Failed to read line');\n\n    let testcases: i32 = testcases\n        .trim()\n        .parse()\n        .expect('Invalid input. Please enter a valid integer.');\n\n    println!('{}', testcases);\n}",
+    }),
+    []
+  );
 
   useEffect(() => {
     setEditorContent(languageBoilerplates[language]);
-  }, [language]);
+  }, [language, languageBoilerplates]);
   const theme = useTheme();
 
   const handleReset = () => {
