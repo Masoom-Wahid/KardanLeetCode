@@ -14,6 +14,8 @@ import UserRows from "./components/LeaderboardUI/Organisms/UserRows";
 import LeaderboardTable from "./components/LeaderboardUI/Organisms/LeaderboardTable";
 import HomePage from "./components/Home/HomePage";
 import Dashboard from "./components/Dashboard/Dashboard";
+import CreateChallenge from "./components/Dashboard/CreateChallenge";
+import ChallengeDetails from "./components/Dashboard/ChallengeDetails";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -32,6 +34,8 @@ function App() {
           <Route path="/editor" element={<EditorPage />} />
           <Route path="/home" element={<HomePage email={email} />} />
           <Route path="/admin" element={<Dashboard />} />
+          <Route path="/createchallenge" element={<CreateChallenge />} />
+          <Route path="/challengedetails" element={<ChallengeDetails />} />
         </Routes>
       </div>
     </Router>

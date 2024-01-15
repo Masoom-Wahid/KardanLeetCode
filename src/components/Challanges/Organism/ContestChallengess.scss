@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:wght@300&family=Raleway:wght@300&display=swap');
+
+.page-container {
+  display: flex;
+}
+
+.contest-challenges {
+  margin-top: 2rem;
+  color: #0A192F;
+
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #0D47A1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .description {
+    font-size: 1.1rem;
+    color: #536D8A;
+    margin-bottom: 2rem;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .challenge-table-container {
+    padding: 2rem;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 2rem auto;
+    border: 1px solid #0D47A1;
+  }
+}
+
+// Add responsive styles if needed

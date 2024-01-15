@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:wght@300&family=Raleway:wght@300&display=swap');
+
+.pageContainer {
+  display: flex;
+  font-family: 'Raleway', sans-serif;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.createChallengeContainer {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #6c757d;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.formLabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.formLabel span {
+  flex-basis: 20%;
+  color: #212529;
+  font-weight: 500;
+}
+
+.formInput,
+.formTextarea {
+  flex-basis: 75%;
+  padding: 0.5rem;
+  margin-left: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
+.formInput:focus,
+.formTextarea:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.formInput:hover,
+.formTextarea:hover {
+border-color: #a4b7c1;
+}
+
+.addButton {
+display: inline-block;
+font-weight: 500;
+color: #fff;
+background-color: #007bff;
+border-color: #007bff;
+text-align: center;
+padding: 0.375rem 0.75rem;
+font-size: 1rem;
+line-height: 1.5;
+border-radius: 0.25rem;
+transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+margin-top: 1rem; /* Added margin-top for spacing */
+cursor: pointer;
+}
+
+.addButton:hover {
+background-color: #0056b3;
+border-color: #0053bf;
+animation: pulse 1s infinite;
+}
+
+.addButton:focus {
+box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+@keyframes pulse {
+0% { transform: scale(1); }
+50% { transform: scale(1.05); }
+100% { transform: scale(1); }
+}

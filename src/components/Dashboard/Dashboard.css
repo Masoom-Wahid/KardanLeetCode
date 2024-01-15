@@ -51,6 +51,8 @@
   margin-bottom: 80px;
 }
 
+
+
 .card-buttons {
   display: flex;
   justify-content: flex-start;
@@ -131,26 +133,87 @@ font-size: 20px;
   font-weight: bolder;
 }
 
-/* Responsive styling */
+/* Responsive styling for tablets and small laptops */
+@media (max-width: 1024px) {
+  .admin-title {
+    font-size: 48px; /* Slightly smaller font size for smaller screens */
+  }
+
+  .welcome-title {
+    font-size: 35px;
+  }
+
+  .welcome-description {
+    width: 80%; /* Adjust width for smaller screens */
+    margin-bottom: 0px;
+  }
+
+  .stats-card {
+    width: 40%; /* Adjust the width of the stats card for better fit */
+  }
+}
+
+/* Responsive styling for large laptops */
+@media (max-width: 1440px) {
+  .admin-title {
+    font-size: 52px;
+  }
+
+  .welcome-title {
+    font-size: 40px;
+  }
+
+  .welcome-description {
+    width: 70%;
+    margin-bottom: 0px;
+  }
+
+  .stats-card {
+    width: 30%;
+  }
+}
+
+@media (max-width: 825px) {
+  .welcome-description{
+    font-size: 13px;
+  }
+}
+
+/* Existing responsive styling for tablets and mobile devices */
 @media (max-width: 768px) {
-.dashboard-container {
-flex-direction: column;
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+
+  .main-content {
+    padding: 10px;
+  }
+
+  .card-buttons {
+    flex-direction: column;
+  }
+
+  .card-button {
+    width: 100%;
+  }
+
+  /* Additional adjustments for smaller screens */
+  .welcome-card {
+    height: auto; /* Make the card's height flexible */
+  }
+
+  .stats-card {
+    width: 100%; /* Full width for the stats cards */
+    margin-right: 0; /* Remove margin */
+    margin-bottom: 20px; /* Add bottom margin */
+  }
 }
 
-.sidebar {
-width: 100%;
-height: auto;
-}
 
-.main-content {
-padding: 10px;
-}
 
-.card-buttons {
-flex-direction: column;
-}
-
-.card-button {
-width: 100%;
-}
-}
+/* Add any additional styles and breakpoints as needed */

@@ -1,11 +1,12 @@
 .sidebar {
-  width: 350px;
+  width: 200px;
   background-color: #f0f2f5;
   padding: 20px;
+  transition: width 0.3s ease;
 }
 
 .logo-dashboard {
-  width: 100%; /* Adjust as necessary */
+  width: 200px; /* Adjust as necessary */
   margin-bottom: 50px;
 }
 
@@ -48,4 +49,34 @@
 
 .logout-button svg {
   margin-right: 10px;
+}
+
+
+.sidebar.collapsed {
+  width: 80px; /* Adjust the width for collapsed state */
+  .logo-dashboard{
+    display: none;
+  }
+  .nav-items {
+    margin-top: 20px;
+  }
+  .toggle-button {
+    margin-top: 60px;
+  }
+}
+
+.toggle-button {
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Adjust styles for nav-item and logout-button for collapsed state */
+.nav-item, .logout-button {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

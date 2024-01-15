@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faAngleLeft,
+  faAngleRight,
   faTachometerAlt,
   faPlus,
   faTasks,
@@ -8,7 +10,7 @@ import {
   faSignOutAlt,
   faChartLine,
 } from "@fortawesome/free-solid-svg-icons";
-import "./Sidebar.css"; // You might want to create a separate CSS file for the sidebar
+import "./Sidebar.css";
 
 const navItems = [
   { name: "Dashboard", icon: faTachometerAlt },
@@ -19,22 +21,33 @@ const navItems = [
 ];
 
 const Sidebar = () => {
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
   return (
-    <nav className="sidebar">
+    <nav className={`sidebar ${isCollapsed ? "collapsed" : ""}`}>
       <img
         src="/kardanLogo.png"
         alt="Kardan University Logo"
         className="logo-dashboard"
       />
-      {navItems.map((item) => (
-        <div key={item.name} className="nav-item">
-          <FontAwesomeIcon icon={item.icon} />
-          {item.name}
-        </div>
-      ))}
+      <div className="nav-items">
+        {navItems.map((item) => (
+          <div key={item.name} className="nav-item">
+            <FontAwesomeIcon icon={item.icon} />
+            {!isCollapsed && item.name}
+          </div>
+        ))}
+      </div>
+      <button className="toggle-button" onClick={toggleSidebar}>
+        <FontAwesomeIcon icon={isCollapsed ? faAngleRight : faAngleLeft} />
+      </button>
       <button className="logout-button">
         <FontAwesomeIcon icon={faSignOutAlt} />
-        Log Out
+        {!isCollapsed && " Log Out"}
       </button>
     </nav>
   );
