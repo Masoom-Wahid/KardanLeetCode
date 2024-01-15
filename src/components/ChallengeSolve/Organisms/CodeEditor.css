@@ -34,13 +34,13 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: #2196f3;
+  color: #0E43AB;
   padding: 5px;
   transition: color 0.3s ease;
 }
 
 .editor-button:hover {
-  color: #1976d2; /* Darker shade on hover */
+  color: #0E43AB; /* Darker shade on hover */
 }
 
 .fa-icon {

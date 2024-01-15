@@ -29,13 +29,13 @@ const StyledComponentContainer = styled(Box)(({ theme }) => ({
 }));
 
 const StyledButton = styled(Button)(({ theme }) => ({
-  color: "#333", // Color close to black
+  color: "#fff", // Color close to black
   textTransform: "none",
   fontWeight: 600,
   margin: "0 10px",
   padding: "8px 16px",
   borderRadius: "20px",
-  background: theme.palette.primary.light,
+  background: "#0E43AB",
   boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
   transition: "all 0.3s ease-in-out",
   "&:hover": {
@@ -54,7 +54,7 @@ const RectangleButton = styled(Button)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  backgroundColor: theme.palette.primary.light,
+  backgroundColor: "#0E43AB",
   color: theme.palette.primary.contrastText,
   textTransform: "none",
   fontWeight: 600,

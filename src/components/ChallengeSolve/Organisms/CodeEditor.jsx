@@ -99,7 +99,7 @@ const CodeEditor = () => {
       <Editor
         height="100%"
         language={language}
-        theme="vs-dark"
+        theme="vs-light"
         value={editorContent}
         onChange={setEditorContent}
       />
