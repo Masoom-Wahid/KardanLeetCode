@@ -17,7 +17,7 @@ const Login = () => {
   return (
     <div className="login-page">
       <div className="left-panel">
-        <div className="content">
+        <div className="content-login">
           <div className="contents">
             <h1 className="title left-title">Kardan Contest</h1>
             <p className="description left-description">

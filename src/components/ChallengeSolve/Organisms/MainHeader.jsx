@@ -97,7 +97,8 @@ const MainHeader = ({ onToggleDarkMode, isDarkMode }) => {
   return (
     <StyledComponentContainer>
       <RectangleButton onClick={handleProblemList}>
-        Problem List <FontAwesomeIcon icon={faChevronRight} />
+        Problem List
+        <FontAwesomeIcon icon={faChevronRight} />
       </RectangleButton>
       <Box>
         <StyledButton startIcon={<FontAwesomeIcon icon={faPlay} />}>

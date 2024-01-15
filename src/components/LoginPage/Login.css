@@ -140,7 +140,7 @@
   margin-top: 5px;
 }
 
-.content {
+.content-login {
   letter-spacing: 3px;
   direction: ltr;
   text-align: left;
@@ -216,7 +216,7 @@
   }
 }
   
-.left-panel .content {
+.left-panel .content-login {
   animation: 1s ease-out 0s 1 slideInFromLeft;
 }
   

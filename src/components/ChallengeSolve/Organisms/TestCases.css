@@ -1,0 +1,105 @@
+.test-cases-container {
+  margin-left: 5px;
+  margin-top: 3px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 63vh;
+}
+
+.main-tabs {
+  display: flex;
+  background-color: #f5f5f5;
+}
+
+.tab {
+  flex-grow: 1;
+  text-align: center;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent; /* Add a transparent border by default */
+}
+
+.tab-selected {
+  background-color: rgba(25, 118, 210, 0.1);
+  color: #1976d2;
+  border-bottom: 2px solid #1976d2; /* Change border color for selected tab */
+}
+
+.test-case-input-output {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.test-case-text-field {
+  flex-grow: 1; /* Make input and output fields take up remaining space */
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Adjust label width */
+.test-case-input-output label {
+  white-space: nowrap; /* Prevents the text from wrapping */
+  width: auto; /* Auto width to fit content */
+  padding-right: 5px; /* Some padding for aesthetics */
+}
+
+.case-tabs {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ccc; /* Add border to the bottom of the tabs */
+}
+
+.case-tab {
+  background-color: #e0e0e0;
+  color: #333;
+  margin-right: 5px;
+  padding: 6px 12px;
+  cursor: pointer;
+  border: 1px solid transparent; /* Transparent border for consistent sizing */
+}
+
+.case-tab-selected {
+  background-color: white;
+  color: #1976d2;
+  border-bottom: 2px solid #1976d2; /* Highlight the selected tab with a border */
+}
+
+.test-case-box {
+  padding: 8px;
+  margin-bottom: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+.test-case-box-active {
+  display: block;
+}
+
+.test-case-input-output {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.test-case-text-field {
+  width: 70px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 4px;
+  width: calc(100% - 10px);
+}
+
+.icon-button {
+  cursor: pointer;
+}

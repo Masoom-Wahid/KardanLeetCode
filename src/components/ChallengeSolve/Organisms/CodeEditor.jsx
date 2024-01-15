@@ -52,7 +52,7 @@ const CodeEditor = () => {
   return (
     <Box
       sx={{
-        marginTop: "5px",
+        marginTop: "19px",
         marginLeft: "5px",
         display: "flex",
         flexDirection: "column",
