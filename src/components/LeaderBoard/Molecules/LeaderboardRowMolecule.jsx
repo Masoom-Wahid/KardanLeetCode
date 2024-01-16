@@ -8,18 +8,17 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-const LeaderboardRowMolecule = ({ rank, user, score, time, country }) => {
+const LeaderboardRowMolecule = ({  name,rank, point, time, penalty }) => {
+  console.log(rank,name,point,time,penalty)
   return (
     <StyledTableRow>
       <TableCell component="th" scope="row">
         {rank}
       </TableCell>
-      <TableCell>{user}</TableCell>
-      <TableCell>{score}</TableCell>
+      <TableCell>{name}</TableCell>
+      <TableCell>{point}</TableCell>
       <TableCell>{time}</TableCell>
-      <TableCell>
-        <Avatar src={country} />
-      </TableCell>
+      <TableCell>{penalty}</TableCell>
     </StyledTableRow>
   );
 };
