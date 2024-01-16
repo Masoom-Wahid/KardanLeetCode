@@ -1,5 +1,4 @@
 import React from "react";
-import Sidebar from "./Sidebar"; // Import your Sidebar component
 import styles from "./ChallengeDetails.module.css"; // Import the CSS module
 
 const ChallengeDetails = () => {
@@ -14,37 +13,28 @@ const ChallengeDetails = () => {
   };
 
   return (
-    <div className={styles.pageContainer}>
-      <Sidebar />
-      <div className={styles.challengeDetailsContainer}>
-        <div className={styles.tabs}>
-          <button className={`${styles.tab} ${styles.active}`}>
-            Challenge
-          </button>
-          <button className={styles.tab}>Test Cases</button>
-        </div>
-        <h1 className={styles.title}>
-          This is the basic information that describes your challenge.
-        </h1>
-        <form className={styles.form}>
-          {Object.entries(challengeDetails).map(([key, value]) => (
-            <div key={key} className={styles.formGroup}>
-              <label className={styles.label}>
-                {key.replace(/([A-Z])/g, " $1")}
-              </label>
-              <div
-                className={styles.value}
-                style={{ "--content-width": `${value.length + 18}px` }}
-              >
-                {value}
-              </div>
+    <div className={styles.challengeDetailsContainer}>
+      <h1 className={styles.title}>
+        This is the basic information that describes your challenge.
+      </h1>
+      <form className={styles.form}>
+        {Object.entries(challengeDetails).map(([key, value]) => (
+          <div key={key} className={styles.formGroup}>
+            <label className={styles.label}>
+              {key.replace(/([A-Z])/g, " $1")}
+            </label>
+            <div
+              className={styles.value}
+              style={{ "--content-width": `${value.length + 18}px` }}
+            >
+              {value}
             </div>
-          ))}
-        </form>
-        <button type="submit" className={styles.submitButton}>
-          Save Changes
-        </button>
-      </div>
+          </div>
+        ))}
+      </form>
+      <button type="submit" className={styles.submitButton}>
+        Save Changes
+      </button>
     </div>
   );
 };
