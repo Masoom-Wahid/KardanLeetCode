@@ -1,0 +1,93 @@
+.sidebar {
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  width: 200px; /* Set the width of the sidebar */
+  height: 100%; /* Full height */
+  background-color: #f0f2f5;
+  padding: 20px;
+  transition: width 0.3s ease;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+.logo-dashboard {
+  width: 200px; /* Adjust as necessary */
+  margin-bottom: 50px;
+}
+
+@keyframes breathing {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.logo-dashboard:hover {
+  animation: breathing 2s ease-in-out infinite;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.nav-item svg {
+  margin-right: 10px;
+}
+
+
+.logout-button {
+  background: linear-gradient(145deg, #030B57 0%, #0E43AB 100%);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 13px;
+  cursor: pointer;
+  margin-top: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.logout-button svg {
+  margin-right: 10px;
+}
+
+
+
+.sidebar.collapsed {
+  width: 80px; /* Adjust the width for collapsed state */
+  .logo-dashboard{
+    display: none;
+  }
+  .nav-items {
+    margin-top: 20px;
+  }
+  .toggle-button {
+    margin-top: 60px;
+  }
+}
+
+.toggle-button {
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Adjust styles for nav-item and logout-button for collapsed state */
+.nav-item, .logout-button {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  .sidebar{
+    width: 170px;
+  }
+}

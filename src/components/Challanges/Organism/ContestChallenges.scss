@@ -1,9 +1,14 @@
 // ContestChallenges.scss
+.total-page {
+  display: flex;
+
 .contest-challenges {
   margin-top: 2rem;
   color: #0A192F;
 
   .title {
+    direction: ltr;
+    text-align: left;
     font-size: 2.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
@@ -41,7 +46,6 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     margin: 2rem auto;
-    border: 1px solid #0D47A1;
 
     // Adjust padding and margin for smaller screens
     @media (max-width: 768px) {
@@ -72,33 +76,5 @@
   }
 
   position: relative;
-
-  .logo-placeholder {
-    position: absolute;
-    top: 16px; // Uniform padding from the top
-    left: 16px; // Uniform padding from the left
-    width: 100px;
-    height: 100px;
-
-    // Adjust logo size and positioning for smaller screens
-    @media (max-width: 768px) {
-      top: 8px;
-      left: 8px;
-      width: 80px;
-      height: 80px;
-    }
-
-    @media (max-width: 480px) {
-      top: 4px;
-      left: 4px;
-      width: 60px;
-      height: 60px;
-    }
-
-    img {
-      width: 100%;
-      height: auto;
-      border-radius: 50%;
-    }
-  }
+}
 }
