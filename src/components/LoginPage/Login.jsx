@@ -1,17 +1,67 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
+import parseJwt from "./JWTParser";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
+
+
+
+const BASE_URL = process.env.REACT_APP_API_URL
+
+
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-  const handleSubmit = (event) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    /*
+    Sometimes The User , Even Though Logged In , Comes To Login Page Again,
+    the just redirects them if they have a token in their localstorage
+    */
+    const access_token = localStorage.getItem("accessToken")
+    if(access_token != undefined){
+      const parsed_data = parseJwt(access_token)
+      parsed_data.is_superuser ? navigate("/admin") : navigate("/home");
+    }  
+  })
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Handle the login logic here
-    console.log("Login submitted", { username, password });
+    setLoading(true);
+
+    try {
+      const response = await fetch(`${BASE_URL}auth/token/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username: username, password }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      localStorage.setItem("accessToken", data.access);
+      localStorage.setItem("refreshToken", data.refresh);
+      // Just Parse The Data and set it to local storage
+      const parsed_data = parseJwt(data.access)
+      localStorage.setItem("username",parsed_data.username)
+      localStorage.setItem("is_su",parsed_data.is_superuser)
+      // naviagate depending on the user's token
+      parsed_data.is_superuser ? navigate("/admin") : navigate("/home");
+    } catch (error) {
+      window.alert("Login failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -66,7 +116,7 @@ const Login = () => {
             </button>
           </div>
           <button type="submit" className="login-button">
-            Login
+          {loading ? "Logging in..." : "Log In"}
           </button>
         </form>
       </div>
