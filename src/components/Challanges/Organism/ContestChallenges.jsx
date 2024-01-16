@@ -2,8 +2,10 @@ import React from "react";
 import ChallengeTableOrganism from "./ChallengeTableOrganism";
 import "./ContestChallengess.scss";
 import Sidebar from "../../Dashboard/Sidebar";
+import { useNavigate } from "react-router-dom";
 
 const ContestChallenges = () => {
+  const navigate = useNavigate();
   return (
     <div className="page-container">
       <Sidebar />
@@ -18,6 +20,9 @@ const ContestChallenges = () => {
         <div className="challenge-table-container">
           <ChallengeTableOrganism />
         </div>
+        <button onClick={() => navigate("/createchallenge")}>
+          Add Challenge
+        </button>
       </div>
     </div>
   );

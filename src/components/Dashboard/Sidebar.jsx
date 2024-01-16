@@ -10,18 +10,20 @@ import {
   faSignOutAlt,
   faChartLine,
 } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 import "./Sidebar.css";
 
 const navItems = [
-  { name: "Dashboard", icon: faTachometerAlt },
-  { name: "Create Contest", icon: faPlus },
-  { name: "Show Contest", icon: faTasks },
-  { name: "Create Users", icon: faUserPlus },
-  { name: "Results", icon: faChartLine },
+  { name: "Dashboard", icon: faTachometerAlt, path: "/admin" },
+  { name: "Create Contest", icon: faPlus, path: "/createcontest" },
+  { name: "Show Contest", icon: faTasks, path: "/showcontest" },
+  { name: "Create Users", icon: faUserPlus, path: "/createusers" },
+  { name: "Results", icon: faChartLine, path: "/results" },
 ];
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const navigate = useNavigate();
 
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
@@ -36,7 +38,11 @@ const Sidebar = () => {
       />
       <div className="nav-items">
         {navItems.map((item) => (
-          <div key={item.name} className="nav-item">
+          <div
+            key={item.name}
+            className="nav-item"
+            onClick={() => navigate(item.path)}
+          >
             <FontAwesomeIcon icon={item.icon} />
             {!isCollapsed && item.name}
           </div>

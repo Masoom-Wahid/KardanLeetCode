@@ -2,11 +2,14 @@ import React from "react";
 import styles from "./ChallengeDetails.module.css"; // Import the CSS module
 
 const ChallengeDetails = () => {
-  // Mock data for the challenge details
+  // Updated mock data for the challenge details
   const challengeDetails = {
     Name: "Sample Challenge",
+    Level: "Easy",
+    Points: "50",
+    TimeLimit: "120 seconds",
+    NumberOfTestCases: "3",
     Description: "This is a sample description of the challenge.",
-    ProblemStatement: "Here is the problem statement for the challenge.",
     InputFormat: "Expected input format details.",
     Constraints: "List of constraints for the challenge.",
     OutputFormat: "Expected output format details.",

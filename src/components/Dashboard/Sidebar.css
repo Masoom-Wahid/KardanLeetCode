@@ -1,8 +1,12 @@
 .sidebar {
-  width: 200px;
+  top: 0; /* Align to the top */
+  left: 0; /* Align to the left */
+  width: 200px; /* Set the width of the sidebar */
+  height: 100%; /* Full height */
   background-color: #f0f2f5;
   padding: 20px;
   transition: width 0.3s ease;
+  z-index: 1000; /* Ensure it's above other content */
 }
 
 .logo-dashboard {
@@ -52,6 +56,7 @@
 }
 
 
+
 .sidebar.collapsed {
   width: 80px; /* Adjust the width for collapsed state */
   .logo-dashboard{
@@ -79,4 +84,10 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  .sidebar{
+    width: 170px;
+  }
 }

@@ -16,6 +16,8 @@ import HomePage from "./components/Home/HomePage";
 import Dashboard from "./components/Dashboard/Dashboard";
 import CreateChallenge from "./components/Dashboard/CreateChallenge";
 import ParentComponent from "./components/Dashboard/ParentComponent";
+import CreateContest from "./components/Dashboard/CreateContest";
+import { containerClasses } from "@mui/material";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -36,6 +38,7 @@ function App() {
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/createchallenge" element={<CreateChallenge />} />
           <Route path="/challengedetails" element={<ParentComponent />} />
+          <Route path="/createcontest" element={<CreateContest />} />
         </Routes>
       </div>
     </Router>

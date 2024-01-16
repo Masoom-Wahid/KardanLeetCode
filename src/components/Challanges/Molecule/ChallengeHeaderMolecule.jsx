@@ -13,9 +13,7 @@ const HeaderCell = styled(TableCell)(({ theme }) => ({
   backgroundColor: theme.palette.primary.main, // Use primary color for headers
   color: theme.palette.primary.contrastText,
   fontWeight: "bold",
-  "&:hover": {
-    backgroundColor: theme.palette.primary.dark, // Darken on hover
-  },
+
   "& .MuiTooltip-tooltip": {
     backgroundColor: theme.palette.common.white,
     color: theme.palette.text.primary,

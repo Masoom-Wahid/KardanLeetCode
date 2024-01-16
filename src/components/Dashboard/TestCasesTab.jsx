@@ -77,6 +77,9 @@ const TestCasesTab = () => {
           <button className={styles.addButton}>Add Test Cases</button>
         </div>
       </div>
+      <button type="submit" className={styles.submitButton}>
+        Save Changes
+      </button>
     </div>
   );
 };
