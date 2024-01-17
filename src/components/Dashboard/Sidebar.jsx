@@ -11,7 +11,7 @@ import {
   faChartLine,
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import "./Sidebar.css";
+import styles from "./Sidebar.module.css";
 
 const navItems = [
   { name: "Dashboard", icon: faTachometerAlt, path: "/admin" },
@@ -30,17 +30,17 @@ const Sidebar = () => {
   };
 
   return (
-    <nav className={`sidebar ${isCollapsed ? "collapsed" : ""}`}>
+    <nav className={`${styles.sidebar} ${isCollapsed ? styles.collapsed : ""}`}>
       <img
         src="/kardanLogo.png"
         alt="Kardan University Logo"
-        className="logo-dashboard"
+        className={styles.logoDashboard}
       />
-      <div className="nav-items">
+      <div className={styles.navItems}>
         {navItems.map((item) => (
           <div
             key={item.name}
-            className="nav-item"
+            className={styles.navItem}
             onClick={() => navigate(item.path)}
           >
             <FontAwesomeIcon icon={item.icon} />
@@ -48,10 +48,10 @@ const Sidebar = () => {
           </div>
         ))}
       </div>
-      <button className="toggle-button" onClick={toggleSidebar}>
+      <button className={styles.toggleButton} onClick={toggleSidebar}>
         <FontAwesomeIcon icon={isCollapsed ? faAngleRight : faAngleLeft} />
       </button>
-      <button className="logout-button">
+      <button className={styles.logoutButton}>
         <FontAwesomeIcon icon={faSignOutAlt} />
         {!isCollapsed && " Log Out"}
       </button>

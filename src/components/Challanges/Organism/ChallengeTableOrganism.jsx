@@ -54,26 +54,28 @@ const ChallengeTableOrganism = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${BASE_URL}questions/?name=${CONTEST_NAME}`, {
-          method: "GET",
-          headers: {
-            "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        });
+        const response = await fetch(
+          `${BASE_URL}questions/?name=${CONTEST_NAME}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
+        );
 
-
-      const data = await response.json();
+        const data = await response.json();
         if (!response.ok) {
-          console.log(response.status)
-          // 401 means unauthorized , 403 means unauthorized, so the user is either using an old token or is 
-          // either bypassing 
-          if (response.status === 401 || response.status === 403){
-            localStorage.removeItem("accessToken")
-            navigate("/")
+          console.log(response.status);
+          // 401 means unauthorized , 403 means unauthorized, so the user is either using an old token or is
+          // either bypassing
+          if (response.status === 401 || response.status === 403) {
+            localStorage.removeItem("accessToken");
+            navigate("/");
           }
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        setChallenges(data)
+        setChallenges(data);
         // Process the data
       } catch (error) {
         // Handle errors
@@ -81,7 +83,7 @@ const ChallengeTableOrganism = () => {
       }
     };
 
-    fetchData();
+    fetchData(); // eslint-disable-next-line
   }, []);
 
 

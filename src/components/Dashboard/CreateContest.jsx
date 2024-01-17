@@ -27,6 +27,29 @@ const CreateContest = () => {
               className={styles.input}
               placeholder="Enter The Name of The Contest"
             />
+            <label htmlFor="duration" className={styles.label}>
+              Duration
+            </label>
+            <div className={styles.durationContainer}>
+              <input
+                type="number"
+                id="hours"
+                className={styles.durationInput}
+                placeholder="Hours"
+              />
+              <input
+                type="number"
+                id="minutes"
+                className={styles.durationInput}
+                placeholder="Minutes"
+              />
+              <input
+                type="number"
+                id="seconds"
+                className={styles.durationInput}
+                placeholder="Seconds"
+              />
+            </div>
             <button
               type="submit"
               className={styles.button}

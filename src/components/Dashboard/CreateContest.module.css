@@ -61,6 +61,9 @@
 }
 
 .label {
+  text-align: left;
+  justify-content: left;
+  direction: ltr;
   font-size: 16px;
   color: #666666; /* Assumed label color */
   margin-bottom: 8px;
@@ -95,6 +98,39 @@ transition: background-color 0.3s ease, transform 0.3s ease;
 .button:hover {
 background-color: #0056b3; /* Darker shade for hover effect */
 animation: breathe 2s ease-in-out infinite;
+}
+
+.durationContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.durationInput {
+  width: 40px;
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+.durationInput:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* You might want to target each input specifically if they need different styling */
+.durationInput[type="number"]::-webkit-inner-spin-button,
+.durationInput[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none; /* Removes the default spin buttons */
+  margin: 0;
+}
+
+.durationInput[type="number"] {
+  -moz-appearance: textfield; /* Removes the default spin buttons in Firefox */
 }
 
 @keyframes breathe {

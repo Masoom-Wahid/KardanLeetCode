@@ -7,9 +7,21 @@
   padding: 20px;
   transition: width 0.3s ease;
   z-index: 1000; /* Ensure it's above other content */
+  transition: width 0.3s ease;
 }
 
-.logo-dashboard {
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logoDashboard {
   width: 200px; /* Adjust as necessary */
   margin-bottom: 50px;
 }
@@ -23,35 +35,41 @@
   }
 }
 
-.logo-dashboard:hover {
+.logoDashboard:hover {
   animation: breathing 2s ease-in-out infinite;
 }
 
-.nav-item {
+.navItem {
   display: flex;
   align-items: center;
   margin-bottom: 30px;
   cursor: pointer;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-.nav-item svg {
+.navItem:hover {
+  background-color: #eef4f7; /* Light background on hover */
+}
+
+
+.navItem svg {
   margin-right: 10px;
 }
 
 
-.logout-button {
+.logoutButton {
   background: linear-gradient(145deg, #030B57 0%, #0E43AB 100%);
   color: white;
   border: none;
   padding: 10px;
   border-radius: 13px;
   cursor: pointer;
-  margin-top: 300px;
+  margin-top: 290px;
   display: flex;
   align-items: center;
 }
 
-.logout-button svg {
+.logoutButton svg {
   margin-right: 10px;
 }
 
@@ -59,35 +77,37 @@
 
 .sidebar.collapsed {
   width: 80px; /* Adjust the width for collapsed state */
-  .logo-dashboard{
+  .logoDashboard{
     display: none;
   }
-  .nav-items {
+  .navItems {
     margin-top: 20px;
   }
-  .toggle-button {
+  .toggleButton {
     margin-top: 60px;
   }
 }
 
-.toggle-button {
+.toggleButton {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   background: none;
   border: none;
   cursor: pointer;
+  padding: 3px;
 }
 
 /* Adjust styles for nav-item and logout-button for collapsed state */
-.nav-item, .logout-button {
+.navItem, .logoutButton {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 @media (max-width: 768px) {
-  .sidebar{
+  .sidebar {
     width: 170px;
   }
+  /* You might want to adjust the positioning of the toggleButton here as well */
 }

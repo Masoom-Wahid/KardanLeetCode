@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+
+.showContestContainer {
+  font-family: 'Josefin Sans','Courier New', Courier, monospace;
+  display: flex;
+  min-height: 100vh;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.contestsContainer {
+  flex-grow: 1;
+  padding: 1rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.title {
+  margin-top: 1rem;
+  color: #333;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  animation: fadeInDown 0.5s ease-in-out;
+}
+
+.addButton {
+  background-color: #007bff;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: fadeInRight 0.5s ease-out;
+}
+
+.addButton:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.contestsTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  animation: fadeInUp 0.5s ease-in-out;
+  font-size: 20px;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+.evenRow {
+  background-color: #f7f7f7;
+}
+
+.oddRow {
+  background-color: #fff;
+}
+
+.evenRow:hover, .oddRow:hover {
+  background-color: #eef4f7;
+}
+
+.actionIcons {
+  display: flex;
+  justify-content: left;
+  gap: 1rem;
+}
+
+.deleteIcon {
+  cursor: pointer;
+  color: #dc3545;;
+  transition: color #D11A2A;
+}
+
+.editIcon {
+  cursor: pointer;
+  color: #0056b3;
+}
+
+.editIcon:hover {
+  color: #0056b3; /* A brighter color on hover */
+  transform: scale(1.1); /* Slightly enlarge icons */
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.deleteIcon:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease, color 0.2s ease;
+  color: #D11A2A;
+}
+
+/* Checkbox styles */
+.checkboxIcon {
+  cursor: pointer;
+  color: #6c757d;
+  transition: color 0.2s ease;
+}
+
+.checkboxIcon:hover {
+  color: #0056b3; /* A brighter color on hover */
+  transform: scale(1.1); /* Slightly enlarge icons */
+}
+
+/* Fade in animations for rows */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Apply fade in to each row */
+.contestsTable tbody tr {
+  animation: fadeIn 0.5s ease;
+}
+
+/* General styling for table headers */
+.contestsTable thead th {
+  background-color: #e9ecef;
+  color: #495057;
+  padding: 0.75rem;
+  text-align: left;
+  font-size: 20px;
+  letter-spacing: 0.02rem;
+  transition: background-color 0.3s;
+}
+
+/* Hover effect for table headers */
+.contestsTable thead th:hover {
+  background-color: #dee2e6;
+}
+
+/* Styling for table cells */
+.contestsTable td {
+  padding: 0.75rem;
+  text-align: left;
+  vertical-align: middle;
+  font-size: 17px;
+  color: #212529;
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* Button styling */
+.addNewButton {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.addNewButton:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+
+.bulkAction {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 20px;
+  position: relative; /* For absolute positioning of the delete icon */
+}
+
+.divider {
+  border: 0;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #007bff, transparent);
+  margin: 0;
+  flex-grow: 1; /* Make the line grow to take available space */
+}
+
+.deleteMultipleFrame {
+  padding: 10px;
+  width: 100%;
+}
+
+.bulkDeleteIcon {
+  margin-top: 10px;
+  color: #dc3545; /* Bootstrap danger color */
+  font-size: 24px; /* Larger icon size */
+  margin-left: 16px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #bd2130; /* A darker shade when hovering over the icon */
+  }
+}
+
+/* More specific styling can be added based on the actual content and behavior */
