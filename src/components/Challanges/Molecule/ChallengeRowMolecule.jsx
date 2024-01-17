@@ -1,8 +1,6 @@
 import React from "react";
-import { useState } from "react";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
-import CheckboxAtom from "../Atom/CheckboxAtom";
 import IconAtom from "../Atom/IconAtom";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { styled } from "@mui/material/styles";
@@ -39,35 +37,22 @@ const DeleteButton = styled(IconAtom)(({ theme }) => ({
   },
 }));
 
-const ChallengeRowMolecule = ({ challenge, index }) => {
-  const [binary, setBinary] = useState(challenge.binary);
-  const [editorial, setEditorial] = useState(challenge.editorial);
 
-  const handleBinaryChange = () => {
-    setBinary(!binary);
-    // You can also propagate this change up to the parent component if needed
-  };
-
-  const handleEditorialChange = () => {
-    setEditorial(!editorial);
-    // Handle change similarly
-  };
+const ChallengeRowMolecule = ({ challenge, index,onDelete }) => {
 
   return (
     <TableRow>
       <StyledTableCell>{index + 1}</StyledTableCell>
-      <StyledTableCell>{challenge.name}</StyledTableCell>
+      <StyledTableCell>{challenge.title}</StyledTableCell>
+      <StyledTableCell>{challenge.lvl}</StyledTableCell>
       <StyledTableCell>
-        <ScoreBox>{challenge.maxScore}</ScoreBox>
+        <ScoreBox>{challenge.point}</ScoreBox>
       </StyledTableCell>
-      <TableCell>
-        <CheckboxAtom checked={binary} onChange={handleBinaryChange} />
-      </TableCell>
-      <TableCell>
-        <CheckboxAtom checked={editorial} onChange={handleEditorialChange} />
-      </TableCell>
       <StyledTableCell>
-        <DeleteButton icon={<DeleteIcon />} />
+        <ScoreBox>{challenge.time_limit}</ScoreBox>
+      </StyledTableCell>
+      <StyledTableCell>
+        <DeleteButton icon={<DeleteIcon />} onClick={() => onDelete(challenge.id)} />
       </StyledTableCell>
     </TableRow>
   );

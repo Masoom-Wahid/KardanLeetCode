@@ -31,6 +31,20 @@ const ChallengeHeaderMolecule = () => {
           <HeaderCell>Name</HeaderCell>
           <HeaderCell>
             <Typography variant="inherit" noWrap>
+              Level
+              <Tooltip title="The Level Of The Challenge , (EASY,MEDUIM,HARD)">
+                <InfoIcon
+                  sx={{
+                    fontSize: "1rem",
+                    marginLeft: "5px",
+                    verticalAlign: "middle",
+                  }}
+                />
+              </Tooltip>
+            </Typography>
+          </HeaderCell>
+          <HeaderCell>
+            <Typography variant="inherit" noWrap>
               Max Score
               <Tooltip title="Maximum score for this challenge">
                 <InfoIcon
@@ -43,24 +57,11 @@ const ChallengeHeaderMolecule = () => {
               </Tooltip>
             </Typography>
           </HeaderCell>
+
           <HeaderCell>
             <Typography variant="inherit" noWrap>
-              Binary
-              <Tooltip title="Binary scoring">
-                <InfoIcon
-                  sx={{
-                    fontSize: "1rem",
-                    marginLeft: "5px",
-                    verticalAlign: "middle",
-                  }}
-                />
-              </Tooltip>
-            </Typography>
-          </HeaderCell>
-          <HeaderCell>
-            <Typography variant="inherit" noWrap>
-              Editorial
-              <Tooltip title="Link to editorial">
+              Time Limit
+              <Tooltip title="The Timit Limit For The Given Challenge">
                 <InfoIcon
                   sx={{
                     fontSize: "1rem",
