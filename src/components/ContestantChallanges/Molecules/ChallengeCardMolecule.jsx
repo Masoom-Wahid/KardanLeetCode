@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, CardContent, Typography, Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
 
 const logoBlue = "#1565c0";
 const lightBlue = "#64b5f6";
@@ -41,6 +42,12 @@ const SolveButton = styled(Button)({
 });
 
 const ChallengeCardMolecule = ({ challenge }) => {
+  const navigate = useNavigate();
+  const BASE_URL = process.env
+  const handleClick =() => {
+    //the redirecting with the id will be handled later, for now just redirect
+    navigate("/editor")
+  }
   return (
     <ChallengeCard>
       <ChallengeCardContent>
@@ -50,19 +57,19 @@ const ChallengeCardMolecule = ({ challenge }) => {
             gutterBottom
             style={{ fontWeight: "bold", color: "#0D47A1" }}
           >
-            {challenge.name}
+            {challenge.title}
           </Typography>
           <Typography variant="body2" style={{ color: "#536D8A" }}>
-            <span style={{ color: lightBlue }}>Easy, Max Score: </span>
-            {challenge.maxScore},{" "}
-            <span style={{ color: lightBlue }}>Success Rate: </span>
-            {challenge.successRate}
+            <span style={{ color: lightBlue }}>{challenge.lvl}, Score: </span>
+            {challenge.point},{" "}
+            <span style={{ color: lightBlue }}>Time Limit: </span>
+            {challenge.time_limit}
           </Typography>
           <Typography variant="body2" style={{ color: "#536D8A" }}>
             {challenge.description}
           </Typography>
         </ChallengeInfo>
-        <SolveButton variant="contained">Solve Challenge</SolveButton>
+        <SolveButton variant="contained" onClick={handleClick} >Solve Challenge</SolveButton>
       </ChallengeCardContent>
     </ChallengeCard>
   );
