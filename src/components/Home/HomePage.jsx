@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "@mui/material/Button";
 import "./HomePage.css";
 import { useNavigate } from "react-router-dom";
 
-const HomePage = ({ email }) => {
-  const teamName = email || "Students";
+const HomePage = () => {
+  const teamName = localStorage.getItem("username") || "Students";
   const navigate = useNavigate();
 
-  const handleClick = () => {
+  const handleClick = async () => {
     navigate("/challenges-list");
   };
 
