@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import LeaderboardTableOrganism from "./LeaderboardTableOrganism";
-import { mockWebSocket } from "../MockData/mockWebSocket";
 import Navbar from "../../NavBar/Navbar";
 
 const LeaderboardPage = () => {
   return (
     <>
       <Navbar />
-      <LeaderboardTableOrganism  />
+      <LeaderboardTableOrganism />
     </>
   );
 };

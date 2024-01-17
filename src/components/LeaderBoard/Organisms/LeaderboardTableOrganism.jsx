@@ -12,12 +12,10 @@ import {
   MenuItem,
   InputLabel,
   FormControl,
-  TextField,
 } from "@mui/material";
 import LeaderboardRowMolecule from "../Molecules/LeaderboardRowMolecule";
 import { styled } from "@mui/material/styles";
 import "./LeaderboardTableOrganism.scss";
-
 
 const WEBSOCKET_URL = "ws://127.0.0.1:8000/";
 
@@ -37,19 +35,8 @@ const StyledTable = styled(Table)(({ theme }) => ({
   },
 }));
 
-const mockLeaderboardData = [
-  {
-    rank: 1,
-    user: "Silab007",
-    score: "81.11",
-    time: "7:17:22",
-    penalty: "100",
-  }
-];
-
 const LeaderboardTableOrganism = () => {
   const [filter, setFilter] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
   const [leaderBoardData, setLeaderboardData] = useState([]);
   const [chatSocket, setChatSocket] = useState();
 
@@ -68,24 +55,21 @@ const LeaderboardTableOrganism = () => {
     { value: "country", label: "Country" },
   ];
 
-
-  
   useEffect(() => {
     let accessToken =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA1NDcxNDU1LCJpYXQiOjE3MDUyMTIyNTUsImp0aSI6ImI3MGFmNGQzMGY2ZDRkM2ViZjY4ZjM4NjE2ODE0ZmU0IiwidXNlcl9pZCI6MX0.fvPYIwYXV2oQDWpe2q5-h-Mt9JeR5TzeTpxQHR53hzQ";
-  
+
     let url = `${WEBSOCKET_URL}leaderboard/?token=${accessToken}`;
     const chat = new WebSocket(url);
     setChatSocket(chat);
-  
+
     chat.onmessage = (e) => {
       const data = JSON.parse(e.data);
-      console.log(data.message)
+      console.log(data.message);
       setLeaderboardData(Object.entries(data.message));
       console.log(Object.values(data.message));
     };
   }, []);
-
 
   return (
     <>
@@ -138,8 +122,13 @@ const LeaderboardTableOrganism = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {leaderBoardData.map(([contestantName, contestant],index) => (
-              <LeaderboardRowMolecule key={contestantName} name={contestantName} rank={index+1} {...contestant} />
+            {leaderBoardData.map(([contestantName, contestant], index) => (
+              <LeaderboardRowMolecule
+                key={contestantName}
+                name={contestantName}
+                rank={index + 1}
+                {...contestant}
+              />
             ))}
           </TableBody>
         </StyledTable>
