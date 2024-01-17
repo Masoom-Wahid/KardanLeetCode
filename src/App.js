@@ -19,6 +19,7 @@ import ParentComponent from "./components/Dashboard/ParentComponent";
 import CreateContest from "./components/Dashboard/CreateContest";
 import { containerClasses } from "@mui/material";
 import ShowContest from "./components/Dashboard/ShowContest";
+import CreateUser from "./components/Dashboard/CreateUser";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -41,6 +42,7 @@ function App() {
           <Route path="/challengedetails" element={<ParentComponent />} />
           <Route path="/createcontest" element={<CreateContest />} />
           <Route path="/showcontest" element={<ShowContest />} />
+          <Route path="/createuser" element={<CreateUser />} />
         </Routes>
       </div>
     </Router>

@@ -25,8 +25,8 @@ const Login = () => {
     the just redirects them if they have a token in their localstorage
     */
     const access_token = localStorage.getItem("accessToken")
-    if(access_token != undefined){
-      const parsed_data = parseJwt(access_token)
+    if (access_token !== undefined) {
+      const parsed_data = parseJwt(access_token);
       parsed_data.is_superuser ? navigate("/admin") : navigate("/home");
     }  
   })

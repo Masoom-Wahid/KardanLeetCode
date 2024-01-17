@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+@import url('https://fonts.cdnfonts.com/css/bebas-neue');
+
+.login-page {
+  display: flex;
+  height: 100vh;
+  font-family: 'Josefin Sans' ,'Roboto', sans-serif;
+  direction: ltr; /* Ensure text direction is left to right */
+}
+
+.left-panel {
+  background: linear-gradient(180deg, #072ac8 0%, #0d47a1 50%, #2176ff 100%);
+  font-family: 'Bebas Neue' ,'Roboto', Courier, monospace;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+.right-panel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 50px;
+  box-sizing: border-box;
+}
+
+/* Style adjustments for the welcome messages */
+.welcome-content {
+  direction: ltr;
+  text-align: left;
+}
+
+.welcome-header {
+  font-size: 2rem;
+  font-weight: bolder;
+  color: #333;
+  margin-bottom: 0.5rem;
+  direction: ltr;
+}
+
+.welcome-back {
+  direction: ltr;
+  text-align: left;
+  font-size: 26px;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  padding: 2rem;
+  background: white;
+}
+
+/* Input group box shadow adjustment */
+.input-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px 10px 10px 35px;
+  border-radius: 20px;
+  border: 1px solid #e3f2fd; /* subtle border */
+  background: #fafafa; /* subtle background */
+}
+
+.logo {
+  width: 150px; 
+  height: 150px; 
+  margin-bottom: 2rem;
+  margin-top: -1rem;
+}
+
+.name {
+  margin-bottom: 20px;
+}
+
+.nameIcon {
+  margin-top: -30px;
+}
+
+.emailIcon {
+  margin-top: 32px;
+}
+
+@keyframes breathing {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.logo:hover {
+  animation: breathing 2s ease-in-out infinite;
+}
+
+@-webkit-keyframes breathing {
+  0%, 100% {
+    -webkit-transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.05);
+  }
+}
+
+@-moz-keyframes breathing {
+  0%, 100% {
+    -moz-transform: scale(1);
+  }
+  50% {
+    -moz-transform: scale(1.05);
+  }
+}
+
+@-o-keyframes breathing {
+  0%, 100% {
+    -o-transform: scale(1);
+  }
+  50% {
+    -o-transform: scale(1.05);
+  }
+}
+
+.login-form {
+  width: 100%;
+  max-width: 360px;
+}
+
+.input-group {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px 10px 10px 35px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+
+.content-login {
+  letter-spacing: 3px;
+  direction: ltr;
+  text-align: left;
+}
+
+.read-more-button {
+  width: 140px;
+  height: 37px;
+  border-radius: 30px;
+  border: none;
+  color: white;
+  background-color: #0062cc;
+  margin-top: 20px;
+  cursor: pointer;
+  letter-spacing: 3px;
+}
+
+.left-title {
+  font-size: 50px;
+  font-weight: 800;
+}
+
+.left-description {
+  font-size: 24px;
+  line-height: normal;
+  font-weight: 600;
+}
+  
+.input-group .faUser, .input-group .faLock {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  }
+  
+.visibility-toggle {
+  position: absolute;
+  right: 30px;
+  top: 55%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+}
+  
+.login-button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  background-color: #0062cc;
+  margin-top: 10px;
+  cursor: pointer;
+}
+  
+.forgot-password {
+  display: block;
+  margin-top: 10px;
+  color: #0062cc;
+  text-align: center;
+  text-decoration: none;
+}
+  
+/* Add animations and transitions */
+@keyframes slideInFromLeft {
+  0% {
+  transform: translateX(-100%);
+  }
+  100% {
+  transform: translateX(0);
+  }
+}
+  
+.left-panel .content-login {
+  animation: 1s ease-out 0s 1 slideInFromLeft;
+}
+  
+@keyframes fadeIn {
+  from {
+  opacity: 0;
+  }
+  to {
+  opacity: 1;
+  }
+}
+  
+.right-panel {
+  animation: fadeIn 1.5s ease-in;
+}
+  
+  /* Add a subtle drop shadow to give depth to the login form */
+.login-form {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  height: 420px;
+}
+
+/* Adjust input icon size and position */
+.input-group svg {
+  position: absolute;
+  left: 23px;
+
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555;
+  z-index: 10;
+  }
+  
+  .input-group input {
+  font-size: 1rem;
+  color: #333;
+  background: #f7f7f7;
+  border: 2px solid #e5e5e5;
+  outline: none;
+  height: 40px;
+  width: calc(100% - 20px); 
+  padding-left: 40px; 
+  transition: border-color 0.3s;
+  }
+  
+  .input-group input:focus {
+  border-color: #0062cc; /* Highlight color on focus */
+  }
+  
+  /* Style for the login button hover effect */
+  .login-button:hover {
+  background-color: #0056b3;
+  transition: background-color 0.3s;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+  
+  .login-page {
+  flex-direction: column;
+  }
+  
+  .left-panel, .right-panel {
+  width: 100%;
+  padding: 20px;
+  flex: none;
+  }
+  
+  .right-panel {
+  order: 1; /* Bring the login form to the top on mobile */
+  }
+  
+  .left-panel {
+  order: 2;
+  }
+  }
+  
+
+  @media (max-width: 480px) {
+  .logo {
+  font-size: 1.5rem;
+  animation: none;
+  }
+  }
+
+  
