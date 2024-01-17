@@ -1,7 +1,21 @@
 import React, { useState } from "react";
 import styles from "./TestCasesTab.module.css"; // CSS Module
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const TestCasesTab = () => {
+  const [inputText, setInputText] = useState(""); // Initialize with empty string
+  const [outputText, setOutputText] = useState(""); // Initialize with empty string
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleAddTestCaseClick = () => {
+    setIsModalOpen(true); // Open the modal
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false); // Close the modal
+  };
+
   const [testCases, setTestCases] = useState([
     // This should be fetched or passed in from a parent component
     {
@@ -74,8 +88,53 @@ const TestCasesTab = () => {
           </tbody>
         </table>
         <div className={styles.addButtonContainer}>
-          <button className={styles.addButton}>Add Test Cases</button>
+          <button className={styles.addButton} onClick={handleAddTestCaseClick}>
+            Add Test Cases
+          </button>
         </div>
+        {isModalOpen && (
+          <div className={styles.modalOverlay}>
+            <div className={styles.modal}>
+              <div className={styles.modalHeader}>
+                <h2 className={styles.modalTitle}>Add Test Cases</h2>
+                <button
+                  className={styles.closeButton}
+                  onClick={handleCloseModal}
+                >
+                  <FontAwesomeIcon icon={faTimes} />
+                </button>
+              </div>
+              <div className={styles.inputGroup}>
+                <label className={styles.inputLabel}>Input</label>
+
+                <textarea
+                  className={styles.inputArea}
+                  value={inputText}
+                  onChange={(e) => setInputText(e.target.value)}
+                  placeholder="Enter input..."
+                ></textarea>
+              </div>
+              <div className={styles.outputGroup}>
+                <label className={styles.outputLabel}>Output</label>
+
+                <textarea
+                  className={styles.outputArea}
+                  value={outputText}
+                  onChange={(e) => setOutputText(e.target.value)}
+                  placeholder="Enter output..."
+                ></textarea>
+              </div>
+              <div className={styles.buttonContainer}>
+                <button
+                  className={styles.addTestCaseButton}
+                  onClick={handleCloseModal}
+                >
+                  Add Test Case
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
       <button type="submit" className={styles.submitButton}>
         Save Changes
