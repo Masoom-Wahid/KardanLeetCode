@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "./Sidebar"; // Assuming you have this component ready
 import styles from "./CreateContest.module.css"; // The CSS module for styling
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrophy, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faUsers } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
 const CreateContest = () => {

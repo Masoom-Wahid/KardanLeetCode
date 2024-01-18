@@ -4,6 +4,8 @@ import ChallengeDetails from "./ChallengeDetails";
 import TestCasesTab from "./TestCasesTab";
 import Sidebar from "./Sidebar";
 import styles from "./ParentComponent.module.css"; // Assume your CSS module for layout
+import SampleTestCases from "./SampleTestCases";
+import Constraints from "./Constraints";
 
 const ParentComponent = () => {
   const [activeTab, setActiveTab] = useState("Challenge");
@@ -23,6 +25,10 @@ const ParentComponent = () => {
         return <ChallengeDetails />;
       case "TestCases":
         return <TestCasesTab />;
+      case "Samples":
+        return <SampleTestCases />;
+      case "Constraints":
+        return <Constraints />;
       default:
         return null;
     }

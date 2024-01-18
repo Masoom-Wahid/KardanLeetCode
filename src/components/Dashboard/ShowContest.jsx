@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 const ShowContest = () => {
   const navigate = useNavigate();
-  const [contests, setContests] = useState([
+  const [contests] = useState([
     {
       id: "c1",
       name: "Kardan Contest",
