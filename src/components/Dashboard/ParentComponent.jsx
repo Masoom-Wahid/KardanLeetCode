@@ -12,6 +12,8 @@ const ParentComponent = () => {
   const tabs = [
     { id: "Challenge", label: "Challenge" },
     { id: "TestCases", label: "Test Cases" },
+    { id: "Sample", label: "Sample" },
+    { id: "Constraints", label: "Constraints" },
   ];
 
   // Render content based on active tab
