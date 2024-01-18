@@ -7,6 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./Dashboard.css";
 import Sidebar from "./Sidebar";
+import { useNavigate } from "react-router-dom";
 
 const stats = [
   { label: "Contestants", number: 1000, change: "1.2%", term: "This Term" },
@@ -27,6 +28,7 @@ const StatsCard = ({ label, number, change, term }) => (
 );
 
 const Dashboard = () => {
+  const navigate = useNavigate();
   return (
     <div className="dashboard-container">
       <Sidebar />
@@ -50,11 +52,17 @@ const Dashboard = () => {
             </p>
           </div>
           <div className="card-buttons">
-            <button className="card-button">
+            <button
+              className="card-button"
+              onClick={() => navigate("/createcontest")}
+            >
               <FontAwesomeIcon icon={faPlus} />
               Create a contest
             </button>
-            <button className="card-button">
+            <button
+              className="card-button"
+              onClick={() => navigate("/managecontest")}
+            >
               <FontAwesomeIcon icon={faTasks} />
               Manage Contest
             </button>

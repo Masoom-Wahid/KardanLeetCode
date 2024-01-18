@@ -31,33 +31,32 @@ const ChallengesPage = () => {
         const response = await fetch(`${BASE_URL}competition/`, {
           method: "GET",
           headers: {
-            "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
         });
-  
-        
-      const data = await response.json();
+
+        const data = await response.json();
         if (!response.ok) {
-          console.log(response.status)
-          // 401 means unauthorized , so the user is either using an old token or is 
-          // either bypassing 
-          if (response.status == 401){
-            localStorage.removeItem("accessToken")
-            navigate("/")
+          console.log(response.status);
+          // 401 means unauthorized , so the user is either using an old token or is
+          // either bypassing
+          if (response.status === 401) {
+            localStorage.removeItem("accessToken");
+            navigate("/");
           }
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        console.log(data)
-        setChallengesData(data.data)
-        setContestName(data.name)
+        console.log(data);
+        setChallengesData(data.data);
+        setContestName(data.name);
         // Process the data
       } catch (error) {
         // Handle errors
         console.error(error);
       }
     };
-  
-    fetchData();
+
+    fetchData(); // eslint-disable-next-line
   }, []);
 
   return (
