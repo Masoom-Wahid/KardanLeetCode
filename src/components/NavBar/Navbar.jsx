@@ -11,7 +11,7 @@ const NavigationBar = () => {
     <header className="styled-app-bar">
       <nav className="toolbar">
         <button className="logo-button" onClick={() => navigate("/")}>
-          <img src="/kardann.png" alt="logo" className="logo-icon" />
+          <img src="/KardanGray.png" alt="logo" className="logo-icon" />
         </button>
         <div className="flex-grow-box">
           <button className="nav-button" onClick={() => navigate("/compete")}>
