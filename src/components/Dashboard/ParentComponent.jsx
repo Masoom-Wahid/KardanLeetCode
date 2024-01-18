@@ -12,7 +12,7 @@ const ParentComponent = () => {
   const tabs = [
     { id: "Challenge", label: "Challenge" },
     { id: "TestCases", label: "Test Cases" },
-    { id: "Sample", label: "Sample" },
+    { id: "Samples", label: "Samples" },
     { id: "Constraints", label: "Constraints" },
   ];
 

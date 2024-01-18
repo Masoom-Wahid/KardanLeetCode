@@ -34,9 +34,14 @@ const ChallengeDetails = () => {
           </div>
         ))}
       </form>
-      <button type="submit" className={styles.submitButton}>
-        Save Changes
-      </button>
+      <span className={styles.buttons}>
+        <button type="submit" className={styles.submitButton}>
+          Save Changes
+        </button>
+        <button type="submit" className={styles.updateButton}>
+          Update
+        </button>
+      </span>
     </div>
   );
 };
