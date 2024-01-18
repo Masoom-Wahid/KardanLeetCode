@@ -29,9 +29,8 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
   },
 }));
 
-const CodeEditor = () => {
-  const [language, setLanguage] = useState("python");
-  const [editorContent, setEditorContent] = useState("");
+const CodeEditor = ({editorContent ,setEditorContent,language ,setLanguage}) => {
+  
   const monaco = useMonaco();
   const editorRef = useRef(null);
 
@@ -151,6 +150,7 @@ const CodeEditor = () => {
           onChange={(e) => setLanguage(e.target.value)}
         >
           <MenuItem value="python">Python</MenuItem>
+          <MenuItem value="rust">Rust</MenuItem>
           <MenuItem value="java">Java</MenuItem>
           <MenuItem value="c">C</MenuItem>
           <MenuItem value="cpp">C++</MenuItem>
