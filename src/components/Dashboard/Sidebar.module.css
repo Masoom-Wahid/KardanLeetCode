@@ -64,9 +64,15 @@
   padding: 10px;
   border-radius: 13px;
   cursor: pointer;
-  margin-top: 290px;
   display: flex;
-  align-items: center;
+  margin-top: 240px;
+}
+
+.sidebar.unCollapse {
+  .logoutButton{
+    animation: fadeIn 0.8s ease-in-out;
+  }
+  
 }
 
 .logoutButton svg {
@@ -85,6 +91,9 @@
   }
   .toggleButton {
     margin-top: 60px;
+  }
+  .logoutButton {
+    margin-top: 290px;
   }
 }
 

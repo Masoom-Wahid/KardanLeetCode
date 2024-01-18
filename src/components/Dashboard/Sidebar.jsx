@@ -32,7 +32,11 @@ const Sidebar = () => {
   };
 
   return (
-    <nav className={`${styles.sidebar} ${isCollapsed ? styles.collapsed : ""}`}>
+    <nav
+      className={`${styles.sidebar} ${
+        isCollapsed ? styles.collapsed : styles.unCollapse
+      }`}
+    >
       <img
         src="/kardanLogo.png"
         alt="Kardan University Logo"

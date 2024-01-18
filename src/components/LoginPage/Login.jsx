@@ -24,12 +24,15 @@ const Login = () => {
     Sometimes The User , Even Though Logged In , Comes To Login Page Again,
     the just redirects them if they have a token in their localstorage
     */
-    const access_token = localStorage.getItem("accessToken")
-    if (access_token !== undefined) {
+    const access_token = localStorage.getItem("accessToken");
+    if (access_token) {
+      // This checks for a non-null, non-empty string
       const parsed_data = parseJwt(access_token);
-      parsed_data.is_superuser ? navigate("/admin") : navigate("/home");
-    }  
-  })
+      if (parsed_data) {
+        parsed_data.is_superuser ? navigate("/admin") : navigate("/home");
+      }
+    }
+  }, [navigate]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
