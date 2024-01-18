@@ -26,12 +26,11 @@ const ChallengeDetails = () => {
             <label className={styles.label}>
               {key.replace(/([A-Z])/g, " $1")}
             </label>
-            <div
+            <input
               className={styles.value}
               style={{ "--content-width": `${value.length + 18}px` }}
-            >
-              {value}
-            </div>
+              placeholder={value}
+            ></input>
           </div>
         ))}
       </form>
