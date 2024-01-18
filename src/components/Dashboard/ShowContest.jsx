@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlus,
@@ -13,34 +13,47 @@ import { useNavigate } from "react-router-dom";
 
 const ShowContest = () => {
   const navigate = useNavigate();
-  const [contests] = useState([
-    {
-      id: "c1",
-      name: "Kardan Contest",
-      date: "12 Dec, 2021",
-      time: "10:15 AM",
-    },
-    {
-      id: "c2",
-      name: "Fall 2024 Contest",
-      date: "10 Dec, 2021",
-      time: "11:20 AM",
-    },
-    {
-      id: "c3",
-      name: "Something Contest",
-      date: "09 Dec, 2021",
-      time: "11:45 AM",
-    },
-    {
-      id: "c4",
-      name: "Other Thing Contest",
-      date: "08 Dec, 2021",
-      time: "12:15 PM",
-    },
-  ]);
+  const [contests, setContests] = useState([]);
 
   const [selectedContests, setSelectedContests] = useState(new Set());
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}contest/`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
+        );
+
+        const data = await response.json();
+        if (!response.ok) {
+          // 401 means unauthorized , so the user is either using an old token or is
+          // either bypassing
+          if (response.status === 401) {
+            localStorage.removeItem("accessToken");
+            navigate("/");
+          }
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        setContests(data);
+        // Process the data
+      } catch (error) {
+        // Handle errors
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, [navigate]);
+
+
+
 
   const handleSelectContest = (contestId) => {
     setSelectedContests((prevSelected) => {
@@ -58,8 +71,32 @@ const ShowContest = () => {
     navigate("/createcontest");
   };
 
-  const handleDeleteSelected = () => {
-    // ...whoever you are, please handle the delete button here!
+  const handleDeleteSelected = async (id) => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}contest/${id}/`, {
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      });
+      if (!response.ok) {
+        // 401 means unauthorized , 403 means unauthorized, so the user is either using an old token or is 
+        // either bypassing 
+        if (response.status === 401 || response.status === 403){
+          localStorage.removeItem("accessToken")
+          navigate("/")
+        }
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      // Filter The Deleted Contest
+      setContests((prevContest) =>
+      prevContest.filter((challenge) => challenge.id !== id)
+      );
+      // Process the data
+    } catch (error) {
+      // Handle errors
+      console.error(error);
+    }
   };
 
   // ...other handlers like edit and delete
@@ -78,8 +115,8 @@ const ShowContest = () => {
             <tr>
               <th>Check Box</th>
               <th>Name</th>
-              <th>Date</th>
-              <th>Time</th>
+              <th>Duration</th>
+              <th>Starred</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -101,8 +138,8 @@ const ShowContest = () => {
                   />
                 </td>
                 <td>{contest.name}</td>
-                <td>{contest.date}</td>
-                <td>{contest.time}</td>
+                <td>{contest.duration}</td>
+                <td>{ contest.starred ? "True" : "False"}</td>
                 <td>
                   <div className={styles.actionIcons}>
                     <FontAwesomeIcon
@@ -112,6 +149,7 @@ const ShowContest = () => {
                     <FontAwesomeIcon
                       icon={faTrashAlt}
                       className={styles.deleteIcon}
+                      onClick={() => handleDeleteSelected(contest.id)}
                     />
                   </div>
                 </td>
@@ -126,7 +164,7 @@ const ShowContest = () => {
           <FontAwesomeIcon
             icon={faTrashAlt}
             className={styles.bulkDeleteIcon}
-            onClick={handleDeleteSelected}
+            onClick={() => console.log("HEYYYYYYYYYYY")}
           />
         </div>
       </div>

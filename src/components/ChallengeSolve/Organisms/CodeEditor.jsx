@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useMemo,
-  useCallback,
-} from "react";
+import React, { useEffect, useRef, useMemo, useCallback } from "react";
 import Editor, { useMonaco } from "@monaco-editor/react";
 import { Box, IconButton, Select, MenuItem, styled } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -29,9 +23,12 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
   },
 }));
 
-const CodeEditor = () => {
-  const [language, setLanguage] = useState("python");
-  const [editorContent, setEditorContent] = useState("");
+const CodeEditor = ({
+  editorContent,
+  setEditorContent,
+  language,
+  setLanguage,
+}) => {
   const monaco = useMonaco();
   const editorRef = useRef(null);
 
@@ -106,7 +103,7 @@ const CodeEditor = () => {
       );
       // Add more configurations as needed
     }
-  }, [language, monaco, languageBoilerplates]);
+  }, [language, monaco, languageBoilerplates, setEditorContent]);
 
   const handleEditorDidMount = (editor, monaco) => {
     editorRef.current = editor;
@@ -114,7 +111,7 @@ const CodeEditor = () => {
 
   useEffect(() => {
     setEditorContent(languageBoilerplates[language]);
-  }, [language, languageBoilerplates]);
+  }, [language, languageBoilerplates, setEditorContent]);
   const theme = useTheme();
 
   const handleReset = () => {
@@ -151,6 +148,7 @@ const CodeEditor = () => {
           onChange={(e) => setLanguage(e.target.value)}
         >
           <MenuItem value="python">Python</MenuItem>
+          <MenuItem value="rust">Rust</MenuItem>
           <MenuItem value="java">Java</MenuItem>
           <MenuItem value="c">C</MenuItem>
           <MenuItem value="cpp">C++</MenuItem>

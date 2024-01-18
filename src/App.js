@@ -1,25 +1,21 @@
 import { React, useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-// import Login from "./components/Login/Login";
 import Login from "./components/LoginPage/Login";
 import ContestChallenges from "./components/Challanges/Organism/ContestChallenges";
-import ChallengeTableOrganism from "./components/Challanges/Organism/ChallengeTableOrganism";
-import ChallengesListOrganism from "./components/ContestantChallanges/Organisms/ChallengesListOrganism";
 import ChallengesPage from "./components/ContestantChallanges/Organisms/Challenges";
 import LeaderboardPage from "./components/LeaderBoard/Organisms/LeaderboardPage";
 import EditorPage from "./components/ChallengeSolve/Organisms/EditorPage";
-import UserRows from "./components/LeaderboardUI/Organisms/UserRows";
-// import LeaderboardPage from "./components/LeaderboardUI/Pages/LeaderboardPage";
-import LeaderboardTable from "./components/LeaderboardUI/Organisms/LeaderboardTable";
 import HomePage from "./components/Home/HomePage";
 import Dashboard from "./components/Dashboard/Dashboard";
 import CreateChallenge from "./components/Dashboard/CreateChallenge";
 import ParentComponent from "./components/Dashboard/ParentComponent";
 import CreateContest from "./components/Dashboard/CreateContest";
-import { containerClasses } from "@mui/material";
 import ShowContest from "./components/Dashboard/ShowContest";
 import CreateUser from "./components/Dashboard/CreateUser";
+import CreateUserAdmin from "./components/Dashboard/CreateUserAdmin";
+import CreateUserContestant from "./components/Dashboard/CreateUserContestant";
+import Users from "./components/Dashboard/Users";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -42,7 +38,13 @@ function App() {
           <Route path="/challengedetails" element={<ParentComponent />} />
           <Route path="/createcontest" element={<CreateContest />} />
           <Route path="/showcontest" element={<ShowContest />} />
-          <Route path="/createuser" element={<CreateUser />} />
+          <Route path="/createUser" element={<CreateUser />} />
+          <Route path="/createUserAdmin" element={<CreateUserAdmin />} />
+          <Route
+            path="/createUserContestant"
+            element={<CreateUserContestant />}
+          />
+          <Route path="/users" element={<Users />} />
         </Routes>
       </div>
     </Router>

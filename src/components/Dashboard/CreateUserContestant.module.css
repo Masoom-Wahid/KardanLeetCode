@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+@import url('https://fonts.cdnfonts.com/css/bebas-neue');
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.pageContainer {
+  display: flex;
+  animation: fadeIn 1s ease-out;
+  font-family: 'Josefin Sans', 'bebas neue' ,'roboto';
+}
+
+.contentContainer {
+  margin-top: 60px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.logo {
+  width: 150px; 
+  height: 150px; 
+  margin-bottom: 2rem;
+  margin-top: -1rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #003366; /* Adjust the color to match your theme */
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #6699cc; /* Adjust the color to match your theme */
+}
+
+.form {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  padding: 2rem;
+  background: white;
+}
+
+.inputContainer {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  color: #6c757d;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 10px 10px 40px; /* Adjust padding to make space for the icon */
+  border-radius: 20px;
+  border: 1px solid #ced4da;
+  font-size: 1rem;
+}
+
+.passwordToggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #6c757d;
+  cursor: pointer;
+}
+
+.registerButton {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff; /* Adjust the color to match your theme */
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.registerButton:hover {
+  background-color: #0056b3; /* Adjust for hover state */
+}
+
+/* Responsive and animation styles as needed */

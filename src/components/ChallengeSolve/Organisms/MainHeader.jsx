@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Button, IconButton } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -87,13 +87,20 @@ const BreathingIconButton = styled(IconButton)(({ theme }) => ({
   },
 }));
 
-const MainHeader = ({ onToggleDarkMode, isDarkMode }) => {
+const MainHeader = ({ onToggleDarkMode, isDarkMode,onSubmit }) => {
   const navigate = useNavigate();
+  const [runLoading,setRunLoading] = useState(false)
 
   const handleProblemList = () => {
     navigate("/challenges-list");
   };
 
+
+  const handleRun = () => {
+    setRunLoading(true)
+    onSubmit("run")
+    setRunLoading(false)
+  }
   return (
     <StyledComponentContainer>
       <RectangleButton onClick={handleProblemList}>
@@ -101,10 +108,10 @@ const MainHeader = ({ onToggleDarkMode, isDarkMode }) => {
         <FontAwesomeIcon icon={faChevronRight} />
       </RectangleButton>
       <Box>
-        <StyledButton startIcon={<FontAwesomeIcon icon={faPlay} />}>
-          Run
+        <StyledButton  onClick={() => handleRun()} startIcon={<FontAwesomeIcon icon={faPlay} />}>
+          {runLoading ? "Running ..." : "Run"}  
         </StyledButton>
-        <StyledButton startIcon={<FontAwesomeIcon icon={faUpload} />}>
+        <StyledButton onClick={() => onSubmit("submit")} startIcon={<FontAwesomeIcon icon={faUpload} />}>
           Submit
         </StyledButton>
       </Box>

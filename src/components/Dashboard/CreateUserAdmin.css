@@ -8,42 +8,8 @@
   direction: ltr; /* Ensure text direction is left to right */
 }
 
-.left-panel {
-  background: linear-gradient(180deg, #072ac8 0%, #0d47a1 50%, #2176ff 100%);
-  font-family: 'Bebas Neue' ,'Roboto', Courier, monospace;
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  color: white;
-  padding: 50px;
-  box-sizing: border-box;
-}
-
-.right-panel {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 50px;
-  box-sizing: border-box;
-}
 
 /* Style adjustments for the welcome messages */
-.welcome-content {
-  direction: ltr;
-  text-align: left;
-}
-
-.welcome-header {
-  font-size: 2rem;
-  font-weight: bolder;
-  color: #333;
-  margin-bottom: 0.5rem;
-  direction: ltr;
-}
 
 .welcome-back {
   direction: ltr;
@@ -64,7 +30,6 @@
 /* Input group box shadow adjustment */
 .input-group {
   position: relative;
-  margin-bottom: 1rem;
 }
 
 .input-group input {
@@ -107,32 +72,6 @@
   animation: breathing 2s ease-in-out infinite;
 }
 
-@-webkit-keyframes breathing {
-  0%, 100% {
-    -webkit-transform: scale(1);
-  }
-  50% {
-    -webkit-transform: scale(1.05);
-  }
-}
-
-@-moz-keyframes breathing {
-  0%, 100% {
-    -moz-transform: scale(1);
-  }
-  50% {
-    -moz-transform: scale(1.05);
-  }
-}
-
-@-o-keyframes breathing {
-  0%, 100% {
-    -o-transform: scale(1);
-  }
-  50% {
-    -o-transform: scale(1.05);
-  }
-}
 
 .login-form {
   width: 100%;
@@ -158,28 +97,6 @@
   text-align: left;
 }
 
-.read-more-button {
-  width: 140px;
-  height: 37px;
-  border-radius: 30px;
-  border: none;
-  color: white;
-  background-color: #0062cc;
-  margin-top: 20px;
-  cursor: pointer;
-  letter-spacing: 3px;
-}
-
-.left-title {
-  font-size: 50px;
-  font-weight: 800;
-}
-
-.left-description {
-  font-size: 24px;
-  line-height: normal;
-  font-weight: 600;
-}
   
 .input-group .faUser, .input-group .faLock {
   position: absolute;
@@ -217,20 +134,7 @@
   text-align: center;
   text-decoration: none;
 }
-  
-/* Add animations and transitions */
-@keyframes slideInFromLeft {
-  0% {
-  transform: translateX(-100%);
-  }
-  100% {
-  transform: translateX(0);
-  }
-}
-  
-.left-panel .content-login {
-  animation: 1s ease-out 0s 1 slideInFromLeft;
-}
+
   
 @keyframes fadeIn {
   from {
@@ -294,7 +198,7 @@
   flex-direction: column;
   }
   
-  .left-panel, .right-panel {
+  .left-panel {
   width: 100%;
   padding: 20px;
   flex: none;
@@ -304,9 +208,6 @@
   order: 1; /* Bring the login form to the top on mobile */
   }
   
-  .left-panel {
-  order: 2;
-  }
   }
   
 

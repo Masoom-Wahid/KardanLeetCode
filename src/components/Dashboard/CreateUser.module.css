@@ -1,0 +1,61 @@
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.createUserContainer {
+  display: flex;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.createUserContent {
+  flex-grow: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  color: #003366; /* Replace with the color of your choice */
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.subtitle {
+  color: #6699cc; /* Replace with the color of your choice */
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.userButton {
+  font-size: 1rem;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.adminButton {
+  background-color: #4d79ff; /* Replace with the color of your choice */
+}
+
+.contestantButton {
+  background-color: #809fff; /* Replace with the color of your choice */
+}
+
+.userButton:hover, .userButton:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Add media queries and additional styling as needed */
