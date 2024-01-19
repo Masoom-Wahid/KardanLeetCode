@@ -1,10 +1,17 @@
 import React from "react";
+import { useLocation } from 'react-router-dom';
 import ChallengeTableOrganism from "./ChallengeTableOrganism";
 import "./ContestChallengess.scss";
 import Sidebar from "../../Dashboard/Sidebar";
 import { useNavigate } from "react-router-dom";
 
 const ContestChallenges = () => {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const name = queryParams.get('name');
+  if (name === undefined){
+    //TODO:handle when the params is empty here
+  }
   const navigate = useNavigate();
   return (
     <div className="page-container">
@@ -18,7 +25,7 @@ const ContestChallenges = () => {
           desired location.
         </p>
         <div className="challenge-table-container">
-          <ChallengeTableOrganism />
+          <ChallengeTableOrganism name={name} />
         </div>
         <button onClick={() => navigate("/createchallenge")}>
           Add Challenge

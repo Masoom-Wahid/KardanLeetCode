@@ -1,4 +1,5 @@
 import React, { useState,useEffect} from "react";
+import { useParams } from 'react-router-dom';
 import TabsComponent from "./TabsComponent";
 import ChallengeDetails from "./ChallengeDetails";
 import TestCasesTab from "./TestCasesTab";
@@ -8,7 +9,6 @@ import {useNavigate} from 'react-router-dom';
 import SampleTestCases from "./SampleTestCases";
 import Constraints from "./Constraints";
 
-const CHALLENGE_ID = 28
 const ParentComponent = () => {
   const [activeTab, setActiveTab] = useState("Challenge");
   const [testCases,setTestCases] = useState()
@@ -17,6 +17,7 @@ const ParentComponent = () => {
   const [question,setQuestion] = useState()
   const [sample,setSample] = useState([])
   const [constraints,setConstraints] = useState([])
+  const {id}  = useParams()
 
   // Define the tab data
   const tabs = [
@@ -31,7 +32,7 @@ const ParentComponent = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}questions/${CHALLENGE_ID}`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}questions/${id}`, {
           method: "GET",
           headers: {
             "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,

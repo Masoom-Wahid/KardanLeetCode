@@ -43,10 +43,9 @@ const SolveButton = styled(Button)({
 
 const ChallengeCardMolecule = ({ challenge }) => {
   const navigate = useNavigate();
-  const BASE_URL = process.env
   const handleClick =() => {
-    //the redirecting with the id will be handled later, for now just redirect
-    navigate("/editor")
+    
+    navigate(`/contest/${challenge.id}`)
   }
   return (
     <ChallengeCard>

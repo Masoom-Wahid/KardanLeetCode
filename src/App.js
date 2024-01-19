@@ -29,15 +29,15 @@ function App() {
         <Routes>
           <Route path="/" element={<Login setEmail={setEmail} />} />
           <Route path="/challenges" element={<ContestChallenges />} />
-          <Route path="/challenges-list" element={<ChallengesPage />} />
+          <Route path="/contest" element={<ChallengesPage />} />
           <Route path="/leaderboard" element={<LeaderboardPage />} />
-          <Route path="/editor" element={<EditorPage />} />
+          <Route path="/contest/:id" element={<EditorPage />} />
           <Route path="/home" element={<HomePage email={email} />} />
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/createchallenge" element={<CreateChallenge />} />
-          <Route path="/challengedetails" element={<ParentComponent />} />
+          <Route path="/challenges/:id" element={<ParentComponent />} />
           <Route path="/createcontest" element={<CreateContest />} />
-          <Route path="/showcontest" element={<ShowContest />} />
+          <Route path="/contests" element={<ShowContest />} />
           <Route path="/createUser" element={<CreateUser />} />
           <Route path="/createUserAdmin" element={<CreateUserAdmin />} />
           <Route

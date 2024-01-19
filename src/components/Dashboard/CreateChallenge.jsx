@@ -34,6 +34,7 @@ const CreateChallenge = () => {
                               description:description
                             })
       });
+      const data = await response.json()
       if (!response.ok) {
         // Handle errors
         setLoading(false)
@@ -43,9 +44,8 @@ const CreateChallenge = () => {
         }
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      //TODO : This ChallengeDetail Page Should Be Handled Dynamically
       setLoading(false)
-      navigate("/challengedetails")
+      navigate(`/challenges/${data.id}`)
     } catch (error) {
       // Handle errors
       console.error(error);
