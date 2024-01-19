@@ -16,6 +16,8 @@ import CreateUser from "./components/Dashboard/CreateUser";
 import CreateUserAdmin from "./components/Dashboard/CreateUserAdmin";
 import CreateUserContestant from "./components/Dashboard/CreateUserContestant";
 import Users from "./components/Dashboard/Users";
+import Submissions from "./components/Dashboard/Submissions";
+import ManageContest from "./components/Dashboard/ManageContest";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -45,6 +47,8 @@ function App() {
             element={<CreateUserContestant />}
           />
           <Route path="/users" element={<Users />} />
+          <Route path="/submissions" element={<Submissions />} />
+          <Route path="/manageContest" element={<ManageContest />} />
         </Routes>
       </div>
     </Router>

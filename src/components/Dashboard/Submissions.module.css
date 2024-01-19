@@ -1,0 +1,124 @@
+.pageContainer {
+  display: flex;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Apply animation to the page container */
+.fadeIn {
+  animation: fadeIn 1s ease-out;
+}
+
+
+.submissionsContainer {
+  flex-grow: 1;
+  padding: 20px;
+  animation: fadeIn;
+}
+
+.title {
+  align-items: start;
+  direction: ltr;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 1rem;
+}
+
+
+
+/* Table styles */
+.submissionsTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.submissionsTable thead {
+  background-color: #f8f8f8;
+}
+
+.submissionsTable th, .submissionsTable td {
+  padding: 10px;
+  text-align: left;
+}
+
+/* Date icon */
+.dateIcon {
+  margin-right: 5px;
+}
+
+/* Status styling */
+.statusIndicator {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.filterSortContainer {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px; /* space between buttons */
+  margin-bottom: 1rem;
+}
+
+.filterButton, .sortButton {
+  background-color: #f0f0f0; /* adjust as needed */
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Table header styling */
+.tableHeader {
+  background-color: #e8e8e8; /* light grey background */
+  font-weight: bold;
+  padding: 10px;
+}
+
+/* Status indicator colors */
+.inprogressStatus {
+  color: #8A8CD9; /* gold */
+}
+
+.completeStatus {
+  color: #4AA785; /* green */
+}
+
+.pendingStatus {
+  color: #59A8D4; /* orange */
+}
+
+.rejectedStatus {
+  color: #EF452F; /* red */
+}
+
+/* Pagination styling */
+.pageItem {
+  display: inline-flex;
+  justify-content: right;
+  padding-right: 10px;
+}
+
+.pageItem a {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #e0e0e0; /* light grey background */
+  cursor: pointer;
+}
+
+.pageItem a:hover {
+  background-color: #c0c0c0; /* slightly darker grey on hover */
+}
+
+.pageLink .active {
+  background-color: #007bff; /* blue for active page */
+  color: white;
+}
+
+/* Add additional styles for hover effects, active states, etc. */
