@@ -3,15 +3,54 @@ import Sidebar from "./Sidebar";
 import styles from "./CreateChallenge.module.css";
 import { useNavigate } from "react-router-dom";
 
+const ContestName = "Autumn_2024"
+
 const CreateChallenge = () => {
   // State management for new fields
-  const [level, setLevel] = useState("Easy");
+  const [level, setLevel] = useState("EASY");
+  const [loading,setLoading] = useState(false)
+  const [name,setName] = useState("")
   const [points, setPoints] = useState("");
   const [timeLimit, setTimeLimit] = useState(10);
   const [numTestCases, setNumTestCases] = useState("");
+  const [description,setDescription] = useState("")
   const navigate = useNavigate();
 
-  // Other state variables and handlers would go here
+  const handleClick = async (event) => {
+    setLoading(true)
+    event.preventDefault();
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}questions/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem("accessToken")}`
+        },
+        body: JSON.stringify({name:ContestName,
+                              title:name,lvl:level,
+                              point:points,
+                              time_limit:timeLimit,
+                              num_of_test_cases:numTestCases,
+                              description:description
+                            })
+      });
+      if (!response.ok) {
+        // Handle errors
+        setLoading(false)
+        if (response.status === 401 || response.status === 403){
+          localStorage.removeItem("accessToken")
+          navigate("/")
+        }
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      //TODO : This ChallengeDetail Page Should Be Handled Dynamically
+      setLoading(false)
+      navigate("/challengedetails")
+    } catch (error) {
+      // Handle errors
+      console.error(error);
+    }
+  };
 
   return (
     <div className={styles.pageContainer}>
@@ -22,7 +61,11 @@ const CreateChallenge = () => {
         <form className={styles.challengeForm}>
           <div className={styles.formGroup}>
             <label className={styles.formLabel}>Challenge Name</label>
-            <input type="text" className={styles.formInput} />
+            <input type="text" 
+            className={styles.formInput} 
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            />
           </div>
 
           <div className={styles.formGroup}>
@@ -32,9 +75,9 @@ const CreateChallenge = () => {
               value={level}
               onChange={(e) => setLevel(e.target.value)}
             >
-              <option value="Easy">Easy</option>
-              <option value="Medium">Medium</option>
-              <option value="Hard">Hard</option>
+              <option value="EASY">Easy</option>
+              <option value="MEDUIM">Medium</option>
+              <option value="HARD">Hard</option>
             </select>
           </div>
           <div className={styles.formGroup}>
@@ -69,31 +112,19 @@ const CreateChallenge = () => {
 
           <div className={styles.formGroup}>
             <label className={styles.formLabel}>Description</label>
-            <textarea className={styles.formTextarea} rows="3" />
-          </div>
-
-          <div className={styles.formGroup}>
-            <label className={styles.formLabel}>Input Format</label>
-            <textarea className={styles.formTextarea} rows="3" />
-          </div>
-
-          <div className={styles.formGroup}>
-            <label className={styles.formLabel}>Constraints</label>
-            <textarea className={styles.formTextarea} rows="3" />
-          </div>
-
-          <div className={styles.formGroup}>
-            <label className={styles.formLabel}>Output Format</label>
-            <textarea className={styles.formTextarea} rows="3" />
+            <textarea 
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className={styles.formTextarea} rows="3" />
           </div>
 
           <div className={styles.buttonContainer}>
             <button
               type="submit"
               className={styles.addButton}
-              onClick={() => navigate("/challengedetails")}
+              onClick={(e) => handleClick(e)}
             >
-              Add Challenge
+              {loading ? "Creating....." : "Add Challenge"}
             </button>
           </div>
         </form>

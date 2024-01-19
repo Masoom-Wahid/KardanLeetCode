@@ -19,6 +19,9 @@ const TestCasesTab = ({questionId,testCases, avaiableTestCases, setAvailableTest
   };
 
   const handleCloseModal = () => {
+    setInputText("")
+    setUpdate(false)
+    setOutputText("")
     setIsModalOpen(false); // Close the modal
   };
 
