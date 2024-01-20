@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {useParams} from 'react-router-dom'
 import { Box, CssBaseline } from "@mui/material";
 import MainHeader from "./MainHeader";
 import DescriptionBox from "./DescriptionBox";
@@ -6,13 +7,13 @@ import CodeEditor from "./CodeEditor";
 import TestCases from "./TestCases";
 
 const BASE_URL = process.env.REACT_APP_API_URL;
-const QUESTION_ID = 21;
 
 const EditorPage = () => {
   const [mode, setMode] = useState("light");
   const [editorContent, setEditorContent] = useState("");
   const [language, setLanguage] = useState("python");
 
+  const {id} = useParams()
   // eslint-disable-next-line
   const toggleTheme = () => {
     setMode(mode === "light" ? "dark" : "light");
@@ -22,7 +23,7 @@ const EditorPage = () => {
     const blob = new Blob([editorContent], { type: "text/plain" });
     const formData = new FormData();
     formData.append("code", blob, "filename.txt");
-    formData.append("id", QUESTION_ID);
+    formData.append("id", id);
     formData.append("lang", language);
     formData.append("type", type);
 
@@ -35,7 +36,6 @@ const EditorPage = () => {
         body: formData,
       });
       const data = await response.json();
-      console.log(data);
       if (!response.ok) {
         window.alert(
           `You Did Not Solve This Problem with the status of ${response.status} and ${data.detail.reason}`
@@ -68,7 +68,9 @@ const EditorPage = () => {
         >
           <MainHeader onSubmit={SubmitFile} />
           <Box sx={{ display: "flex", flexGrow: 1, p: 0 }}>
-            <DescriptionBox sx={{ flexBasis: "auto", flexGrow: 0 }} />
+            <DescriptionBox 
+            questionId = {id}
+            sx={{ flexBasis: "auto", flexGrow: 0 }} />
             <Box
               sx={{
                 display: "flex",

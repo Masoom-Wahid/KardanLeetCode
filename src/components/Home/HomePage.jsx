@@ -8,7 +8,7 @@ const HomePage = () => {
   const navigate = useNavigate();
 
   const handleClick = async () => {
-    navigate("/challenges-list");
+    navigate("/contest");
   };
 
   return (

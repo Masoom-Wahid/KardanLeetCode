@@ -24,7 +24,6 @@ const ChallengesPage = () => {
   const [contestName,setContestName] = useState("Contest")
 
   const navigate = useNavigate();
-  console.log(localStorage.getItem("accessToken"))
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -46,7 +45,6 @@ const ChallengesPage = () => {
           }
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        console.log(data);
         setChallengesData(data.data);
         setContestName(data.name);
         // Process the data

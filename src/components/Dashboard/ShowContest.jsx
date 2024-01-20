@@ -145,6 +145,7 @@ const ShowContest = () => {
                     <FontAwesomeIcon
                       icon={faEdit}
                       className={styles.editIcon}
+                      onClick={() => navigate(`/challenges?name=${contest.name}`)}
                     />
                     <FontAwesomeIcon
                       icon={faTrashAlt}
@@ -159,13 +160,6 @@ const ShowContest = () => {
         </table>
         <div className={styles.bulkAction}>
           <hr className={styles.divider} />
-        </div>
-        <div className="deleteMultipleFrame">
-          <FontAwesomeIcon
-            icon={faTrashAlt}
-            className={styles.bulkDeleteIcon}
-            onClick={() => console.log("HEYYYYYYYYYYY")}
-          />
         </div>
       </div>
     </div>
