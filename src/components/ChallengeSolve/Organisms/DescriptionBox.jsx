@@ -4,10 +4,9 @@ import {useNavigate} from 'react-router-dom';
 
 
 const BASE_URL = process.env.REACT_APP_API_URL;
-const QUESTION_ID = 21
 
 
-const DescriptionBox = () => {
+const DescriptionBox = ({questionId}) => {
   const [tabValue, setTabValue] = useState(0);
   const [challenge,setChallenge] = useState([]);
 
@@ -16,7 +15,7 @@ const DescriptionBox = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${BASE_URL}competition/${QUESTION_ID}`, {
+        const response = await fetch(`${BASE_URL}competition/${questionId}`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${localStorage.getItem("accessToken")}`,

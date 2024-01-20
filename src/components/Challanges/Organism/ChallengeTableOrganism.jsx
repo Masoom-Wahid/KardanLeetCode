@@ -9,11 +9,9 @@ import { useNavigate } from "react-router-dom";
 
 
 const BASE_URL = process.env.REACT_APP_API_URL
-// TODO: make this dynamic
-const CONTEST_NAME = 'Autumn_2024'
 
 
-const ChallengeTableOrganism = () => {
+const ChallengeTableOrganism = ({name}) => {
   const [challenges,setChallenges] = useState([])
 
 
@@ -55,7 +53,7 @@ const ChallengeTableOrganism = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${BASE_URL}questions/?name=${CONTEST_NAME}`,
+          `${BASE_URL}questions/?name=${name}`,
           {
             method: "GET",
             headers: {

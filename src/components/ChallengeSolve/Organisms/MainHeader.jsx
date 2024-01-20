@@ -92,7 +92,7 @@ const MainHeader = ({ onToggleDarkMode, isDarkMode,onSubmit }) => {
   const [runLoading,setRunLoading] = useState(false)
 
   const handleProblemList = () => {
-    navigate("/challenges-list");
+    navigate("/contest");
   };
 
 
