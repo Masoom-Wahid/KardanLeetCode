@@ -1,0 +1,104 @@
+.card {
+  border: none;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 2px 12px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cardHeader {
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-bottom: 1px solid #eaeaea;
+  
+}
+
+
+
+.cardTitle {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #32325d;
+}
+
+
+
+.cardBody {
+  height: 400px;
+  width: 650px;
+  padding: 1rem;
+  position: relative;
+}
+
+
+.totalUsers {
+  font-size: 3rem;
+  color: #525f7f;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.buttons{
+  display: flex;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  margin-top: 1rem;
+}
+
+.chartButtonGroup {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.button {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button:hover,
+.button:active,
+.button.active {
+  background-color: #95A4FC;
+  color: #fff;
+}
+
+.button:hover,
+.button:active {
+  background-color: #95A4FC;
+  color: #fff;
+}
+
+.button:not(:first-child) {
+  border-left: none; /* Prevent double borders between buttons */
+}
+
+.chartButtonGroup {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Tooltip styles for Nivo bar */
+.nivoTooltip {
+  padding: 12px;
+  color: #fff;
+  background: #222222;
+  border-radius: 4px;
+}
+
+/* Styles for legends */
+.legend {
+  font-size: 0.875rem;
+  color: #32325d;
+}

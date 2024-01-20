@@ -1,0 +1,32 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
+.tableHead {
+  background-color: #f0f3f5;
+}
+
+.tableRow {
+  transition: background-color 0.15s ease-in-out;
+}
+
+.tableRow:hover {
+  background-color: #e6e6e6;
+}
+
+.tableHeaderCell {
+  padding: 1rem;
+  font-weight: bold;
+  text-align: left;
+  color: #303030;
+  border-bottom: 2px solid #e8e8e8;
+}
+
+.tableDataCell {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e8e8e8;
+}

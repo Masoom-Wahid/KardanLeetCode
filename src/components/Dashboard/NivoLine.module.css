@@ -1,0 +1,74 @@
+/* Styles for the card */
+.nivoLineCard {
+  border: none;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  transition: box-shadow 0.2s ease-in-out;
+  width: 650px;
+}
+
+.nivoLineCard:hover {
+  transform: scale(1.02);
+  box-shadow: 0 2px 12px 8px rgba(0, 0, 0, 0.2);
+  z-index: 5000;
+}
+
+.nivoLineCardHeader {
+  background: #f9f9f9;
+  border-bottom: 1px solid #eee;
+  padding: 1rem;
+}
+
+.nivoLineCardTitle {
+  color: #333;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.chartLegend {
+  display: flex;
+  justify-content: left;
+
+}
+
+.legendItem {
+  border-radius: 1rem;
+  margin-left: 1rem;
+}
+
+.line {
+  padding-left: 15px;
+}
+
+.circleIconLast {
+  font-size: 10px;
+  color: gray;
+}
+
+.circleIconThis {
+  font-size: 10px;
+  color: black;
+}
+
+
+.totalUsers {
+  color: #000;
+  font-weight: bold;
+}
+
+.legendItem:hover,
+.legendItem.active {
+  background: #d4d4f5;
+}
+
+.cardBody {
+  height: 460px;
+  width: 630px;
+  padding: 2rem;
+}
+
+/* Additional styles for the DataTableView component */
+/* Add your DataTableView styles here */
+
+/* Feel free to add more styles for specific elements */
