@@ -15,6 +15,7 @@ const mockSubmissions = [
     id: "1",
     teamName: "Alpha",
     challenge: "Landing Page",
+    explanation: "Infinte Loop detected on the line 37:90",
     date: "Just now",
     status: "In Progress",
   },
@@ -22,6 +23,7 @@ const mockSubmissions = [
     id: "2",
     teamName: "Beta",
     challenge: "CRM Admin pages",
+    explanation: "Infinte Loop detected on the line 37:90",
     date: "A minute ago",
     status: "Complete",
   },
@@ -29,6 +31,8 @@ const mockSubmissions = [
     id: "3",
     teamName: "Omega",
     challenge: "Client Project",
+    explanation:
+      "A land slide detected on the line 37:90 be careful not to fall in",
     date: "1 hour ago",
     status: "Pending",
   },
@@ -36,66 +40,11 @@ const mockSubmissions = [
     id: "4",
     teamName: "Gamma",
     challenge: "Admin Dashboard",
+    explanation:
+      "'The Fuck you dude you are nothing but a pest' detected on the line 69:69",
     date: "Yesterday",
     status: "Rejected",
   },
-  {
-    id: "1",
-    teamName: "Alpha",
-    challenge: "Landing Page",
-    date: "Just now",
-    status: "In Progress",
-  },
-  {
-    id: "2",
-    teamName: "Beta",
-    challenge: "CRM Admin pages",
-    date: "A minute ago",
-    status: "Complete",
-  },
-  {
-    id: "3",
-    teamName: "Omega",
-    challenge: "Client Project",
-    date: "1 hour ago",
-    status: "Pending",
-  },
-  {
-    id: "4",
-    teamName: "Gamma",
-    challenge: "Admin Dashboard",
-    date: "Yesterday",
-    status: "Rejected",
-  },
-  {
-    id: "1",
-    teamName: "Alpha",
-    challenge: "Landing Page",
-    date: "Just now",
-    status: "In Progress",
-  },
-  {
-    id: "2",
-    teamName: "Beta",
-    challenge: "CRM Admin pages",
-    date: "A minute ago",
-    status: "Complete",
-  },
-  {
-    id: "3",
-    teamName: "Omega",
-    challenge: "Client Project",
-    date: "1 hour ago",
-    status: "Pending",
-  },
-  {
-    id: "4",
-    teamName: "Gamma",
-    challenge: "Admin Dashboard",
-    date: "Yesterday",
-    status: "Rejected",
-  },
-
   // ... more submissions
 ];
 
@@ -189,6 +138,9 @@ const Submissions = () => {
               <th className={styles.tableHeader}>ID</th>
               <th className={styles.tableHeader}>Team Name</th>
               <th className={styles.tableHeader}>Challenge</th>
+              <th className={(styles.tableHeader, styles.explanation)}>
+                Explanation
+              </th>
               <th className={styles.tableHeader}>Date</th>
               <th className={styles.tableHeader}>Status</th>
             </tr>
@@ -199,6 +151,7 @@ const Submissions = () => {
                 <td>{submission.id}</td>
                 <td>{submission.teamName}</td>
                 <td>{submission.challenge}</td>
+                <td>{submission.explanation}</td>
                 <td>
                   <FontAwesomeIcon
                     icon={faCalendarAlt}

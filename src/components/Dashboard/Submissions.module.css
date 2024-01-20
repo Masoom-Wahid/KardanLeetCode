@@ -80,6 +80,11 @@
   padding: 10px;
 }
 
+.explanation {
+  background-color: #e8e8e8;
+  width: 300px;
+}
+
 /* Status indicator colors */
 .inprogressStatus {
   color: #8A8CD9; /* gold */
