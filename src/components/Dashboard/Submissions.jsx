@@ -12,24 +12,24 @@ import styles from "./Submissions.module.css";
 // Mock data for submissions
 const mockSubmissions = [
   {
-    id: "1",
-    teamName: "Alpha",
+    no: "1",
+    submissionId: "p1d41g3a23g21",
     challenge: "Landing Page",
     explanation: "Infinte Loop detected on the line 37:90",
     date: "Just now",
     status: "In Progress",
   },
   {
-    id: "2",
-    teamName: "Beta",
+    no: "2",
+    submissionId: "p1ds3g3a27655f",
     challenge: "CRM Admin pages",
     explanation: "Infinte Loop detected on the line 37:90",
     date: "A minute ago",
     status: "Complete",
   },
   {
-    id: "3",
-    teamName: "Omega",
+    no: "3",
+    submissionId: "p1dds7k3a2762f",
     challenge: "Client Project",
     explanation:
       "A land slide detected on the line 37:90 be careful not to fall in",
@@ -37,8 +37,8 @@ const mockSubmissions = [
     status: "Pending",
   },
   {
-    id: "4",
-    teamName: "Gamma",
+    no: "4",
+    submissionId: "k134b231kbnjds7",
     challenge: "Admin Dashboard",
     explanation:
       "'The Fuck you dude you are nothing but a pest' detected on the line 69:69",
@@ -118,6 +118,7 @@ const Submissions = () => {
       <Sidebar />
       <div className={styles.submissionsContainer}>
         <h1 className={styles.title}>Submissions</h1>
+        <h1 className={styles.teamName}>Alpha 'Team Name'</h1>
         <div className={styles.filterSortContainer}>
           <div
             className={styles.filterButton}
@@ -135,8 +136,8 @@ const Submissions = () => {
         <table className={styles.submissionsTable}>
           <thead>
             <tr>
-              <th className={styles.tableHeader}>ID</th>
-              <th className={styles.tableHeader}>Team Name</th>
+              <th className={styles.tableHeader}>No.</th>
+              <th className={styles.tableHeader}>Submission ID</th>
               <th className={styles.tableHeader}>Challenge</th>
               <th className={(styles.tableHeader, styles.explanation)}>
                 Explanation
@@ -147,9 +148,9 @@ const Submissions = () => {
           </thead>
           <tbody>
             {currentSubmissions.map((submission) => (
-              <tr key={submission.id} className={styles.tableRow}>
-                <td>{submission.id}</td>
-                <td>{submission.teamName}</td>
+              <tr key={submission.no} className={styles.tableRow}>
+                <td>{submission.no}</td>
+                <td>{submission.submissionId}</td>
                 <td>{submission.challenge}</td>
                 <td>{submission.explanation}</td>
                 <td>

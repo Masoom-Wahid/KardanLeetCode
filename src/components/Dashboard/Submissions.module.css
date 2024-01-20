@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:wght@300&family=Nunito&family=Raleway:wght@300&display=swap');
 .pageContainer {
   display: flex;
 }
@@ -83,6 +84,18 @@
 .explanation {
   background-color: #e8e8e8;
   width: 300px;
+}
+
+.teamName {
+  align-items: start;
+  justify-content: left;
+  text-align: left;
+  direction: ltr;
+  font-size: 30px;
+  padding-bottom: 20px;
+  color: gray;
+  font-weight: 600;
+  font-family:'Nunito', Courier, monospace;
 }
 
 /* Status indicator colors */
