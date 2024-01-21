@@ -181,13 +181,13 @@ const NivoBar = () => {
                   {view.map((value) => (
                     <button
                       className={`${styles.button} ${
-                        vertOrHor === value.vertical ? styles.active : ""
+                        vertOrHor === value.horizontal ? styles.active : ""
                       }`}
-                      onClick={() => setVertOrHor(value.vertical)}
-                      key={value.vertical}
+                      onClick={() => setVertOrHor(value.horizontal)}
+                      key={value.horizontal}
                     >
-                      {value.vertical}
                       {value.horizontal}
+                      {value.vertical}
                     </button>
                   ))}
                 </div>
