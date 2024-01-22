@@ -23,10 +23,11 @@ const NivoBar = () => {
       Correct: 121,
       CorrectColor: "hsl(13, 10%, 5%)",
     },
+
     {
       status: "Incorrect",
       Incorrect: 162,
-      IncorrectColor: "hsl(258, 70%, 50%)",
+      Incorrectcolor: "hsl(258, 70%, 50%)",
     },
     {
       status: "In Progress",
@@ -134,7 +135,7 @@ const NivoBar = () => {
             background: "#222222",
           }}
         >
-          <span>Bar Graph Value</span>
+          <span>Total Challenges</span>
           <br />
           <strong>
             {id}: {value}

@@ -99,11 +99,11 @@ const NivoLine = () => {
         <div
           style={{
             padding: 12,
-            color,
+            color: "#fff",
             background: "#222222",
           }}
         >
-          <span>Bar Graph Value</span>
+          <span>Graph Value</span>
           <br />
           <strong>
             {id}: {value}
