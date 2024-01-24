@@ -106,7 +106,7 @@ const NivoBar = () => {
       legends={[
         {
           dataFrom: "keys",
-          anchor: "bottom-right", //'top', // '
+          anchor: "bottom-right",
           direction: "column",
           justify: false,
           translateX: 120,

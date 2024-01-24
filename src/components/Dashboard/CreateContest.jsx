@@ -11,8 +11,7 @@ const CreateContest = () => {
   const [hours, setHours] = useState('');
   const [minutes, setMinutes] = useState('');
   const [seconds, setSeconds] = useState('');
-  const [loading,setLoading] = useState(false)
-  //navigate("/challenges")
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
 
