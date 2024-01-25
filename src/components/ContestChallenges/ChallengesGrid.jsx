@@ -35,8 +35,7 @@ const ChallengesGrid = ({ challenges = mockChallenges }) => {
             points={challenge.points}
             timeLimit={challenge.timeLimit}
             isOdd={index % 2 === 0}
-            description={challenge.description} // Assuming you have a description field
-            onHoverDescription={() => {}} // Assuming you have a hover handler
+            description={challenge.description}
           />
         ))}
       </div>

@@ -1,0 +1,81 @@
+.modalBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(49, 49, 49, 0.8); /* Slightly darker background for better contrast */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow-y: auto; /* Allows scrolling if the modal is too long */
+}
+
+.modalContainer {
+  background-color: #fff;
+  padding: 40px; /* More padding for a spacious look */
+  border-radius: 12px; /* Slightly larger border radius for a softer look */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* More pronounced shadow for depth */
+  width: 700px; /* Slightly larger max-width for desktop */
+  margin: 20px; /* Ensures there's space around the modal in smaller screens */
+  animation: scaleUp .3s ease-in-out; /* A scale-up animation for modal entrance */
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eaeaea; /* Adds a subtle separator */
+  padding-bottom: 15px; /* Spacing below the header line */
+}
+
+.modalHeader h2 {
+  font-size: 1.65rem; /* Larger font size for the title */
+  color: #004085; /* Slightly darker color for better readability */
+  font-weight: 600; /* Bolder font weight for the title */
+}
+
+.closeButton {
+  background: transparent;
+  border: none;
+  font-size: 2rem; /* Larger close button for easier clicking */
+  color: #aab0b6; /* Soft color for the close button */
+  cursor: pointer;
+  transition: color 0.2s; /* Transition for a hover effect */
+}
+
+.closeButton:hover {
+  color: #74787c; /* Darker shade on hover for the close button */
+}
+
+.modalContent {
+  color: #212529; /* Darker color for better readability */
+  margin-top: 20px; /* Spacing after the header */
+  direction: ltr;
+  text-align: left;
+  
+}
+
+.modalContent h4 {
+  font-size: 1.25rem; /* Larger font size for subtitles */
+  color: #0056b3; /* Primary color for subtitles for emphasis */
+  margin-bottom: 15px; /* More spacing below subtitle */
+}
+
+.modalContent p {
+  font-size: 1.1rem; /* Slightly larger paragraph font size */
+  line-height: 1.7; /* Increased line height for readability */
+  margin-bottom: 20px; /* Spacing below paragraphs */
+}

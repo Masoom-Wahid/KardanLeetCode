@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styles from "./ChallengeCard.module.css"; // Your CSS module file path
 import { ReactComponent as ChallengeIcon } from "./sit.svg"; // Path to your SVG icon
+import DescriptionButton from "./DescriptionButton";
+import DescriptionModal from "./DescriptionModal";
 
 const ChallengeCard = ({
   id,
@@ -8,20 +10,18 @@ const ChallengeCard = ({
   points,
   timeLimit,
   description,
-  onHoverDescription,
   isOdd,
 }) => {
   const cardStyle = isOdd ? styles.cardOdd : styles.cardEven;
 
-  const [showDescriptionBox, setShowDescriptionBox] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-  const handleDescriptionClick = () => {
-    setShowDescriptionBox(true);
-    console.log("clicked");
+  const handleShowModal = () => {
+    setShowModal(true);
   };
 
-  const handleCloseClick = () => {
-    setShowDescriptionBox(false);
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
 
   return (
@@ -32,27 +32,16 @@ const ChallengeCard = ({
           <div className={styles.cardSubtitle}>
             <p className={styles.cardPoints}>Points: {points}</p>
             <p className={styles.cardTime}>Time Limit: {timeLimit}</p>
-            <button
-              className={styles.cardDescription}
-              onClick={handleDescriptionClick}
-            >
-              DESCRIPTION
-            </button>
-            {showDescriptionBox && (
-              <div
-                className={`${styles.descriptionBox} ${
-                  styles.showDescriptionBox ? styles.fadeIn : styles.fadeOut
-                }`}
-              >
-                <div className={styles.descriptionContent}>
-                  <h2 className={styles.descriptionTitle}>{title}</h2>
-                  <div className={styles.descriptionText}>
-                    <h4>Description</h4>
-                    <p>{description}</p>
-                  </div>
-                  <button onClick={handleCloseClick}>Close</button>
-                </div>
-              </div>
+            <DescriptionButton
+              onShow={handleShowModal}
+              className={styles.descriptionButton}
+            />
+            {showModal && (
+              <DescriptionModal
+                title={title}
+                description={description}
+                onClose={handleCloseModal}
+              />
             )}
             <ChallengeIcon className={styles.challengeIcon} />
           </div>
