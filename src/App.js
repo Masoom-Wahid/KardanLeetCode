@@ -19,6 +19,7 @@ import Users from "./components/Dashboard/Users";
 import Submissions from "./components/Dashboard/Submissions";
 import ManageContest from "./components/Dashboard/ManageContest";
 import { Snackbar } from "@mui/material";
+import ChallengesGrid from "./components/ContestChallenges/ChallengesGrid";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -32,7 +33,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login setEmail={setEmail} />} />
           <Route path="/challenges" element={<ContestChallenges />} />
-          <Route path="/contest" element={<ChallengesPage />} />
+          <Route path="/contest" element={<ChallengesGrid />} />
           <Route path="/leaderboard" element={<LeaderboardPage />} />
           <Route path="/contest/:id" element={<EditorPage />} />
           <Route path="/home" element={<HomePage email={email} />} />

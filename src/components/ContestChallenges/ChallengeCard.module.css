@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:wght@300&family=Nunito&family=Raleway:wght@300&family=Ubuntu:ital,wght@1,300;1,500&display=swap');
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card {
+  font-family: 'Ubuntu', 'Josefin Sans', 'Nunito', 'Raleway';
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  animation: fadeInOut;
+}
+
+.cardOdd {
+  background-color: #041F2A; /* Your dark card color */
+  color: #fff;
+}
+
+.cardOdd .cardPoints,
+.cardOdd .cardTime,
+.cardOdd .cardDescription {
+  color: #C9C9C9;
+}
+
+
+.cardEven {
+  background-color: #f0f0f0; /* Your light card color */
+}
+
+.topSide {
+  justify-content: left;
+  justify-items: left;
+  direction: ltr;
+}
+
+
+.cardTitle {
+  margin-top: 20px;
+  background-color: #0061D2; 
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-size: 16px;
+  color: #fff;
+  padding: 10px;
+  font-style: italic;
+  width: 300px;
+  text-align: left;
+  direction: ltr;
+}
+
+
+
+.cardPoints,
+.cardTime
+{
+  text-align: left;
+  margin-top: 8px;
+  margin-left: 10px;
+  direction: ltr;
+  font-weight:500;
+}
+
+.cardDescription {
+  text-align: left;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 10px;
+  background-color: #0056b3;
+  margin-top: 8px; /* Align with other texts */
+  color: #C9C9C9;
+}
+
+.challengeIcon {
+  margin-left: 16px;
+  justify-items: right;
+  display: inline;
+}
+
+.bottomSide {
+  padding: 16px;
+  background: #e9ecef; /* A slightly different background color for the action section */
+  color: #161616;
+}
+
+.actionSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.continueText {
+  font-weight: bold;
+}
+
+.solveButton {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.solveButton:hover {
+  background-color: #0056b3;
+}
+
+.descriptionBox {
+  display: none; /* Hidden by default */
+  position: absolute;
+  width: 700px;
+  height: 550px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  left: 50%; /* Centers the box */
+  top: 50%;
+  transform: translate(-50%, -50%); /* Centers the box */
+  z-index: 10;
+}
+
+/* Style for the description container inside the box */
+.descriptionContent {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.descriptionTitle {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.descriptionText {
+  font-size: 16px;
+  overflow-y: auto;
+}
+
+/* Show the description box when its state is active */
+.showDescription {
+  display: flex;
+  animation: fadeInEffect 0.3s forwards;
+}
+
+/* Additional styles for fade in/out effect */
+.fadeIn {
+  animation: fadeInEffect 0.3s forwards;
+}
+
+.fadeOut {
+  animation: fadeOutEffect 0.3s forwards;
+}
+
+@keyframes fadeInEffect {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOutEffect {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}

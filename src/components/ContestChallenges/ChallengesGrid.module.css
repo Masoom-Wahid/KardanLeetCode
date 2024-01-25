@@ -1,0 +1,22 @@
+.gridContainer {
+  padding: 2rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #333;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
