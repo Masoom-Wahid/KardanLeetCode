@@ -17,7 +17,7 @@ import CreateUserAdmin from "./components/Dashboard/CreateUserAdmin";
 import CreateUserContestant from "./components/Dashboard/CreateUserContestant";
 import Users from "./components/Dashboard/Users";
 import Submissions from "./components/Dashboard/Submissions";
-import ManageContest from "./components/Dashboard/ManageContest";
+import ManageContests from "./components/Dashboard/ManageContests";
 import { Snackbar } from "@mui/material";
 import ChallengesGrid from "./components/ContestChallenges/ChallengesGrid";
 
@@ -50,7 +50,7 @@ function App() {
           />
           <Route path="/users" element={<Users />} />
           <Route path="/submissions" element={<Submissions />} />
-          <Route path="/managecontest" element={<ManageContest />} />
+          <Route path="/managecontest" element={<ManageContests />} />
           <Route path="/snackBar" element={<Snackbar />} />
         </Routes>
       </div>

@@ -10,6 +10,7 @@ import {
   faSignOutAlt,
   faChartLine,
   faBarsProgress,
+  faQuestionCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import styles from "./Sidebar.module.css";
@@ -19,8 +20,8 @@ const navItems = [
   { name: "Create Contest", icon: faPlus, path: "/createcontest" },
   { name: "Show Contest", icon: faTasks, path: "/contests" },
   { name: "Manage Contest", icon: faBarsProgress, path: "/manageContest" },
-  { name: "Create User", icon: faUserPlus, path: "/createUser" },
   { name: "Results", icon: faChartLine, path: "/results" },
+  { name: "Challenges", icon: faQuestionCircle, path: "/challenges" },
 ];
 
 const Sidebar = () => {

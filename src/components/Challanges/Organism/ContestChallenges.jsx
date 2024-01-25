@@ -17,7 +17,7 @@ const ContestChallenges = () => {
     <div className="page-container">
       <Sidebar />
       <div className="contest-challenges">
-        <h2 className="title">Kardan University's Programming Contest</h2>
+        <h2 className="title">Kardan University's Programming Web App</h2>
         <p className="description">
           Add challenges to your contest by selecting challenges from our
           library or create and add your own challenges here. To reorder your

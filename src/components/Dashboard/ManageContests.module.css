@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:wght@300&family=Nunito&family=Raleway:wght@300&family=Ubuntu:ital,wght@1,300;1,500&display=swap');
+
+.manageContests {
+  font-family: 'Nunito', 'Josefin Sans', 'Raleway', 'Bebas Neue' 'Ubuntu';
+  display: flex;
+}
+
+.titles {
+  direction: ltr;
+  text-align: left;
+}
+
+.content {
+  width: 100%;
+  padding: 20px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.imagePlaceholder {
+  width: 170px;
+  height: 150px;
+  background-size: cover;
+  margin-right: 20px;
+}
+
+.cardDetails {
+  flex: 1;
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.cardDescription {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.continueButton {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 35px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.continueButton:hover {
+  background-color: #0056b3;
+}
