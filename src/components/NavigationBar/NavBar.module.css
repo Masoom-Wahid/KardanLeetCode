@@ -1,0 +1,133 @@
+/* NavBar.module.css */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 0 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); 
+  position: relative;
+  z-index: 1000;
+  border-radius: 8px; 
+}
+
+.logoContainer {
+  transition: transform 0.5s ease-in-out;
+}
+
+.logoContainer:hover {
+  animation: breathe 1.5s ease-in-out infinite; 
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.logo {
+  height: auto; 
+  width: 200px; 
+  max-height: 60px; 
+  max-width: 250px; 
+  transition: transform 0.5s ease-in-out;
+  display: block;
+}
+
+.navItems {
+  display: flex;
+  float: right;
+  align-items: center;
+  gap: 20px; 
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 60px; 
+  height: 60px;
+  justify-content: center;
+  transition: width 0.5s ease-in-out, background-color 0.3s ease; 
+  cursor: pointer; 
+}
+
+.navItem:hover,
+.navItem.active {
+  width: 160px; 
+  background-color: #f9f9f9;
+}
+
+.icon {
+  position: absolute;
+  font-size: 24px;
+  z-index: 5;
+  color: #333;
+  transition: transform 0.5s ease, color 0.3s ease;
+}
+
+.navItem:hover .icon,
+.navItem.active .icon {
+  transform: translateX(-60px); 
+  color: #007bff;
+}
+
+.text {
+  position: absolute;
+  right: 10px;
+  white-space: nowrap;
+  line-height: 60px;
+  transition: opacity 0.3s ease, transform 0.5s ease;
+  transform: translateX(100%); 
+  opacity: 0;
+  color: #333;
+}
+
+.navItem:hover .text,
+.navItem.active .text {
+  transform: translateX(0); 
+  opacity: 1;
+}
+
+.navItem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.5));
+  transition: transform 0.5s ease;
+  z-index: 3;
+}
+
+.navItem:hover::before,
+.navItem.active::before {
+  transform: translateX(0);
+}
+
+/* Additional aesthetics */
+.navbar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 8px; 
+  pointer-events: none; 
+  border: 1px solid rgba(0, 0, 0, 0.1); 
+  box-sizing: border-box; 
+}
+
+.fixedNavbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: box-shadow 0.3s ease-in-out;
+  z-index: 10000; /* Ensure it's above other elements */
+}
