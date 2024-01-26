@@ -1,0 +1,65 @@
+import React, { useState } from "react";
+import ManageContestsTabsComponent from "./ManageContestsTabComponent";
+import Sidebar from "./Sidebar";
+import uniqueStyles from "./ManageContestsParentComponent.module.css";
+import CreateContestant from "./CreateContestant";
+import ManageContest from "./ManageContest";
+import LeaderboardPage from "../LeaderBoard/Organisms/LeaderboardPage";
+
+// Replace these with your actual component imports
+const DetailsComponent = () => <div>Details Content</div>;
+const ChallengesComponent = () => <div>Challenges Content</div>;
+const LeaderboardComponent = () => (
+  <div>
+    <LeaderboardPage />
+  </div>
+);
+const AnalyticsComponent = () => <ManageContest />;
+const UsersComponent = () => (
+  <div>
+    <CreateContestant />
+  </div>
+);
+
+const ManageContestsParentComponent = () => {
+  const [activeUniqueTab, setActiveUniqueTab] = useState("Details");
+
+  const renderUniqueTabContent = (tab) => {
+    switch (tab) {
+      case "Details":
+        return <DetailsComponent />;
+      case "Challenges":
+        return <ChallengesComponent />;
+      case "Leaderboard":
+        return <LeaderboardComponent />;
+      case "Analytics":
+        return <AnalyticsComponent />;
+      case "Users":
+        return <UsersComponent />;
+      default:
+        return null; // or <DefaultComponent />
+    }
+  };
+
+  return (
+    <div className={uniqueStyles.uniqueContainer}>
+      <Sidebar />
+      <div className={uniqueStyles.uniqueContentArea}>
+        <ManageContestsTabsComponent
+          uniqueTabs={[
+            { id: "Details", label: "Details" },
+            { id: "Challenges", label: "Challenges" },
+            { id: "Leaderboard", label: "Leaderboard" },
+            { id: "Analytics", label: "Analytics" },
+            { id: "Users", label: "Users" },
+          ]}
+          activeUniqueTab={activeUniqueTab}
+          setActiveUniqueTab={setActiveUniqueTab}
+        />
+        {renderUniqueTabContent(activeUniqueTab)}
+      </div>
+    </div>
+  );
+};
+
+export default ManageContestsParentComponent;

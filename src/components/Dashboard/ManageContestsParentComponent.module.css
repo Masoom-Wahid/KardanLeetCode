@@ -1,0 +1,10 @@
+.uniqueContainer {
+  display: flex;
+  height: 100vh; /* Use the full height of the viewport */
+}
+
+.uniqueContentArea {
+  flex-grow: 1;
+  padding: 20px; /* Adjust padding as necessary */
+  background-color: #f8f9fa; /* Light background color for content area */
+}

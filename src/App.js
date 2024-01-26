@@ -20,6 +20,9 @@ import Submissions from "./components/Dashboard/Submissions";
 import ManageContests from "./components/Dashboard/ManageContests";
 import { Snackbar } from "@mui/material";
 import ChallengesGrid from "./components/ContestChallenges/ChallengesGrid";
+import ManageContestsParentComponent from "./components/Dashboard/ManageContestsParentComponent";
+import ManageContest from "./components/Dashboard/ManageContest";
+import CreateContestant from "./components/Dashboard/CreateContestant";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -51,7 +54,11 @@ function App() {
           <Route path="/users" element={<Users />} />
           <Route path="/submissions" element={<Submissions />} />
           <Route path="/managecontest" element={<ManageContests />} />
-          <Route path="/snackBar" element={<Snackbar />} />
+          <Route path="/analytics" element={<ManageContest />} />
+          <Route
+            path="/mainmanage"
+            element={<ManageContestsParentComponent />}
+          />
         </Routes>
       </div>
     </Router>

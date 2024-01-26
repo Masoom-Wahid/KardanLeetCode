@@ -15,7 +15,6 @@ const ManageContest = () => {
 
   return (
     <div className={styles.container}>
-      <Sidebar />
       <div className={styles.content}>
         <h1 className={styles.title}>Kardan Contest</h1>
         <div className={styles.cardsContainer}>

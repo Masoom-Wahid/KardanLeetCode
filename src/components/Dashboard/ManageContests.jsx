@@ -36,7 +36,7 @@ const ManageContests = () => {
                 <p className={styles.cardDescription}>{contest.description}</p>
                 <button
                   className={styles.continueButton}
-                  onClick={() => navigate("/manageContest/mainmenu")}
+                  onClick={() => navigate("/mainmanage")}
                 >
                   Continue
                 </button>

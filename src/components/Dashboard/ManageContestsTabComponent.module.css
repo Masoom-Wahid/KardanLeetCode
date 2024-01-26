@@ -1,0 +1,26 @@
+.uniqueTabs {
+  display: flex;
+  margin-bottom: 20px;
+  padding-left: 20px; /* Align tabs with the content area padding */
+}
+
+.uniqueTab {
+  background: none;
+  border: 1px solid #dee2e6;
+  padding: 10px 20px;
+  margin-right: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.uniqueTab:hover {
+  background-color: #e7e7e7; /* Light grey background on hover */
+}
+
+.active {
+  background-color: #007bff; /* Blue background for active tab */
+  color: white; /* White text for active tab */
+  border-color: #007bff; /* Blue border for active tab */
+}
