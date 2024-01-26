@@ -6,7 +6,6 @@ import {
   faTachometerAlt,
   faPlus,
   faTasks,
-  faUserPlus,
   faSignOutAlt,
   faChartLine,
   faBarsProgress,
