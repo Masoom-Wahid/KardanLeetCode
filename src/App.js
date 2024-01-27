@@ -22,11 +22,20 @@ import { Snackbar } from "@mui/material";
 import ChallengesGrid from "./components/ContestChallenges/ChallengesGrid";
 import ManageContestsParentComponent from "./components/Dashboard/ManageContestsParentComponent";
 import ManageContest from "./components/Dashboard/ManageContest";
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
   const [email, setEmail] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const checkAuthState = () => {
+    const token = localStorage.getItem("accessToken");
+    setIsAuthenticated(!!token);
+  };
+
   useEffect(() => {
     document.title = "KPC";
+    checkAuthState();
   }, []);
 
   return (
@@ -34,7 +43,15 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Login setEmail={setEmail} />} />
-          <Route path="/challenges" element={<ContestChallenges />} />
+          <Route
+            path="/challenges"
+            element={
+              <ProtectedRoute
+                component={ContestChallenges}
+                isAuthenticated={isAuthenticated}
+              />
+            }
+          />
           <Route path="/contest" element={<ChallengesGrid />} />
           <Route path="/leaderboard" element={<LeaderboardPage />} />
           <Route path="/contest/:id" element={<EditorPage />} />
