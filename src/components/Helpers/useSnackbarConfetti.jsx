@@ -19,7 +19,7 @@ export const useSnackbarConfetti = () => {
   const SnackBar = () =>
     showSnackBar && (
       <div className={styles.snackBar}>
-        Congratulations! You finished the fucking question! 🎉
+        Give me a kiss baby, You solved the question! 🎉
         <div className={styles.loadingBar}></div>
       </div>
     );
