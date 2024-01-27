@@ -88,7 +88,7 @@ const Login = () => {
         </div>
         <form onSubmit={handleSubmit} className="login-form">
           <div className="input-group">
-            <FontAwesomeIcon icon={faUser} />
+            <FontAwesomeIcon icon={faUser} className="svg" />
             <input
               type="text"
               placeholder="User Name"
@@ -103,7 +103,7 @@ const Login = () => {
     
     input-group"
           >
-            <FontAwesomeIcon icon={faLock} />
+            <FontAwesomeIcon icon={faLock} className="svg" />
             <input
               type={isPasswordVisible ? "text" : "password"}
               placeholder="Password"
