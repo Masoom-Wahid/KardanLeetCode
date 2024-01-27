@@ -5,10 +5,20 @@ import uniqueStyles from "./ManageContestsParentComponent.module.css";
 import CreateContestant from "./CreateContestant";
 import ManageContest from "./ManageContest";
 import LeaderboardPage from "../LeaderBoard/Organisms/LeaderboardPage";
+import ChallengesTable from "./ChallengesTable";
+import ContestDetailsForm from "./ContestDetailsForm";
 
 // Replace these with your actual component imports
-const DetailsComponent = () => <div>Details Content</div>;
-const ChallengesComponent = () => <div>Challenges Content</div>;
+const DetailsComponent = () => (
+  <div>
+    <ContestDetailsForm />
+  </div>
+);
+const ChallengesComponent = () => (
+  <div>
+    <ChallengesTable />
+  </div>
+);
 const LeaderboardComponent = () => (
   <div>
     <LeaderboardPage />

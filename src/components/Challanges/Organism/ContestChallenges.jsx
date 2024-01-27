@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from 'react-router-dom';
 import ChallengeTableOrganism from "./ChallengeTableOrganism";
-import "./ContestChallengess.scss";
+import "./ContestChallengess.css";
 import Sidebar from "../../Dashboard/Sidebar";
 import { useNavigate } from "react-router-dom";
 
