@@ -113,7 +113,7 @@ const CodeEditor = ({
     if (languageBoilerplates[language]) {
       setEditorContent(languageBoilerplates[language]);
     }
-  }, [language, languageBoilerplates]);
+  }, [language, languageBoilerplates, setEditorContent]);
 
   return (
     <Box

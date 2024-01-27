@@ -22,8 +22,6 @@ import { Snackbar } from "@mui/material";
 import ChallengesGrid from "./components/ContestChallenges/ChallengesGrid";
 import ManageContestsParentComponent from "./components/Dashboard/ManageContestsParentComponent";
 import ManageContest from "./components/Dashboard/ManageContest";
-import CreateContestant from "./components/Dashboard/CreateContestant";
-import PythonEditor from "./components/Editor/PythonEditor";
 
 function App() {
   const [email, setEmail] = useState("");
