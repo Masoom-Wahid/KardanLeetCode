@@ -12,10 +12,6 @@
     font-weight: bold;
     background-color: #1565c0; 
     color: white;
-    cursor: pointer;
-    &:hover {
-      background-color: darken(#1565c0, 10%); 
-    }
   }
 
   .MuiTableHead-root {

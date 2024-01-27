@@ -1,6 +1,7 @@
 import React from "react";
 import ChallengeCard from "./ChallengeCard";
 import styles from "./ChallengesGrid.module.css"; // Path to your CSS module
+import NavBar from "../NavigationBar/NavBar"
 
 const mockChallenges = [
   {
@@ -25,6 +26,8 @@ const mockChallenges = [
 
 const ChallengesGrid = ({ challenges = mockChallenges }) => {
   return (
+    <>
+    <NavBar />
     <div className={styles.gridContainer}>
       <h1 className={styles.title}>Challenges</h1>
       <div className={styles.cardsGrid}>
@@ -40,6 +43,7 @@ const ChallengesGrid = ({ challenges = mockChallenges }) => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 
