@@ -95,6 +95,7 @@ const Login = () => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
+              className="username inputField"
             />
           </div>
           <div
@@ -109,6 +110,7 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              className="password inputField"
             />
             <button
               type="button"
@@ -119,7 +121,7 @@ const Login = () => {
             </button>
           </div>
           <button type="submit" className="login-button">
-          {loading ? "Logging in..." : "Log In"}
+            {loading ? "Logging in..." : "Log In"}
           </button>
         </form>
       </div>

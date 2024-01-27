@@ -14,8 +14,7 @@
 
 .tabContainer {
   display: flex;
-  background-color: #e0e0e0;
-  border-bottom: 1px solid #bdbdbd;
+  border-bottom: 1px solid #0E43AB;
 }
 
 .tab {
@@ -29,9 +28,12 @@
 }
 
 .tab:hover, .tabSelected {
-  background-color: #0E43AB;
-  color: white;
+  border-bottom: 5px solid #0E43AB;
+  border-radius: 5px;
+  background-color: #e6faff;
   transform: translateY(-2px);
+  transition: border-bottom 0.3s ease-in;
+  transition: border-bottom 0.3s ease-out;
 }
 
 .contentBox {
