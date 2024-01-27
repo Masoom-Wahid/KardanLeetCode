@@ -14,7 +14,7 @@
 
 .tabContainer {
   display: flex;
-  border-bottom: 1px solid #0E43AB;
+  border-bottom: 1px solid #0059DE;
 }
 
 .tab {
@@ -28,11 +28,10 @@
 }
 
 .tab:hover, .tabSelected {
-  border-bottom: 5px solid #0E43AB;
-  border-radius: 5px;
-  background-color: #e6faff;
+  border-bottom: 3.5px solid #0E43AB;
+  background-color: rgba(25, 118, 210, 0.1);
   transform: translateY(-2px);
-  transition: border-bottom 0.3s ease-in;
+  transition: border-bottom 0.3s ease-in, background-color 0.5s ease-out;
   transition: border-bottom 0.3s ease-out;
 }
 
@@ -93,4 +92,45 @@
   .title {
     font-size: 1.5rem;
   }
+}
+
+/* Add to your existing styles */
+.submissionsContainer {
+  padding: 16px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.submissionsTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.submissionsTable th,
+.submissionsTable td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.submissionsTable th {
+  background-color: #007bff;
+  color: #DEDEDE;
+}
+
+.statusAccepted {
+  color: #319900;
+}
+
+.statusRejected {
+  color: #FF0000;
+}
+
+.statusWaiting {
+  color: #0094FF;
+}
+
+.circleIcon {
+  font-size: 12px;
 }

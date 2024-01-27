@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
+
+.testCasesContainer {
+  margin-left: 5px;
+  margin-top: 3px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 24dvh;
+}
+
+.mainTabs {
+  display: flex;
+  background-color: #f5f5f5;
+}
+
+.tab {
+  flex-grow: 1;
+  text-align: center;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent; /* Add a transparent border by default */
+}
+
+.tabSelected {
+  background-color: rgba(25, 118, 210, 0.1);
+  color: #1976d2;
+  border-bottom: 2px solid #1976d2; /* Change border color for selected tab */
+}
+
+.testCasesContent {
+  margin-top: 20px;
+}
+
+
+.inputGroup {
+  display: flex;
+  align-items: center;
+}
+
+.testCaseLabel {
+  margin-right: 10px; /* Space between label and input field */
+  white-space: nowrap; /* Prevents the label from wrapping */
+  font-family: 'Julius Sans One';
+  margin-left: 10px;
+}
+
+.testCaseInput {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 150px;
+  box-sizing: border-box;
+}
+
+.testResultContent {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.finalOutputLabel {
+  font-family: 'Julius Sans One';
+  margin-left: 10px;
+  color: #000000; /* Adjust color as needed */
+  margin-right: 10px;
+}
+
+.finalOutputValue {
+  flex-grow: 1;
+  background-color: #f0f0f0; /* Light grey background */
+  padding: 40px;
+  border-radius: 4px;
+  /* You can add a monospace font if it fits the design */
+  font-family: 'Courier New', Courier, monospace;
+  /* Rest of your styling here */
+}

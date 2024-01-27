@@ -1,14 +1,70 @@
 import React, { useState,useEffect } from "react";
 import styles from "./DescriptionBox.module.css";
 import {useNavigate} from 'react-router-dom';
-
+import { faCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const BASE_URL = process.env.REACT_APP_API_URL;
 
-
-const DescriptionBox = ({questionId}) => {
+const DescriptionBox = ({ questionId }) => {
   const [tabValue, setTabValue] = useState(0);
-  const [challenge,setChallenge] = useState([]);
+  const [challenge, setChallenge] = useState([]);
+  const [submissions, setSubmissions] = useState([
+    {
+      id: "433Bg55",
+      language: "Python",
+      status: "Infinite Loop on line 34:9",
+      result: "Rejected",
+    },
+    {
+      id: "433Bg56",
+      language: "CPP",
+      status: "Completed successfully",
+      result: "Accepted",
+    },
+    {
+      id: "433Bg57",
+      language: "C",
+      status: "Runtime Error on line 15:2",
+      result: "Rejected",
+    },
+    {
+      id: "433Bg58",
+      language: "PHP",
+      status: "Execution Timed Out",
+      result: "Rejected",
+    },
+    {
+      id: "433Bg59",
+      language: "JavaScript",
+      status: "In Queue",
+      result: "Waiting",
+    },
+    {
+      id: "433Bg60",
+      language: "TypeScript",
+      status: "Memory Limit Exceeded",
+      result: "Rejected",
+    },
+    {
+      id: "433Bg61",
+      language: "Rust",
+      status: "Wrong Answer on test case 2",
+      result: "Rejected",
+    },
+    {
+      id: "433Bg62",
+      language: "Python",
+      status: "Accepted with warnings",
+      result: "Accepted",
+    },
+    {
+      id: "433Bg63",
+      language: "Go",
+      status: "Correct Answer",
+      result: "Accepted",
+    },
+  ]);
 
   const navigate = useNavigate();
 
@@ -88,7 +144,38 @@ const DescriptionBox = ({questionId}) => {
           ))}
         </div>
       )}
-      {/* Additional content for other tab values can be added here */}
+      {tabValue === 1 && (
+        <div className={styles.submissionsContainer}>
+          <table className={styles.submissionsTable}>
+            <thead>
+              <tr>
+                <th>Submission ID</th>
+                <th>Language</th>
+                <th>Status</th>
+                <th>Result</th>
+              </tr>
+            </thead>
+            <tbody>
+              {submissions.map((submission, index) => (
+                <tr key={index}>
+                  <td>{submission.id}</td>
+                  <td>{submission.language}</td>
+                  <td>{submission.status}</td>
+                  <td>
+                    <span className={styles[`status${submission.result}`]}>
+                      <FontAwesomeIcon
+                        icon={faCircle}
+                        className={styles.circleIcon}
+                      />{" "}
+                      {submission.result}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 };

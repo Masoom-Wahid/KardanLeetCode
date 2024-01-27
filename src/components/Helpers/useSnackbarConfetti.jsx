@@ -1,5 +1,4 @@
-// useSnackbarConfetti.js
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Confetti from "react-confetti";
 import styles from "./YourComponent.module.css"; // Update with your actual CSS module file
 

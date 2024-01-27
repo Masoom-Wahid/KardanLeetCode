@@ -1,80 +1,61 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import "./TestCases.css";
+import styles from "./TestCases.module.css";
 
 const TestCases = () => {
   const [mainTabValue, setMainTabValue] = useState(0);
-  const [selectedCase, setSelectedCase] = useState(0);
 
-  const testCases = [
-    { id: 1, input: "123", output: "456" },
-    { id: 2, input: "789", output: "1011" },
-    { id: 3, input: "234", output: "567" },
-    { id: 4, input: "345", output: "678" },
-    // ... other test cases
-  ];
+  const [inputValue, setInputValue] = useState("");
+  const [outputValue, setOutputValue] = useState("");
+  const [finalOutput, setFinalOutput] = useState("Something");
 
   return (
-    <div className="test-cases-container">
-      <div className="main-tabs">
+    <div className={styles.testCasesContainer}>
+      <div className={styles.mainTabs}>
         <div
-          className={`tab ${mainTabValue === 0 ? "tab-selected" : ""}`}
+          className={`${styles.tab} ${
+            mainTabValue === 0 ? styles.tabSelected : ""
+          }`}
           onClick={() => setMainTabValue(0)}
         >
-          Test Cases
+          Manual Test Cases
         </div>
         <div
-          className={`tab ${mainTabValue === 1 ? "tab-selected" : ""}`}
+          className={`${styles.tab} ${
+            mainTabValue === 1 ? styles.tabSelected : ""
+          }`}
           onClick={() => setMainTabValue(1)}
         >
           Test Results
         </div>
       </div>
       {mainTabValue === 0 && (
-        <div>
-          <div className="case-tabs">
-            {testCases.map((testCase, index) => (
-              <div
-                key={index}
-                className={`case-tab ${
-                  selectedCase === index ? "case-tab-selected" : ""
-                }`}
-                onClick={() => setSelectedCase(index)}
-              >
-                Case {testCase.id}
-              </div>
-            ))}
-            <button className="icon-button">
-              <FontAwesomeIcon icon={faPlus} />
-            </button>
+        <div className={styles.testCasesContent}>
+          <div className={styles.inputGroup}>
+            <label className={styles.testCaseLabel}>Enter Your Input</label>
+            <input
+              type="text"
+              className={styles.testCaseInput}
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              placeholder="Enter your input"
+            />
           </div>
-
-          {testCases.map((testCase, index) => (
-            <div
-              key={index}
-              className={`test-case-box ${
-                selectedCase === index ? "test-case-box-active" : ""
-              }`}
-            >
-              <div className="test-case-input-output">
-                <label>Input:</label>
-                <input
-                  className="test-case-text-field"
-                  value={testCase.input}
-                  disabled
-                />
-              </div>
-              <div className="test-case-input-output">
-                <label>Output:</label>
-                <input
-                  className="test-case-text-field"
-                  value={testCase.output}
-                  disabled
-                />
-              </div>
-            </div>
-          ))}
+          <div className={styles.inputGroup}>
+            <label className={styles.testCaseLabel}>Enter Your Output</label>
+            <input
+              type="text"
+              className={styles.testCaseInput}
+              value={outputValue}
+              onChange={(e) => setOutputValue(e.target.value)}
+              placeholder="Enter your output"
+            />
+          </div>
+        </div>
+      )}
+      {mainTabValue === 1 && (
+        <div className={styles.testResultContent}>
+          <div className={styles.finalOutputLabel}>FINAL OUTPUT</div>
+          <div className={styles.finalOutputValue}>{finalOutput}</div>
         </div>
       )}
     </div>
