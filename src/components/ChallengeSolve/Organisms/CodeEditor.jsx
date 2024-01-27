@@ -1,5 +1,11 @@
-import React, { useEffect, useRef, useMemo, useCallback } from "react";
-import Editor, { useMonaco } from "@monaco-editor/react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  useMemo,
+  useCallback,
+} from "react";
+import Editor from "@monaco-editor/react";
 import { Box, IconButton, Select, MenuItem, styled } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUndo } from "@fortawesome/free-solid-svg-icons";
@@ -29,8 +35,8 @@ const CodeEditor = ({
   language,
   setLanguage,
 }) => {
-  const monaco = useMonaco();
   const editorRef = useRef(null);
+  const monacoRef = useRef(null);
 
   const checkForForbiddenCode = useCallback((content) => {
     if (content.includes("import os")) {
@@ -47,20 +53,42 @@ const CodeEditor = ({
               .findIndex((line) => line.includes("import os")) + 1,
           endColumn: 1,
           message: '"import os" is not allowed',
-          severity: monaco.MarkerSeverity.Warning,
+          severity: monacoRef.MarkerSeverity.Warning,
         },
       ];
     }
     return []; // eslint-disable-next-line
   }, []);
 
+  const handleEditorDidMount = (editor, monaco) => {
+    editorRef.current = editor;
+    monacoRef.current = monaco;
+
+    // Perform setup and configurations
+    const model = editor.getModel();
+    const markers = checkForForbiddenCode(editorContent);
+    monaco.editor.setModelMarkers(model, "owner", markers);
+
+    // Example configuration for TypeScript
+    monaco.languages.typescript.javascriptDefaults.setDiagnosticsOptions({
+      noSemanticValidation: false,
+      noSyntaxValidation: false,
+    });
+    monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({
+      noSemanticValidation: false,
+      noSyntaxValidation: false,
+    });
+
+    // Additional configurations
+  };
+
   useEffect(() => {
-    if (monaco && editorRef.current) {
+    if (editorRef.current) {
       const model = editorRef.current.getModel();
       const markers = checkForForbiddenCode(editorContent);
-      monaco.editor.setModelMarkers(model, "owner", markers);
+      monacoRef.current.editor.setModelMarkers(model, "owner", markers);
     }
-  }, [editorContent, monaco, checkForForbiddenCode]);
+  }, [editorContent, checkForForbiddenCode]);
 
   const languageBoilerplates = useMemo(
     () => ({
@@ -82,41 +110,10 @@ const CodeEditor = ({
   );
 
   useEffect(() => {
-    setEditorContent(languageBoilerplates[language]);
-
-    if (monaco) {
-      // Setup your language configurations here
-      // For example, for JavaScript:
-      monaco.languages.typescript.javascriptDefaults.setDiagnosticsOptions({
-        noSemanticValidation: false,
-        noSyntaxValidation: false,
-      });
-      monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({
-        noSemanticValidation: false,
-        noSyntaxValidation: false,
-      });
-
-      ["python", "java", "c", "cpp", "csharp", "php", "rust"].forEach(
-        (lang) => {
-          monaco.languages[lang]?.setMonarchTokensProvider({}); // Replace with actual configuration if available
-        }
-      );
-      // Add more configurations as needed
+    if (languageBoilerplates[language]) {
+      setEditorContent(languageBoilerplates[language]);
     }
-  }, [language, monaco, languageBoilerplates, setEditorContent]);
-
-  const handleEditorDidMount = (editor, monaco) => {
-    editorRef.current = editor;
-  };
-
-  useEffect(() => {
-    setEditorContent(languageBoilerplates[language]);
-  }, [language, languageBoilerplates, setEditorContent]);
-  const theme = useTheme();
-
-  const handleReset = () => {
-    setEditorContent(languageBoilerplates[language]);
-  };
+  }, [language, languageBoilerplates]);
 
   return (
     <Box
@@ -136,11 +133,8 @@ const CodeEditor = ({
           display: "flex",
           overflow: "hidden",
           height: "4vh",
-          bgcolor: theme.palette.background.paper,
-          boxShadow:
-            theme.palette.mode === "light"
-              ? "0px 4px rgba(0, 0, 0, 0.15)"
-              : "0px 4px rgba(0, 0, 0, 0.3)",
+          bgcolor: "background.paper",
+          boxShadow: "0px 4px rgba(0, 0, 0, 0.15)",
         }}
       >
         <StyledSelect
@@ -157,7 +151,10 @@ const CodeEditor = ({
           <MenuItem value="typescript">TypeScript</MenuItem>
           <MenuItem value="php">PHP</MenuItem>
         </StyledSelect>
-        <StyledIconButton onClick={handleReset} color="primary">
+        <StyledIconButton
+          onClick={() => setEditorContent(languageBoilerplates[language])}
+          color="primary"
+        >
           <FontAwesomeIcon icon={faUndo} />
         </StyledIconButton>
       </Box>
@@ -169,7 +166,6 @@ const CodeEditor = ({
         onChange={setEditorContent}
         onMount={handleEditorDidMount}
         options={{
-          value: { editorContent },
           autoClosingBrackets: "always",
           autoClosingQuotes: "always",
           autoSurround: "languageDefined",

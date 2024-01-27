@@ -40,7 +40,7 @@ function App() {
           <Route path="/contest" element={<ChallengesGrid />} />
           <Route path="/leaderboard" element={<LeaderboardPage />} />
           <Route path="/contest/:id" element={<EditorPage />} />
-          <Route path="/editor" element={<PythonEditor />} />
+          <Route path="/editor" element={<EditorPage />} />
           <Route path="/home" element={<HomePage email={email} />} />
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/createchallenge" element={<CreateChallenge />} />

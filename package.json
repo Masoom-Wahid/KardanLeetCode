@@ -29,7 +29,6 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "@uiw/react-codemirror": "^4.21.21",
     "babel-preset-react-app": "^10.0.1",
     "chart.js": "^4.4.1",
     "codemirror": "^6.0.1",
