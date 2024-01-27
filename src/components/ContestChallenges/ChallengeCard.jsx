@@ -3,17 +3,20 @@ import styles from "./ChallengeCard.module.css"; // Your CSS module file path
 import { ReactComponent as ChallengeIcon } from "./sit.svg"; // Path to your SVG icon
 import DescriptionButton from "./DescriptionButton";
 import DescriptionModal from "./DescriptionModal";
+import {useNavigate} from 'react-router-dom'
 
 const ChallengeCard = ({
   id,
   title,
   points,
   timeLimit,
+  lvl,
   description,
   isOdd,
 }) => {
   const cardStyle = isOdd ? styles.cardOdd : styles.cardEven;
 
+  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => {
@@ -50,9 +53,11 @@ const ChallengeCard = ({
       <div className={styles.bottomSide}>
         <div className={styles.actionSection}>
           <span className={styles.continueText}>
-            Continue With This Challenge
+            <span style={lvl === "HARD" ? {color:"red"} : lvl === "MEDUIM" ?  {color:"blue"} : {color:"green"}} >
+              {lvl}
+              </span>
           </span>
-          <button className={styles.solveButton}>Solve</button>
+          <button onClick={() => navigate(`/contest/${id}`) } className={styles.solveButton}>Solve</button>
         </div>
       </div>
     </div>
