@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
+import { useSnackbarConfetti } from "../../Helpers/useSnackbarConfetti";
 
 const StyledComponentContainer = styled(Box)(({ theme }) => ({
   border: "1px solid #e0e0e0",
@@ -87,20 +88,20 @@ const BreathingIconButton = styled(IconButton)(({ theme }) => ({
   },
 }));
 
-const MainHeader = ({ onToggleDarkMode, isDarkMode,onSubmit }) => {
+const MainHeader = ({ onToggleDarkMode, isDarkMode, onSubmit }) => {
   const navigate = useNavigate();
-  const [runLoading,setRunLoading] = useState(false)
+  const [runLoading, setRunLoading] = useState(false);
+  const { trigger, SnackBar, ConfettiEffect } = useSnackbarConfetti();
 
   const handleProblemList = () => {
     navigate("/contest");
   };
 
-
   const handleRun = () => {
-    setRunLoading(true)
-    onSubmit("run")
-    setRunLoading(false)
-  }
+    setRunLoading(true);
+    onSubmit("run");
+    setRunLoading(false);
+  };
   return (
     <StyledComponentContainer>
       <RectangleButton onClick={handleProblemList}>
@@ -108,12 +109,20 @@ const MainHeader = ({ onToggleDarkMode, isDarkMode,onSubmit }) => {
         <FontAwesomeIcon icon={faChevronRight} />
       </RectangleButton>
       <Box>
-        <StyledButton  onClick={() => handleRun()} startIcon={<FontAwesomeIcon icon={faPlay} />}>
-          {runLoading ? "Running ..." : "Run"}  
+        <StyledButton
+          onClick={() => handleRun()}
+          startIcon={<FontAwesomeIcon icon={faPlay} />}
+        >
+          {runLoading ? "Running ..." : "Run"}
         </StyledButton>
-        <StyledButton onClick={() => onSubmit("submit")} startIcon={<FontAwesomeIcon icon={faUpload} />}>
+        <StyledButton
+          onClick={trigger}
+          startIcon={<FontAwesomeIcon icon={faUpload} />}
+        >
           Submit
         </StyledButton>
+        <SnackBar />
+        <ConfettiEffect />
       </Box>
       <BreathingIconButton onClick={onToggleDarkMode}>
         {isDarkMode ? (
