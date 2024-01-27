@@ -14,7 +14,11 @@ const CreateContestant = () => {
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-        <svg className={styles.icon} /* Add your SVG code here */ />
+        <img
+          src="/logo.png"
+          alt="Kardan University Logo"
+          className={styles.icon}
+        />
         <h2 className={styles.title}>Create Contestant Users</h2>
         <form onSubmit={handleSubmit}>
           <div className={styles.inputGroup}>
