@@ -169,7 +169,7 @@
   font-weight: 600;
 }
   
-.input-group .faUser, .input-group .faLock {
+.input-group .faUserIcon, .input-group .faLockIcon {
   position: absolute;
   left: 10px;
   top: 50%;
@@ -243,7 +243,7 @@
 }
 
 /* Adjust input icon size and position */
-.input-group .svg {
+.input-group svg {
   position: absolute;
   left: 23px;
   top: 50%;
