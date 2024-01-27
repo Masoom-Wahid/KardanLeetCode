@@ -1,0 +1,17 @@
+.editorContainer {
+  height: 500px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: auto;
+}
+
+.CodeMirror {
+  height: auto;
+}
+
+.cm-scroller {
+  font-family: 'Fira Code', monospace;
+  font-size: 16px;
+}
+
+/* Add more specific styles as needed */

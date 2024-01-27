@@ -23,6 +23,7 @@ import ChallengesGrid from "./components/ContestChallenges/ChallengesGrid";
 import ManageContestsParentComponent from "./components/Dashboard/ManageContestsParentComponent";
 import ManageContest from "./components/Dashboard/ManageContest";
 import CreateContestant from "./components/Dashboard/CreateContestant";
+import PythonEditor from "./components/Editor/PythonEditor";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -39,6 +40,7 @@ function App() {
           <Route path="/contest" element={<ChallengesGrid />} />
           <Route path="/leaderboard" element={<LeaderboardPage />} />
           <Route path="/contest/:id" element={<EditorPage />} />
+          <Route path="/editor" element={<PythonEditor />} />
           <Route path="/home" element={<HomePage email={email} />} />
           <Route path="/admin" element={<Dashboard />} />
           <Route path="/createchallenge" element={<CreateChallenge />} />
