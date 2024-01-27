@@ -6,13 +6,14 @@ import DescriptionBox from "./DescriptionBox";
 import CodeEditor from "./CodeEditor";
 import TestCases from "./TestCases";
 
+
 const BASE_URL = process.env.REACT_APP_API_URL;
 
 const EditorPage = () => {
   const [mode, setMode] = useState("light");
   const [editorContent, setEditorContent] = useState("");
   const [language, setLanguage] = useState("python");
-
+  const [runConfetti,setRunConfetti] = useState(false);
   const {id} = useParams()
   // eslint-disable-next-line
   const toggleTheme = () => {
@@ -37,13 +38,21 @@ const EditorPage = () => {
       });
       const data = await response.json();
       if (!response.ok) {
-        window.alert(
-          `You Did Not Solve This Problem with the status of ${response.status} and ${data.detail.reason}`
-        );
-      } else {
-        window.alert(
-          `You Did  Solve This Problem with the status of ${response.status} and ${data.detail.reason}`
-        );
+          window.alert(
+            `You Did Not Solve This Problem with the status of ${response.status} and ${data.detail.reason}`
+          );
+        }
+       else {
+        if (type == "submit"){
+          setRunConfetti(true)
+          setTimeout(() => {
+            setRunConfetti(false)
+          },3000)
+        }else{
+          window.alert(
+            `You Did  Solve This Problem with the status of ${response.status} and ${data.detail.reason}`
+          );
+        }
       }
 
       // Handle the response from the backend
@@ -66,7 +75,7 @@ const EditorPage = () => {
             m: 0,
           }}
         >
-          <MainHeader onSubmit={SubmitFile} />
+          <MainHeader runConfetti = {runConfetti} onSubmit={SubmitFile} />
           <Box sx={{ display: "flex", flexGrow: 1, p: 0 }}>
             <DescriptionBox 
             questionId = {id}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Box, Button, IconButton } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,6 +11,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import { useSnackbarConfetti } from "../../Helpers/useSnackbarConfetti";
+
 
 const StyledComponentContainer = styled(Box)(({ theme }) => ({
   border: "1px solid #e0e0e0",
@@ -88,18 +89,24 @@ const BreathingIconButton = styled(IconButton)(({ theme }) => ({
   },
 }));
 
-const MainHeader = ({ onToggleDarkMode, isDarkMode, onSubmit }) => {
+const MainHeader = ({ runConfetti,onToggleDarkMode, isDarkMode, onSubmit }) => {
   const navigate = useNavigate();
-  const [runLoading, setRunLoading] = useState(false);
   const { trigger, SnackBar, ConfettiEffect } = useSnackbarConfetti();
+  const [runLoading, setRunLoading] = useState(false);
+  console.log(runConfetti)
+  useEffect(() => {
+    if (runConfetti){
+      trigger()
+    }
+  },[runConfetti])
 
   const handleProblemList = () => {
     navigate("/contest");
   };
 
-  const handleRun = () => {
+  const handleRun = (type) => {
     setRunLoading(true);
-    onSubmit("run");
+    onSubmit(type);
     setRunLoading(false);
   };
   return (
@@ -110,13 +117,13 @@ const MainHeader = ({ onToggleDarkMode, isDarkMode, onSubmit }) => {
       </RectangleButton>
       <Box>
         <StyledButton
-          onClick={() => handleRun()}
+          onClick={() => handleRun("run")}
           startIcon={<FontAwesomeIcon icon={faPlay} />}
         >
           {runLoading ? "Running ..." : "Run"}
         </StyledButton>
         <StyledButton
-          onClick={trigger}
+          onClick={() => handleRun("submit")}
           startIcon={<FontAwesomeIcon icon={faUpload} />}
         >
           Submit
