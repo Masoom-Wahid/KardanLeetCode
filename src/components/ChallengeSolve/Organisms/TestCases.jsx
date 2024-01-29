@@ -41,22 +41,11 @@ const TestCases = () => {
           <div className={styles.testCasesContent}>
             <div className={styles.inputGroup}>
               <label className={styles.testCaseLabel}>Enter Your Input</label>
-              <input
-                type="text"
+              <textarea
                 className={styles.testCaseInput}
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder="Enter your input"
-              />
-            </div>
-            <div className={styles.inputGroup}>
-              <label className={styles.testCaseLabel}>Enter Your Output</label>
-              <input
-                type="text"
-                className={styles.testCaseInput}
-                value={outputValue}
-                onChange={(e) => setOutputValue(e.target.value)}
-                placeholder="Enter your output"
               />
             </div>
           </div>

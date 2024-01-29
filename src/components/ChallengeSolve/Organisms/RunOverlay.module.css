@@ -128,4 +128,57 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Add any additional styles for your modal content here */
+.explanationContainer {
+  padding: 10px;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.error {
+  background-color: #ffe5e5; /* Light red */
+  color: #d9534f; /* Darker red */
+}
+
+.mismatch {
+  background-color: #fff5e6; /* Light orange */
+  color: #f0ad4e; /* Darker orange */
+}
+
+.success {
+  background-color: #e6ffe6; /* Light green */
+  color: #5cb85c; /* Darker green */
+}
+
+.mismatchDetails {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f9f9f9; /* Light grey */
+  border: 1px solid #ddd; /* Grey border */
+  border-radius: 5px;
+  text-align: left;
+}
+
+.mismatchDetails div {
+  margin-bottom: 5px;
+}
+
+.errorDetails, .successDetails {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f9f9f9; /* Light grey */
+  border: 1px solid #ddd; /* Grey border */
+  border-radius: 5px;
+  text-align: left;
+}
+
+.errorDetails {
+  color: #d9534f; /* Darker red for error messages */
+}
+
+.successDetails {
+  color: #5cb85c; /* Darker green for success messages */
+}
+
+

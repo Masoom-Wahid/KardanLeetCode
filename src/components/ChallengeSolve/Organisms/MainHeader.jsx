@@ -103,20 +103,27 @@ const MainHeader = ({
   const toggleModal = () => {
     setModalOpen(!isModalOpen);
   };
-  const mockTestData = [
-    { id: 1, name: "Test Case 1", status: "pass" },
-    { id: 2, name: "Test Case 2", status: "loading" },
-    { id: 3, name: "Test Case 3", status: "fail" },
+  const mockTestData = {
+    tests: [
+      { id: 1, name: "Test Case 1", status: "pass" },
+      { id: 2, name: "Test Case 2", status: "loading" },
+      { id: 3, name: "Test Case 3", status: "fail" },
 
-    { id: 4, name: "Test Case 4", status: "pass" },
-    { id: 5, name: "Test Case 5", status: "pass" },
-    { id: 6, name: "Test Case 6", status: "loading" },
+      { id: 4, name: "Test Case 4", status: "pass" },
+      { id: 5, name: "Test Case 5", status: "pass" },
+      { id: 6, name: "Test Case 6", status: "loading" },
 
-    { id: 7, name: "Test Case 7", status: "loading" },
-    { id: 8, name: "Test Case 8", status: "pass" },
-    { id: 9, name: "Test Case 9", status: "loading" },
+      { id: 7, name: "Test Case 7", status: "loading" },
+      { id: 8, name: "Test Case 8", status: "pass" },
+      { id: 9, name: "Test Case 9", status: "loading" },
+    ],
+    expected: "30",
+    actual: "31",
+    error: "You did something wrong, boy!",
+    errorType: "hasError",
+
     // ... add more test cases as needed
-  ];
+  };
 
   console.log(runConfetti);
   useEffect(() => {

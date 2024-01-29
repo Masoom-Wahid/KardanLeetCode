@@ -52,6 +52,7 @@ const Login = () => {
     }
   };
 
+
   return (
     <div className="login-page">
       <div className="left-panel">
@@ -62,7 +63,11 @@ const Login = () => {
               The most popular programming contest in Afghanistan.
             </p>
           </div>
-          <button className="read-more-button">Read More</button>
+          <button className="read-more-button">
+            <a href="https://kardan.edu.af/" target="__blank">
+              Read More
+            </a>
+          </button>
         </div>
       </div>
       <div className="right-panel">

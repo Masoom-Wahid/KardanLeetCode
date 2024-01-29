@@ -3,6 +3,7 @@
 .container {
     display: flex;
     align-items: center; /* Align items vertically in the center */
+    padding-top: 20px;
 }
 
 .testCasesContainer {
@@ -59,6 +60,10 @@
   border-radius: 4px;
   max-width: 250px;
   box-sizing: border-box;
+  padding: 10px;
+  resize: vertical; /* Allow vertical resizing */
+  overflow: auto; /* Enable scrolling for overflow text */
+  min-height: 40px; /* Initial height */
 }
 
 .testResultContent {
@@ -98,6 +103,7 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
   margin-right: auto;
   margin-left: 40px;
+  margin-top: 5px;
 }
 
 .runTestCaseButton:hover {

@@ -31,6 +31,12 @@ const Sidebar = () => {
     setIsCollapsed(!isCollapsed);
   };
 
+  const handleLogout = () => {
+    //to remove login cookie and info
+    localStorage.removeItem("accessToken");
+    navigate("/");
+  };
+
   return (
     <nav
       className={`${styles.sidebar} ${
@@ -57,7 +63,7 @@ const Sidebar = () => {
       <button className={styles.toggleButton} onClick={toggleSidebar}>
         <FontAwesomeIcon icon={isCollapsed ? faAngleRight : faAngleLeft} />
       </button>
-      <button className={styles.logoutButton}>
+      <button className={styles.logoutButton} onClick={handleLogout}>
         <FontAwesomeIcon icon={faSignOutAlt} />
         {!isCollapsed && " Log Out"}
       </button>
