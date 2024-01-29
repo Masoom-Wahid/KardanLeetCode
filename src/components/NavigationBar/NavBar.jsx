@@ -7,11 +7,14 @@ import {
   faLightbulb,
   faPen,
   faUsers,
+  faSignOut,
 } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,11 +29,17 @@ const NavBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem("loginToken"); // Remove the token from localStorage
+    navigate("/");
+  };
+
   const navItems = [
     { icon: faHome, text: "Home" },
     { icon: faLightbulb, text: "Challenges" },
     { icon: faPen, text: "Scores" },
     { icon: faUsers, text: "Contests" },
+    { icon: faSignOut, text: "Logout", action: handleLogout },
   ];
 
   return (
@@ -50,6 +59,7 @@ const NavBar = () => {
             }`}
             onMouseEnter={() => setActiveIndex(index)}
             onMouseLeave={() => setActiveIndex(null)}
+            onClick={item.action}
             key={index}
           >
             <FontAwesomeIcon icon={item.icon} className={styles.icon} />
