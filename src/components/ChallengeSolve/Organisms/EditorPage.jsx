@@ -15,9 +15,16 @@ const EditorPage = () => {
   const [language, setLanguage] = useState("python");
   const [runConfetti,setRunConfetti] = useState(false);
   const {id} = useParams()
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   // eslint-disable-next-line
   const toggleTheme = () => {
     setMode(mode === "light" ? "dark" : "light");
+  };
+
+  const handleRunClick = () => {
+    setIsModalOpen(true);
+    // Add the logic to run the test cases here
   };
 
   const SubmitFile = async (type) => {

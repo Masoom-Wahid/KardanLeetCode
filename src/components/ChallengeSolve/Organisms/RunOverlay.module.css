@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  z-index: 100000;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+  animation: fadeIn 0.3s;
+  width: 80%;
+  max-width: 600px;
+  animation: scaleUp 0.3s ease-in-out;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /* Add some shadow for depth */
+  transform: translateY(-50px); /* Prepares the modal for the slide-down effect */
+  transition: transform 0.4s ease-out, box-shadow 0.3s ease-out; /* Smooth transitions for modal entrance and shadow */
+}
+
+.modal:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 12px 40px 0 rgba(0, 0, 0, 0.19); /* Enhance shadow on hover for interactivity */
+}
+
+.modalOverlay.active .modal {
+  transform: translateY(0); /* Slide down to original position */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.title {
+  font-family: 'Julius Sans';
+}
+
+.testList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 400px;
+  overflow-y: auto; /* Add scrollbar for overflow */
+  margin-top: 20px; /* Spacing from the title */
+  padding: 1rem; /* Padding inside the list */
+  background: #f3f3f3; /* Subtle background for the list area */
+  border-radius: 8px; /* Rounded corners for the list area */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.testItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px; /* Spacing between items */
+  background: white; /* Background for individual items */
+  padding: 10px;
+  border-radius: 5px; /* Rounded corners for items */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* Adjust padding and remove margin-bottom */
+  padding: 0.5rem;
+  /* Ensure the item does not break into multiple lines */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Correct Test Case */
+.iconCorrect {
+  color: green;
+}
+
+/* Incorrect Test Case */
+.iconIncorrect {
+  color: red;
+}
+
+/* Loading Test Case */
+.iconLoading {
+  color: blue;
+  animation: spin 1s infinite linear;
+}
+
+/* Spinning Animation Keyframes */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add any additional styles for your modal content here */

@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
 
+.container {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+}
+
 .testCasesContainer {
   margin-left: 5px;
   margin-top: 3px;
@@ -32,13 +37,14 @@
 }
 
 .testCasesContent {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 
 .inputGroup {
   display: flex;
   align-items: center;
+  flex-grow: 1;
 }
 
 .testCaseLabel {
@@ -52,6 +58,7 @@
   border: 1px solid #ddd;
   border-radius: 4px;
   width: 150px;
+  max-width: 250px;
   box-sizing: border-box;
 }
 
@@ -76,4 +83,31 @@
   /* You can add a monospace font if it fits the design */
   font-family: 'Courier New', Courier, monospace;
   /* Rest of your styling here */
+}
+
+.runTestCaseButton {
+  display: absolute;
+  padding: 12px 24px;
+  background-color: #007bff; /* A nice shade of blue */
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-right: auto;
+  margin-left: 40px;
+}
+
+.runTestCaseButton:hover {
+  background-color: #0056b3; /* A darker shade of blue for hover state */
+  transform: translateY(-2px); /* Slight raise effect on hover */
+}
+
+.runTestCaseButton:active {
+  background-color: #003d82; 
+  box-shadow: none; 
+  transform: translateY(1px); 
 }

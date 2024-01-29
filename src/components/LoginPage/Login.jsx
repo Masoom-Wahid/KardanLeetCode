@@ -19,21 +19,6 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    /*
-    Sometimes The User , Even Though Logged In , Comes To Login Page Again,
-    the just redirects them if they have a token in their localstorage
-    */
-    const access_token = localStorage.getItem("accessToken");
-    if (access_token) {
-      // This checks for a non-null, non-empty string
-      const parsed_data = parseJwt(access_token);
-      if (parsed_data) {
-        parsed_data.is_superuser ? navigate("/admin") : navigate("/home");
-      }
-    }
-  }, [navigate]);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
@@ -55,9 +40,9 @@ const Login = () => {
       localStorage.setItem("accessToken", data.access);
       localStorage.setItem("refreshToken", data.refresh);
       // Just Parse The Data and set it to local storage
-      const parsed_data = parseJwt(data.access)
-      localStorage.setItem("username",parsed_data.username)
-      localStorage.setItem("is_su",parsed_data.is_superuser)
+      const parsed_data = parseJwt(data.access);
+      localStorage.setItem("username", parsed_data.username);
+      localStorage.setItem("is_su", parsed_data.is_superuser);
       // naviagate depending on the user's token
       parsed_data.is_superuser ? navigate("/admin") : navigate("/home");
     } catch (error) {

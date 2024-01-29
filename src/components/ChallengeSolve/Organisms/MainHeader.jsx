@@ -11,7 +11,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import { useSnackbarConfetti } from "../../Helpers/useSnackbarConfetti";
-
+import RunOverlay from "./RunOverlay";
 
 const StyledComponentContainer = styled(Box)(({ theme }) => ({
   border: "1px solid #e0e0e0",
@@ -89,56 +89,91 @@ const BreathingIconButton = styled(IconButton)(({ theme }) => ({
   },
 }));
 
-const MainHeader = ({ runConfetti,onToggleDarkMode, isDarkMode, onSubmit }) => {
+const MainHeader = ({
+  runConfetti,
+  onToggleDarkMode,
+  isDarkMode,
+  onSubmit,
+}) => {
   const navigate = useNavigate();
   const { trigger, SnackBar, ConfettiEffect } = useSnackbarConfetti();
   const [runLoading, setRunLoading] = useState(false);
-  console.log(runConfetti)
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const toggleModal = () => {
+    setModalOpen(!isModalOpen);
+  };
+  const mockTestData = [
+    { id: 1, name: "Test Case 1", status: "pass" },
+    { id: 2, name: "Test Case 2", status: "loading" },
+    { id: 3, name: "Test Case 3", status: "fail" },
+
+    { id: 4, name: "Test Case 4", status: "pass" },
+    { id: 5, name: "Test Case 5", status: "pass" },
+    { id: 6, name: "Test Case 6", status: "loading" },
+
+    { id: 7, name: "Test Case 7", status: "loading" },
+    { id: 8, name: "Test Case 8", status: "pass" },
+    { id: 9, name: "Test Case 9", status: "loading" },
+    // ... add more test cases as needed
+  ];
+
+  console.log(runConfetti);
   useEffect(() => {
-    if (runConfetti){
-      trigger()
+    if (runConfetti) {
+      trigger();
     }
-  },[runConfetti])
+  }, [runConfetti]);
 
   const handleProblemList = () => {
     navigate("/contest");
   };
 
-  const handleRun = (type) => {
+  const handleRun = async (type) => {
     setRunLoading(true);
-    onSubmit(type);
+    setModalOpen(true);
+    await onSubmit(type);
     setRunLoading(false);
   };
   return (
-    <StyledComponentContainer>
-      <RectangleButton onClick={handleProblemList}>
-        Problem List
-        <FontAwesomeIcon icon={faChevronRight} />
-      </RectangleButton>
-      <Box>
-        <StyledButton
-          onClick={() => handleRun("run")}
-          startIcon={<FontAwesomeIcon icon={faPlay} />}
-        >
-          {runLoading ? "Running ..." : "Run"}
-        </StyledButton>
-        <StyledButton
-          onClick={() => handleRun("submit")}
-          startIcon={<FontAwesomeIcon icon={faUpload} />}
-        >
-          Submit
-        </StyledButton>
-        <SnackBar />
-        <ConfettiEffect />
-      </Box>
-      <BreathingIconButton onClick={onToggleDarkMode}>
-        {isDarkMode ? (
-          <FontAwesomeIcon icon={faSun} />
-        ) : (
-          <FontAwesomeIcon icon={faMoon} />
-        )}
-      </BreathingIconButton>
-    </StyledComponentContainer>
+    <>
+      <StyledComponentContainer>
+        <RectangleButton onClick={handleProblemList}>
+          Problem List
+          <FontAwesomeIcon icon={faChevronRight} />
+        </RectangleButton>
+        <Box>
+          <StyledButton
+            onClick={() => handleRun("run")}
+            startIcon={<FontAwesomeIcon icon={faPlay} />}
+          >
+            {runLoading ? "Running ..." : "Run"}
+          </StyledButton>
+          <StyledButton
+            onClick={() => handleRun("submit")}
+            startIcon={<FontAwesomeIcon icon={faUpload} />}
+          >
+            Submit
+          </StyledButton>
+          <SnackBar />
+          <ConfettiEffect />
+        </Box>
+        <BreathingIconButton onClick={onToggleDarkMode}>
+          {isDarkMode ? (
+            <FontAwesomeIcon icon={faSun} />
+          ) : (
+            <FontAwesomeIcon icon={faMoon} />
+          )}
+        </BreathingIconButton>
+      </StyledComponentContainer>
+      <RunOverlay
+        isOpen={isModalOpen}
+        onClose={toggleModal}
+        testData={mockTestData} // Pass the mock test results to the overlay
+      />
+      <SnackBar />
+      <ConfettiEffect />
+    </>
   );
 };
 

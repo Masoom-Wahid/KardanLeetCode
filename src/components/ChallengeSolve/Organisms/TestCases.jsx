@@ -8,6 +8,14 @@ const TestCases = () => {
   const [outputValue, setOutputValue] = useState("");
   const [finalOutput, setFinalOutput] = useState("Something");
 
+  const runTestCase = () => {
+    // Function to handle running of the test case
+    console.log("Running test case with input:", inputValue);
+    // Set the final output based on the result of the test case
+    // For now, we'll just set it to the outputValue
+    setFinalOutput(outputValue);
+  };
+
   return (
     <div className={styles.testCasesContainer}>
       <div className={styles.mainTabs}>
@@ -29,27 +37,32 @@ const TestCases = () => {
         </div>
       </div>
       {mainTabValue === 0 && (
-        <div className={styles.testCasesContent}>
-          <div className={styles.inputGroup}>
-            <label className={styles.testCaseLabel}>Enter Your Input</label>
-            <input
-              type="text"
-              className={styles.testCaseInput}
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-              placeholder="Enter your input"
-            />
+        <div className={styles.container}>
+          <div className={styles.testCasesContent}>
+            <div className={styles.inputGroup}>
+              <label className={styles.testCaseLabel}>Enter Your Input</label>
+              <input
+                type="text"
+                className={styles.testCaseInput}
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                placeholder="Enter your input"
+              />
+            </div>
+            <div className={styles.inputGroup}>
+              <label className={styles.testCaseLabel}>Enter Your Output</label>
+              <input
+                type="text"
+                className={styles.testCaseInput}
+                value={outputValue}
+                onChange={(e) => setOutputValue(e.target.value)}
+                placeholder="Enter your output"
+              />
+            </div>
           </div>
-          <div className={styles.inputGroup}>
-            <label className={styles.testCaseLabel}>Enter Your Output</label>
-            <input
-              type="text"
-              className={styles.testCaseInput}
-              value={outputValue}
-              onChange={(e) => setOutputValue(e.target.value)}
-              placeholder="Enter your output"
-            />
-          </div>
+          <button className={styles.runTestCaseButton} onClick={runTestCase}>
+            Run Test Case
+          </button>
         </div>
       )}
       {mainTabValue === 1 && (
