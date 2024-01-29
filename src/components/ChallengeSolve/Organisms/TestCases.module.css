@@ -1,118 +1,117 @@
-@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&family=Julius+Sans+One&display=swap');
+
 
 .container {
     display: flex;
-    align-items: center; /* Align items vertically in the center */
     padding-top: 20px;
 }
 
 .testCasesContainer {
   margin-left: 5px;
-  margin-top: 3px;
+  margin-top: 5px;
   border-radius: 12px;
-  border: 1px solid #ccc;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  overflow: auto;
-  height: 24dvh;
+  overflow: hidden;
+  height: auto;
+  background-color: #ffffff;
 }
 
 .mainTabs {
   display: flex;
-  background-color: #f5f5f5;
+  background-color: #f8f8f8;
 }
 
 .tab {
   flex-grow: 1;
-  text-align: center;
-  padding: 6px 12px;
+  padding: 12px 24px;
   cursor: pointer;
-  border-bottom: 2px solid transparent; /* Add a transparent border by default */
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s, color 0.3s;
+  
 }
 
 .tabSelected {
-  background-color: rgba(25, 118, 210, 0.1);
-  color: #1976d2;
-  border-bottom: 2px solid #1976d2; /* Change border color for selected tab */
+  background-color: #1976d2;
+  color: #ffffff;
+  border-bottom: 4px solid #0d47a1;
 }
 
-.testCasesContent {
-  margin-top: 10px;
+.testCasesContent, .testResultContent {
+  padding: 20px;
+  font-family: 'EB Garamond', sans-serif;
+  font-weight: 500;
+  font-size: 20px;
 }
-
 
 .inputGroup {
   display: flex;
-  align-items: center;
-  flex-grow: 1;
+  align-items: flex-start;
+  margin-bottom: 15px;
 }
 
 .testCaseLabel {
-  margin-right: 10px; /* Space between label and input field */
-  white-space: nowrap; /* Prevents the label from wrapping */
-  font-family: 'Julius Sans One';
-  margin-left: 10px;
+  align-self: center;
+  font-weight: 500;
+  font-size: 18px;
+  color: #333333;
 }
 
 .testCaseInput {
   border: 1px solid #ddd;
   border-radius: 4px;
-  max-width: 250px;
-  box-sizing: border-box;
-  padding: 10px;
-  resize: vertical; /* Allow vertical resizing */
-  overflow: auto; /* Enable scrolling for overflow text */
-  min-height: 40px; /* Initial height */
-}
-
-.testResultContent {
-  display: flex;
-  align-items: center;
-  margin-top: 20px;
+  width: 100%;
+  padding: 8px 12px;
+  resize: vertical;
+  font-size: 16px;
 }
 
 .finalOutputLabel {
-  font-family: 'Julius Sans One';
-  margin-left: 10px;
-  color: #000000; /* Adjust color as needed */
+  font-size: 18px;
+  color: #333333;
   margin-right: 10px;
+  font-weight: 500;
 }
 
 .finalOutputValue {
   flex-grow: 1;
-  background-color: #f0f0f0; /* Light grey background */
-  padding: 40px;
+  background-color: #f7f7f7;
+  padding: 20px;
   border-radius: 4px;
-  /* You can add a monospace font if it fits the design */
-  font-family: 'Courier New', Courier, monospace;
-  /* Rest of your styling here */
+  font-family: 'Roboto', monospace;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-left: 4px solid #1976d2;
+  color: #333;
 }
 
 .runTestCaseButton {
-  display: absolute;
-  padding: 12px 24px;
-  background-color: #007bff; /* A nice shade of blue */
+  height: 45px;
+  padding: 10px 20px;
+  background-color: #1976d2;
+  align-self: center;
   color: white;
   font-size: 16px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   outline: none;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  margin-right: auto;
-  margin-left: 40px;
-  margin-top: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s, box-shadow 0.2s, transform 0.2s;
 }
 
 .runTestCaseButton:hover {
-  background-color: #0056b3; /* A darker shade of blue for hover state */
-  transform: translateY(-2px); /* Slight raise effect on hover */
+  background-color: #1565c0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
 }
 
 .runTestCaseButton:active {
-  background-color: #003d82; 
-  box-shadow: none; 
-  transform: translateY(1px); 
+  background-color: #0d47a1;
+  box-shadow: none;
+  transform: translateY(1px);
 }
