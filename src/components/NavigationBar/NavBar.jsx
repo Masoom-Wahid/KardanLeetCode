@@ -34,10 +34,22 @@ const NavBar = () => {
     navigate("/");
   };
 
+  const handleHome = () => {
+    navigate("/home");
+  };
+
+  const handleChallenges = () => {
+    navigate("/contest");
+  };
+
+  const handleScores = () => {
+    navigate("/leaderboard");
+  };
+
   const navItems = [
-    { icon: faHome, text: "Home" },
-    { icon: faLightbulb, text: "Challenges" },
-    { icon: faPen, text: "Scores" },
+    { icon: faHome, text: "Home", action: handleHome },
+    { icon: faLightbulb, text: "Challenges", action: handleChallenges },
+    { icon: faPen, text: "Scores", action: handleScores },
     { icon: faUsers, text: "Contests" },
     { icon: faSignOut, text: "Logout", action: handleLogout },
   ];
