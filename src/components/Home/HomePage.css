@@ -115,7 +115,8 @@
 
 
 .home-page {
-  overflow-y: scroll;
+  overflow-x: auto;
+  overflow-y: visible;
 }
 
 @media (max-width: 768px) {
