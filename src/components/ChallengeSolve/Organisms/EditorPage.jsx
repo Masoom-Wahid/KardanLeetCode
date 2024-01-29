@@ -5,7 +5,9 @@ import MainHeader from "./MainHeader";
 import DescriptionBox from "./DescriptionBox";
 import CodeEditor from "./CodeEditor";
 import TestCases from "./TestCases";
-
+import { ResizableBox } from "react-resizable";
+import "react-resizable/css/styles.css";
+import "./EditorPage.css";
 
 const BASE_URL = process.env.REACT_APP_API_URL;
 
@@ -13,18 +15,17 @@ const EditorPage = () => {
   const [mode, setMode] = useState("light");
   const [editorContent, setEditorContent] = useState("");
   const [language, setLanguage] = useState("python");
-  const [runConfetti,setRunConfetti] = useState(false);
-  const {id} = useParams()
+  const [runConfetti, setRunConfetti] = useState(false);
+  const { id } = useParams();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [descriptionWidth, setDescriptionWidth] = useState(
+    window.innerWidth / 2
+  );
+  const [editorWidth, setEditorWidth] = useState(window.innerWidth / 2);
 
   // eslint-disable-next-line
   const toggleTheme = () => {
     setMode(mode === "light" ? "dark" : "light");
-  };
-
-  const handleRunClick = () => {
-    setIsModalOpen(true);
-    // Add the logic to run the test cases here
   };
 
   const SubmitFile = async (type) => {
@@ -45,17 +46,16 @@ const EditorPage = () => {
       });
       const data = await response.json();
       if (!response.ok) {
-          window.alert(
-            `You Did Not Solve This Problem with the status of ${response.status} and ${data.detail.reason}`
-          );
-        }
-       else {
-        if (type == "submit"){
-          setRunConfetti(true)
+        window.alert(
+          `You Did Not Solve This Problem with the status of ${response.status} and ${data.detail.reason}`
+        );
+      } else {
+        if (type == "submit") {
+          setRunConfetti(true);
           setTimeout(() => {
-            setRunConfetti(false)
-          },3000)
-        }else{
+            setRunConfetti(false);
+          }, 3000);
+        } else {
           window.alert(
             `You Did  Solve This Problem with the status of ${response.status} and ${data.detail.reason}`
           );
@@ -82,13 +82,26 @@ const EditorPage = () => {
             m: 0,
           }}
         >
-          <MainHeader runConfetti = {runConfetti} onSubmit={SubmitFile} />
-          <Box sx={{ display: "flex", flexGrow: 1, p: 0 }}>
-            <DescriptionBox 
-            questionId = {id}
-            sx={{ flexBasis: "auto", flexGrow: 0 }} />
+          <MainHeader runConfetti={runConfetti} onSubmit={SubmitFile} />
+          <Box sx={{ display: "flex", p: 0 }}>
+            {/* <ResizableBox
+              width={descriptionWidth}
+              height="100%"
+              minConstraints={[200, 300]} // Minimum width and height
+              maxConstraints={[window.innerWidth - 200, 600]}
+              handle={<span className="react-resizable-handle" />}
+              onResize={(event, { size }) => {
+                setDescriptionWidth(size.width);
+                setEditorWidth(window.innerWidth - size.width);
+              }}
+              axis="x"
+            > */}
+            <DescriptionBox questionId={id} />
+            {/* </ResizableBox> */}
+
             <Box
               sx={{
+                width: `${editorWidth}px`,
                 display: "flex",
                 flexDirection: "column",
                 flexGrow: 1,
@@ -103,7 +116,7 @@ const EditorPage = () => {
                   setLanguage={setLanguage}
                 />
               </Box>
-              <Box sx={{ flexGrow: 1 }}>
+              <Box sx={{ flexGrow: 0, flexShrink: 0, flexBasis: 0 }}>
                 <TestCases />
               </Box>
             </Box>

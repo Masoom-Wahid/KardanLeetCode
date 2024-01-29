@@ -1,0 +1,15 @@
+.react-resizable-handle {
+  width: 10px; /* Adjust the width of the handle as needed */
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: ew-resize;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.react-resizable:hover .react-resizable-handle {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.2); /* Adjust color and opacity as needed */
+}
