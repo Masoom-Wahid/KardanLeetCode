@@ -18,10 +18,21 @@ const Login = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const navigate = useNavigate();
+   useEffect(() => {
+      let accessToken = localStorage.getItem("accessToken")
 
+      if (accessToken !== undefined){
+          let parsed_data = parseJwt(accessToken);
+        parsed_data.is_superuser ? navigate("/admin") : navigate("/home");
+      }
+
+    })
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
+
+
+
 
     try {
       const response = await fetch(`${BASE_URL}auth/token/`, {
@@ -40,7 +51,7 @@ const Login = () => {
       localStorage.setItem("accessToken", data.access);
       localStorage.setItem("refreshToken", data.refresh);
       // Just Parse The Data and set it to local storage
-      const parsed_data = parseJwt(data.access);
+      let parsed_data = parseJwt(data.access);
       localStorage.setItem("username", parsed_data.username);
       localStorage.setItem("is_su", parsed_data.is_superuser);
       // naviagate depending on the user's token

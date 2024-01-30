@@ -1,24 +1,33 @@
 import React, { useState } from "react";
 import styles from "./TestCases.module.css";
 
-const TestCases = () => {
+const TestCases = ({onSubmit,manualTestCase,setManualTestCase}) => {
   const [mainTabValue, setMainTabValue] = useState(0);
-
-  const [inputValue, setInputValue] = useState("");
-  const [outputValue, setOutputValue] = useState("");
-  const [finalOutput, setFinalOutput] = useState("Something");
+  const [loading,setLoading] = useState(false)
+  /*
+  Dont Delete The BoilerPlate , This Is A Better Way To Handle It Then Going To Error Check
+  Everywhere
+  */
+  const [finalOutput, setFinalOutput] = useState(
+              {
+                "error":false,
+                "output":"Run Your TestCases So They Would Show here"
+              }  
+    );
 
   const formatMultilineText = (text) => {
     return text.split("\n").map((line, index) => <div key={index}>{line}</div>);
   };
 
-  const runTestCase = () => {
-    // Function to handle running of the test case
-    console.log("Running test case with input:", inputValue);
-    // Set the final output based on the result of the test case
-    // For now, we'll just set it to the outputValue
-    setFinalOutput(outputValue);
+  const runTestCase = async () => {
+    setLoading(true)
+    let result = await onSubmit("manual")
+    console.log(result)
+    setFinalOutput(result)
+    setMainTabValue(1)
+    setLoading(false)
   };
+
 
   return (
     <div className={styles.testCasesContainer}>
@@ -47,23 +56,25 @@ const TestCases = () => {
               <label className={styles.testCaseLabel}>Enter Your Input</label>
               <textarea
                 className={styles.testCaseInput}
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
+                value={manualTestCase}
+                onChange={(e) => setManualTestCase(e.target.value)}
                 placeholder="Enter your input"
               />
             </div>
           </div>
           <button className={styles.runTestCaseButton} onClick={runTestCase}>
-            Run Test Case
+            { loading ? "Running......" : "Run Test Case"}
           </button>
         </div>
       )}
       {mainTabValue === 1 && (
         <div className={styles.testResultContent}>
-          <div className={styles.finalOutputLabel}>FINAL OUTPUT</div>
+          <div className={styles.finalOutputLabel} style={finalOutput["error"] ? {color:"red"} : {color:"green"}} >
+          {finalOutput["error"] ? "Error" : "Compiled Succesfully"}
+          </div>
           <div className={styles.finalOutputValue}>
             <div className={styles.multilineText}>
-              {formatMultilineText(finalOutput)}
+              { finalOutput["output"]?.length !== 0 && formatMultilineText(finalOutput["output"])}
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@ import styles from "./DescriptionBox.module.css";
 import {useNavigate} from 'react-router-dom';
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { EndContestSnackbar } from "../../Helpers/EndContestSnackbar";
+import { EndContestSnackbar } from "../../../Helpers/EndContestSnackbar";
 
 const BASE_URL = process.env.REACT_APP_API_URL;
 
@@ -11,14 +11,20 @@ const formatMultilineText = (text) => {
   return text.split("\n").map((line, index) => <div key={index}>{line}</div>);
 };
 
-const DescriptionBox = ({ questionId }) => {
+const DescriptionBox = ({ questionId,challenge,contestFinished,setContestFinished }) => {
   const [tabValue, setTabValue] = useState(0);
-  const [challenge, setChallenge] = useState([]);
   const [submissions, setSubmissions] = useState([]);
   const { trigger, Snackbar, ConfettiEffect } = EndContestSnackbar(5000, {
     width: 500,
     height: 250,
   });
+
+  useEffect(() => {
+    if(contestFinished){
+      trigger()
+      setContestFinished(false)
+    }
+  },[contestFinished])
 
   const handleShowSubmissions = async () => {
     try {
@@ -34,7 +40,6 @@ const DescriptionBox = ({ questionId }) => {
 
       const data = await response.json();
       if (!response.ok) {
-        console.log(response.status);
         // 401 means unauthorized , 403 means unauthorized, so the user is either using an old token or is
         // either bypassing
         if (response.status === 401 || response.status === 403) {
@@ -43,7 +48,6 @@ const DescriptionBox = ({ questionId }) => {
         }
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      console.log(data);
       setSubmissions(data);
       // Process the data
     } catch (error) {
@@ -55,37 +59,6 @@ const DescriptionBox = ({ questionId }) => {
   };
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`${BASE_URL}competition/${questionId}`, {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        });
-
-        const data = await response.json();
-        if (!response.ok) {
-          console.log(response.status);
-          // 401 means unauthorized , 403 means unauthorized, so the user is either using an old token or is
-          // either bypassing
-          if (response.status === 401 || response.status === 403) {
-            localStorage.removeItem("accessToken");
-            navigate("/");
-          }
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        setChallenge(data);
-        // Process the data
-      } catch (error) {
-        // Handle errors
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, []);
 
   return (
     <div className={styles.descriptionBox}>
@@ -139,6 +112,14 @@ const DescriptionBox = ({ questionId }) => {
               </p>
             </div>
           ))}
+          <b>Constraints:</b>{" "}
+          <div  className={styles.exampleBox}>
+            <p className={styles.exampleOutput}>
+              <div className={styles.multilineText}>
+                  {formatMultilineText(challenge.consts.consts)}
+            </div>
+          </p>
+          </div>
         </div>
       )}
       {tabValue === 1 && (
@@ -180,7 +161,6 @@ const DescriptionBox = ({ questionId }) => {
         </div>
       )}
       <div>
-        <button onClick={trigger}>End Contest</button>
         <Snackbar />
         <ConfettiEffect />
       </div>
