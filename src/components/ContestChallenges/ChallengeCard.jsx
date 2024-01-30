@@ -10,6 +10,7 @@ const ChallengeCard = ({
   title,
   points,
   timeLimit,
+  solved,
   lvl,
   description,
   isOdd,
@@ -57,7 +58,13 @@ const ChallengeCard = ({
               {lvl}
               </span>
           </span>
-          <button onClick={() => navigate(`/contest/${id}`) } className={styles.solveButton}>Solve</button>
+          <button 
+          onClick={() => navigate(`/contest/${id}`) } 
+          className={styles.solveButton}
+          style={{backgroundColor : solved ? "green" : "blue"}}
+          >
+          {solved ? "Solved"  :"Solve"} 
+          </button>
         </div>
       </div>
     </div>

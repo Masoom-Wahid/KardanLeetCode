@@ -10,8 +10,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
-import { useSnackbarConfetti } from "../../Helpers/useSnackbarConfetti";
-import RunOverlay from "./RunOverlay";
+import { useSnackbarConfetti } from "../../../Helpers/useSnackbarConfetti";
+import RunOverlay from "../OverLay/RunOverlay";
 
 const StyledComponentContainer = styled(Box)(({ theme }) => ({
   border: "1px solid #e0e0e0",
@@ -92,55 +92,37 @@ const BreathingIconButton = styled(IconButton)(({ theme }) => ({
 const MainHeader = ({
   runConfetti,
   onToggleDarkMode,
+  readOnly,
+  testCaseData,
   isDarkMode,
+  contestFinished,
   onSubmit,
 }) => {
   const navigate = useNavigate();
   const { trigger, SnackBar, ConfettiEffect } = useSnackbarConfetti();
   const [runLoading, setRunLoading] = useState(false);
   const [isModalOpen, setModalOpen] = useState(false);
-
+  const [localData,setLocalData] = useState()
   const toggleModal = () => {
     setModalOpen(!isModalOpen);
   };
-  const mockTestData = {
-    tests: [
-      { id: 1, name: "Test Case 1", status: "pass" },
-      { id: 2, name: "Test Case 2", status: "loading" },
-      { id: 3, name: "Test Case 3", status: "fail" },
-
-      { id: 4, name: "Test Case 4", status: "pass" },
-      { id: 5, name: "Test Case 5", status: "pass" },
-      { id: 6, name: "Test Case 6", status: "loading" },
-
-      { id: 7, name: "Test Case 7", status: "loading" },
-      { id: 8, name: "Test Case 8", status: "pass" },
-      { id: 9, name: "Test Case 9", status: "loading" },
-    ],
-    expected: "30\n43\n23\n43",
-    actual: "31",
-    error: "You did something wrong, boy!",
-    errorType: "hasMismatch",
-
-    // ... add more test cases as needed
-  };
-
-  console.log(runConfetti);
-  useEffect(() => {
-    if (runConfetti) {
-      trigger("Give me a kiss baby, You solved the question! 🎉");
+    useEffect(() => {
+    if(runConfetti){
+      trigger("Congratulations, You solved the question! 🎉");
     }
-  }, [runConfetti]);
+    if (testCaseData !== undefined){
+      setLocalData(testCaseData)
+      toggleModal()
+    }
+  },[runConfetti,testCaseData])
 
+    
   const handleProblemList = () => {
     navigate("/contest");
   };
 
   const handleRun = async (type) => {
-    setRunLoading(true);
-    setModalOpen(true);
     await onSubmit(type);
-    setRunLoading(false);
   };
   return (
     <>
@@ -149,7 +131,9 @@ const MainHeader = ({
           Problem List
           <FontAwesomeIcon icon={faChevronRight} />
         </RectangleButton>
-        <Box>
+        {
+          !readOnly && (
+          <Box>
           <StyledButton
             onClick={() => handleRun("run")}
             startIcon={<FontAwesomeIcon icon={faPlay} />}
@@ -165,6 +149,9 @@ const MainHeader = ({
           <SnackBar />
           <ConfettiEffect />
         </Box>
+            ) 
+        }
+
         <BreathingIconButton onClick={onToggleDarkMode}>
           {isDarkMode ? (
             <FontAwesomeIcon icon={faSun} />
@@ -176,7 +163,7 @@ const MainHeader = ({
       <RunOverlay
         isOpen={isModalOpen}
         onClose={toggleModal}
-        testData={mockTestData} // Pass the mock test results to the overlay
+        testData={localData} // Pass the mock test results to the overlay
       />
       <SnackBar />
       <ConfettiEffect />

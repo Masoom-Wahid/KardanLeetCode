@@ -9,7 +9,6 @@ const ChallengesGrid = () => {
   const [contestName,setContestName] = useState("Contest")
 
   const navigate = useNavigate();
-  console.log(localStorage.getItem("accessToken"))
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -59,6 +58,7 @@ const ChallengesGrid = () => {
                 title={challenge.title}
                 points={challenge.point}
                 timeLimit={challenge.time_limit}
+                solved={challenge.solved}
                 lvl = {challenge.lvl}
                 isOdd={index % 2 === 0}
                 description={challenge.description}

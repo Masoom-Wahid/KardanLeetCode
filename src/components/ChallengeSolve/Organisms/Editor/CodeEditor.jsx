@@ -32,6 +32,8 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
 const CodeEditor = ({
   editorContent,
   setEditorContent,
+  readOnly,
+  solvedCode,
   language,
   setLanguage,
 }) => {
@@ -162,7 +164,7 @@ const CodeEditor = ({
         height="100%"
         language={language}
         theme="vs-light"
-        value={editorContent}
+        value={solvedCode !== "" ? solvedCode : editorContent}
         onChange={setEditorContent}
         onMount={handleEditorDidMount}
         options={{

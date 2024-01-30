@@ -15,24 +15,25 @@ const formatMultilineText = (text) => {
 const RunOverlay = ({ isOpen, onClose, testData }) => {
   if (!isOpen) return null;
 
-  const { tests, expected, actual, error, errorType } = testData;
-
+  let { tests, didSolve, error, errorType } = testData;
+  
   const getTestStatus = () => {
-    const hasError = tests.some((test) => test.status === "error");
-    const hasMismatch = tests.some((test) => test.status === "fail");
-    const allPassed = tests.every((test) => test.status === "pass");
+    let allPassed = didSolve;
+    const hasMismatch = errorType === "hasMismatch"
+    
 
-    if (hasError) {
+    if (!hasMismatch) {
+      if(!didSolve){errorType = "hasError"}
       return {
         message:
-          "Unfortunately, there seems to be a problem with your answer. Error: " +
+          "There seems to be a problem with your answer. Error: " +
           error,
         type: "error",
         statusType: "hasError",
       };
     } else if (hasMismatch) {
       return {
-        message: "There seems to be a mismatch in the answer.",
+        message: "Wrong Answer, Please Try Again.",
         type: "mismatch",
         statusType: "hasMismatch",
       };
@@ -53,7 +54,9 @@ const RunOverlay = ({ isOpen, onClose, testData }) => {
         <button className={styles.closeButton} onClick={onClose}>
           <FontAwesomeIcon icon={faTimes} />
         </button>
-        <h2 className={styles.title}>Test Cases</h2>
+        <h2 className={styles.title}
+        style={didSolve ? {color:"green"} : {color:"red"}}
+        >{didSolve ? "Solved" : "Wrong"}</h2>
         <ul className={styles.testList}>
           {tests.map((test) => (
             <li key={test.id} className={styles.testItem}>
@@ -90,13 +93,13 @@ const RunOverlay = ({ isOpen, onClose, testData }) => {
                 <div>
                   <strong>Expected Answer:</strong>{" "}
                   <div className={styles.multilineText}>
-                    {formatMultilineText(expected)}
+                    {formatMultilineText(error["expectedOutput"] ? error["expectedOutput"] : "")}
                   </div>
                 </div>
                 <div>
                   <strong>Your Answer:</strong>{" "}
                   <div className={styles.multilineText}>
-                    {formatMultilineText(actual)}
+                    {formatMultilineText(error["yourAnswer"] ? error["yourAnswer"] : "")}
                   </div>
                 </div>
               </div>
