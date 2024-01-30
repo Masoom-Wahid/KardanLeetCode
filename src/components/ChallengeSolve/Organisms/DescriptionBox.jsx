@@ -3,6 +3,7 @@ import styles from "./DescriptionBox.module.css";
 import {useNavigate} from 'react-router-dom';
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { EndContestSnackbar } from "../../Helpers/EndContestSnackbar";
 
 const BASE_URL = process.env.REACT_APP_API_URL;
 
@@ -14,6 +15,10 @@ const DescriptionBox = ({ questionId }) => {
   const [tabValue, setTabValue] = useState(0);
   const [challenge, setChallenge] = useState([]);
   const [submissions, setSubmissions] = useState([]);
+  const { trigger, Snackbar, ConfettiEffect } = EndContestSnackbar(5000, {
+    width: 500,
+    height: 250,
+  });
 
   const handleShowSubmissions = async () => {
     try {
@@ -127,9 +132,10 @@ const DescriptionBox = ({ questionId }) => {
                 </div>
               </p>
               <p className={styles.exampleExplanation}>
-                <b>Explanation:</b>  <div className={styles.multilineText}>
-              {formatMultilineText(example.explanation)}
-            </div>
+                <b>Explanation:</b>{" "}
+                <div className={styles.multilineText}>
+                  {formatMultilineText(example.explanation)}
+                </div>
               </p>
             </div>
           ))}
@@ -173,6 +179,11 @@ const DescriptionBox = ({ questionId }) => {
           </table>
         </div>
       )}
+      <div>
+        <button onClick={trigger}>End Contest</button>
+        <Snackbar />
+        <ConfettiEffect />
+      </div>
     </div>
   );
 };
