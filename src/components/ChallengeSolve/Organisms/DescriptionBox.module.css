@@ -136,3 +136,8 @@
 .circleIcon {
   font-size: 12px;
 }
+
+.multilineText > div {
+  display: block;
+}
+

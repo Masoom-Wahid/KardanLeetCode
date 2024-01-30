@@ -6,42 +6,48 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const BASE_URL = process.env.REACT_APP_API_URL;
 
+const formatMultilineText = (text) => {
+  return text.split("\n").map((line, index) => <div key={index}>{line}</div>);
+};
+
 const DescriptionBox = ({ questionId }) => {
   const [tabValue, setTabValue] = useState(0);
   const [challenge, setChallenge] = useState([]);
   const [submissions, setSubmissions] = useState([]);
 
   const handleShowSubmissions = async () => {
-      try {
-        const response = await fetch(`${BASE_URL}competition/${questionId}/?submissions=True`, {
+    try {
+      const response = await fetch(
+        `${BASE_URL}competition/${questionId}/?submissions=True`,
+        {
           method: "GET",
           headers: {
             Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
           },
-        });
-
-        const data = await response.json();
-        if (!response.ok) {
-          console.log(response.status);
-          // 401 means unauthorized , 403 means unauthorized, so the user is either using an old token or is
-          // either bypassing
-          if (response.status === 401 || response.status === 403) {
-            localStorage.removeItem("accessToken");
-            navigate("/");
-          }
-          throw new Error(`HTTP error! status: ${response.status}`);
         }
-        console.log(data);
-        setSubmissions(data);
-        // Process the data
-      } catch (error) {
-        // Handle errors
-        console.error(error);
-      }finally{
-      setTabValue(1)    
+      );
+
+      const data = await response.json();
+      if (!response.ok) {
+        console.log(response.status);
+        // 401 means unauthorized , 403 means unauthorized, so the user is either using an old token or is
+        // either bypassing
+        if (response.status === 401 || response.status === 403) {
+          localStorage.removeItem("accessToken");
+          navigate("/");
+        }
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-    
-  }
+      console.log(data);
+      setSubmissions(data);
+      // Process the data
+    } catch (error) {
+      // Handle errors
+      console.error(error);
+    } finally {
+      setTabValue(1);
+    }
+  };
 
   const navigate = useNavigate();
 
@@ -109,13 +115,21 @@ const DescriptionBox = ({ questionId }) => {
           {challenge.test_cases.map((example) => (
             <div key={example.id} className={styles.exampleBox}>
               <p className={styles.exampleInput}>
-                <b>Input:</b> {example.sample}
+                <b>Input:</b>{" "}
+                <div className={styles.multilineText}>
+                  {formatMultilineText(example.sample)}
+                </div>
               </p>
               <p className={styles.exampleOutput}>
-                <b>Output:</b> {example.answer}
+                <b>Output:</b>
+                <div className={styles.multilineText}>
+                  {formatMultilineText(example.answer)}
+                </div>
               </p>
               <p className={styles.exampleExplanation}>
-                <b>Explanation:</b> {example.explanation}
+                <b>Explanation:</b>  <div className={styles.multilineText}>
+              {formatMultilineText(example.explanation)}
+            </div>
               </p>
             </div>
           ))}
@@ -139,7 +153,13 @@ const DescriptionBox = ({ questionId }) => {
                   <td>{submission.lang}</td>
                   <td>{submission.status}</td>
                   <td>
-                    <span className={styles[`status${submission.solved ? "Accepted" : "Rejected"}`]}>
+                    <span
+                      className={
+                        styles[
+                          `status${submission.solved ? "Accepted" : "Rejected"}`
+                        ]
+                      }
+                    >
                       <FontAwesomeIcon
                         icon={faCircle}
                         className={styles.circleIcon}
