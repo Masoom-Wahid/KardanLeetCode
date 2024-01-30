@@ -117,10 +117,10 @@ const MainHeader = ({
       { id: 8, name: "Test Case 8", status: "pass" },
       { id: 9, name: "Test Case 9", status: "loading" },
     ],
-    expected: "30",
+    expected: "30\n43\n23\n43",
     actual: "31",
     error: "You did something wrong, boy!",
-    errorType: "hasError",
+    errorType: "hasMismatch",
 
     // ... add more test cases as needed
   };

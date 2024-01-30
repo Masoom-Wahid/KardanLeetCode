@@ -8,6 +8,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./RunOverlay.module.css";
 
+const formatMultilineText = (text) => {
+  return text.split("\n").map((line, index) => <div key={index}>{line}</div>);
+};
+
 const RunOverlay = ({ isOpen, onClose, testData }) => {
   if (!isOpen) return null;
 
@@ -84,10 +88,16 @@ const RunOverlay = ({ isOpen, onClose, testData }) => {
               {testStatus.message}
               <div className={styles.mismatchDetails}>
                 <div>
-                  <strong>Expected Answer:</strong> {expected}
+                  <strong>Expected Answer:</strong>{" "}
+                  <div className={styles.multilineText}>
+                    {formatMultilineText(expected)}
+                  </div>
                 </div>
                 <div>
-                  <strong>Your Answer:</strong> {actual}
+                  <strong>Your Answer:</strong>{" "}
+                  <div className={styles.multilineText}>
+                    {formatMultilineText(actual)}
+                  </div>
                 </div>
               </div>
             </>

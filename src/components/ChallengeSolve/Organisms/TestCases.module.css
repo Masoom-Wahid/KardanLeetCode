@@ -59,6 +59,8 @@
   font-weight: 500;
   font-size: 18px;
   color: #333333;
+  white-space: nowrap;
+  margin-right: 10px;
 }
 
 .testCaseInput {
@@ -115,3 +117,8 @@
   box-shadow: none;
   transform: translateY(1px);
 }
+
+.multilineText > div {
+  display: block;
+}
+

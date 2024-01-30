@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import Button from "@mui/material/Button";
+import React from "react";
 import "./HomePage.css";
 import { useNavigate } from "react-router-dom";
 
@@ -18,7 +17,6 @@ const HomePage = () => {
           <div className="logo">
             <img src="/logo.png" alt="LOGO" />
           </div>{" "}
-          {/* Logo placeholder */}
         </div>
         <div className="title-container">
           <h1>Kardan Contest</h1>
@@ -28,13 +26,13 @@ const HomePage = () => {
           <p className="welcome-message">
             Welcome to the competition dear, {teamName}
           </p>
-          <Button
+          <button
             variant="contained"
             className="get-started-button"
             onClick={handleClick}
           >
             GET STARTED
-          </Button>
+          </button>
         </div>
       </div>
       <div className="content-section">

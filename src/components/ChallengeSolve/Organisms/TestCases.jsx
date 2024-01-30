@@ -8,6 +8,10 @@ const TestCases = () => {
   const [outputValue, setOutputValue] = useState("");
   const [finalOutput, setFinalOutput] = useState("Something");
 
+  const formatMultilineText = (text) => {
+    return text.split("\n").map((line, index) => <div key={index}>{line}</div>);
+  };
+
   const runTestCase = () => {
     // Function to handle running of the test case
     console.log("Running test case with input:", inputValue);
@@ -57,7 +61,11 @@ const TestCases = () => {
       {mainTabValue === 1 && (
         <div className={styles.testResultContent}>
           <div className={styles.finalOutputLabel}>FINAL OUTPUT</div>
-          <div className={styles.finalOutputValue}>{finalOutput}</div>
+          <div className={styles.finalOutputValue}>
+            <div className={styles.multilineText}>
+              {formatMultilineText(finalOutput)}
+            </div>
+          </div>
         </div>
       )}
     </div>

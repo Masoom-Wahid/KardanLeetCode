@@ -23,7 +23,7 @@ export const useSnackbarConfetti = () => {
       </div>
     );
 
-  const ConfettiEffect = () => showConfetti && <Confetti />;
-
+  const ConfettiEffect = () =>
+    showConfetti && <Confetti style={{ zIndex: "100000" }} />;
   return { trigger, SnackBar, ConfettiEffect };
 };

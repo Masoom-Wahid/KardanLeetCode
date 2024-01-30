@@ -11,7 +11,7 @@
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(5px);
-  z-index: 100000;
+  z-index: 1000;
 }
 
 .modal {
@@ -137,25 +137,25 @@
 }
 
 .error {
-  background-color: #ffe5e5; /* Light red */
-  color: #d9534f; /* Darker red */
+  background-color: #ffe5e5;
+  color: #d9534f; 
 }
 
 .mismatch {
-  background-color: #fff5e6; /* Light orange */
-  color: #f0ad4e; /* Darker orange */
+  background-color: #fff5e6; 
+  color: #f0ad4e;
 }
 
 .success {
-  background-color: #e6ffe6; /* Light green */
-  color: #5cb85c; /* Darker green */
+  background-color: #e6ffe6;
+  color: #5cb85c;
 }
 
 .mismatchDetails {
   margin-top: 10px;
   padding: 10px;
-  background-color: #f9f9f9; /* Light grey */
-  border: 1px solid #ddd; /* Grey border */
+  background-color: #f9f9f9; 
+  border: 1px solid #ddd; 
   border-radius: 5px;
   text-align: left;
 }
@@ -167,18 +167,20 @@
 .errorDetails, .successDetails {
   margin-top: 10px;
   padding: 10px;
-  background-color: #f9f9f9; /* Light grey */
-  border: 1px solid #ddd; /* Grey border */
+  background-color: #f9f9f9; 
+  border: 1px solid #ddd; 
   border-radius: 5px;
   text-align: left;
 }
 
 .errorDetails {
-  color: #d9534f; /* Darker red for error messages */
+  color: #d9534f; 
 }
 
 .successDetails {
-  color: #5cb85c; /* Darker green for success messages */
+  color: #5cb85c; 
 }
 
-
+.multilineText > div {
+  display: block;
+}
