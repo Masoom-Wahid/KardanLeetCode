@@ -5,8 +5,10 @@ import styles from "./YourComponent.module.css"; // Update with your actual CSS 
 export const useSnackbarConfetti = () => {
   const [showConfetti, setShowConfetti] = useState(false);
   const [showSnackBar, setShowSnackBar] = useState(false);
+  const [snackBarText, setSnackBarText] = useState("");
 
-  const trigger = () => {
+  const trigger = (text) => {
+    setSnackBarText(text); // Set the dynamic text for snackbar
     setShowConfetti(true);
     setShowSnackBar(true);
     setTimeout(() => {
@@ -18,7 +20,7 @@ export const useSnackbarConfetti = () => {
   const SnackBar = () =>
     showSnackBar && (
       <div className={styles.snackBar}>
-        Give me a kiss baby, You solved the question! 🎉
+        {snackBarText}
         <div className={styles.loadingBar}></div>
       </div>
     );

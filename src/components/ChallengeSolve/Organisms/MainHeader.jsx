@@ -128,7 +128,7 @@ const MainHeader = ({
   console.log(runConfetti);
   useEffect(() => {
     if (runConfetti) {
-      trigger();
+      trigger("Give me a kiss baby, You solved the question! 🎉");
     }
   }, [runConfetti]);
 
