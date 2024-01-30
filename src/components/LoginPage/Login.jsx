@@ -20,9 +20,10 @@ const Login = () => {
   const navigate = useNavigate();
    useEffect(() => {
       let accessToken = localStorage.getItem("accessToken")
+      console.log(accessToken)
 
-      if (accessToken !== undefined){
-          let parsed_data = parseJwt(accessToken);
+      if (accessToken !== null){
+        let parsed_data = parseJwt(accessToken);
         parsed_data.is_superuser ? navigate("/admin") : navigate("/home");
       }
 
@@ -30,10 +31,6 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
-
-
-
-
     try {
       const response = await fetch(`${BASE_URL}auth/token/`, {
         method: "POST",

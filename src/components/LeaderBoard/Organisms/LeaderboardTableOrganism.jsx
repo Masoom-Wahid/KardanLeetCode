@@ -56,9 +56,7 @@ const LeaderboardTableOrganism = () => {
   ];
 
   useEffect(() => {
-    let accessToken =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA1NDcxNDU1LCJpYXQiOjE3MDUyMTIyNTUsImp0aSI6ImI3MGFmNGQzMGY2ZDRkM2ViZjY4ZjM4NjE2ODE0ZmU0IiwidXNlcl9pZCI6MX0.fvPYIwYXV2oQDWpe2q5-h-Mt9JeR5TzeTpxQHR53hzQ";
-
+    let accessToken = localStorage.getItem("accessToken")
     let url = `${WEBSOCKET_URL}leaderboard/?token=${accessToken}`;
     const chat = new WebSocket(url);
     setChatSocket(chat);

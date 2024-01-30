@@ -30,7 +30,7 @@ const NavBar = () => {
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem("loginToken"); // Remove the token from localStorage
+    localStorage.removeItem("accessToken"); // Remove the token from localStorage
     navigate("/");
   };
 
