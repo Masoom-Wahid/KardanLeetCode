@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&family=Josefin+Sans:wght@200&family=Julius+Sans+One&display=swap');
+
+.title {
+  font-family: "Josefin Sans";
+  font-size: 54px;
+  align-self: flex-start;
+  text-align: left;
+  direction: ltr;
+  justify-self: start;
+  margin-left: 50px;
+  margin-top: 20px; 
+}
+
+.codeEditorContainer {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  font-family: 'Josefin Sans', sans-serif;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 20px;
+}
+
+
+.editorHeader {
+  background-color: #272727;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #3c3c3c;
+}
+
+.editorTitle {
+  color: #61dafb;
+  margin-left: 8px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.icon {
+  color: #61dafb;
+  font-size: 24px;
+}
+

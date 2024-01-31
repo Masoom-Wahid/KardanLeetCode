@@ -21,6 +21,7 @@ import ChallengesGrid from "./components/ContestChallenges/ChallengesGrid";
 import ManageContestsParentComponent from "./components/Dashboard/ManageContestsParentComponent";
 import ManageContest from "./components/Dashboard/ManageContest";
 import ProtectedRoute from "./ProtectedRoute";
+import SubmissionDetail from "./components/SubmissionDetail/SubmissionDetail";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -70,6 +71,7 @@ function App() {
           <Route path="/submissions" element={<Submissions />} />
           <Route path="/managecontest" element={<ManageContests />} />
           <Route path="/analytics" element={<ManageContest />} />
+          <Route path="/submissiondetail" element={<SubmissionDetail />} />
           <Route
             path="/mainmanage"
             element={<ManageContestsParentComponent />}
