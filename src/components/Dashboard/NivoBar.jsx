@@ -164,19 +164,6 @@ const NivoBar = () => {
               <h4 className={styles.cardTitle}>Total Challenges Stats</h4>
             </CCol>
             <div className={styles.buttons}>
-              <div className={styles.buttonGroup}>
-                {["Graph", "Data"].map((value) => (
-                  <button
-                    className={`${styles.button} ${
-                      viewType === value ? styles.active : ""
-                    }`}
-                    onClick={() => setViewType(value)}
-                    key={value}
-                  >
-                    {value}
-                  </button>
-                ))}
-              </div>
               {viewType === "Graph" && (
                 <div className={styles.chartButtonGroup}>
                   {view.map((value) => (

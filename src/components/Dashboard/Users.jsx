@@ -1,5 +1,4 @@
 import React from "react";
-import Sidebar from "./Sidebar"; // Assume Sidebar is already implemented
 import styles from "./Users.module.css"; // CSS Module for Users
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrashAlt, faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -17,7 +16,6 @@ const Users = () => {
 
   return (
     <div className={styles.container}>
-      <Sidebar />
       <div className={styles.usersContainer}>
         <h1 className={styles.title}>Users</h1>
         <button

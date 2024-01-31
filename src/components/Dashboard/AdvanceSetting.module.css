@@ -1,0 +1,48 @@
+/* ManageContest.module.css */
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Take up full viewport height */
+  gap: 20px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align buttons to the start of the column */
+  align-self: flex-start;
+  margin-top: 100px;
+}
+
+.button {
+  padding: 20px 20px;
+  border: none;
+  border-radius: 5px;
+  background-image: linear-gradient(to right, #4e54c8, #8f94fb);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 200px; /* Set a fixed width for all buttons */
+  justify-content: center; /* Center text and icon in the button */
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.button:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.icon {
+  font-size: 20px;
+}

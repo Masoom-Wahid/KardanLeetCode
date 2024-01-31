@@ -1,0 +1,36 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 0;
+}
+
+.pageItem {
+  border: none;
+  padding: 8px 12px;
+  margin: 0 4px;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  color: #007bff;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  font-weight: 500;
+}
+
+.pageItem:hover:not([disabled]),
+.pageItem:focus:not([disabled]) {
+  background-color: #007bff;
+  color: white;
+}
+
+.pageItem:disabled {
+  color: #cccccc;
+  cursor: not-allowed;
+}
+
+.active {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Add responsive or additional styling as needed */

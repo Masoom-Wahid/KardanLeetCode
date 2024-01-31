@@ -8,6 +8,8 @@ import LeaderboardPage from "../LeaderBoard/Organisms/LeaderboardPage";
 import ChallengesTable from "./ChallengesTable";
 import ContestDetailsForm from "./ContestDetailsForm";
 import Submissions from "./Submissions";
+import AdvanceSetting from "./AdvanceSetting";
+import Users from "./Users";
 
 // Replace these with your actual component imports
 const DetailsComponent = () => (
@@ -46,9 +48,11 @@ const ManageContestsParentComponent = () => {
       case "Analytics":
         return <AnalyticsComponent />;
       case "Users":
-        return <UsersComponent />;
+        return <Users />;
       case "Submissions":
         return <Submissions />;
+      case "AdvanceSetting":
+        return <AdvanceSetting />;
       default:
         return null; // or <DefaultComponent />
     }

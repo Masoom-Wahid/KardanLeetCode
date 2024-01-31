@@ -12,7 +12,6 @@ import ParentComponent from "./components/Dashboard/ParentComponent";
 import CreateContest from "./components/Dashboard/CreateContest";
 import ShowContest from "./components/Dashboard/ShowContest";
 import CreateUser from "./components/Dashboard/CreateUser";
-import CreateUserAdmin from "./components/Dashboard/CreateUserAdmin";
 import CreateUserContestant from "./components/Dashboard/CreateUserContestant";
 import Users from "./components/Dashboard/Users";
 import Submissions from "./components/Dashboard/Submissions";
@@ -22,6 +21,7 @@ import ManageContestsParentComponent from "./components/Dashboard/ManageContests
 import ManageContest from "./components/Dashboard/ManageContest";
 import ProtectedRoute from "./ProtectedRoute";
 import SubmissionDetail from "./components/SubmissionDetail/SubmissionDetail";
+import CreateContestant from "./components/Dashboard/CreateContestant";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -62,7 +62,6 @@ function App() {
           <Route path="/createcontest" element={<CreateContest />} />
           <Route path="/contests" element={<ShowContest />} />
           <Route path="/createUser" element={<CreateUser />} />
-          <Route path="/createUserAdmin" element={<CreateUserAdmin />} />
           <Route
             path="/createUserContestant"
             element={<CreateUserContestant />}
@@ -72,6 +71,7 @@ function App() {
           <Route path="/managecontest" element={<ManageContests />} />
           <Route path="/analytics" element={<ManageContest />} />
           <Route path="/submissiondetail" element={<SubmissionDetail />} />
+          <Route path="/createContestant" element={<CreateContestant />} />
           <Route
             path="/mainmanage"
             element={<ManageContestsParentComponent />}

@@ -9,7 +9,7 @@ const CreateUser = () => {
   const navigate = useNavigate();
 
   const handleAdminUserClick = () => {
-    navigate("/createUserAdmin");
+    navigate("/createContestant");
   };
 
   const handleContestantUserClick = () => {
@@ -30,14 +30,14 @@ const CreateUser = () => {
             onClick={handleAdminUserClick}
           >
             <FontAwesomeIcon icon={faUserPlus} />
-            <span> Admin</span>
+            <span> Group of Contestants</span>
           </button>
           <button
             className={`${styles.userButton} ${styles.contestantButton}`}
             onClick={handleContestantUserClick}
           >
             <FontAwesomeIcon icon={faUserPlus} />
-            <span> Contestant</span>
+            <span> One Contestant</span>
           </button>
         </div>
       </div>

@@ -1,0 +1,64 @@
+/* PurgeModal.module.css */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 600px;
+  direction: ltr;
+  text-align: left;
+}
+
+.header {
+  color: #D8000C;
+  font-weight: bold;
+  font-size: 21px;
+  margin-bottom: 10px;
+}
+
+.content {
+  margin-bottom: 20px;
+}
+
+.deleteButton {
+  padding: 10px 20px;
+  background-color: #D8000C;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  float: right; /* Align the button to the right */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.deleteButton:hover {
+  background-color: #F44336; /* A slightly lighter red for hover effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.deleteButton:active {
+  background-color: #B71C1C; /* A darker red for active/click effect */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.deleteButton svg {
+  margin-right: 5px; /* Space between icon and text */
+}

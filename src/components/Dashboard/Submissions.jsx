@@ -7,6 +7,7 @@ import {
   faCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Submissions.module.css";
+import Pagination from "../Pagination/Pagination";
 
 // Mock data for submissions
 const mockSubmissions = [
@@ -44,42 +45,100 @@ const mockSubmissions = [
     date: "Yesterday",
     status: "Rejected",
   },
+  {
+    no: "5",
+    submissionId: "p1d41g3a23g21",
+    challenge: "Landing Page",
+    explanation: "Infinte Loop detected on the line 37:90",
+    date: "Just now",
+    status: "In Progress",
+  },
+  {
+    no: "6",
+    submissionId: "p1ds3g3a27655f",
+    challenge: "CRM Admin pages",
+    explanation: "Infinte Loop detected on the line 37:90",
+    date: "A minute ago",
+    status: "Complete",
+  },
+  {
+    no: "7",
+    submissionId: "p1dds7k3a2762f",
+    challenge: "Client Project",
+    explanation:
+      "A land slide detected on the line 37:90 be careful not to fall in",
+    date: "1 hour ago",
+    status: "Pending",
+  },
+  {
+    no: "8",
+    submissionId: "k134b231kbnjds7",
+    challenge: "Admin Dashboard",
+    explanation:
+      "'The Fuck you dude you are nothing but a pest' detected on the line 69:69",
+    date: "Yesterday",
+    status: "Rejected",
+  },
+  {
+    no: "9",
+    submissionId: "p1d41g3a23g21",
+    challenge: "Landing Page",
+    explanation: "Infinte Loop detected on the line 37:90",
+    date: "Just now",
+    status: "In Progress",
+  },
+  {
+    no: "10",
+    submissionId: "p1ds3g3a27655f",
+    challenge: "CRM Admin pages",
+    explanation: "Infinte Loop detected on the line 37:90",
+    date: "A minute ago",
+    status: "Complete",
+  },
+  {
+    no: "11",
+    submissionId: "p1dds7k3a2762f",
+    challenge: "Client Project",
+    explanation:
+      "A land slide detected on the line 37:90 be careful not to fall in",
+    date: "1 hour ago",
+    status: "Pending",
+  },
+  {
+    no: "12",
+    submissionId: "k134b231kbnjds7",
+    challenge: "Admin Dashboard",
+    explanation:
+      "'The Fuck you dude you are nothing but a pest' detected on the line 69:69",
+    date: "Yesterday",
+    status: "Rejected",
+  },
+  {
+    no: "13",
+    submissionId: "p1d41g3a23g21",
+    challenge: "Landing Page",
+    explanation: "Infinte Loop detected on the line 37:90",
+    date: "Just now",
+    status: "In Progress",
+  },
+  {
+    no: "14",
+    submissionId: "p1ds3g3a27655f",
+    challenge: "CRM Admin pages",
+    explanation: "Infinte Loop detected on the line 37:90",
+    date: "A minute ago",
+    status: "Complete",
+  },
+
   // ... more submissions
 ];
 
-// Pagination Component
-const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
-  const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
-    pageNumbers.push(i);
-  }
-
-  return (
-    <nav>
-      <ul className="pagination">
-        {pageNumbers.map((number) => (
-          <li key={number} className={styles.pageItem}>
-            <a
-              onClick={() => paginate(number)}
-              href={`#${currentPage}`}
-              className={`${styles.pageLink} ${
-                currentPage === number ? styles.active : ""
-              }`}
-            >
-              {number}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  );
-};
-
 const Submissions = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [submissionsPerPage] = useState(10); // Set how many submissions you want per page
-
+  const [submissionsPerPage] = useState(5); // Set how many submissions you want per page
   const [currentSubmissions, setCurrentSubmissions] = useState([]);
+
+  const totalPages = Math.ceil(mockSubmissions.length / submissionsPerPage);
 
   // Function to update the list of submissions when the page changes
   const fetchSubmissions = useCallback(
@@ -91,7 +150,6 @@ const Submissions = () => {
     [submissionsPerPage]
   );
 
-  // Pagination handler
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
     fetchSubmissions(pageNumber);
@@ -180,10 +238,9 @@ const Submissions = () => {
           </tbody>
         </table>
         <Pagination
-          itemsPerPage={submissionsPerPage}
-          totalItems={mockSubmissions.length}
-          paginate={paginate}
-          className={styles.pagination}
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={paginate}
         />
       </div>
     </div>

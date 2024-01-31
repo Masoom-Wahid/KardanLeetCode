@@ -1,7 +1,6 @@
 .card {
   border: none;
   border-radius: 0.5rem;
-  margin-bottom: 1rem;
   transition: box-shadow 0.2s ease-in-out;
 }
 
@@ -13,7 +12,6 @@
   background-color: #f8f9fa;
   padding: 10px;
   border-bottom: 1px solid #eaeaea;
-  
 }
 
 
@@ -27,8 +25,8 @@
 
 
 .cardBody {
-  height: 400px;
-  width: 650px;
+  height: 380px;
+  width: 620px;
   padding: 1rem;
   position: relative;
 }
@@ -38,7 +36,6 @@
   font-size: 3rem;
   color: #525f7f;
   font-weight: bold;
-  margin-bottom: 0.5rem;
 }
 
 .buttons{

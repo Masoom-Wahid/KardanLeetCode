@@ -1,9 +1,11 @@
 // CreateContestant.jsx
 import React, { useState } from "react";
 import styles from "./CreateContestant.module.css";
+import { useNavigate } from "react-router-dom";
 
 const CreateContestant = () => {
   const [numberOfUsers, setNumberOfUsers] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,7 +36,10 @@ const CreateContestant = () => {
               required
             />
           </div>
-          <button type="submit" className={styles.submitButton}>
+          <button
+            className={styles.submitButton}
+            onClick={() => navigate("/mainmanage")}
+          >
             Submit
           </button>
         </form>

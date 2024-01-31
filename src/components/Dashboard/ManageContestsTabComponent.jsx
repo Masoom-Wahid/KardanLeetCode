@@ -1,5 +1,5 @@
 import React from "react";
-import uniqueStyles from "./ManageContestsTabComponent.module.css"; // New unique CSS module
+import uniqueStyles from "./ManageContestsTabComponent.module.css"; 
 
 const ManageContestsTabsComponent = ({
   uniqueTabs,
