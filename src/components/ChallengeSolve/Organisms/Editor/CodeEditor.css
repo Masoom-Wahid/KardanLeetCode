@@ -1,48 +1,11 @@
-.code-editor-container {
-  margin-top: 19px;
-  margin-left: 5px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  height: 63vh;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
-  background-color: #fff; /* Adjust based on your theme */
+#forbidden-modal-title {
+  font-size: 30px;
+  font-weight: 400;
+  color: #0041da;
 }
 
-.editor-toolbar {
-  display: flex;
-  overflow: hidden;
-  height: 4vh;
-  box-shadow: 0px 4px rgba(0, 0, 0, 0.15);
-  background-color: #e0e0e0; /* Toolbar background */
-}
-
-.editor-select {
-  height: 30px;
-  background-color: #2196f3;
-  color: white;
-  border: none;
-  padding: 0 10px;
-  cursor: pointer;
-}
-
-.editor-select:hover {
-  background-color: #1976d2; /* Darker shade on hover */
-}
-
-.editor-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #0E43AB;
-  padding: 5px;
-  transition: color 0.3s ease;
-}
-
-.editor-button:hover {
-  color: #0E43AB; /* Darker shade on hover */
-}
-
-.fa-icon {
-  font-size: 1rem; /* Adjust size as needed */
+#forbidden-modal-description {
+  font-size: 18px;
+  direction: ltr;
+  text-align: left;
 }
