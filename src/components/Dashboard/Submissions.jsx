@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from "react";
-import Sidebar from "./Sidebar"; // Replace with actual path
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCalendarAlt,
@@ -115,7 +114,6 @@ const Submissions = () => {
 
   return (
     <div className={`${styles.pageContainer} ${styles.fadeIn}`}>
-      <Sidebar />
       <div className={styles.submissionsContainer}>
         <h1 className={styles.title}>Submissions</h1>
         <h1 className={styles.teamName}>Alpha 'Team Name'</h1>

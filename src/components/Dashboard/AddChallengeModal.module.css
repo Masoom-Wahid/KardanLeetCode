@@ -104,8 +104,8 @@ input[type="text"]:focus {
   background-color: #f7f7f7;
 }
 
-.add {
-  width: 300px; /* Fixed width for the button */
+.buttons {
+  width: 200px; /* Fixed width for the button */
   padding: 15px 20px;
   font-size: 1.2rem;
   font-weight: bold;
@@ -117,16 +117,18 @@ input[type="text"]:focus {
   transition: transform 0.2s ease;
   cursor: pointer;
   align-self: center; /* Aligns the button to the center of flex container */
-  margin-bottom: 20px; /* Space from the bottom */
+  margin-bottom: 20px;
+  margin-left: 15px;
 }
 
 
-.add:hover {
+
+.buttons:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.add:active {
+.buttons:active {
   transform: translateY(2px);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }

@@ -52,9 +52,10 @@ const AddChallengeModal = ({ closeModal }) => {
             ))}
           </ul>
         )}
-        <button className={styles.add} onClick={closeModal}>
+        <button className={styles.buttons} onClick={closeModal}>
           ADD
         </button>
+        <button className={styles.buttons}>Search</button>
       </div>
       <div className={styles.modalOverlay} onClick={closeModal} />
     </div>

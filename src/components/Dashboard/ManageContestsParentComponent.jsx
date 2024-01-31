@@ -7,6 +7,7 @@ import ManageContest from "./ManageContest";
 import LeaderboardPage from "../LeaderBoard/Organisms/LeaderboardPage";
 import ChallengesTable from "./ChallengesTable";
 import ContestDetailsForm from "./ContestDetailsForm";
+import Submissions from "./Submissions";
 
 // Replace these with your actual component imports
 const DetailsComponent = () => (
@@ -46,6 +47,8 @@ const ManageContestsParentComponent = () => {
         return <AnalyticsComponent />;
       case "Users":
         return <UsersComponent />;
+      case "Submissions":
+        return <Submissions />;
       default:
         return null; // or <DefaultComponent />
     }
@@ -62,6 +65,8 @@ const ManageContestsParentComponent = () => {
             { id: "Leaderboard", label: "Leaderboard" },
             { id: "Analytics", label: "Analytics" },
             { id: "Users", label: "Users" },
+            { id: "Submissions", label: "Submissions" },
+            { id: "AdvanceSetting", label: "Advance Setting" },
           ]}
           activeUniqueTab={activeUniqueTab}
           setActiveUniqueTab={setActiveUniqueTab}
