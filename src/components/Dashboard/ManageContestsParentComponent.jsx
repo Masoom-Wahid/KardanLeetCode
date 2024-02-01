@@ -10,6 +10,7 @@ import ContestDetailsForm from "./ContestDetailsForm";
 import Submissions from "./Submissions";
 import AdvanceSetting from "./AdvanceSetting";
 import Users from "./Users";
+import SubmissionsList from "./SubmissionsList";
 
 // Replace these with your actual component imports
 const DetailsComponent = () => (
@@ -50,7 +51,7 @@ const ManageContestsParentComponent = () => {
       case "Users":
         return <Users />;
       case "Submissions":
-        return <Submissions />;
+        return <SubmissionsList />;
       case "AdvanceSetting":
         return <AdvanceSetting />;
       default:

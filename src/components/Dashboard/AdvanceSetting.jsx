@@ -36,7 +36,7 @@ const AdvanceSetting = () => {
             onClick={trigger("Contest has been ended manually")}
           >
             <FontAwesomeIcon icon={faFlagCheckered} className={styles.icon} />
-            Finish Contest
+            End Contest
           </button>
 
           <button className={styles.button} onClick={openPurgeModal}>

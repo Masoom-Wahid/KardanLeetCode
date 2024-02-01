@@ -1,0 +1,242 @@
+.container {
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  max-width: 90%;
+  margin: 2rem auto;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+  background-color: #fff;
+  direction: ltr;
+
+}
+
+.title {
+  color: #333;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.table {
+  width: 100%;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 3fr 2fr 2fr;
+  gap: 1rem;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px 8px 0 0;
+  align-items: center;
+}
+
+.headerItem {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: #555;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 3fr 2fr 2fr;
+  gap: 1rem;
+  padding: 1rem;
+  text-align: left;
+  direction: ltr;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.3s;
+}
+
+.row:hover {
+  background-color: #f5f5f5;
+}
+
+.actionButton {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  font-size: 0.875rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: filter 0.3s;
+}
+
+.actionButton:hover {
+  filter: brightness(110%);
+}
+
+.icon {
+  margin-left: 0.5rem;
+  color: #777;
+  cursor: pointer;
+}
+
+/* Add more styles for responsive design */
+@media (max-width: 768px) {
+  .header, .row {
+    grid-template-columns: 1fr 3fr;
+  }
+
+  .headerItem:last-child, .row div:last-child {
+    display: none;
+  }
+
+  .row div:first-child::after {
+    content: attr(data-label);
+    font-weight: bold;
+    margin-right: 0.5rem;
+  }
+}
+
+.actionButton:focus {
+  outline: 2px solid #0056b3;
+  outline-offset: 2px;
+}
+
+/* Adding subtle animations for interactions */
+@keyframes buttonClick {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.actionButton:active {
+  animation: buttonClick 0.2s ease;
+}
+
+/* Adjusting the header's sort icon to indicate interaction */
+.headerItem {
+  cursor: pointer;
+}
+
+.headerItem:hover .icon {
+  color: #333;
+}
+
+.sortActive {
+  color: #0056b3;
+}
+
+/* Custom scrollbar for the table */
+.table::-webkit-scrollbar {
+  width: 8px;
+}
+
+.table::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.table::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+
+@media (max-width: 480px) {
+  .header, .row {
+    grid-template-columns: 1fr;
+  }
+
+  .headerItem:last-child, .row div:not(:first-child) {
+    display: none;
+  }
+
+  .row {
+    padding: 1rem 0.5rem;
+  }
+}
+
+.header {
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05);
+}
+
+.headerItem:hover .icon {
+  background-color: #ececec;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  color: #212121; /* Darken icon color on hover */
+  transition: color 0.2s;
+}
+
+.actionButton {
+  background-image: linear-gradient(to right, #006bff, #0088ff);
+}
+
+/* Fine-tuning the typography for better readability */
+.bodyText {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+
+/* Adding a bit more style to the overall container */
+.container {
+  background-color: #fdfdfd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #eaeaea;
+}
+
+/* Add animation for the sort icon when it is active or the data is sorted */
+.icon {
+  transition: transform 0.2s ease-in-out; /* Smooth transition for rotation */
+}
+
+.icon.up {
+  transform: rotate(180deg); /* Rotate icon to indicate upward sort */
+}
+
+/* Responsive adjustments for mobile view */
+@media (max-width: 768px) {
+  .headerItem .icon {
+    visibility: visible; /* Always show the sort icon on mobile for clarity */
+  }
+}
+
+/* Additional styling to enhance UX */
+.row:nth-child(even) {
+  background-color: #fcfcfc; /* Zebra striping for rows */
+}
+
+.row:nth-child(odd) {
+  background-color: #f8f8f8; /* Slightly different color for odd rows */
+}
+
+.row:hover {
+  background-color: #ececec; /* Hover color for rows */
+}
+
+/* Adjust padding and margins for better spacing and visual hierarchy */
+.container {
+  padding: 2rem; /* More padding around the component */
+  margin-top: 2rem; /* Add margin at the top */
+}
+
+.title {
+  margin-bottom: 2rem; /* Increase space below the title */
+}
+
+.headerItem {
+  margin-right: 1rem; /* Space between header items */
+}
+
+/* Ensure that the button text doesn't wrap on smaller screens */
+.actionButton {
+  white-space: nowrap; /* Prevent wrapping of button text */
+}
