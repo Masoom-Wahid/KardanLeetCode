@@ -9,7 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./AdvanceSetting.module.css"; // The path to your module CSS file
 import PurgeModal from "./PurgeModal";
-import { useSnackbarConfetti } from "../Helpers/useSnackbarConfetti";
+import { useSnackbarConfetti } from "../../../Helpers/useSnackbarConfetti";
 
 const AdvanceSetting = () => {
   const [isPurgeModalOpen, setPurgeModalOpen] = useState(false);

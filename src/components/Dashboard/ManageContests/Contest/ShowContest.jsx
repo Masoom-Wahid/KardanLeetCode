@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlus,
@@ -7,7 +7,7 @@ import {
   faCheckSquare,
   faSquare,
 } from "@fortawesome/free-solid-svg-icons";
-import Sidebar from "./Sidebar"; // Replace with your actual import path
+import Sidebar from "../../Sidebar/Sidebar"; // Replace with your actual import path
 import styles from "./ShowContest.module.css"; // CSS Module
 import { useNavigate } from "react-router-dom";
 
@@ -16,7 +16,6 @@ const ShowContest = () => {
   const [contests, setContests] = useState([]);
 
   const [selectedContests, setSelectedContests] = useState(new Set());
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,9 +51,6 @@ const ShowContest = () => {
     fetchData();
   }, [navigate]);
 
-
-
-
   const handleSelectContest = (contestId) => {
     setSelectedContests((prevSelected) => {
       const newSelected = new Set(prevSelected);
@@ -73,24 +69,27 @@ const ShowContest = () => {
 
   const handleDeleteSelected = async (id) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}contest/${id}/`, {
-        method: "DELETE",
-        headers: {
-          "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}contest/${id}/`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
       if (!response.ok) {
-        // 401 means unauthorized , 403 means unauthorized, so the user is either using an old token or is 
-        // either bypassing 
-        if (response.status === 401 || response.status === 403){
-          localStorage.removeItem("accessToken")
-          navigate("/")
+        // 401 means unauthorized , 403 means unauthorized, so the user is either using an old token or is
+        // either bypassing
+        if (response.status === 401 || response.status === 403) {
+          localStorage.removeItem("accessToken");
+          navigate("/");
         }
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       // Filter The Deleted Contest
       setContests((prevContest) =>
-      prevContest.filter((challenge) => challenge.id !== id)
+        prevContest.filter((challenge) => challenge.id !== id)
       );
       // Process the data
     } catch (error) {
@@ -103,7 +102,6 @@ const ShowContest = () => {
 
   return (
     <div className={styles.showContestContainer}>
-      <Sidebar />
       <div className={styles.contestsContainer}>
         <h1 className={styles.title}>Contests</h1>
         <button className={styles.addButton} onClick={handleAddNewClick}>
@@ -139,13 +137,15 @@ const ShowContest = () => {
                 </td>
                 <td>{contest.name}</td>
                 <td>{contest.duration}</td>
-                <td>{ contest.starred ? "True" : "False"}</td>
+                <td>{contest.starred ? "True" : "False"}</td>
                 <td>
                   <div className={styles.actionIcons}>
                     <FontAwesomeIcon
                       icon={faEdit}
                       className={styles.editIcon}
-                      onClick={() => navigate(`/challenges?name=${contest.name}`)}
+                      onClick={() =>
+                        navigate(`/challenges?name=${contest.name}`)
+                      }
                     />
                     <FontAwesomeIcon
                       icon={faTrashAlt}

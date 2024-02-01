@@ -6,22 +6,23 @@ import ContestChallenges from "./components/Challanges/Organism/ContestChallenge
 import LeaderboardPage from "./components/LeaderBoard/Organisms/LeaderboardPage";
 import EditorPage from "./components/ChallengeSolve/Organisms/EditorPage";
 import HomePage from "./components/Home/HomePage";
-import Dashboard from "./components/Dashboard/Dashboard";
-import CreateChallenge from "./components/Dashboard/CreateChallenge";
-import ParentComponent from "./components/Dashboard/ParentComponent";
-import CreateContest from "./components/Dashboard/CreateContest";
-import ShowContest from "./components/Dashboard/ShowContest";
-import CreateUser from "./components/Dashboard/CreateUser";
-import CreateUserContestant from "./components/Dashboard/CreateUserContestant";
-import Users from "./components/Dashboard/Users";
-import Submissions from "./components/Dashboard/Submissions";
-import ManageContests from "./components/Dashboard/ManageContests";
+import Dashboard from "./components/Dashboard/Admin/Dashboard";
+import CreateChallenge from "./components/Dashboard/Challenges/CreateChallenge";
+import ParentComponent from "./components/Dashboard/Challenges/ParentComponent";
+import CreateContest from "./components/Dashboard/Contest/CreateContest";
+import ShowContest from "./components/Dashboard/ManageContests/Contest/ShowContest";
+import CreateUser from "./components/Dashboard/Users/CreateUser";
+import CreateUserContestant from "./components/Dashboard/Users/CreateUserContestant";
+import Users from "./components/Dashboard/Users/Users";
+import Submissions from "./components/Dashboard/ManageContests/Submissions/Submissions";
+import ManageContests from "./components/Dashboard/ManageContests/MainMenu/ManageContests";
 import ChallengesGrid from "./components/ContestChallenges/ChallengesGrid";
-import ManageContestsParentComponent from "./components/Dashboard/ManageContestsParentComponent";
-import ManageContest from "./components/Dashboard/ManageContest";
+import ManageContestsParentComponent from "./components/Dashboard/ManageContests/TabComponent/ManageContestsParentComponent";
+import ManageContest from "./components/Dashboard/ManageContests/Analytics/ManageContest";
 import ProtectedRoute from "./ProtectedRoute";
 import SubmissionDetail from "./components/SubmissionDetail/SubmissionDetail";
-import CreateContestant from "./components/Dashboard/CreateContestant";
+import CreateContestant from "./components/Dashboard/Contest/CreateContestant";
+import Layout from "./components/Dashboard/Layout/Layout";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -42,39 +43,127 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Login setEmail={setEmail} />} />
-          <Route
-            path="/challenges"
-            element={
-              <ProtectedRoute
-                component={ContestChallenges}
-                isAuthenticated={isAuthenticated}
-              />
-            }
-          />
+
           <Route path="/contest" element={<ChallengesGrid />} />
           <Route path="/leaderboard" element={<LeaderboardPage />} />
           <Route path="/contest/:id" element={<EditorPage />} />
           <Route path="/editor" element={<EditorPage />} />
           <Route path="/home" element={<HomePage email={email} />} />
-          <Route path="/admin" element={<Dashboard />} />
-          <Route path="/createchallenge" element={<CreateChallenge />} />
-          <Route path="/challenges/:id" element={<ParentComponent />} />
-          <Route path="/createcontest" element={<CreateContest />} />
-          <Route path="/contests" element={<ShowContest />} />
-          <Route path="/createUser" element={<CreateUser />} />
+          <Route path="/submissiondetail" element={<SubmissionDetail />} />
+          <Route
+            path="/admin"
+            element={
+              <Layout>
+                <Dashboard />
+              </Layout>
+            }
+          />
+          <Route
+            path="/createchallenge"
+            element={
+              <Layout>
+                <CreateChallenge />
+              </Layout>
+            }
+          />
+          <Route
+            path="/challenges/:id"
+            element={
+              <Layout>
+                <ParentComponent />
+              </Layout>
+            }
+          />
+          <Route
+            path="/createcontest"
+            element={
+              <Layout>
+                <CreateContest />
+              </Layout>
+            }
+          />
+          <Route
+            path="/challenges"
+            element={
+              <Layout>
+                <ProtectedRoute
+                  component={ContestChallenges}
+                  isAuthenticated={isAuthenticated}
+                />
+              </Layout>
+            }
+          />
+          <Route
+            path="/contests"
+            element={
+              <Layout>
+                <ShowContest />
+              </Layout>
+            }
+          />
+          <Route
+            path="/createUser"
+            element={
+              <Layout>
+                <CreateUser />
+              </Layout>
+            }
+          />
           <Route
             path="/createUserContestant"
-            element={<CreateUserContestant />}
+            element={
+              <Layout>
+                <CreateUserContestant />
+              </Layout>
+            }
           />
-          <Route path="/users" element={<Users />} />
-          <Route path="/submissions" element={<Submissions />} />
-          <Route path="/managecontest" element={<ManageContests />} />
-          <Route path="/analytics" element={<ManageContest />} />
-          <Route path="/submissiondetail" element={<SubmissionDetail />} />
-          <Route path="/createContestant" element={<CreateContestant />} />
+          <Route
+            path="/users"
+            element={
+              <Layout>
+                <Users />
+              </Layout>
+            }
+          />
+          <Route
+            path="/submissions"
+            element={
+              <Layout>
+                <Submissions />
+              </Layout>
+            }
+          />
+          <Route
+            path="/managecontest"
+            element={
+              <Layout>
+                <ManageContests />
+              </Layout>
+            }
+          />
+          <Route
+            path="/analytics"
+            element={
+              <Layout>
+                <ManageContest />
+              </Layout>
+            }
+          />
+          <Route
+            path="/createContestant"
+            element={
+              <Layout>
+                <CreateContestant />
+              </Layout>
+            }
+          />
           <Route
             path="/mainmanage"
-            element={<ManageContestsParentComponent />}
+            element={
+              <Layout>
+                <ManageContestsParentComponent />
+              </Layout>
+            }
           />
         </Routes>
       </div>

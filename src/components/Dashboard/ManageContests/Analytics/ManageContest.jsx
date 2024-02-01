@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "./Sidebar"; // Replace with your actual path
+import Sidebar from "../../Sidebar/Sidebar"; // Replace with your actual path
 import styles from "./ManageContest.module.css"; // Your CSS module for this component
 import NivoBar from "./NivoBar";
 import NivoLine from "./NivoLine";
@@ -16,7 +16,6 @@ const ManageContest = () => {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <h1 className={styles.title}>Kardan Contest</h1>
         <div className={styles.cardsContainer}>
           {cardsData.map((card, index) => (
             <div key={index} className={styles.card}>

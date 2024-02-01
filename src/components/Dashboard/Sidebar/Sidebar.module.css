@@ -1,14 +1,16 @@
 .sidebar {
-  top: 0; /* Align to the top */
-  left: 0; /* Align to the left */
-  width: 200px; /* Set the width of the sidebar */
-  height: 100%; /* Full height */
-  background-color: #f0f2f5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px; /* Your sidebar width */
+  height: 100vh; /* Full viewport height */
+  background-color: #f0f2f5; /* Example background color */
   padding: 20px;
-  transition: width 0.3s ease;
   z-index: 1000; /* Ensure it's above other content */
-  transition: width 0.3s ease;
+  overflow-y:hidden; /* Handle vertical scrolling */
+  overflow-x: hidden;
 }
+
 
 @keyframes fadeIn {
   from {
@@ -58,15 +60,19 @@
 
 
 .logoutButton {
-  background: linear-gradient(145deg, #030B57 0%, #0E43AB 100%);
+  position: absolute; /* Position the button absolutely within the sidebar */
+  bottom: 10px; /* 10px from the bottom of the sidebar */
+  left: 10px; /* Adjust if you want it more to the center */
+  background: #007bff;
+  justify-content: center;
   color: white;
   border: none;
   padding: 10px;
   border-radius: 13px;
   cursor: pointer;
   display: flex;
-  margin-top: 240px;
 }
+
 
 .sidebar.unCollapse {
   .logoutButton{
@@ -95,6 +101,10 @@
   .logoutButton {
     margin-top: 290px;
   }
+}
+
+.sidebar.collapsed .navItem {
+  justify-content: center; /* Center icons in collapsed state */
 }
 
 .toggleButton {

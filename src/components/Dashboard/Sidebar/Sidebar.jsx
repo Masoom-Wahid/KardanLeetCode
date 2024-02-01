@@ -63,7 +63,11 @@ const Sidebar = () => {
       <button className={styles.toggleButton} onClick={toggleSidebar}>
         <FontAwesomeIcon icon={isCollapsed ? faAngleRight : faAngleLeft} />
       </button>
-      <button className={styles.logoutButton} onClick={handleLogout}>
+      <button
+        className={styles.logoutButton}
+        style={isCollapsed ? { left: "10px" } : { left: "40px" }}
+        onClick={handleLogout}
+      >
         <FontAwesomeIcon icon={faSignOutAlt} />
         {!isCollapsed && " Log Out"}
       </button>

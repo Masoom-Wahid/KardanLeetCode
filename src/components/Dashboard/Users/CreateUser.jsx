@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "./Sidebar"; // Import the Sidebar component
+import Sidebar from "../Sidebar/Sidebar"; // Import the Sidebar component
 import styles from "./CreateUser.module.css"; // The CSS module for styling
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
@@ -18,7 +18,6 @@ const CreateUser = () => {
 
   return (
     <div className={styles.createUserContainer}>
-      <Sidebar />
       <div className={styles.createUserContent}>
         <h1 className={styles.title}>Create User</h1>
         <p className={styles.subtitle}>

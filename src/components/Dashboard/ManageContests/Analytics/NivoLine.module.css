@@ -4,7 +4,9 @@
   border-radius: 0.5rem;
   margin-bottom: 1rem;
   transition: box-shadow 0.2s ease-in-out;
-  width: 650px;
+  width: 640px;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .nivoLineCard:hover {
@@ -14,7 +16,6 @@
 }
 
 .nivoLineCardHeader {
-  background: #f9f9f9;
   border-bottom: 1px solid #eee;
   padding: 1rem;
 }

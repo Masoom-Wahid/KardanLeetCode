@@ -2,20 +2,19 @@ import React from "react";
 import { useLocation } from 'react-router-dom';
 import ChallengeTableOrganism from "./ChallengeTableOrganism";
 import "./ContestChallengess.css";
-import Sidebar from "../../Dashboard/Sidebar";
+import Sidebar from "../../Dashboard/Sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
 
 const ContestChallenges = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const name = queryParams.get('name');
-  if (name === undefined){
+  const name = queryParams.get("name");
+  if (name === undefined) {
     //TODO:handle when the params is empty here
   }
   const navigate = useNavigate();
   return (
     <div className="page-container">
-      <Sidebar />
       <div className="contest-challenges">
         <h2 className="title">Kardan University's Programming Web App</h2>
         <p className="description">

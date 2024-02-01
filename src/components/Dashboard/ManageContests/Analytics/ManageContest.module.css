@@ -2,15 +2,16 @@
   display: flex;
   height: 100vh;
   font-family: 'Arial', sans-serif; /* Use your preferred font */
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .content {
   flex-grow: 1;
-  overflow: auto;
+  overflow: hidden;
   padding-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
-  background-color: #f8f8f8;
   transition: opacity 0.5s ease-in-out;
 }
 
@@ -29,7 +30,6 @@
 }
 
 .card {
-  background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 1rem;
@@ -64,7 +64,6 @@
 .chart {
   width: 600px;
   height: 400px;
-  background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

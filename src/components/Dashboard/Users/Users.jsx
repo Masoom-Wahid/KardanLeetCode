@@ -3,7 +3,7 @@ import styles from "./Users.module.css"; // CSS Module for Users
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrashAlt, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import Pagination from "../Pagination/Pagination";
+import Pagination from "../../Pagination/Pagination";
 import { faCaretUp, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 const Users = () => {

@@ -6,7 +6,7 @@ import {
   faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import "./Dashboard.css";
-import Sidebar from "./Sidebar";
+import Sidebar from "../Sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
 
 const stats = [
@@ -31,7 +31,6 @@ const Dashboard = () => {
   const navigate = useNavigate();
   return (
     <div className="dashboard-container">
-      <Sidebar />
       <main className="main-content">
         <div className="admin-title">
           <h1>Admin Panel</h1>

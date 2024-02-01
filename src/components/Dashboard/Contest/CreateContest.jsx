@@ -1,60 +1,53 @@
-import React , {useState} from "react";
-import Sidebar from "./Sidebar"; // Assuming you have this component ready
+import React, { useState } from "react";
+import Sidebar from "../Sidebar/Sidebar"; // Assuming you have this component ready
 import styles from "./CreateContest.module.css"; // The CSS module for styling
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
-
 const CreateContest = () => {
-  const [contestName, setContestName] = useState('');
-  const [hours, setHours] = useState('');
-  const [minutes, setMinutes] = useState('');
-  const [seconds, setSeconds] = useState('');
+  const [contestName, setContestName] = useState("");
+  const [hours, setHours] = useState("");
+  const [minutes, setMinutes] = useState("");
+  const [seconds, setSeconds] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
 
   const handleClick = async (event) => {
     event.preventDefault();
     // Since Duration is in this format
     const duration = `${hours}:${minutes}:${seconds}`;
     setLoading(true);
-  
-      try {
-        const response = await fetch(
-          `${process.env.REACT_APP_API_URL}contest/`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-            },
-            body: JSON.stringify({ name: contestName, duration: duration }),
-          }
-        );
 
-        if (!response.ok) {
-          if (response.status === 401 || response.status === 403) {
-            localStorage.removeItem("accessToken");
-            navigate("/");
-          }
-          throw new Error(`HTTP error! status: ${response.status}`);
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}contest/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify({ name: contestName, duration: duration }),
+      });
+
+      if (!response.ok) {
+        if (response.status === 401 || response.status === 403) {
+          localStorage.removeItem("accessToken");
+          navigate("/");
         }
-        // Whenever you wanted to use the variable data please remove the next line.
-        // eslint-disable-next-line
-        const data = await response.json();
-        navigate("/challenges");
-      } catch (error) {
-  
-      } finally {
-        setLoading(false);
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-    };
+      // Whenever you wanted to use the variable data please remove the next line.
+      // eslint-disable-next-line
+      const data = await response.json();
+      navigate("/challenges");
+    } catch (error) {
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className={styles.pageContainer}>
-      <Sidebar />
       <div className={styles.mainContainer}>
         <div className={styles.card}>
           <div className={styles.iconContainer}>
@@ -114,7 +107,7 @@ const CreateContest = () => {
               className={styles.button}
               onClick={(event) => handleClick(event)}
             >
-              { loading  ? "Creating....." : "Next"}
+              {loading ? "Creating....." : "Next"}
             </button>
           </form>
         </div>

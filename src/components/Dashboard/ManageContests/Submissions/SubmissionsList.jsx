@@ -6,7 +6,7 @@ import {
   faCaretDown,
   faCaretUp,
 } from "@fortawesome/free-solid-svg-icons";
-import Pagination from "../Pagination/Pagination";
+import Pagination from "../../../Pagination/Pagination";
 import { useNavigate } from "react-router-dom";
 
 const initialSubmissions = [

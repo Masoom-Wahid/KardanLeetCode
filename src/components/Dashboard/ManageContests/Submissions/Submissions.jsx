@@ -7,7 +7,7 @@ import {
   faCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Submissions.module.css";
-import Pagination from "../Pagination/Pagination";
+import Pagination from "../../../Pagination/Pagination";
 
 // Mock data for submissions
 const mockSubmissions = [

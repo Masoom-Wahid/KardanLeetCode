@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "./Sidebar";
+import Sidebar from "../../Sidebar/Sidebar";
 import styles from "./ManageContests.module.css"; // Make sure to create a CSS module file for this
 import { useNavigate } from "react-router-dom";
 
@@ -16,7 +16,6 @@ const ManageContests = () => {
   const navigate = useNavigate();
   return (
     <div className={styles.manageContests}>
-      <Sidebar />
       <div className={styles.content}>
         <div className={styles.titles}>
           <h1 className={styles.title}>Manage Contests</h1>

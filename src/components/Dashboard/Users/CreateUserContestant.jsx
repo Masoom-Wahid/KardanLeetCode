@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Sidebar from "./Sidebar"; // Replace with your actual import path
+import Sidebar from "../Sidebar/Sidebar"; // Replace with your actual import path
 import styles from "./CreateUserContestant.module.css"; // The CSS module for styling
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -26,7 +26,6 @@ const CreateUserContestant = () => {
 
   return (
     <div className={styles.pageContainer}>
-      <Sidebar />
       <div className={styles.contentContainer}>
         <img src="/logo.png" alt="Kardan University Logo" className="logo" />
         <h1 className={styles.title}>Welcome!</h1>

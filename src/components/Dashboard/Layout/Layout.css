@@ -1,0 +1,9 @@
+.layout {
+  display: flex;
+}
+
+.content {
+  margin-left: 200px; /* Adjust based on your sidebar width */
+  width: calc(100% - 200px); /* Ensure content takes up the remaining width */
+  overflow-y: auto; /* Optional, for scrolling content */
+}

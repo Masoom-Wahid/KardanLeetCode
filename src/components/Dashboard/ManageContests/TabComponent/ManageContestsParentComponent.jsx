@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import ManageContestsTabsComponent from "./ManageContestsTabComponent";
-import Sidebar from "./Sidebar";
 import uniqueStyles from "./ManageContestsParentComponent.module.css";
-import CreateContestant from "./CreateContestant";
-import ManageContest from "./ManageContest";
-import LeaderboardPage from "../LeaderBoard/Organisms/LeaderboardPage";
-import ChallengesTable from "./ChallengesTable";
-import ContestDetailsForm from "./ContestDetailsForm";
-import Submissions from "./Submissions";
-import AdvanceSetting from "./AdvanceSetting";
-import Users from "./Users";
-import SubmissionsList from "./SubmissionsList";
+import CreateContestant from "../../Contest/CreateContestant";
+import ManageContest from "../Analytics/ManageContest";
+import LeaderboardPage from "../../../LeaderBoard/Organisms/LeaderboardPage";
+import ChallengesTable from "../Challenges/ChallengesTable";
+import ContestDetailsForm from "../Contest/ContestDetailsForm";
+import AdvanceSetting from "../AdvanceSetting/AdvanceSetting";
+import Users from "../../Users/Users";
+import SubmissionsList from "../Submissions/SubmissionsList";
 
 // Replace these with your actual component imports
 const DetailsComponent = () => (
@@ -61,7 +59,6 @@ const ManageContestsParentComponent = () => {
 
   return (
     <div className={uniqueStyles.uniqueContainer}>
-      <Sidebar />
       <div className={uniqueStyles.uniqueContentArea}>
         <ManageContestsTabsComponent
           uniqueTabs={[
