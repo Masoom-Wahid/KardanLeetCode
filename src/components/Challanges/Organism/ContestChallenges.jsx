@@ -6,12 +6,7 @@ import Sidebar from "../../Dashboard/Sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
 
 const ContestChallenges = () => {
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const name = queryParams.get("name");
-  if (name === undefined) {
-    //TODO:handle when the params is empty here
-  }
+
   const navigate = useNavigate();
   return (
     <div className="page-container">
@@ -24,7 +19,7 @@ const ContestChallenges = () => {
           desired location.
         </p>
         <div className="challenge-table-container">
-          <ChallengeTableOrganism name={name} />
+          <ChallengeTableOrganism  />
         </div>
         <button onClick={() => navigate("/createchallenge")}>
           Add Challenge
