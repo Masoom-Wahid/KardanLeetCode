@@ -136,7 +136,10 @@ const DescriptionBox = ({ questionId,challenge,contestFinished,setContestFinishe
             <tbody>
               {submissions.map((submission, index) => (
                 <tr key={index}>
-                  <td>{submission.id}</td>
+                  <td
+                  style={{cursor:"pointer"}}
+                  onClick={() => navigate(`submissions/${submission.id}`)}
+                  >{submission.id}</td>
                   <td>{submission.lang}</td>
                   <td>{submission.status}</td>
                   <td>

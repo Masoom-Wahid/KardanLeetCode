@@ -1,8 +1,8 @@
 // DurationPicker.js
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import styles from "./DurationPicker.module.css";
 
-const DurationPicker = ({ onChange }) => {
+const DurationPicker = ({ onChange,contestDuration }) => {
   const [minutes, setMinutes] = useState("");
 
   const formatToHHMMSS = (mins) => {
@@ -31,7 +31,7 @@ const DurationPicker = ({ onChange }) => {
       className={styles.durationInput}
       value={minutes}
       onChange={handleMinutesChange}
-      placeholder="Enter duration in minutes"
+      placeholder={contestDuration}
     />
   );
 };

@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 const BASE_URL = process.env.REACT_APP_API_URL
 
 
-const ChallengeTableOrganism = ({name}) => {
+const ChallengeTableOrganism = () => {
   const [challenges,setChallenges] = useState([])
 
 
@@ -53,7 +53,7 @@ const ChallengeTableOrganism = ({name}) => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${BASE_URL}questions/?name=${name}`,
+          `${BASE_URL}questions/`,
           {
             method: "GET",
             headers: {
@@ -73,6 +73,7 @@ const ChallengeTableOrganism = ({name}) => {
           }
           throw new Error(`HTTP error! status: ${response.status}`);
         }
+        console.log(data.data)
         setChallenges(data);
         // Process the data
       } catch (error) {
@@ -90,16 +91,19 @@ const ChallengeTableOrganism = ({name}) => {
     <TableContainer component={Paper}>
       <Table aria-label="contest challenges table">
         <ChallengeHeaderMolecule />
+        { challenges.data && (
         <TableBody>
-          {challenges.map((challenge, index) => (
-            <ChallengeRowMolecule
-              key={challenge.id}
-              challenge={challenge}
-              index={index}
-              onDelete={HandleDelete}
-            />
-          ))}
-        </TableBody>
+            {challenges.data.map((challenge, index) => (
+              <ChallengeRowMolecule
+                key={challenge.id}
+                challenge={challenge}
+                index={index}
+                onDelete={HandleDelete}
+              />
+            ))}
+          </TableBody>
+          )
+          }
       </Table>
     </TableContainer>
   );
