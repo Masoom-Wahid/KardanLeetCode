@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+### **Extensive Documentation Overview**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Title:** Comprehensive Documentation for Kardan Programming Competition
 
-## Available Scripts
 
-In the project directory, you can run:
+## Table of Contents
+1. [Developers](./Documentation/Developers.md)
+2. [Introduction](./Documentation/Introduction)
+3. [Getting Started](./Documentation/Getting-Started.md)
+4. [Architecture](./Documentation/architecture)
+5. [Core Features](./Documentation/core-features)
+6. [UI/UX Design](./Documentation/UI-UX-design)
+7. [Front-End Development](./Documentation/front-end-development)
+8. [Back-End Integration](./Documentation/back-end-integration)
+9. [Important Packages](./Documentation/important-packages)
+10. [Testing](./Documentation/testing)
+11. [Deployment](./Documentation/deployment)
+12. [Contributing](./Documentation/contributing)
+13. [FAQs](./Documentation/faq)
+14. [Troubleshooting](./Documentation/troubleshooting)
+15. [License](./Documentation/license)
+16. [Contact](./Documentation/contact)
 
-### `npm start`
+**1. Introduction**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Brief Overview: Purpose and core functionality of the website.
+- Target Audience: Who the website is for and how they can benefit from it.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**2. Getting Started**
 
-### `npm test`
+- Installation Instructions: Steps to install and run the project locally.
+- Prerequisites: Necessary software and tools (Node.js, npm, etc.).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**3. Architecture**
 
-### `npm run build`
+- High-Level Architecture: Overview of the client-server architecture.
+- Directory Structure: Explanation of the main directories and their roles.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**4. Core Features**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Challenges and Contests: Detailed description of how challenges are structured and managed.
+- Leaderboards: Explanation of leaderboard functionality and ranking mechanism.
+- User Authentication: Overview of the login system and user session management.
+- 3D Models Integration: Description of how 3D models are used and interacted with in the application.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**5. UI/UX Design**
 
-### `npm run eject`
+- Design Principles: Discussion of Atomic Design and modularity in UI components.
+- Styling: Overview of Tailwind CSS usage and custom styles.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**6. Front-End Development**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- React Components: Detailed breakdown of key React components and their interactions.
+- State Management: Explanation of state management strategy (if applicable, e.g., Redux, Context API).
+- Routing: Description of the routing mechanism (e.g., React Router).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**7. Back-End Integration (if applicable)**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- API Integration: Overview of how the front end interacts with the back end.
+- Data Handling: Description of data fetching, updating, and state synchronization.
 
-## Learn More
+**8. Important Packages**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- React: Core framework for building the UI.
+- Tailwind CSS: Utility-first CSS framework for styling.
+- [Other Key Packages]: Brief explanation of their roles and why they are important.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**9. Testing**
 
-### Code Splitting
+- Testing Strategy: Overview of the testing approach (unit, integration tests).
+- Key Test Cases: Examples of important test scenarios.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**10. Deployment**
 
-### Analyzing the Bundle Size
+- Deployment Process: Steps and best practices for deploying the application.
+- Vercel Configuration: Specifics of deploying to Vercel (if used).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**11. Contributing**
 
-### Making a Progressive Web App
+- Guidelines for contributing to the project.
+- Code Style and Standards: Best practices for code consistency.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+**12. FAQs**
 
-### Advanced Configuration
+- Commonly asked questions and their answers.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+**13. Troubleshooting**
 
-### Deployment
+- Common issues and their solutions.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+**14. License**
 
-### `npm run build` fails to minify
+- Details about the project's licensing.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**15. Contact**
+
+- Information for reaching out for support or inquiries.
+
+

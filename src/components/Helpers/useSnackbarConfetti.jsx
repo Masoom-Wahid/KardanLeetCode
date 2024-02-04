@@ -9,8 +9,7 @@ export const useSnackbarConfetti = (config = {}) => {
   const { backgroundColor = "linear-gradient(45deg, #6a3093, #a044ff)" } =
     config; // Destructure with default value
 
-  const trigger = (text) => (event) => {
-    event.preventDefault(); // Prevent default if it's being used as an event handler
+  const trigger = (text) => {
     setSnackBarText(text); // Set the dynamic text for snackbar
     setShowConfetti(true);
     setShowSnackBar(true);
@@ -29,6 +28,6 @@ export const useSnackbarConfetti = (config = {}) => {
     );
 
   const ConfettiEffect = () =>
-    showConfetti && <Confetti style={{ zIndex: "100000" }} />;
+    showConfetti && <Confetti style={{ zIndex: "10000000" }} />;
   return { trigger, SnackBar, ConfettiEffect };
 };

@@ -119,7 +119,6 @@ const MainHeader = ({
     }
   }, [runConfetti, testCaseData]);
 
-    
   const handleProblemList = () => {
     navigate("/contest");
   };
@@ -134,26 +133,24 @@ const MainHeader = ({
           Problem List
           <FontAwesomeIcon icon={faChevronRight} />
         </RectangleButton>
-        {
-          !readOnly && (
+        {!readOnly && (
           <Box>
-          <StyledButton
-            onClick={() => handleRun("run")}
-            startIcon={<FontAwesomeIcon icon={faPlay} />}
-          >
-            {runLoading ? "Running ..." : "Run"}
-          </StyledButton>
-          <StyledButton
-            onClick={() => handleRun("submit")}
-            startIcon={<FontAwesomeIcon icon={faUpload} />}
-          >
-            Submit
-          </StyledButton>
-          <SnackBar />
-          <ConfettiEffect />
-        </Box>
-            ) 
-        }
+            <StyledButton
+              onClick={() => handleRun("run")}
+              startIcon={<FontAwesomeIcon icon={faPlay} />}
+            >
+              {runLoading ? "Running ..." : "Run"}
+            </StyledButton>
+            <StyledButton
+              onClick={() => handleRun("submit")}
+              startIcon={<FontAwesomeIcon icon={faUpload} />}
+            >
+              Submit
+            </StyledButton>
+            <SnackBar />
+            <ConfettiEffect />
+          </Box>
+        )}
 
         <BreathingIconButton onClick={onToggleDarkMode}>
           {isDarkMode ? (

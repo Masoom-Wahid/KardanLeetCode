@@ -116,7 +116,7 @@ const EditorPage = () => {
                 ? data["detail"]["error"]
                 : data["detail"]["output"],
           };
-        } else if (response.status == 200) {
+        } else if (response.status === 200) {
           // Else We Create a Model and run The confetti
           let amount_solved = data["detail"]["amount_solved"]
             ? data["detail"]["amount_solved"]
