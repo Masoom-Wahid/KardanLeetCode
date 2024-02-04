@@ -4,6 +4,7 @@ import TableCell from "@mui/material/TableCell";
 import IconAtom from "../Atom/IconAtom";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { styled } from "@mui/material/styles";
+import {useNavigate} from 'react-router-dom'
 
 const ScoreBox = styled("div")(({ theme }) => ({
   padding: theme.spacing(0.5),
@@ -40,10 +41,16 @@ const DeleteButton = styled(IconAtom)(({ theme }) => ({
 
 const ChallengeRowMolecule = ({ challenge, index,onDelete }) => {
 
+  const navigate = useNavigate();
   return (
     <TableRow>
       <StyledTableCell>{index + 1}</StyledTableCell>
-      <StyledTableCell>{challenge.title}</StyledTableCell>
+      <StyledTableCell
+      style={{cursor:"pointer"}}
+      onClick={() => navigate(`/challenges/${challenge.id}`)}
+      >
+        {challenge.title}
+        </StyledTableCell>
       <StyledTableCell>{challenge.lvl}</StyledTableCell>
       <StyledTableCell>
         <ScoreBox>{challenge.point}</ScoreBox>

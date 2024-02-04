@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import ManageContestsTabsComponent from "./ManageContestsTabComponent";
 import uniqueStyles from "./ManageContestsParentComponent.module.css";
 import CreateContestant from "../../Contest/CreateContestant";
@@ -9,49 +9,88 @@ import ContestDetailsForm from "../Contest/ContestDetailsForm";
 import AdvanceSetting from "../AdvanceSetting/AdvanceSetting";
 import Users from "../../Users/Users";
 import SubmissionsList from "../Submissions/SubmissionsList";
+import {useParams} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 // Replace these with your actual component imports
-const DetailsComponent = () => (
+const DetailsComponent = ({contestData,setContestData}) => (
   <div>
-    <ContestDetailsForm />
+    <ContestDetailsForm  contestData={contestData} setContestData={setContestData} />
   </div>
 );
-const ChallengesComponent = () => (
+const ChallengesComponent = ({contestData}) => (
   <div>
-    <ChallengesTable />
+    <ChallengesTable contestData={contestData} />
   </div>
 );
-const LeaderboardComponent = () => (
+const LeaderboardComponent = ({contestData}) => (
   <div>
-    <LeaderboardPage />
+    <LeaderboardPage  contestData={contestData} />
   </div>
 );
-const AnalyticsComponent = () => <ManageContest />;
-const UsersComponent = () => (
+const AnalyticsComponent = ({contestData}) => <ManageContest contestData={contestData}  />;
+const UsersComponent = ({contestData}) => (
   <div>
-    <CreateContestant />
+    <CreateContestant  contestData={contestData} />
   </div>
 );
 
 const ManageContestsParentComponent = () => {
   const [activeUniqueTab, setActiveUniqueTab] = useState("Details");
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [contestData,setContestData] = useState()
+
+  if(id === undefined){
+    window.alert("id  required")
+    navigate("/contests")
+  }
+   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}contest/${id}`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+          // 401 means unauthorized , 403 means unauthorized, so the user is either using an old token or is
+          // either bypassing
+          if (response.status === 401 || response.status === 403) {
+            localStorage.removeItem("accessToken");
+            navigate("/");
+          }
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        setContestData(data);
+        // Process the data
+      } catch (error) {
+        // Handle errors
+        console.error(error);
+      }
+    };
+    fetchData();
+  },[]);
 
   const renderUniqueTabContent = (tab) => {
     switch (tab) {
       case "Details":
-        return <DetailsComponent />;
+        return <DetailsComponent  contestData={contestData} setContestData={setContestData} />;
       case "Challenges":
-        return <ChallengesComponent />;
+        return <ChallengesComponent  contestData={contestData} />;
       case "Leaderboard":
-        return <LeaderboardComponent />;
+        return <LeaderboardComponent  contestData={contestData} />;
       case "Analytics":
-        return <AnalyticsComponent />;
+        return <AnalyticsComponent  contestData={contestData} />;
       case "Users":
-        return <Users />;
+        return <Users contestData={contestData} />;
       case "Submissions":
-        return <SubmissionsList />;
+        return <SubmissionsList  contestData={contestData} />;
       case "AdvanceSetting":
-        return <AdvanceSetting />;
+        return <AdvanceSetting  contestData={contestData} />;
       default:
         return null; // or <DefaultComponent />
     }
@@ -59,22 +98,28 @@ const ManageContestsParentComponent = () => {
 
   return (
     <div className={uniqueStyles.uniqueContainer}>
-      <div className={uniqueStyles.uniqueContentArea}>
-        <ManageContestsTabsComponent
-          uniqueTabs={[
-            { id: "Details", label: "Details" },
-            { id: "Challenges", label: "Challenges" },
-            { id: "Leaderboard", label: "Leaderboard" },
-            { id: "Analytics", label: "Analytics" },
-            { id: "Users", label: "Users" },
-            { id: "Submissions", label: "Submissions" },
-            { id: "AdvanceSetting", label: "Advance Setting" },
-          ]}
-          activeUniqueTab={activeUniqueTab}
-          setActiveUniqueTab={setActiveUniqueTab}
-        />
-        {renderUniqueTabContent(activeUniqueTab)}
-      </div>
+      {
+        contestData && (
+          <>
+            <div className={uniqueStyles.uniqueContentArea}>
+              <ManageContestsTabsComponent
+                uniqueTabs={[
+                  { id: "Details", label: "Details" },
+                  { id: "Challenges", label: "Challenges" },
+                  { id: "Leaderboard", label: "Leaderboard" },
+                  { id: "Analytics", label: "Analytics" },
+                  { id: "Users", label: "Users" },
+                  { id: "Submissions", label: "Submissions" },
+                  { id: "AdvanceSetting", label: "Advance Setting" },
+                ]}
+                activeUniqueTab={activeUniqueTab}
+                setActiveUniqueTab={setActiveUniqueTab}
+              />
+              {renderUniqueTabContent(activeUniqueTab)}
+            </div>
+          </>
+          )
+        }
     </div>
   );
 };

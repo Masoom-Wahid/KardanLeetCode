@@ -26,20 +26,20 @@ const TestCasesTab = ({questionId,testCases, avaiableTestCases, setAvailableTest
   };
 
   const handleAddingTestCase = async () => {
-    const inputFile = new Blob([inputText], { type: 'text/plain' });
-    const outputFile = new Blob([outputText], { type: 'text/plain' });
-    const formData = new FormData();
-    formData.append("files", inputFile, `input${avaiableTestCases+1}.txt`);
-    formData.append("files", outputFile, `output${avaiableTestCases+1}.txt`);
-    formData.append("id",questionId)
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}questions/files/`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}questions/testcases/`, {
         method: 'POST',
         headers : {
+          'Content-type':'application/json',
           "Authorization":`Bearer ${localStorage.getItem("accessToken")}`
+
         },
-        body: formData,
+        body: JSON.stringify({id:questionId,
+                              input:inputText,
+                              output:outputText}),
       });
+      const data = await response.json();
+      console.log(data);
       if(!response.ok){
         setIsModalOpen(false);
         if (response.status === 401 || response.status === 403){
@@ -70,7 +70,7 @@ const TestCasesTab = ({questionId,testCases, avaiableTestCases, setAvailableTest
     setUpdate(true)
     setSelectedTestCase(id)
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}questions/files/?question=${questionId}&id=${id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}questions/testcases/?question=${questionId}&id=${id}`, {
         method: "GET",
         headers: {
           "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
@@ -88,8 +88,9 @@ const TestCasesTab = ({questionId,testCases, avaiableTestCases, setAvailableTest
         }
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      setInputText(data.input)
-      setOutputText(data.output)
+      console.log(data)
+      setInputText(data[0].testCase)
+      setOutputText(data[1].testCase)
       setIsModalOpen(true)
       // Process the data
     } catch (error) {
@@ -99,22 +100,20 @@ const TestCasesTab = ({questionId,testCases, avaiableTestCases, setAvailableTest
   };
   
   const handleUpdaingTestCase = async () => {
-    const inputFile = new Blob([inputText], { type: 'text/plain' });
-    const outputFile = new Blob([outputText], { type: 'text/plain' });
-    const formData = new FormData();
-    formData.append("input", inputFile, `input.txt`);
-    formData.append("output", outputFile, `output.txt`);
-    formData.append("id",selectedTestCase)
-    formData.append("question",questionId)
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}questions/files/`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}questions/testcases/`, {
         method: 'PUT',
         headers : {
+          'Content-type':'application/json',
           "Authorization":`Bearer ${localStorage.getItem("accessToken")}`
         },
-        body: formData,
+        body: JSON.stringify({
+          question:questionId,
+          id:selectedTestCase,
+          input:inputText,
+          output:outputText
+        }),
       });
-      const data = await response.json()
       if(!response.ok){
         setIsModalOpen(false);
         if (response.status === 401 || response.status === 403){

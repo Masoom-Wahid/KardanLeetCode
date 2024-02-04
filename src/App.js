@@ -49,7 +49,7 @@ function App() {
           <Route path="/contest/:id" element={<EditorPage />} />
           <Route path="/editor" element={<EditorPage />} />
           <Route path="/home" element={<HomePage email={email} />} />
-          <Route path="/submissiondetail" element={<SubmissionDetail />} />
+          <Route path="/submissions/:id" element={<SubmissionDetail />} />
           <Route
             path="/admin"
             element={
@@ -94,14 +94,6 @@ function App() {
             }
           />
           <Route
-            path="/contests"
-            element={
-              <Layout>
-                <ShowContest />
-              </Layout>
-            }
-          />
-          <Route
             path="/createUser"
             element={
               <Layout>
@@ -134,7 +126,7 @@ function App() {
             }
           />
           <Route
-            path="/managecontest"
+            path="/contests"
             element={
               <Layout>
                 <ManageContests />
@@ -158,7 +150,7 @@ function App() {
             }
           />
           <Route
-            path="/mainmanage"
+            path="/contests/:id"
             element={
               <Layout>
                 <ManageContestsParentComponent />
