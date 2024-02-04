@@ -1,6 +1,6 @@
-### **Extensive Documentation Overview**
 
-**Title:** Comprehensive Documentation for Kardan Programming Competition
+
+# **Comprehensive Documentation for Kardan Programming Competition**
 
 
 ## Table of Contents
