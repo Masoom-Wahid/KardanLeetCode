@@ -7,7 +7,7 @@ import {
   faStar,
   faStarHalfAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import styles from "./AdvanceSetting.module.css"; // The path to your module CSS file
+import styles from "./AdvanceSetting.module.css"; 
 import PurgeModal from "./PurgeModal";
 import { useSnackbarConfetti } from "../../../Helpers/useSnackbarConfetti";
 

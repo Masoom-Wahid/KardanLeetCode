@@ -99,22 +99,25 @@ const MainHeader = ({
   onSubmit,
 }) => {
   const navigate = useNavigate();
-  const { trigger, SnackBar, ConfettiEffect } = useSnackbarConfetti();
+  const { trigger, SnackBar, ConfettiEffect } = useSnackbarConfetti({
+    backgroundColor: "linear-gradient(45deg, #6a3093, #a044ff)",
+  });
   const [runLoading, setRunLoading] = useState(false);
   const [isModalOpen, setModalOpen] = useState(false);
-  const [localData,setLocalData] = useState()
+  const [localData, setLocalData] = useState();
   const toggleModal = () => {
     setModalOpen(!isModalOpen);
   };
-    useEffect(() => {
-    if(runConfetti){
+  useEffect(() => {
+    if (runConfetti) {
       trigger("Congratulations, You solved the question! 🎉");
+      console.log("clicked on cofetti");
     }
-    if (testCaseData !== undefined){
-      setLocalData(testCaseData)
-      toggleModal()
+    if (testCaseData !== undefined) {
+      setLocalData(testCaseData);
+      toggleModal();
     }
-  },[runConfetti,testCaseData])
+  }, [runConfetti, testCaseData]);
 
     
   const handleProblemList = () => {

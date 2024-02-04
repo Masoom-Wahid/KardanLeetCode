@@ -6,9 +6,7 @@ const Layout = ({ children }) => {
   return (
     <div className="layout">
       <Sidebar />
-      <div className="content">
-        {children} {/* This is where your main content will be rendered */}
-      </div>
+      <div className="content">{children}</div>
     </div>
   );
 };

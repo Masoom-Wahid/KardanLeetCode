@@ -108,21 +108,34 @@ const EditorPage = () => {
 
         
       // For Manual We Return The data and we dont care about status 
-        if(type==="manual"){ 
-          return{
-           "error":data["detail"]["output"] === undefined ? true : false,
-            "output":data["detail"]["output"] === undefined ? data["detail"]["error"] : data["detail"]["output"] 
-        }
-      }
-        else if(response.status === 200){
-            // Else We Create a Model and run The confetti 
-            let amount_solved = data["detail"]["amount_solved"] ? data["detail"]["amount_solved"] : total
-            setTestCaseData(createModalTestCaseResult(total,amount_solved,data,type))
-            if(type==="submit"){setRunConfetti(true)}
-          }else if(response.status === 406){
+        if (type === "manual") {
+          return {
+            error: data["detail"]["output"] === undefined ? true : false,
+            output:
+              data["detail"]["output"] === undefined
+                ? data["detail"]["error"]
+                : data["detail"]["output"],
+          };
+        } else if (response.status == 200) {
+          // Else We Create a Model and run The confetti
+          let amount_solved = data["detail"]["amount_solved"]
+            ? data["detail"]["amount_solved"]
+            : total;
+          setTestCaseData(
+            createModalTestCaseResult(total, amount_solved, data, type)
+          );
+          if (type === "submit") {
+            setRunConfetti(true);
+            console.log("clicked on cofetti");
+          }
+        } else if (response.status === 406) {
           // 406 means bad answer and the result of those is handled in createModalTestCaseResult
-          let amount_solved = data["detail"]["amount_solved"] ? data["detail"]["amount_solved"] : 0
-          setTestCaseData(createModalTestCaseResult(total,amount_solved,data,type))
+          let amount_solved = data["detail"]["amount_solved"]
+            ? data["detail"]["amount_solved"]
+            : 0;
+          setTestCaseData(
+            createModalTestCaseResult(total, amount_solved, data, type)
+          );
         }
       }
 

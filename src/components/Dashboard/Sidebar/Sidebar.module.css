@@ -5,9 +5,11 @@
   width: 200px; /* Your sidebar width */
   height: 100vh; /* Full viewport height */
   background-color: #f0f2f5; /* Example background color */
-  padding: 20px;
+  padding: 20 15px ;
   z-index: 1000; /* Ensure it's above other content */
-  overflow-y:hidden; /* Handle vertical scrolling */
+  box-shadow: 3px 0 15px rgba(0,0,0,0.2); /* Soft shadow for depth */
+  transition: width 0.5s ease, background-color 0.25s ease; /* Smooth transitions for responsive behavior */
+  overflow-y: auto; /* Improved scrolling */
   overflow-x: hidden;
 }
 
@@ -25,7 +27,8 @@
 
 .logoDashboard {
   width: 200px; /* Adjust as necessary */
-  margin-bottom: 50px;
+  margin-bottom: 40px;
+  margin-top: 10px;
 }
 
 @keyframes breathing {
@@ -44,18 +47,27 @@
 .navItem {
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
-  cursor: pointer;
-  animation: fadeIn 0.3s ease-in-out;
+  margin-bottom: 20px; /* Reduced margin for compact appearance */
+  padding: 10px; /* Padding for better touch target */
+  padding-right: 5px;
+  border-radius: 8px; /* Rounded corners for modern look */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions for interactions */
+}
+
+.navitem.collapsed {
+  justify-self: center;
 }
 
 .navItem:hover {
-  background-color: #eef4f7; /* Light background on hover */
+  background-color: var(--sidebar-hover-bg-color, #7c7c7c); /* Customizable hover background */
+  cursor: pointer;
+  transform: translateX(5px);
+  color: #fff;
 }
 
-
 .navItem svg {
-  margin-right: 10px;
+  margin-right: 15px; /* Adjusted spacing for icon and text */
+  min-width: 20px; /* Ensure uniform icon width */
 }
 
 
