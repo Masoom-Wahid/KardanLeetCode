@@ -8,6 +8,7 @@ import {
   faUsers,
   faRocket,
   faGlobe,
+  faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faPython,
@@ -115,11 +116,26 @@ const AboutUs = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <CoFounderCard
+              imagePath="/masoom.jpg"
+              name="Masoom Wahid"
+              role="Back-End Prodigy"
+              description="Masoom Wahid, the virtuoso of the digital realm, is a back-end developer whose coding prowess knows no bounds. Armed with a keyboard and an unwavering passion for technology, Masoom has become a maestro in crafting the intricate foundations of web applications. Python courses through his veins, and Django is his artistic canvas, where he orchestrates symphonies of seamless functionality."
+              icons={[faCode, faLightbulb]}
+            />
+            <CoFounderCard
               imagePath="/elham.jpg"
               name="Elhamullah Hossaini"
               role="Front-End Wizard"
-              description="With over a decade in web development, Elham leads with a blend of technology and creativity, pioneering innovative user experiences."
+              description="
+              Elham is a web development luminary with over 2 years of experience, showcasing a unique blend of technology and creativity. As a visionary leader, he pioneers the creation of innovative user experiences, leveraging a diverse toolkit that includes React JS, Next JS, Angular, Vue JS, HTML, CSS, Tailwind, and various other front-end features. Elham doesn't just code; he crafts digital masterpieces that seamlessly blend technological precision with boundless creativity."
               icons={[faCode, faLightbulb]}
+            />
+            <CoFounderCard
+              imagePath="/haroon.png"
+              name="Haroon Azizi"
+              role="Strategic Project Planning"
+              description="Haroon is not just a planner; he is a strategic visionary, possessing the rare ability to transform abstract concepts into actionable plans that drive unequivocal success. His strategic acumen is matched only by his profound understanding of project dynamics, allowing him to lead teams towards milestones with unparalleled efficiency and crystal-clear clarity."
+              icons={[faSearch, faLightbulb]}
             />
           </div>
         </div>
