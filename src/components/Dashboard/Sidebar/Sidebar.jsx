@@ -19,7 +19,6 @@ const navItems = [
   { name: "Create Contest", icon: faPlus, path: "/createcontest" },
   { name: "Show Contest", icon: faTasks, path: "/contests" },
   { name: "Manage Contest", icon: faBarsProgress, path: "/manageContest" },
-  { name: "Results", icon: faChartLine, path: "/results" },
   { name: "Challenges", icon: faQuestionCircle, path: "/challenges" },
 ];
 

@@ -199,6 +199,12 @@ const CodeEditor = ({
     }
   }, [language, languageBoilerplates, setEditorContent]);
 
+  useEffect(() => {
+    if (editorRef.current) {
+      editorRef.current.updateOptions({ readOnly: readOnly });
+    }
+  }, [readOnly]);
+
   return (
     <>
       <Box
@@ -251,7 +257,7 @@ const CodeEditor = ({
           onChange={setEditorContent}
           onMount={handleEditorDidMount}
           options={{
-            readOnly: isReadOnly,
+            readOnly: readOnly,
             autoClosingBrackets: "always",
             autoClosingQuotes: "always",
             autoSurround: "languageDefined",

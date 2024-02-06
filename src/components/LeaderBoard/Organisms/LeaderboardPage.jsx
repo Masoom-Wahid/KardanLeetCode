@@ -1,10 +1,10 @@
 import React from "react";
 import LeaderboardTableOrganism from "./LeaderboardTableOrganism";
 
-const LeaderboardPage = ({contestData}) => {
+const LeaderboardPage = () => {
   return (
     <>
-      <LeaderboardTableOrganism contestData={contestData} />
+      <LeaderboardTableOrganism />
     </>
   );
 };

@@ -23,6 +23,8 @@ import ProtectedRoute from "./ProtectedRoute";
 import SubmissionDetail from "./components/SubmissionDetail/SubmissionDetail";
 import CreateContestant from "./components/Dashboard/Contest/CreateContestant";
 import Layout from "./components/Dashboard/Layout/Layout";
+import AboutUs from "./components/Developers/AboutUs";
+import ServicesSection from "./components/Developers/Services";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -49,6 +51,8 @@ function App() {
           <Route path="/contest/:id" element={<EditorPage />} />
           <Route path="/editor" element={<EditorPage />} />
           <Route path="/home" element={<HomePage email={email} />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/services" element={<ServicesSection />} />
           <Route path="/submissions/:id" element={<SubmissionDetail />} />
           <Route
             path="/admin"

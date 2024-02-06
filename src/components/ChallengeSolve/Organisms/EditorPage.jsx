@@ -61,8 +61,8 @@ const EditorPage = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         setChallenge(data);
-        setSolvedCode(data.question.code)
-        data.question.code !== "" ? setReadOnly(true) : setReadOnly(false)
+        setSolvedCode(data.question.code);
+        setReadOnly(data.question.code !== "");
         // Process the data
       } catch (error) {
         // Handle errors
@@ -70,8 +70,7 @@ const EditorPage = () => {
       }
     };
     fetchData();
-  }, []);
-
+  }, [id, navigate]);
 
   const SubmitFile = async (type) => {
     const blob = new Blob([editorContent], { type: "text/plain" });
@@ -80,7 +79,9 @@ const EditorPage = () => {
     formData.append("id", id);
     formData.append("lang", language);
     formData.append("type", type);
-    if(type === "manual") { formData.append("manual_testcase",manualTestCase) }
+    if (type === "manual") {
+      formData.append("manual_testcase", manualTestCase);
+    }
 
     try {
       const response = await fetch(`${BASE_URL}competition/`, {
@@ -91,23 +92,21 @@ const EditorPage = () => {
         body: formData,
       });
 
-
       /*
       423 means the contest is finished 
       412 means that the user has no group , so it would be the best to kick him out
       */
-      if(response.status === 423 ){
-        setContestFinished(true)
-      }else if(response.status === 412){
+      if (response.status === 423) {
+        setContestFinished(true);
+      } else if (response.status === 412) {
         localStorage.removeItem("accessToken");
-        navigate("/")
-      }else{
+        navigate("/");
+      } else {
         const data = await response.json();
         // Total is the number of test cases , for run we have 2 other the num_of_test_cases
         let total = type === "run" ? 2 : challenge.question.num_of_test_cases;
 
-        
-      // For Manual We Return The data and we dont care about status 
+        // For Manual We Return The data and we dont care about status
         if (type === "manual") {
           return {
             error: data["detail"]["output"] === undefined ? true : false,
@@ -126,6 +125,7 @@ const EditorPage = () => {
           );
           if (type === "submit") {
             setRunConfetti(true);
+            setReadOnly(true);
             console.log("clicked on cofetti");
           }
         } else if (response.status === 406) {
@@ -138,10 +138,9 @@ const EditorPage = () => {
           );
         }
       }
-
-      }catch(error){
-      console.error(error)
-      }
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <>
@@ -157,11 +156,11 @@ const EditorPage = () => {
             m: 0,
           }}
         >
-          <MainHeader 
-          readOnly={readOnly}
-          runConfetti={runConfetti} 
-          onSubmit={SubmitFile} 
-          testCaseData={testCaseData}
+          <MainHeader
+            readOnly={readOnly}
+            runConfetti={runConfetti}
+            onSubmit={SubmitFile}
+            testCaseData={testCaseData}
           />
           <Box sx={{ display: "flex", p: 0 }}>
             {/* <ResizableBox
@@ -176,12 +175,12 @@ const EditorPage = () => {
               }}
               axis="x"
             > */}
-            <DescriptionBox 
-            questionId={id}
-            challenge={challenge}
-            contestFinished={contestFinished}
-            setContestFinished={setContestFinished}
-             />
+            <DescriptionBox
+              questionId={id}
+              challenge={challenge}
+              contestFinished={contestFinished}
+              setContestFinished={setContestFinished}
+            />
 
             {/* </ResizableBox> */}
 
@@ -206,10 +205,10 @@ const EditorPage = () => {
               </Box>
               <Box sx={{ flexGrow: 0, flexShrink: 0, flexBasis: 0 }}>
                 <TestCases
-                onSubmit={SubmitFile}
-                manualTestCase={manualTestCase}
-                setManualTestCase={setManualTestCase}
-                 />
+                  onSubmit={SubmitFile}
+                  manualTestCase={manualTestCase}
+                  setManualTestCase={setManualTestCase}
+                />
               </Box>
             </Box>
           </Box>

@@ -48,8 +48,6 @@ const NavBar = () => {
 
   const navItems = [
     { icon: faHome, text: "Home", action: handleHome },
-    { icon: faLightbulb, text: "Challenges", action: handleChallenges },
-    { icon: faPen, text: "Scores", action: handleScores },
     { icon: faSignOut, text: "Logout", action: handleLogout },
   ];
 

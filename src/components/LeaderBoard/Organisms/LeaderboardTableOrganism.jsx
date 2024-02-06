@@ -35,7 +35,7 @@ const StyledTable = styled(Table)(({ theme }) => ({
   },
 }));
 
-const LeaderboardTableOrganism = ({contestData}) => {
+const LeaderboardTableOrganism = () => {
   const [filter, setFilter] = useState("");
   const [leaderBoardData, setLeaderboardData] = useState([]);
   const [chatSocket, setChatSocket] = useState();
@@ -56,8 +56,8 @@ const LeaderboardTableOrganism = ({contestData}) => {
   ];
 
   useEffect(() => {
-    let accessToken = localStorage.getItem("accessToken")
-    let url = `${WEBSOCKET_URL}leaderboard/?token=${accessToken}&contest=${contestData.name}`;
+    let accessToken = localStorage.getItem("accessToken");
+    let url = `${WEBSOCKET_URL}leaderboard/?token=${accessToken}`;
     const chat = new WebSocket(url);
     setChatSocket(chat);
 
