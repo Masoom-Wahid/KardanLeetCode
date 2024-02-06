@@ -19,7 +19,6 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import ServicesSection from "./Services";
 
-// Co-founder card component with enhanced styling and hover effects
 const CoFounderCard = ({ imagePath, name, role, description, icons }) => (
   <div className="text-center shadow-lg rounded-lg overflow-hidden transition duration-300 hover:shadow-xl">
     <img
@@ -44,7 +43,6 @@ const CoFounderCard = ({ imagePath, name, role, description, icons }) => (
   </div>
 );
 
-// Enhanced AboutUs component with modern styling
 const AboutUs = () => {
   const technologies = [
     { name: "HTML", icon: faHtml5, color: "text-red-600" },
@@ -54,7 +52,6 @@ const AboutUs = () => {
     { name: "Next.js", icon: faReact, color: "text-green-600" },
     { name: "Django", icon: faPython },
     { name: "Node.js", icon: faNode, color: "text-green-900" },
-    // Add more as needed
   ];
 
   return (

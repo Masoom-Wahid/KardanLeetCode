@@ -52,7 +52,6 @@ function App() {
           <Route path="/editor" element={<EditorPage />} />
           <Route path="/home" element={<HomePage email={email} />} />
           <Route path="/about" element={<AboutUs />} />
-          <Route path="/services" element={<ServicesSection />} />
           <Route path="/submissions/:id" element={<SubmissionDetail />} />
           <Route
             path="/admin"
