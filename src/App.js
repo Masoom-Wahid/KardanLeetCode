@@ -26,26 +26,6 @@ import Layout from "./components/Dashboard/Layout/Layout";
 import AboutUs from "./components/Developers/AboutUs";
 import ServicesSection from "./components/Developers/Services";
 
-// Save a reference to the original ResizeObserver
-const OriginalResizeObserver = window.ResizeObserver;
-
-// Override the global ResizeObserver with a custom implementation
-window.ResizeObserver = function (callback) {
-  // Wrap the provided callback in a requestAnimationFrame to avoid loop limits
-  const wrappedCallback = (entries, observer) => {
-    window.requestAnimationFrame(() => {
-      callback(entries, observer);
-    });
-  };
-
-  // Create an instance of the original ResizeObserver with the wrapped callback
-  return new OriginalResizeObserver(wrappedCallback);
-};
-
-// Copy over static methods from the original ResizeObserver to the new one, if any
-Object.getOwnPropertyNames(OriginalResizeObserver).forEach((prop) => {
-  window.ResizeObserver[prop] = OriginalResizeObserver[prop];
-});
 
 
 function App() {
