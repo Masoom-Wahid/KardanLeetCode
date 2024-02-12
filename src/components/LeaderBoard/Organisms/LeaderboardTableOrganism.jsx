@@ -16,6 +16,8 @@ import {
 import LeaderboardRowMolecule from "../Molecules/LeaderboardRowMolecule";
 import { styled } from "@mui/material/styles";
 import "./LeaderboardTableOrganism.scss";
+import Pagination from "../../Pagination/Pagination";
+import SortableHeader from "../../Dashboard/ManageContests/Sorting/SortableHeader";
 
 const WEBSOCKET_URL = "ws://127.0.0.1:8000/";
 
@@ -39,6 +41,22 @@ const LeaderboardTableOrganism = () => {
   const [filter, setFilter] = useState("");
   const [leaderBoardData, setLeaderboardData] = useState([]);
   const [chatSocket, setChatSocket] = useState();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [reportsPerPage, setReportsPerPage] = useState(5);
+  const [sortConfig, setSortConfig] = useState({
+    key: null,
+    direction: "ascending",
+  });
+  const totalPages = Math.ceil(leaderBoardData.length / reportsPerPage);
+  const onPageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  // Calculate the current items to display based on pagination
+  const currentData = leaderBoardData.slice(
+    (currentPage - 1) * reportsPerPage,
+    currentPage * reportsPerPage
+  );
 
   const StyledFormControl = styled(FormControl)({
     minWidth: 120,
@@ -118,7 +136,7 @@ const LeaderboardTableOrganism = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {leaderBoardData.map(([contestantName, contestant], index) => (
+            {currentData.map(([contestantName, contestant], index) => (
               <LeaderboardRowMolecule
                 key={contestantName}
                 name={contestantName}
@@ -128,6 +146,11 @@ const LeaderboardTableOrganism = () => {
             ))}
           </TableBody>
         </StyledTable>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={onPageChange}
+        />
       </Box>
     </>
   );

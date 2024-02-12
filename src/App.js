@@ -25,8 +25,30 @@ import CreateContestant from "./components/Dashboard/Contest/CreateContestant";
 import Layout from "./components/Dashboard/Layout/Layout";
 import AboutUs from "./components/Developers/AboutUs";
 import ServicesSection from "./components/Developers/Services";
+import TabChangeCounter from "./components/TabChangeComponent/TabChangeComponent";
+import Reports from "./components/Dashboard/ManageContests/Reports/Reports";
 
+const OriginalResizeObserver = window.ResizeObserver;
 
+// Create a new ResizeObserver constructor
+window.ResizeObserver = function (callback) {
+  const wrappedCallback = (entries, observer) => {
+    window.requestAnimationFrame(() => {
+      callback(entries, observer);
+    });
+  };
+
+  // Create an instance of the original ResizeObserver
+  // with the wrapped callback
+  return new OriginalResizeObserver(wrappedCallback);
+};
+
+// Copy over static methods, if any
+for (let staticMethod in OriginalResizeObserver) {
+  if (OriginalResizeObserver.hasOwnProperty(staticMethod)) {
+    window.ResizeObserver[staticMethod] = OriginalResizeObserver[staticMethod];
+  }
+}
 
 function App() {
   const [email, setEmail] = useState("");
@@ -45,6 +67,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <TabChangeCounter />
         <Routes>
           <Route path="/" element={<Login setEmail={setEmail} />} />
 
@@ -54,6 +77,7 @@ function App() {
           <Route path="/editor" element={<EditorPage />} />
           <Route path="/home" element={<HomePage email={email} />} />
           <Route path="/about" element={<AboutUs />} />
+          <Route path="/report" element={<Reports />} />
           <Route path="/submissions/:id" element={<SubmissionDetail />} />
           <Route
             path="/admin"

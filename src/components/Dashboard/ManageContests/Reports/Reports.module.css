@@ -1,0 +1,116 @@
+.header {
+  text-align: left;
+  font-weight: 500;
+  padding: 8px;
+  background-color: #f3f3f3; /* Light grey background */
+  color: #333; /* Dark text color for contrast */
+  cursor: pointer;
+}
+
+.rankCell, .nameCell, .cell {
+  padding: 12px 8px; /* More vertical padding for better spacing */
+  text-align: left;
+}
+
+.analyticsButton {
+  padding: 6px 12px; /* Adequate padding for the buttons */
+  background-color: #1e90ff; /* Bright blue background */
+  color: white; /* White text color */
+  border: none;
+  border-radius: 4px; /* Slightly rounded corners for the button */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.analyticsButton:hover {
+  background-color: #4169e1; /* Darker blue on hover for the button */
+}
+
+/* Custom colors for the crown icons */
+.text-gold {
+  color: #ffd700;
+}
+
+.text-silver {
+  color: #c0c0c0;
+}
+
+.text-bronze {
+  color: #cd7f32;
+}
+
+.rank1 {
+  background-color: #fffbe5; /* Gold background */
+}
+
+.rank2 {
+  background-color: #e3ffee; /* Silver background */
+}
+
+.rank3 {
+  background-color: #fff4e6; /* Bronze background */
+}
+
+/* Standard row styling for rows not in the top 3 */
+.standardRow {
+  background-color: #fafafa; /* Light gray background for the rest */
+}
+
+/* Additional styles for hover effects on rows */
+tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* Styling for the crown icons for better alignment and spacing */
+.crownIcon {
+  margin-right: 0.5rem; /* Space after the icon */
+}
+
+/* Styling for the sorting icons in the header */
+.sortIcon {
+  margin-left: 0.25rem; /* Space before the icon */
+}
+
+/* Styling for the clock icon for better alignment and spacing */
+.timeIcon {
+  margin-right: 0.25rem; /* Space after the icon */
+}
+
+/* Enhance table header appearance */
+th {
+  background-color: #e2e8f0; /* A different shade for the header background */
+  color: #333; /* Dark text color for contrast */
+  font-weight: 600; /* Make header font a bit bolder */
+  padding: 10px 8px; /* Adjust padding for better spacing */
+}
+
+/* Ensure the table is full width */
+table {
+  width: 100%;
+  border-collapse: collapse; /* Collapse borders for a clean look */
+}
+
+/* Add spacing between table cells and center content vertically */
+td {
+  padding: 12px 8px; /* Vertical and horizontal padding */
+  vertical-align: middle; /* Center content vertically */
+}
+
+/* Make the 'View Analytics' button stand out */
+.analyticsButton {
+  display: inline-block; /* Allow precise width and height control */
+  font-size: 0.875rem; /* Smaller font size for the button text */
+  text-align: center; /* Center the text inside the button */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Add responsive behavior to the table on smaller screens */
+@media (max-width: 640px) {
+  .header, .rankCell, .nameCell, .cell {
+    padding: 8px; /* Less padding on small screens for space efficiency */
+  }
+
+  .analyticsButton {
+    padding: 4px 8px; /* Smaller button on small screens */
+    font-size: 0.75rem; /* Smaller font size for the button text on small screens */
+  }
+}

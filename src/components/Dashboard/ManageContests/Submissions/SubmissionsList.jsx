@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Pagination from "../../../Pagination/Pagination";
 import { useNavigate } from "react-router-dom";
+import SortableHeader from "../Sorting/SortableHeader";
 
 const initialSubmissions = [
   { id: 1, teamName: "Alpha", lastSubmission: "11:59:04" },
@@ -37,13 +38,11 @@ const SubmissionsList = () => {
   const [sortConfig, setSortConfig] = useState({ key: null, direction: null });
   const [currentPage, setCurrentPage] = useState(1);
   const [submissionsPerPage] = useState(5);
+  const indexOfLastSubmission = currentPage * submissionsPerPage;
+  const indexOfFirstSubmission = indexOfLastSubmission - submissionsPerPage;
   const navigate = useNavigate();
 
-  const sortData = (key) => {
-    let direction = "ascending";
-    if (sortConfig.key === key && sortConfig.direction === "ascending") {
-      direction = "descending";
-    }
+  const sortData = (key, direction) => {
     const sortedData = [...submissions].sort((a, b) => {
       if (a[key] < b[key]) {
         return direction === "ascending" ? -1 : 1;
@@ -57,15 +56,6 @@ const SubmissionsList = () => {
     setSortConfig({ key, direction });
   };
 
-  const renderSortIcon = (key) => {
-    if (sortConfig.key === key) {
-      return sortConfig.direction === "ascending" ? faCaretDown : faCaretUp;
-    }
-    return faCaretDown;
-  };
-
-  const indexOfLastSubmission = currentPage * submissionsPerPage;
-  const indexOfFirstSubmission = indexOfLastSubmission - submissionsPerPage;
   const currentSubmissions = submissions.slice(
     indexOfFirstSubmission,
     indexOfLastSubmission
@@ -82,33 +72,30 @@ const SubmissionsList = () => {
       <h1 className={styles.title}>Submissions</h1>
       <div className={styles.table}>
         <div className={styles.header}>
-          <div className={styles.headerItem} onClick={() => sortData("id")}>
-            ID{" "}
-            <FontAwesomeIcon
-              icon={renderSortIcon("id")}
-              className={styles.icon}
-            />
-          </div>
-          <div
-            className={styles.headerItem}
-            onClick={() => sortData("teamName")}
+          <SortableHeader
+            columnKey="id"
+            onSort={sortData}
+            sortConfig={sortConfig}
+            className={styles.headerItem} // Pass the style class to SortableHeader
           >
-            Team Names{" "}
-            <FontAwesomeIcon
-              icon={renderSortIcon("teamName")}
-              className={styles.icon}
-            />
-          </div>
-          <div
-            className={styles.headerItem}
-            onClick={() => sortData("lastSubmission")}
+            ID
+          </SortableHeader>
+          <SortableHeader
+            columnKey="teamName"
+            onSort={sortData}
+            sortConfig={sortConfig}
+            className={styles.headerItem} // Pass the style class to SortableHeader
           >
-            Last Submission{" "}
-            <FontAwesomeIcon
-              icon={renderSortIcon("lastSubmission")}
-              className={styles.icon}
-            />
-          </div>
+            Team Name
+          </SortableHeader>
+          <SortableHeader
+            columnKey="lastSubmission"
+            onSort={sortData}
+            sortConfig={sortConfig}
+            className={styles.headerItem} // Pass the style class to SortableHeader
+          >
+            Last Submission
+          </SortableHeader>
           <div className={styles.headerItem} style={{ cursor: "default" }}>
             Action
           </div>

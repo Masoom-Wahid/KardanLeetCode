@@ -11,27 +11,33 @@ import Users from "../../Users/Users";
 import SubmissionsList from "../Submissions/SubmissionsList";
 import {useParams} from 'react-router-dom';
 import {useNavigate} from 'react-router-dom';
+import Reports from "../Reports/Reports";
 
 // Replace these with your actual component imports
-const DetailsComponent = ({contestData,setContestData}) => (
+const DetailsComponent = ({ contestData, setContestData }) => (
   <div>
-    <ContestDetailsForm  contestData={contestData} setContestData={setContestData} />
+    <ContestDetailsForm
+      contestData={contestData}
+      setContestData={setContestData}
+    />
   </div>
 );
-const ChallengesComponent = ({contestData}) => (
+const ChallengesComponent = ({ contestData }) => (
   <div>
     <ChallengesTable contestData={contestData} />
   </div>
 );
-const LeaderboardComponent = ({contestData}) => (
+const LeaderboardComponent = ({ contestData }) => (
   <div>
-    <LeaderboardPage  contestData={contestData} />
+    <LeaderboardPage contestData={contestData} />
   </div>
 );
-const AnalyticsComponent = ({contestData}) => <ManageContest contestData={contestData}  />;
-const UsersComponent = ({contestData}) => (
+const AnalyticsComponent = ({ contestData }) => (
+  <ManageContest contestData={contestData} />
+);
+const UsersComponent = ({ contestData }) => (
   <div>
-    <CreateContestant  contestData={contestData} />
+    <CreateContestant contestData={contestData} />
   </div>
 );
 
@@ -39,21 +45,24 @@ const ManageContestsParentComponent = () => {
   const [activeUniqueTab, setActiveUniqueTab] = useState("Details");
   const { id } = useParams();
   const navigate = useNavigate();
-  const [contestData,setContestData] = useState()
+  const [contestData, setContestData] = useState();
 
-  if(id === undefined){
-    window.alert("id  required")
-    navigate("/contests")
+  if (id === undefined) {
+    window.alert("id  required");
+    navigate("/contests");
   }
-   useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL}contest/${id}`, {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        });
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}contest/${id}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
+        );
 
         const data = await response.json();
         if (!response.ok) {
@@ -73,53 +82,56 @@ const ManageContestsParentComponent = () => {
       }
     };
     fetchData();
-  },[]);
+  }, []);
 
   const renderUniqueTabContent = (tab) => {
     switch (tab) {
       case "Details":
-        return <DetailsComponent  contestData={contestData} setContestData={setContestData} />;
+        return (
+          <DetailsComponent
+            contestData={contestData}
+            setContestData={setContestData}
+          />
+        );
       case "Challenges":
-        return <ChallengesComponent  contestData={contestData} />;
+        return <ChallengesComponent contestData={contestData} />;
       case "Leaderboard":
-        return <LeaderboardComponent  contestData={contestData} />;
-      case "Analytics":
-        return <AnalyticsComponent  contestData={contestData} />;
+        return <LeaderboardComponent contestData={contestData} />;
       case "Users":
         return <Users contestData={contestData} />;
       case "Submissions":
-        return <SubmissionsList  contestData={contestData} />;
+        return <SubmissionsList contestData={contestData} />;
+      case "FinalReport":
+        return <Reports contestData={contestData} />;
       case "AdvanceSetting":
-        return <AdvanceSetting  contestData={contestData} />;
+        return <AdvanceSetting contestData={contestData} />;
       default:
-        return null; // or <DefaultComponent />
+        return null;
     }
   };
 
   return (
     <div className={uniqueStyles.uniqueContainer}>
-      {
-        contestData && (
-          <>
-            <div className={uniqueStyles.uniqueContentArea}>
-              <ManageContestsTabsComponent
-                uniqueTabs={[
-                  { id: "Details", label: "Details" },
-                  { id: "Challenges", label: "Challenges" },
-                  { id: "Leaderboard", label: "Leaderboard" },
-                  { id: "Analytics", label: "Analytics" },
-                  { id: "Users", label: "Users" },
-                  { id: "Submissions", label: "Submissions" },
-                  { id: "AdvanceSetting", label: "Advance Setting" },
-                ]}
-                activeUniqueTab={activeUniqueTab}
-                setActiveUniqueTab={setActiveUniqueTab}
-              />
-              {renderUniqueTabContent(activeUniqueTab)}
-            </div>
-          </>
-          )
-        }
+      {contestData && (
+        <>
+          <div className={uniqueStyles.uniqueContentArea}>
+            <ManageContestsTabsComponent
+              uniqueTabs={[
+                { id: "Details", label: "Details" },
+                { id: "Challenges", label: "Challenges" },
+                { id: "Leaderboard", label: "Leaderboard" },
+                { id: "Users", label: "Users" },
+                { id: "Submissions", label: "Submissions" },
+                { id: "FinalReport", label: "Final Report" },
+                { id: "AdvanceSetting", label: "Advance Setting" },
+              ]}
+              activeUniqueTab={activeUniqueTab}
+              setActiveUniqueTab={setActiveUniqueTab}
+            />
+            {renderUniqueTabContent(activeUniqueTab)}
+          </div>
+        </>
+      )}
     </div>
   );
 };
