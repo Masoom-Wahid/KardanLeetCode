@@ -43,10 +43,6 @@ const LeaderboardTableOrganism = () => {
   const [chatSocket, setChatSocket] = useState();
   const [currentPage, setCurrentPage] = useState(1);
   const [reportsPerPage, setReportsPerPage] = useState(5);
-  const [sortConfig, setSortConfig] = useState({
-    key: null,
-    direction: "ascending",
-  });
   const totalPages = Math.ceil(leaderBoardData.length / reportsPerPage);
   const onPageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
