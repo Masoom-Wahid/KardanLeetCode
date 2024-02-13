@@ -79,6 +79,7 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/report" element={<Reports />} />
           <Route path="/submissions/:id" element={<SubmissionDetail />} />
+          <Route path="/manage" element={<ManageContest />} />
           <Route
             path="/admin"
             element={

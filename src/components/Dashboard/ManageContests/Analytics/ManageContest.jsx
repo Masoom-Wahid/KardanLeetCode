@@ -3,6 +3,7 @@ import Sidebar from "../../Sidebar/Sidebar"; // Replace with your actual path
 import styles from "./ManageContest.module.css"; // Your CSS module for this component
 import NivoBar from "./NivoBar";
 import NivoLine from "./NivoLine";
+import SubmissionsReport from "./SubmissionsReport";
 
 const ManageContest = () => {
   // Mock data for the cards
@@ -26,7 +27,7 @@ const ManageContest = () => {
         </div>
         <div className={styles.chartsContainer}>
           <NivoLine type="line" className={styles.chart} />
-          <NivoBar type="bar" className={styles.chart} />
+          <SubmissionsReport className={styles.chart} />
         </div>
       </div>
     </div>
