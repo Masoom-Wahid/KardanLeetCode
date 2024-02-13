@@ -12,15 +12,6 @@ const crownColors = {
   3: "text-orange-500",
 };
 
-const renderCrown = (rank) => {
-  let color;
-  if (rank === 1) color = "text-yellow-500";
-  else if (rank === 2) color = "text-gray-300";
-  else if (rank === 3) color = "text-orange-600";
-
-  return rank <= 3 ? <CrownOutlined className={`${color} pr-2`} /> : null;
-};
-
 const Reports = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [reportsPerPage] = useState(5);
@@ -108,7 +99,6 @@ const Reports = () => {
       score: 50,
       time: "11.45AM",
     },
-    // ... more data
   ]);
 
   const sortData = (key, direction) => {

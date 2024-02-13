@@ -59,14 +59,11 @@ const AboutUs = () => {
     <div>
       <div className="relative h-screen flex flex-col justify-center items-center text-white">
         <div className="absolute w-full h-full bg-black bg-opacity-60"></div>
-        <video
-          autoPlay
-          loop
-          muted
+        <img
+          src="/image3.jpg"
+          alt="background"
           className="absolute w-full h-full object-cover"
-        >
-          <source src="/code.mp4" type="video/mp4" />
-        </video>
+        />
         <div className="z-10 text-center">
           <h1 className="text-6xl font-bold mb-4">Nucleus Web Studios</h1>
           <p className="text-xl mx-auto leading-relaxed max-w-md">

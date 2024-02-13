@@ -1,5 +1,5 @@
 .table-header-cell {
-  cursor: pointer;
+  cursor: default;
   &:hover {
     background-color: darken(#1565c0, 10%);
   }
