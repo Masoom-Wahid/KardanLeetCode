@@ -27,6 +27,7 @@ import AboutUs from "./components/Developers/AboutUs";
 import ServicesSection from "./components/Developers/Services";
 import TabChangeCounter from "./components/TabChangeComponent/TabChangeComponent";
 import Reports from "./components/Dashboard/ManageContests/Reports/Reports";
+import AdminSignUp from "./components/Dashboard/Admin/AdminSignUp";
 
 const OriginalResizeObserver = window.ResizeObserver;
 
@@ -80,6 +81,7 @@ function App() {
           <Route path="/report" element={<Reports />} />
           <Route path="/submissions/:id" element={<SubmissionDetail />} />
           <Route path="/manage" element={<ManageContest />} />
+          <Route path="/adminSignUp" element={<AdminSignUp />} />
           <Route
             path="/admin"
             element={
