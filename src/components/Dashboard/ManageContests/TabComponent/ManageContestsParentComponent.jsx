@@ -104,7 +104,9 @@ const ManageContestsParentComponent = () => {
       case "FinalReport":
         return <Reports contestData={contestData} />;
       case "AdvanceSetting":
-        return <AdvanceSetting contestData={contestData} />;
+        return <AdvanceSetting 
+              contestData={contestData}
+              setContestData={setContestData} />;
       default:
         return null;
     }
