@@ -132,14 +132,6 @@ function App() {
             }
           />
           <Route
-            path="/createUserContestant"
-            element={
-              <Layout>
-                <CreateUserContestant />
-              </Layout>
-            }
-          />
-          <Route
             path="/users"
             element={
               <Layout>

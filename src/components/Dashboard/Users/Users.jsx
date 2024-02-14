@@ -40,7 +40,7 @@ const Users = () => {
           <h1 className={styles.title}>Users</h1>
           <button
             className={styles.addButton}
-            onClick={() => navigate("/createUser")}
+            onClick={() => navigate("/createContestant")}
           >
             <FontAwesomeIcon icon={faPlus} />
             Add New
