@@ -2,9 +2,11 @@ import React from "react";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import IconAtom from "../Atom/IconAtom";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashAlt, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { styled } from "@mui/material/styles";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+import styles from "./ChallengeRowMolecule.module.css";
 
 const ScoreBox = styled("div")(({ theme }) => ({
   padding: theme.spacing(0.5),
@@ -38,19 +40,17 @@ const DeleteButton = styled(IconAtom)(({ theme }) => ({
   },
 }));
 
-
-const ChallengeRowMolecule = ({ challenge, index,onDelete }) => {
-
+const ChallengeRowMolecule = ({ challenge, index, onDelete }) => {
   const navigate = useNavigate();
   return (
     <TableRow>
       <StyledTableCell>{index + 1}</StyledTableCell>
       <StyledTableCell
-      style={{cursor:"pointer"}}
-      onClick={() => navigate(`/challenges/${challenge.id}`)}
+        style={{ cursor: "pointer" }}
+        onClick={() => navigate(`/challenges/${challenge.id}`)}
       >
         {challenge.title}
-        </StyledTableCell>
+      </StyledTableCell>
       <StyledTableCell>{challenge.lvl}</StyledTableCell>
       <StyledTableCell>
         <ScoreBox>{challenge.point}</ScoreBox>
@@ -59,7 +59,15 @@ const ChallengeRowMolecule = ({ challenge, index,onDelete }) => {
         <ScoreBox>{challenge.time_limit}</ScoreBox>
       </StyledTableCell>
       <StyledTableCell>
-        <DeleteButton icon={<DeleteIcon />} onClick={() => onDelete(challenge.id)} />
+        <FontAwesomeIcon
+          icon={faEdit}
+          className={(styles.actionIcon, styles.editIcon)}
+        />
+        <FontAwesomeIcon
+          icon={faTrashAlt}
+          onClick={() => onDelete(challenge.id)}
+          className={(styles.actionIcon, styles.deleteIcon)}
+        />
       </StyledTableCell>
     </TableRow>
   );

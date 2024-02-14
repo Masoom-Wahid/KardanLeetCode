@@ -1,0 +1,22 @@
+.editIcon {
+  font-size: 18px;
+  color: #39a300;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.deleteIcon {
+  font-size: 18px;
+  color: rgb(209, 15, 1);
+  margin-left: 5px;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.deleteIcon:hover {
+  color: rgb(152, 10, 0);
+}
+
+.editIcon:hover {
+  color: #2b7a00;
+}
