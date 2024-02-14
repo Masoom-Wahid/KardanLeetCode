@@ -8,7 +8,7 @@ import Pagination from "../Pagination/Pagination";
 const ChallengesGrid = () => {
   const [challengesData, setChallengesData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [challengesPerPage] = useState(10); // Number of challenges per page
+  const [challengesPerPage] = useState(8); // Number of challenges per page
   const [contestName, setContestName] = useState("Contest");
 
   const navigate = useNavigate();
@@ -24,10 +24,13 @@ const ChallengesGrid = () => {
             },
           }
         );
-
+        
+        // 423 means that the contest is finished
+        if (response.status === 423) {
+          navigate("/home")
+        }
         const data = await response.json();
         if (!response.ok) {
-          console.log(response.status);
           // 401 means unauthorized , so the user is either using an old token or is
           // either bypassing
           if (response.status === 401) {
@@ -36,7 +39,6 @@ const ChallengesGrid = () => {
           }
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        console.log(data);
         setChallengesData(data.data);
         setContestName(data.name);
         // Process the data

@@ -17,8 +17,7 @@ import styles from "./Sidebar.module.css";
 const navItems = [
   { name: "Dashboard", icon: faTachometerAlt, path: "/admin" },
   { name: "Create Contest", icon: faPlus, path: "/createcontest" },
-  { name: "Show Contest", icon: faTasks, path: "/contests" },
-  { name: "Manage Contest", icon: faBarsProgress, path: "/manageContest" },
+  { name: "Contests", icon: faTasks, path: "/contests" },
   { name: "Challenges", icon: faQuestionCircle, path: "/challenges" },
 ];
 
