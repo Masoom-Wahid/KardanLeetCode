@@ -60,7 +60,7 @@ const Dashboard = () => {
             </button>
             <button
               className="card-button"
-              onClick={() => navigate("/managecontest")}
+              onClick={() => navigate("/contests")}
             >
               <FontAwesomeIcon icon={faTasks} />
               Manage Contest

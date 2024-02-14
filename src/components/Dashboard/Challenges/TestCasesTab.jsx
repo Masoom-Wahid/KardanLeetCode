@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./TestCasesTab.module.css"; // CSS Module
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -38,8 +38,6 @@ const TestCasesTab = ({questionId,testCases, avaiableTestCases, setAvailableTest
                               input:inputText,
                               output:outputText}),
       });
-      const data = await response.json();
-      console.log(data);
       if(!response.ok){
         if (response.status === 401 || response.status === 403){
           localStorage.removeItem("accessToken")
