@@ -4,6 +4,7 @@ import { ResponsiveBar } from "@nivo/bar";
 import { CCard, CCardBody, CCardHeader, CCol, CRow } from "@coreui/react";
 import DataTableView from "./DataTable";
 import styles from "./NivoBar.module.css";
+import { patternLinesDef } from "@nivo/core";
 
 const SubmissionsReport = () => {
   const [vertOrHor, setVertOrHor] = useState("vertical");
@@ -30,6 +31,15 @@ const SubmissionsReport = () => {
     "kappa",
   ];
 
+  //if you have an array the data shuold be given like this:
+  //barData = {
+  //question: "question 1",
+  //submissions: [
+  //{id: "q1sub1", teamName: "alpha", status: "correct"}
+  //{id: "q1sub2", teamName: "beta", status: "incorrect"}
+  //]
+  //}
+
   const generateSubmissionsForQuestion = (questionNumber) => {
     return teamNames.map((teamName, index) => ({
       id: `q${questionNumber}sub${index + 1}`,
@@ -51,24 +61,22 @@ const SubmissionsReport = () => {
     return barData;
   };
 
-  // Now generate barData with 10 questions, each with at least 8 submissions
   const barData = generateBarData(5);
 
   const processDataForBarChart = (submissionsData) => {
     return submissionsData.map((questionItem) => {
       const dataPoint = {
         question: questionItem.question,
-        submissions: questionItem.submissions, // Include the submissions array
+        submissions: questionItem.submissions,
         details: {}, // As previously defined
       };
 
-      // Populate the details object and set block values as before
       questionItem.submissions.forEach((submission) => {
-        dataPoint[submission.id] = 1; // This creates the block
+        dataPoint[submission.id] = 1;
         dataPoint.details[submission.id] = {
           teamName: submission.teamName,
           status: submission.status,
-        }; // This adds the detail for the tooltip
+        };
       });
 
       return dataPoint;
@@ -80,8 +88,6 @@ const SubmissionsReport = () => {
   );
 
   const getColor = (bar) => {
-    // Assuming the 'bar' object contains an 'id' that matches your submission ID
-    // And 'data' is your barData that contains the 'submissions' array
     const submission = bar.data.submissions.find((s) => s.id === bar.id);
     return submission && submission.status === "correct"
       ? "#4AA785"
@@ -99,10 +105,46 @@ const SubmissionsReport = () => {
       valueScale={{ type: "linear" }}
       indexScale={{ type: "band", round: true }}
       colors={getColor}
-      borderColor={{ from: "color", modifiers: [["darker", 1.6]] }}
+      borderColor={{
+        from: "color",
+        modifiers: [["darker", 1.6]],
+      }}
       axisTop={null}
       axisRight={null}
       innerPadding={1}
+      labelSkipWidth={12}
+      labelSkipHeight={12}
+      labelTextColor={{
+        from: "color",
+        modifiers: [["darker", 1.6]],
+      }}
+      defs={[
+        patternLinesDef("lines-pattern", {
+          spacing: 10,
+          rotation: -29,
+          lineWidth: 2,
+          background: "#000000",
+          color: "#ffffff",
+        }),
+        {
+          id: "dots",
+          type: "patternDots",
+          background: "inherit",
+          color: "#38bcb2",
+          size: 4,
+          padding: 1,
+          stagger: true,
+        },
+        {
+          id: "lines",
+          type: "patternLines",
+          background: "inherit",
+          color: "#eed312",
+          rotation: -45,
+          lineWidth: 6,
+          spacing: 10,
+        },
+      ]}
       axisBottom={{
         tickSize: 5,
         tickPadding: 5,
@@ -119,9 +161,7 @@ const SubmissionsReport = () => {
         legendPosition: "middle",
         legendOffset: -40,
       }}
-      labelTextColor={{ from: "color", modifiers: [["darker", 1.6]] }}
       tooltip={({ id, value, data }) => {
-        // Access the detailed information from the 'details' object
         const detail = data.details[id];
         if (detail) {
           return (
@@ -139,7 +179,7 @@ const SubmissionsReport = () => {
             </div>
           );
         } else {
-          // Handle the case where the detail is not available
+          //if data is not there.
           return <div>No data available</div>;
         }
       }}
@@ -152,7 +192,7 @@ const SubmissionsReport = () => {
   );
 
   MyResponsiveBar.propTypes = {
-    data: PropTypes.array.isRequired, // Corrected to array
+    data: PropTypes.array.isRequired,
     vertOrHor: PropTypes.string.isRequired,
   };
 
@@ -187,7 +227,7 @@ const SubmissionsReport = () => {
         <CCardBody className={styles.cardBody}>
           {viewType === "Graph" ? (
             <MyResponsiveBar
-              data={processDataForBarChart(barData)} // Corrected data processing
+              data={processDataForBarChart(barData)}
               vertOrHor={vertOrHor}
             />
           ) : (
