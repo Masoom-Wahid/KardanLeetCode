@@ -55,7 +55,7 @@ const ParentComponent = () => {
         setAvailableTestCases(data.testcases.avaialabe_test_cases);
         setFilesRequired(data.testcases.files_required);
         setSample(data.samples);
-        setConstraints(data.consts);
+        setConstraints(data.consts.length <= 0 ?  undefined : data.consts[0]);
 
         // Process the data
       } catch (error) {
@@ -86,9 +86,17 @@ const ParentComponent = () => {
           />
         );
       case "Samples":
-        return <SampleTestCases />;
+        return <SampleTestCases 
+        sample={sample}
+        setsample={setSample}
+        questionId={question.id}
+        />;
       case "Constraints":
-        return <Constraints />;
+        return <Constraints
+          consts={constraints}
+          setconsts={setConstraints}
+          questionId={question.id}
+        />;
       default:
         return null;
     }
