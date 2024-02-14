@@ -41,14 +41,13 @@ const TestCasesTab = ({questionId,testCases, avaiableTestCases, setAvailableTest
       const data = await response.json();
       console.log(data);
       if(!response.ok){
-        setIsModalOpen(false);
         if (response.status === 401 || response.status === 403){
           localStorage.removeItem("accessToken")
           navigate("/")
         }
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      setIsModalOpen(false);
+      
       setAvailableTestCases(avaiableTestCases+1)
       if (avaiableTestCases+1 >= testCases){
         setFilesRequired(false)
@@ -62,6 +61,8 @@ const TestCasesTab = ({questionId,testCases, avaiableTestCases, setAvailableTest
     } catch (error) {
       // Handle errors
       console.error(error);
+    }finally{
+      setIsModalOpen(false);
     }
 
   }
