@@ -1,10 +1,14 @@
 import React from "react";
-import LeaderboardTableOrganism from "./LeaderboardTableOrganism";
+import Reports from "../../Dashboard/ManageContests/Reports/Reports";
+import "./LeaderboardTableOrganism.scss";
 
 const LeaderboardPage = () => {
   return (
     <>
-      <LeaderboardTableOrganism />
+      <div variant="h4" className="leaderboard-title">
+        Leaderboard
+      </div>
+      <Reports />
     </>
   );
 };

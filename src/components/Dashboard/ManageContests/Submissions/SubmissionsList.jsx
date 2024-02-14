@@ -1,11 +1,7 @@
-import React, { useState, sortConfig } from "react";
+import React, { useState } from "react";
 import styles from "./SubmissionsList.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEye,
-  faCaretDown,
-  faCaretUp,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEye, faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import Pagination from "../../../Pagination/Pagination";
 import { useNavigate } from "react-router-dom";
 import SortableHeader from "../Sorting/SortableHeader";
@@ -33,7 +29,7 @@ const initialSubmissions = [
   { id: 20, teamName: "Gamma", lastSubmission: "11:59:04" },
 ];
 
-const SubmissionsList = () => {
+const SubmissionsList = ({ showLastSubmission = true }) => {
   const [submissions, setSubmissions] = useState(initialSubmissions);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: null });
   const [currentPage, setCurrentPage] = useState(1);
@@ -68,8 +64,7 @@ const SubmissionsList = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Submissions</h1>
+    <div className={styles.containers}>
       <div className={styles.table}>
         <div className={styles.header}>
           <SortableHeader
@@ -88,14 +83,16 @@ const SubmissionsList = () => {
           >
             Team Name
           </SortableHeader>
-          <SortableHeader
-            columnKey="lastSubmission"
-            onSort={sortData}
-            sortConfig={sortConfig}
-            className={styles.headerItem} // Pass the style class to SortableHeader
-          >
-            Last Submission
-          </SortableHeader>
+          {showLastSubmission && (
+            <SortableHeader
+              columnKey="lastSubmission"
+              onSort={sortData}
+              sortConfig={sortConfig}
+              className={styles.headerItem} // Pass the style class to SortableHeader
+            >
+              Last Submission
+            </SortableHeader>
+          )}
           <div className={styles.headerItem} style={{ cursor: "default" }}>
             Action
           </div>
@@ -104,7 +101,19 @@ const SubmissionsList = () => {
           <div key={submission.id} className={styles.row}>
             <div>{submission.id}</div>
             <div>{submission.teamName}</div>
-            <div>{submission.lastSubmission}</div>
+            {showLastSubmission && <div>{submission.lastSubmission}</div>}
+            {!showLastSubmission && (
+              <td>
+                <FontAwesomeIcon
+                  icon={faEdit}
+                  className={(styles.actionIcon, styles.editIcon)}
+                />
+                <FontAwesomeIcon
+                  icon={faTrashAlt}
+                  className={(styles.actionIcon, styles.deleteIcon)}
+                />
+              </td>
+            )}
             <div>
               <button className={styles.actionButton} onClick={handleView}>
                 <FontAwesomeIcon icon={faEye} />

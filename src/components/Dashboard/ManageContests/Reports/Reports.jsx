@@ -21,81 +21,99 @@ const Reports = () => {
     {
       rank: 1,
       name: "Alpha",
-      solutions: 9,
+      correct: 9,
+      incorrect: 0,
       attempts: 9,
       tabSwitches: 0,
+      penalty: "300ms",
       score: 90,
       time: "10.15AM",
     },
     {
       rank: 2,
       name: "Beta",
-      solutions: 9,
+      correct: 9,
+      incorrect: 1,
       attempts: 10,
       tabSwitches: 12,
+      penalty: "300ms",
       score: 85,
       time: "11.20AM",
     },
     {
       rank: 3,
       name: "Omega",
-      solutions: 5,
+      correct: 5,
+      incorrect: 4,
       attempts: 9,
       tabSwitches: 23,
+      penalty: "300ms",
       score: 50,
       time: "11.45AM",
     },
     {
       rank: 4,
       name: "Gamma",
-      solutions: 2,
+      correct: 2,
+      incorrect: 3,
       attempts: 5,
       tabSwitches: 10,
+      penalty: "300ms",
       score: 20,
       time: "12.15PM",
     },
     {
       rank: 5,
       name: "Epsilon",
-      solutions: 1,
+      correct: 1,
+      incorrect: 1,
       attempts: 2,
       tabSwitches: 10,
+      penalty: "300ms",
       score: 10,
       time: "12.15PM",
     },
     {
       rank: 6,
       name: "Epsilon",
-      solutions: 1,
+      correct: 1,
+      incorrect: 1,
       attempts: 2,
       tabSwitches: 10,
+      penalty: "300ms",
       score: 10,
       time: "12.15PM",
     },
     {
       rank: 7,
       name: "Alpha",
-      solutions: 9,
+      correct: 9,
+      incorrect: 0,
       attempts: 9,
       tabSwitches: 0,
+      penalty: "300ms",
       score: 90,
       time: "10.15AM",
     },
     {
       rank: 8,
       name: "Beta",
-      solutions: 9,
+      correct: 9,
+      incorrect: 1,
       attempts: 10,
       tabSwitches: 12,
+      penalty: "300ms",
       score: 85,
       time: "11.20AM",
     },
     {
       rank: 9,
       name: "Omega",
-      solutions: 5,
+      correct: 5,
+      incorrect: 4,
       attempts: 9,
       tabSwitches: 23,
+      penalty: "300ms",
       score: 50,
       time: "11.45AM",
     },
@@ -150,41 +168,73 @@ const Reports = () => {
                 </th>
                 <th className={styles.header}>
                   <SortableHeader
-                    columnKey="solutions"
+                    columnKey="correct"
                     onSort={sortData}
                     sortConfig={sortConfig}
                     className={styles.header}
                   >
-                    Successful Solutions
+                    Correct
                   </SortableHeader>
                 </th>
                 <th className={styles.header}>
-                  Attempt{" "}
-                  <FontAwesomeIcon
-                    className={styles.sortIcon}
-                    icon={faCaretDown}
-                  />
+                  <SortableHeader
+                    columnKey="incorrect"
+                    onSort={sortData}
+                    sortConfig={sortConfig}
+                    className={styles.header}
+                  >
+                    Incorrect
+                  </SortableHeader>
                 </th>
                 <th className={styles.header}>
-                  Tab Switch{" "}
-                  <FontAwesomeIcon
-                    className={styles.sortIcon}
-                    icon={faCaretUp}
-                  />
+                  <SortableHeader
+                    columnKey="attempts"
+                    onSort={sortData}
+                    sortConfig={sortConfig}
+                    className={styles.header}
+                  >
+                    Attempts{" "}
+                  </SortableHeader>
                 </th>
                 <th className={styles.header}>
-                  Score{" "}
-                  <FontAwesomeIcon
-                    className={styles.sortIcon}
-                    icon={faCaretDown}
-                  />
+                  <SortableHeader
+                    columnKey="tabSwitches"
+                    onSort={sortData}
+                    sortConfig={sortConfig}
+                    className={styles.header}
+                  >
+                    Tab Switch{" "}
+                  </SortableHeader>
                 </th>
                 <th className={styles.header}>
-                  Time{" "}
-                  <FontAwesomeIcon
-                    className={styles.sortIcon}
-                    icon={faCaretUp}
-                  />
+                  <SortableHeader
+                    columnKey="penalty"
+                    onSort={sortData}
+                    sortConfig={sortConfig}
+                    className={styles.header}
+                  >
+                    Penalty{" "}
+                  </SortableHeader>
+                </th>
+                <th className={styles.header}>
+                  <SortableHeader
+                    columnKey="score"
+                    onSort={sortData}
+                    sortConfig={sortConfig}
+                    className={styles.header}
+                  >
+                    Score{" "}
+                  </SortableHeader>
+                </th>
+                <th className={styles.header}>
+                  <SortableHeader
+                    columnKey="time"
+                    onSort={sortData}
+                    sortConfig={sortConfig}
+                    className={styles.header}
+                  >
+                    Time{" "}
+                  </SortableHeader>
                 </th>
                 <th className={styles.header}>Action</th>
               </tr>
@@ -207,9 +257,11 @@ const Reports = () => {
                     {item.rank}
                   </td>
                   <td className={styles.nameCell}>{item.name}</td>
-                  <td className={styles.cell}>{item.solutions}</td>
+                  <td className={styles.cell}>{item.correct}</td>
+                  <td className={styles.cell}>{item.incorrect}</td>
                   <td className={styles.cell}>{item.attempts}</td>
                   <td className={styles.cell}>{item.tabSwitches}</td>
+                  <td className={styles.cell}>{item.penalty}</td>
                   <td className={styles.cell}>{item.score}</td>
                   <td className={styles.cell}>
                     <ClockCircleOutlined className="pr-1" />

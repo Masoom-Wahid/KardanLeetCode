@@ -14,7 +14,7 @@
 .title {
   color: #333;
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   font-size: 2rem;
   font-weight: 600;
 }
@@ -43,109 +43,3 @@
   transform: translateY(1px);
 }
 
-/* Table and cell styling */
-.usersTable {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-}
-
-.usersTable th,
-.usersTable td {
-  padding: 12px;
-  border-bottom: 1px solid #dee2e6;
-}
-
-.usersTable th {
-  background-color: #f8f9fa;
-  cursor: pointer;
-  position: relative;
-  user-select: none;
-}
-
-/* Sorting icons visibility */
-.usersTable th .icon {
-  margin-left: 0.5rem;
-}
-
-.usersTable th:hover .icon {
-  visibility: visible;
-}
-
-/* Hover effect for table rows */
-.usersTable tbody tr {
-  transition: background-color 0.15s;
-}
-
-.usersTable tbody tr:hover {
-  background-color: #f2f2f2;
-}
-
-.editIcon {
-  color: #39a300;
-  cursor: pointer;
-  transition: color 0.15s;
-}
-
-.deleteIcon {
-  color: rgb(209, 15, 1);
-  margin-left: 5px;
-  cursor: pointer;
-  transition: color 0.15s;
-}
-
-.deleteIcon:hover {
-  color: rgb(152, 10, 0);
-}
-
-.editIcon:hover {
-  color: #2b7a00;
-}
-
-
-
-/* Pagination container */
-.paginationContainer {
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-}
-
-/* Media queries for responsiveness */
-@media (max-width: 768px) {
-  .addButton {
-    padding: 8px 10px;
-    font-size: 0.9rem;
-  }
-
-  .usersTable th,
-  .usersTable td {
-    padding: 8px;
-  }
-
-  .usersTable th:last-child,
-  .usersTable td:last-child {
-    display: none;
-  }
-}
-
-/* Focus states for better accessibility */
-.addButton:focus,
-.actionIcon:focus {
-  outline: 3px solid #80bdff;
-  outline-offset: 2px;
-}
-
-/* Animation for the sort icon */
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(180deg);
-  }
-}
-
-.icon.rotate {
-  animation: rotate 0.2s forwards;
-}

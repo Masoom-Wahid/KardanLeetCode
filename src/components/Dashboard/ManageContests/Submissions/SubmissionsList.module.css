@@ -202,6 +202,27 @@
   transform: rotate(180deg); /* Rotate icon to indicate upward sort */
 }
 
+.editIcon {
+  color: #39a300;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.deleteIcon {
+  color: rgb(209, 15, 1);
+  margin-left: 5px;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.deleteIcon:hover {
+  color: rgb(152, 10, 0);
+}
+
+.editIcon:hover {
+  color: #2b7a00;
+}
+
 /* Responsive adjustments for mobile view */
 @media (max-width: 768px) {
   .headerItem .icon {

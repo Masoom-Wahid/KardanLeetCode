@@ -8,9 +8,9 @@ import ChallengesTable from "../Challenges/ChallengesTable";
 import ContestDetailsForm from "../Contest/ContestDetailsForm";
 import AdvanceSetting from "../AdvanceSetting/AdvanceSetting";
 import Users from "../../Users/Users";
-import SubmissionsList from "../Submissions/SubmissionsList";
-import {useParams} from 'react-router-dom';
-import {useNavigate} from 'react-router-dom';
+import SubmissionPage from "../Submissions/SubmissionPage";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Reports from "../Reports/Reports";
 
 // Replace these with your actual component imports
@@ -100,7 +100,7 @@ const ManageContestsParentComponent = () => {
       case "Users":
         return <Users contestData={contestData} />;
       case "Submissions":
-        return <SubmissionsList contestData={contestData} />;
+        return <SubmissionPage contestData={contestData} />;
       case "FinalReport":
         return <Reports contestData={contestData} />;
       case "AdvanceSetting":
