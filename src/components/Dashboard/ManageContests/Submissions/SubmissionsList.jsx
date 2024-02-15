@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./SubmissionsList.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
@@ -6,34 +6,14 @@ import Pagination from "../../../Pagination/Pagination";
 import { useNavigate } from "react-router-dom";
 import SortableHeader from "../Sorting/SortableHeader";
 
-const initialSubmissions = [
-  { id: 1, teamName: "Alpha", lastSubmission: "11:59:04" },
-  { id: 2, teamName: "Beta", lastSubmission: "11:59:04" },
-  { id: 3, teamName: "Omega", lastSubmission: "11:59:04" },
-  { id: 4, teamName: "Gamma", lastSubmission: "11:59:04" },
-  { id: 5, teamName: "Alpha", lastSubmission: "11:59:04" },
-  { id: 6, teamName: "Beta", lastSubmission: "11:59:04" },
-  { id: 7, teamName: "Omega", lastSubmission: "11:59:04" },
-  { id: 8, teamName: "Gamma", lastSubmission: "11:59:04" },
-  { id: 9, teamName: "Alpha", lastSubmission: "11:59:04" },
-  { id: 10, teamName: "Beta", lastSubmission: "11:59:04" },
-  { id: 11, teamName: "Omega", lastSubmission: "11:59:04" },
-  { id: 12, teamName: "Gamma", lastSubmission: "11:59:04" },
-  { id: 13, teamName: "Alpha", lastSubmission: "11:59:04" },
-  { id: 14, teamName: "Beta", lastSubmission: "11:59:04" },
-  { id: 15, teamName: "Omega", lastSubmission: "11:59:04" },
-  { id: 16, teamName: "Gamma", lastSubmission: "11:59:04" },
-  { id: 17, teamName: "Alpha", lastSubmission: "11:59:04" },
-  { id: 18, teamName: "Beta", lastSubmission: "11:59:04" },
-  { id: 19, teamName: "Omega", lastSubmission: "11:59:04" },
-  { id: 20, teamName: "Gamma", lastSubmission: "11:59:04" },
-];
 
-const SubmissionsList = ({ showLastSubmission = true }) => {
-  const [submissions, setSubmissions] = useState(initialSubmissions);
+const SubmissionsList = ({ usersTab,contestData }) => {
+  const [submissions, setSubmissions] = useState([]);
+  const [users,setUsers] = useState([])
   const [sortConfig, setSortConfig] = useState({ key: null, direction: null });
   const [currentPage, setCurrentPage] = useState(1);
-  const [submissionsPerPage] = useState(5);
+  const [maxAmountOfPage,setMaxAmountOfPage] = useState()
+  const [submissionsPerPage] = useState(8);
   const indexOfLastSubmission = currentPage * submissionsPerPage;
   const indexOfFirstSubmission = indexOfLastSubmission - submissionsPerPage;
   const navigate = useNavigate();
@@ -57,75 +37,132 @@ const SubmissionsList = ({ showLastSubmission = true }) => {
     indexOfLastSubmission
   );
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+ const fetchData = async (page) => {
+    let url = usersTab ? 
+    `${process.env.REACT_APP_API_URL}auth/users/getcredentials?contest=${contestData.name}&page=${page}` 
+    : `${process.env.REACT_APP_API_URL}contest/${contestData.id}?groups=True`
+    try {
+      const response = await fetch(
+        url,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
 
-  const handleView = () => {
-    navigate("/submissions");
+      const data = await response.json();
+
+      if (!response.ok) {
+        // 401 means unauthorized , 403 means unauthorized, so the user is either using an old token or is
+        // either bypassing
+        if (response.status === 401 || response.status === 403) {
+          localStorage.removeItem("accessToken");
+          navigate("/");
+        }
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      if(usersTab){
+        setUsers(Object.entries(data.result))  
+        setMaxAmountOfPage(data.avaialable_pages) }
+      else{ 
+        setSubmissions(data)
+      }
+      // Process the data
+    } catch (error) {
+      // Handle errors
+      console.error(error);
+    }
+  };
+
+
+  useEffect(() => {
+    fetchData(1)
+  },[])
+
+
+  const paginate = (pageNumber) => {
+    fetchData(pageNumber)
+    setCurrentPage(pageNumber)
+  };
+
+  const handleView = (id) => {
+    navigate(`/submissions/${id}`);
   };
 
   return (
     <div className={styles.containers}>
       <div className={styles.table}>
+        {
+          usersTab ? 
         <div className={styles.header}>
-          <SortableHeader
-            columnKey="id"
-            onSort={sortData}
-            sortConfig={sortConfig}
-            className={styles.headerItem} // Pass the style class to SortableHeader
-          >
-            ID
-          </SortableHeader>
           <SortableHeader
             columnKey="teamName"
             onSort={sortData}
             sortConfig={sortConfig}
             className={styles.headerItem} // Pass the style class to SortableHeader
           >
-            Team Name
+            Username
           </SortableHeader>
-          {showLastSubmission && (
-            <SortableHeader
-              columnKey="lastSubmission"
-              onSort={sortData}
-              sortConfig={sortConfig}
-              className={styles.headerItem} // Pass the style class to SortableHeader
-            >
-              Last Submission
-            </SortableHeader>
-          )}
-          <div className={styles.headerItem} style={{ cursor: "default" }}>
-            Action
-          </div>
+          <SortableHeader
+            columnKey="password"
+            onSort={sortData}
+            sortConfig={sortConfig}
+            className={styles.headerItem} // Pass the style class to SortableHeader
+          >
+            Password
+          </SortableHeader>
+        </div> 
+        : 
+        <div className={styles.header}>
+        <SortableHeader
+          columnKey="id"
+          onSort={sortData}
+          sortConfig={sortConfig}
+          className={styles.headerItem} // Pass the style class to SortableHeader
+        >
+          ID
+        </SortableHeader>
+        <SortableHeader
+          columnKey="teamName"
+          onSort={sortData}
+          sortConfig={sortConfig}
+          className={styles.headerItem} // Pass the style class to SortableHeader
+        >
+          Team Name
+        </SortableHeader>
+        <div className={styles.headerItem} style={{ cursor: "default" }}>
+          Actions
         </div>
-        {currentSubmissions.map((submission) => (
+      </div> 
+
+        }
+        {usersTab ? 
+        users.map(([user,password],index) => (
+          <div key={index} className={styles.row}>
+            
+            <div>{user}</div>
+            <div>{password}</div>
+              </div>
+        ))
+        :currentSubmissions.map((submission) => (
           <div key={submission.id} className={styles.row}>
             <div>{submission.id}</div>
-            <div>{submission.teamName}</div>
-            {showLastSubmission && <div>{submission.lastSubmission}</div>}
-            {!showLastSubmission && (
-              <td>
-                <FontAwesomeIcon
-                  icon={faEdit}
-                  className={(styles.actionIcon, styles.editIcon)}
-                />
-                <FontAwesomeIcon
-                  icon={faTrashAlt}
-                  className={(styles.actionIcon, styles.deleteIcon)}
-                />
-              </td>
-            )}
-            <div>
-              <button className={styles.actionButton} onClick={handleView}>
-                <FontAwesomeIcon icon={faEye} />
-                View All
-              </button>
-            </div>
-          </div>
+            <div>{submission.group_name}</div>
+                <div>
+                  <button className={styles.actionButton} onClick={() => handleView(submission.id)}>
+                    <FontAwesomeIcon icon={faEye} />
+                    View All
+                  </button>
+                </div>
+              </div>
+            
         ))}
       </div>
       <Pagination
         currentPage={currentPage}
-        totalPages={Math.ceil(submissions.length / submissionsPerPage)}
+        totalPages={usersTab  ? maxAmountOfPage :Math.ceil(submissions.length / submissionsPerPage)}
         onPageChange={paginate}
       />
     </div>

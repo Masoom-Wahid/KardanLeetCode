@@ -79,7 +79,7 @@ function App() {
           <Route path="/home" element={<HomePage email={email} />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/report" element={<Reports />} />
-          <Route path="/submissions/:id" element={<SubmissionDetail />} />
+          <Route path="/submission/:id" element={<SubmissionDetail />} />
           <Route path="/manage" element={<ManageContest />} />
           <Route
             path="/admin"
@@ -142,7 +142,7 @@ function App() {
             }
           />
           <Route
-            path="/submissions"
+            path="/submissions/:id"
             element={
               <Layout>
                 <Submissions />
