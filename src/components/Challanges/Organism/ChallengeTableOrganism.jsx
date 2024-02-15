@@ -13,7 +13,7 @@ const BASE_URL = process.env.REACT_APP_API_URL;
 const ChallengeTableOrganism = () => {
   const [challenges, setChallenges] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  const [totalPages, setTotalPages] = useState();
 
   const navigate = useNavigate();
 
@@ -109,7 +109,7 @@ const ChallengeTableOrganism = () => {
           <ChallengeHeaderMolecule />
           {challenges.data && (
             <TableBody>
-              {currentItems.map((challenge, index) => (
+              {challenges.data.map((challenge, index) => (
                 <ChallengeRowMolecule
                   key={challenge.id}
                   challenge={challenge}

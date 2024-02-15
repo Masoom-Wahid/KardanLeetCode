@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CrownOutlined, ClockCircleOutlined } from "@ant-design/icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretUp, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Reports.module.css";
 import Pagination from "../../../Pagination/Pagination";
 import SortableHeader from "../Sorting/SortableHeader";
+import { useNavigate } from "react-router-dom";
 
 const crownColors = {
   1: "text-yellow-400",
@@ -12,112 +13,46 @@ const crownColors = {
   3: "text-orange-500",
 };
 
-const Reports = () => {
+const Reports = ({contestData}) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [reportsPerPage] = useState(5);
+  const [reportsPerPage] = useState(8);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: null });
+  const [data,setData] = useState([])
+  const navigate = useNavigate();
 
-  const [data, setData] = useState([
-    {
-      rank: 1,
-      name: "Alpha",
-      correct: 9,
-      incorrect: 0,
-      attempts: 9,
-      tabSwitches: 0,
-      penalty: "300ms",
-      score: 90,
-      time: "10.15AM",
-    },
-    {
-      rank: 2,
-      name: "Beta",
-      correct: 9,
-      incorrect: 1,
-      attempts: 10,
-      tabSwitches: 12,
-      penalty: "300ms",
-      score: 85,
-      time: "11.20AM",
-    },
-    {
-      rank: 3,
-      name: "Omega",
-      correct: 5,
-      incorrect: 4,
-      attempts: 9,
-      tabSwitches: 23,
-      penalty: "300ms",
-      score: 50,
-      time: "11.45AM",
-    },
-    {
-      rank: 4,
-      name: "Gamma",
-      correct: 2,
-      incorrect: 3,
-      attempts: 5,
-      tabSwitches: 10,
-      penalty: "300ms",
-      score: 20,
-      time: "12.15PM",
-    },
-    {
-      rank: 5,
-      name: "Epsilon",
-      correct: 1,
-      incorrect: 1,
-      attempts: 2,
-      tabSwitches: 10,
-      penalty: "300ms",
-      score: 10,
-      time: "12.15PM",
-    },
-    {
-      rank: 6,
-      name: "Epsilon",
-      correct: 1,
-      incorrect: 1,
-      attempts: 2,
-      tabSwitches: 10,
-      penalty: "300ms",
-      score: 10,
-      time: "12.15PM",
-    },
-    {
-      rank: 7,
-      name: "Alpha",
-      correct: 9,
-      incorrect: 0,
-      attempts: 9,
-      tabSwitches: 0,
-      penalty: "300ms",
-      score: 90,
-      time: "10.15AM",
-    },
-    {
-      rank: 8,
-      name: "Beta",
-      correct: 9,
-      incorrect: 1,
-      attempts: 10,
-      tabSwitches: 12,
-      penalty: "300ms",
-      score: 85,
-      time: "11.20AM",
-    },
-    {
-      rank: 9,
-      name: "Omega",
-      correct: 5,
-      incorrect: 4,
-      attempts: 9,
-      tabSwitches: 23,
-      penalty: "300ms",
-      score: 50,
-      time: "11.45AM",
-    },
-  ]);
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}contest/${contestData.id}?results=True`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
+
+      const response_data = await response.json();
+      if (!response.ok) {
+        // 401 means unauthorized , 403 means unauthorized, so the user is either using an old token or is
+        // either bypassing
+        if (response.status === 401 || response.status === 403) {
+          localStorage.removeItem("accessToken");
+          navigate("/");
+        }
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      setData(Object.entries(response_data));
+      // Process the data
+    } catch (error) {
+      // Handle errors
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  },[])
 
   const sortData = (key, direction) => {
     const sortedData = [...data].sort((a, b) => {
@@ -240,32 +175,32 @@ const Reports = () => {
               </tr>
             </thead>
             <tbody>
-              {currentReports.map((item, index) => (
+              {currentReports.map(([groupname,value], index) => (
                 <tr
                   key={index}
                   className={
-                    index < 3 ? styles[`rank${item.rank}`] : styles.standardRow
+                    index < 3 ? styles[`rank${index+1+(currentPage-1)*reportsPerPage}`] : styles.standardRow
                   }
                 >
                   <td className={styles.rankCell}>
-                    {item.rank <= 3 && (
+                    {index+1+(currentPage-1)*reportsPerPage<= 3 && (
                       <CrownOutlined
-                        className={crownColors[item.rank]}
+                        className={crownColors[index+1+(currentPage-1)*reportsPerPage]}
                         style={{ fontSize: "25px", marginRight: "5px" }}
                       />
                     )}
-                    {item.rank}
+                    {index+1+(currentPage-1)*reportsPerPage}
                   </td>
-                  <td className={styles.nameCell}>{item.name}</td>
-                  <td className={styles.cell}>{item.correct}</td>
-                  <td className={styles.cell}>{item.incorrect}</td>
-                  <td className={styles.cell}>{item.attempts}</td>
-                  <td className={styles.cell}>{item.tabSwitches}</td>
-                  <td className={styles.cell}>{item.penalty}</td>
-                  <td className={styles.cell}>{item.score}</td>
+                  <td className={styles.nameCell}>{groupname}</td>
+                  <td className={styles.cell}>{value.solved}</td>
+                  <td className={styles.cell}>{value.unsolved}</td>
+                  <td className={styles.cell}>{value.total}</td>
+                  <td className={styles.cell}>{value.tabswitch}</td>
+                  <td className={styles.cell}>{value.penalty}</td>
+                  <td className={styles.cell}>{value.point}</td>
                   <td className={styles.cell}>
                     <ClockCircleOutlined className="pr-1" />
-                    {item.time}
+                    {value.time}
                   </td>
                   <td className={styles.cell}>
                     <button className={styles.analyticsButton}>
