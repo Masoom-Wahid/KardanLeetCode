@@ -66,14 +66,11 @@ const ChallengeTableOrganism = () => {
           }
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-
-        console.log("data:", data);
-
-        setChallenges(data || []);
+        
+        
+        setChallenges(data.data);
         setTotalPages(data.available_pages || 1); // Adjust according to your API response
 
-        // Move challenges.data log after setChallenges
-        console.log("challenges.data:", challenges.data);
       } catch (error) {
         console.error(error);
       }
@@ -100,16 +97,14 @@ const ChallengeTableOrganism = () => {
         time_limit: `${Math.floor(Math.random() * 60) + 1} min`,
       }));
 
-  console.log("challenges.data:", challenges.data);
-  console.log("currentItems:", currentItems);
   return (
     <div>
       <TableContainer component={Paper}>
         <Table aria-label="contest challenges table">
           <ChallengeHeaderMolecule />
-          {challenges.data && (
+          {challenges && (
             <TableBody>
-              {challenges.data.map((challenge, index) => (
+              {challenges.map((challenge, index) => (
                 <ChallengeRowMolecule
                   key={challenge.id}
                   challenge={challenge}
