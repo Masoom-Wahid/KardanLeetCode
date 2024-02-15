@@ -10,6 +10,7 @@ import {
   faChartLine,
   faBarsProgress,
   faQuestionCircle,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import styles from "./Sidebar.module.css";
@@ -19,6 +20,7 @@ const navItems = [
   { name: "Create Contest", icon: faPlus, path: "/createcontest" },
   { name: "Contests", icon: faTasks, path: "/contests" },
   { name: "Challenges", icon: faQuestionCircle, path: "/challenges" },
+  { name: "Add Admin", icon: faUser, path: "/adminSignUp" },
 ];
 
 const Sidebar = () => {

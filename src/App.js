@@ -81,7 +81,6 @@ function App() {
           <Route path="/report" element={<Reports />} />
           <Route path="/submissions/:id" element={<SubmissionDetail />} />
           <Route path="/manage" element={<ManageContest />} />
-          <Route path="/adminSignUp" element={<AdminSignUp />} />
           <Route
             path="/admin"
             element={
@@ -90,6 +89,7 @@ function App() {
               </Layout>
             }
           />
+
           <Route
             path="/createchallenge"
             element={
@@ -178,6 +178,14 @@ function App() {
             element={
               <Layout>
                 <ManageContestsParentComponent />
+              </Layout>
+            }
+          />
+          <Route
+            path="/adminSignUp"
+            element={
+              <Layout>
+                <AdminSignUp />
               </Layout>
             }
           />

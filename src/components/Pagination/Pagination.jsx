@@ -6,7 +6,7 @@ import {
   faAngleLeft,
   faAngleRight,
 } from "@fortawesome/free-solid-svg-icons";
-import styles from "./Pagination.module.css"; // Make sure the path to your module CSS file is correct
+import styles from "./Pagination.module.css"; 
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const pageNumbers = [];
