@@ -20,7 +20,6 @@ const Login = () => {
   const navigate = useNavigate();
    useEffect(() => {
       let accessToken = localStorage.getItem("accessToken")
-      console.log(accessToken)
 
       if (accessToken !== null){
         let parsed_data = parseJwt(accessToken);
@@ -49,6 +48,7 @@ const Login = () => {
       localStorage.setItem("refreshToken", data.refresh);
       // Just Parse The Data and set it to local storage
       let parsed_data = parseJwt(data.access);
+
       localStorage.setItem("username", parsed_data.username);
       localStorage.setItem("is_su", parsed_data.is_superuser);
       // naviagate depending on the user's token

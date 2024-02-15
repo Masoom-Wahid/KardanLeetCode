@@ -1,11 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./HomePage.css";
 import { useNavigate } from "react-router-dom";
+import parseJwt from "../LoginPage/JWTParser";
 
 const HomePage = () => {
   const teamName = localStorage.getItem("username") || "Students";
   const navigate = useNavigate();
 
+  const handleTabSwitch = async () => {
+    const today = new Date();
+    const currentDate = today.toISOString().split('T')[0];
+    const parsed = parseJwt(localStorage.getItem("accessToken"))
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}competition/setTabSwitch/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization":`Bearer ${localStorage.getItem("accessToken")}`
+        },
+        body: JSON.stringify({ id: parsed.user_id, tabswitch:localStorage.getItem(`${currentDate}`) }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  useEffect(() => {
+    const parsed = parseJwt(localStorage.getItem("accessToken"))
+    if(parsed){
+      if(!parsed.is_superuser) setInterval(handleTabSwitch, 4 * 60 * 1000)
+    } 
+  })
   const handleClick = async () => {
     navigate("/contest");
   };
