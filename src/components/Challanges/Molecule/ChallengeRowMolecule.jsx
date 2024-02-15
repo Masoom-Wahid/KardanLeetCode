@@ -62,6 +62,7 @@ const ChallengeRowMolecule = ({ challenge, index, onDelete }) => {
         <FontAwesomeIcon
           icon={faEdit}
           className={(styles.actionIcon, styles.editIcon)}
+          onClick={() => navigate(`/challenges/${challenge.id}`)}
         />
         <FontAwesomeIcon
           icon={faTrashAlt}

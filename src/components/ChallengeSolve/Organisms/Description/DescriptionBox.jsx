@@ -138,7 +138,7 @@ const DescriptionBox = ({ questionId,challenge,contestFinished,setContestFinishe
                 <tr key={index}>
                   <td
                   style={{cursor:"pointer"}}
-                  onClick={() => navigate(`/submissions/${submission.id}`)}
+                  onClick={() => navigate(`/submission/${submission.id}`)}
                   >{submission.id}</td>
                   <td>{submission.lang}</td>
                   <td>{submission.status}</td>
