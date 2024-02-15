@@ -166,7 +166,7 @@ function App() {
             }
           />
           <Route
-            path="/createContestant"
+            path="/createContestant/:id"
             element={
               <Layout>
                 <CreateContestant />
