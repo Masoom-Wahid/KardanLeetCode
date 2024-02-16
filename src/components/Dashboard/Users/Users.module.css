@@ -1,13 +1,17 @@
 /* Main container styles */
 .container {
   font-family: 'Segoe UI', 'Roboto', sans-serif;
-  max-width: 90%;
+  max-width: 50%;
   margin: 2rem auto;
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
   background-color: #fff;
   overflow-x: auto;
+}
+
+.submit {
+  justify-content: space-between;
 }
 
 /* Styling for the title and buttons */

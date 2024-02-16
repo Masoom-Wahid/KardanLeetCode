@@ -1,25 +1,46 @@
 .leaderboard-page {
   .leaderboard-title {
-    color: #1565c0; // Blue from the logo
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    font-weight: bold;
-    font-size: 2.5rem;
-    margin-top: 40px; 
-    margin-bottom: 20px; 
+    color: #1565c0; 
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  font-size: 2.5rem;
+  margin-top: 40px;
+  margin-bottom: 20px;
   }
 
-  .controls-container {
+  .leaderboard-buttons {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-
-    .filter-buttons {
+    margin-left: 30px;
+  }
+  
+  .reload, .refresh {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .reload {
+    background-color: #4285f4;
+    color: #fff;
+  
+    &:hover {
+      background-color: #1c5fac;
     }
-
-    .search-filter-container {
-      display: flex;
-      align-items: center;
+  }
+  
+  .refresh {
+    background-color: #34a853;
+    color: #fff;
+  
+    &:hover {
+      background-color: #1e7b41;
     }
   }
 }

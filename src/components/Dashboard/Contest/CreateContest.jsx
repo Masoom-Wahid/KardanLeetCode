@@ -38,8 +38,9 @@ const CreateContest = () => {
       }
       // Whenever you wanted to use the variable data please remove the next line.
       // eslint-disable-next-line
-      const data = await response.json();
-      navigate("/challenges");
+      const createdContest = await response.json();
+      const { id } = createdContest;
+      navigate(`/contests/${id}`);
     } catch (error) {
     } finally {
       setLoading(false);

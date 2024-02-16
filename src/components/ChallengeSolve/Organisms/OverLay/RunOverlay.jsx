@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCheckCircle,
@@ -7,27 +7,30 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./RunOverlay.module.css";
+import LoadingOverlay from "./LoadingOverlay";
 
 const formatMultilineText = (text) => {
   return text.split("\n").map((line, index) => <div key={index}>{line}</div>);
 };
 
 const RunOverlay = ({ isOpen, onClose, testData }) => {
+  const [loading, setLoading] = useState(false);
+
   if (!isOpen) return null;
 
   let { tests, didSolve, error, errorType } = testData;
-  
+
   const getTestStatus = () => {
     let allPassed = didSolve;
-    const hasMismatch = errorType === "hasMismatch"
-    
+    const hasMismatch = errorType === "hasMismatch";
 
     if (!hasMismatch) {
-      if(!didSolve){errorType = "hasError"}
+      if (!didSolve) {
+        errorType = "hasError";
+      }
       return {
         message:
-          "There seems to be a problem with your answer. Error: " +
-          error,
+          "There seems to be a problem with your answer. Error: " + error,
         type: "error",
         statusType: "hasError",
       };
@@ -54,9 +57,12 @@ const RunOverlay = ({ isOpen, onClose, testData }) => {
         <button className={styles.closeButton} onClick={onClose}>
           <FontAwesomeIcon icon={faTimes} />
         </button>
-        <h2 className={styles.title}
-        style={didSolve ? {color:"green"} : {color:"red"}}
-        >{didSolve ? "Solved" : "Wrong"}</h2>
+        <h2
+          className={styles.title}
+          style={didSolve ? { color: "green" } : { color: "red" }}
+        >
+          {didSolve ? "Solved" : "Wrong"}
+        </h2>
         <ul className={styles.testList}>
           {tests.map((test) => (
             <li key={test.id} className={styles.testItem}>
@@ -93,13 +99,17 @@ const RunOverlay = ({ isOpen, onClose, testData }) => {
                 <div>
                   <strong>Expected Answer:</strong>{" "}
                   <div className={styles.multilineText}>
-                    {formatMultilineText(error["expectedOutput"] ? error["expectedOutput"] : "")}
+                    {formatMultilineText(
+                      error["expectedOutput"] ? error["expectedOutput"] : ""
+                    )}
                   </div>
                 </div>
                 <div>
                   <strong>Your Answer:</strong>{" "}
                   <div className={styles.multilineText}>
-                    {formatMultilineText(error["yourAnswer"] ? error["yourAnswer"] : "")}
+                    {formatMultilineText(
+                      error["yourAnswer"] ? error["yourAnswer"] : ""
+                    )}
                   </div>
                 </div>
               </div>

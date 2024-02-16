@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import { useSnackbarConfetti } from "../../../Helpers/useSnackbarConfetti";
 import RunOverlay from "../OverLay/RunOverlay";
+import LoadingOverlay from "../OverLay/LoadingOverlay";
 
 const StyledComponentContainer = styled(Box)(({ theme }) => ({
   border: "1px solid #e0e0e0",
@@ -124,7 +125,12 @@ const MainHeader = ({
   };
 
   const handleRun = async (type) => {
-    await onSubmit(type);
+    try {
+      setRunLoading(true); // Set loading state before calling onSubmit
+      await onSubmit(type);
+    } finally {
+      setRunLoading(false); // Reset loading state after onSubmit is completed
+    }
   };
   return (
     <>
@@ -160,11 +166,15 @@ const MainHeader = ({
           )}
         </BreathingIconButton>
       </StyledComponentContainer>
-      <RunOverlay
-        isOpen={isModalOpen}
-        onClose={toggleModal}
-        testData={localData} // Pass the mock test results to the overlay
-      />
+      {isModalOpen ? (
+        <RunOverlay
+          isOpen={isModalOpen}
+          onClose={toggleModal}
+          testData={localData}
+        />
+      ) : (
+        runLoading && <LoadingOverlay />
+      )}
       <SnackBar />
       <ConfettiEffect />
     </>

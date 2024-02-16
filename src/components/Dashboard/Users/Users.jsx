@@ -22,9 +22,11 @@ const Users = ({contestData}) => {
             <FontAwesomeIcon icon={faPlus} />
             Add New
           </button>
-          <SubmissionsList 
-          contestData={contestData}
-          usersTab={true} />
+          <SubmissionsList
+            className={styles.submit}
+            contestData={contestData}
+            usersTab={true}
+          />
         </div>
       </div>
     </>
