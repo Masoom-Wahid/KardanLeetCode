@@ -79,8 +79,8 @@ const SubmissionsList = ({ usersTab, contestData }) => {
     fetchData(1);
   }, []);
 
-  const handleAliasClick = (index) => {
-    setOverlayIndex(index);
+  const handleAliasClick = (username) => {
+    setOverlayIndex(username);
     setShowOverlay(true);
   };
 
@@ -90,9 +90,32 @@ const SubmissionsList = ({ usersTab, contestData }) => {
     setOverlayIndex(null);
   };
 
-  const handleOverlaySubmit = (newUsername, newPassword) => {
-    // Perform any actions needed with newUsername and newPassword
-    // You can use overlayIndex to identify which alias button was clicked if needed.
+  const handleOverlaySubmit = async (newUsername) => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}auth/users/alias/`, {
+        method: 'POST',
+        headers : {
+          'Content-type':'application/json',
+          "Authorization":`Bearer ${localStorage.getItem("accessToken")}`
+
+        },
+        body: JSON.stringify({username:overlayIndex,
+                              alias:newUsername,
+                              }),
+      });
+      if(!response.ok){
+        if (response.status === 401 || response.status === 403){
+          localStorage.removeItem("accessToken")
+          navigate("/")
+        }
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      // Handle the response from the backend
+    } catch (error) {
+      // Handle errors
+      console.error(error);
+    }
   };
 
   const paginate = (pageNumber) => {
@@ -157,7 +180,8 @@ const SubmissionsList = ({ usersTab, contestData }) => {
                 <div className={styles.passwordItem}>{password}</div>
                 <button
                   className={styles.aliasButton}
-                  onClick={() => handleAliasClick(index)}
+                  onClick={() => handleAliasClick(user)}
+                  title="By Default The Random Generated Username and Group Name is Given , if the Participant wants to change that, it is done by giving an alias"
                 >
                   Alias
                 </button>

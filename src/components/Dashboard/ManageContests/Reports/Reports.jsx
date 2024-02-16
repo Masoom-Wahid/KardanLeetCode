@@ -13,46 +13,12 @@ const crownColors = {
   3: "text-orange-500",
 };
 
-const Reports = ({contestData}) => {
+const Reports = ({data,setData}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [reportsPerPage] = useState(8);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: null });
-  const [data,setData] = useState([])
-  const navigate = useNavigate();
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}contest/${contestData.id}?results=True`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        }
-      );
 
-      const response_data = await response.json();
-      if (!response.ok) {
-        // 401 means unauthorized , 403 means unauthorized, so the user is either using an old token or is
-        // either bypassing
-        if (response.status === 401 || response.status === 403) {
-          localStorage.removeItem("accessToken");
-          navigate("/");
-        }
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      setData(Object.entries(response_data));
-      // Process the data
-    } catch (error) {
-      // Handle errors
-      console.error(error);
-    }
-  }
-
-  useEffect(() => {
-    fetchData();
-  },[])
 
   const sortData = (key, direction) => {
     const sortedData = [...data].sort((a, b) => {

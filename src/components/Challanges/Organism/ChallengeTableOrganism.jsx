@@ -66,8 +66,7 @@ const ChallengeTableOrganism = () => {
           }
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
-        
+        console.log(data.data)
         setChallenges(data.data);
         setTotalPages(data.available_pages || 1); // Adjust according to your API response
 
@@ -79,7 +78,8 @@ const ChallengeTableOrganism = () => {
     fetchData(); // eslint-disable-next-line
   }, []);
 
-  const itemsPerPage = 5;
+  //This is according to backend DO NOT CHANGE
+  const itemsPerPage = 8;
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
