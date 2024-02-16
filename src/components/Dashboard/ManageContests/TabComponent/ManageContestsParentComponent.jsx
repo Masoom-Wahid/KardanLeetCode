@@ -12,6 +12,7 @@ import SubmissionPage from "../Submissions/SubmissionPage";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Reports from "../Reports/Reports";
+import ReportsPage from "../Reports/ReportsPage";
 
 // Replace these with your actual component imports
 const DetailsComponent = ({ contestData, setContestData }) => (
@@ -102,11 +103,14 @@ const ManageContestsParentComponent = () => {
       case "Submissions":
         return <SubmissionPage contestData={contestData} />;
       case "FinalReport":
-        return <Reports contestData={contestData} />;
+        return <ReportsPage contestData={contestData} />;
       case "AdvanceSetting":
-        return <AdvanceSetting 
-              contestData={contestData}
-              setContestData={setContestData} />;
+        return (
+          <AdvanceSetting
+            contestData={contestData}
+            setContestData={setContestData}
+          />
+        );
       default:
         return null;
     }

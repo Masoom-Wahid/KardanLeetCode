@@ -9,20 +9,24 @@ import "./Dashboard.css";
 import Sidebar from "../Sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
 
+
+
 const stats = [
-  { label: "Contestants", number: 1000, change: "1.2%", term: "This Term" },
+  { label: "Winter2023", date: "2023-11-1" },
+  { label: "Spring2024", date: "2024-2-10" },
+  { label: "Fall2024", date: "2024-7-15" },
 ];
 
-const StatsCard = ({ label, number, change, term }) => (
+const id = 1;
+
+const StatsCard = ({ label, date }) => (
   <div className="stats-card">
-    <div className="colum-align">
-      <FontAwesomeIcon icon={faUserCircle} />
-      <div className="stats-label">{label}</div>
-      <div className="stats-number">{number}</div>
-    </div>
-    <div className="stats-term">
-      <div className="stats-change stats-change-number">{change}</div>
-      <div className="stats-change">{term}</div>
+    <div className="column-align">
+      <FontAwesomeIcon icon={faUserCircle} className="stats-icon " />
+      <div className="stats-labels">
+        <button className="stats-name">{label}</button>
+        <div className="stats-number">Date: {date}</div>
+      </div>
     </div>
   </div>
 );
@@ -67,15 +71,11 @@ const Dashboard = () => {
             </button>
           </div>
         </div>
-        {stats.map((stat) => (
-          <StatsCard
-            key={stat.label}
-            label={stat.label}
-            number={stat.number}
-            change={stat.change}
-            term={stat.term}
-          />
-        ))}
+        <div className="stats-cards">
+          {stats.map((stat) => (
+            <StatsCard label={stat.label} date={stat.date} />
+          ))}
+        </div>
       </main>
     </div>
   );
