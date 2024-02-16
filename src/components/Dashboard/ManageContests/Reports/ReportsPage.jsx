@@ -1,35 +1,68 @@
-import React, { useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
-
-import styles from "./ReportsPage.module.css";
 import Reports from "./Reports";
+import { useNavigate } from "react-router-dom";
+import styleCss from "./ReportsPage.module.css";
 import ReportPDF from "./ReportPDF";
 
-const ReportsPage = () => {
-  const handleExportPDF = () => {
-    const pdfBlob = new Blob([<ReportPDF />], { type: "application/pdf" });
-    const pdfUrl = URL.createObjectURL(pdfBlob);
+const ReportsPage = ({ contestData }) => {
+  const [data, setData] = useState([]);
+  const [reloadLoading, setReloadLoading] = useState(false);
+  const [refreshLoading, setRefreshLoading] = useState(false);
+  const navigate = useNavigate();
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}contest/${contestData.id}?results=True`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
 
-    // Open the PDF in a new tab
-    window.open(pdfUrl, "_blank");
+      const response_data = await response.json();
+      if (!response.ok) {
+        // 401 means unauthorized , 403 means unauthorized, so the user is either using an old token or is
+        // either bypassing
+        if (response.status === 401 || response.status === 403) {
+          localStorage.removeItem("accessToken");
+          navigate("/");
+        }
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      setData(Object.entries(response_data));
+      // Process the data
+    } catch (error) {
+      // Handle errors
+      console.error(error);
+    } finally {
+      setReloadLoading(false);
+      setRefreshLoading(false);
+    }
   };
 
-  return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Reports</h1>
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-      <PDFDownloadLink document={<ReportPDF />} fileName="report.pdf">
-        {({ blob, url, loading, error }) =>
-          loading ? (
-            "Loading document..."
-          ) : (
-            <button className={styles.exportButton} onClick={handleExportPDF}>
-              Export PDF
-            </button>
-          )
-        }
+  return (
+    <div className={styleCss.container}>
+      <h1 className={styleCss.title}>Reports</h1>
+      <PDFDownloadLink
+        document={<ReportPDF data={data} />}
+        fileName="report.pdf"
+      >
+        {({ loading }) => (
+          <button className={styleCss.exportButton} disabled={loading}>
+            Export PDF
+          </button>
+        )}
       </PDFDownloadLink>
-      <Reports />
+      <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+        <Reports contestData={contestData} data={data} setData={setData} />
+      </div>
     </div>
   );
 };

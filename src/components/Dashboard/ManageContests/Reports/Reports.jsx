@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { CrownOutlined, ClockCircleOutlined } from "@ant-design/icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretUp, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import styles from "./Reports.module.css";
 import Pagination from "../../../Pagination/Pagination";
 import SortableHeader from "../Sorting/SortableHeader";
-import { useNavigate } from "react-router-dom";
 
 const crownColors = {
   1: "text-yellow-400",
@@ -13,12 +10,10 @@ const crownColors = {
   3: "text-orange-500",
 };
 
-const Reports = ({data,setData}) => {
+const Reports = ({ data, setData }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [reportsPerPage] = useState(8);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: null });
-
-
 
   const sortData = (key, direction) => {
     const sortedData = [...data].sort((a, b) => {
@@ -41,7 +36,7 @@ const Reports = ({data,setData}) => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className="container mx-auto px-4 sm:px-8">
+    <div className="container mx-none px-4 sm:px-8">
       <div className="py-8">
         <div className="align-middle inline-block min-w-full shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
           <table className="min-w-full divide-y divide-gray-200">
@@ -141,21 +136,31 @@ const Reports = ({data,setData}) => {
               </tr>
             </thead>
             <tbody>
-              {currentReports.map(([groupname,value], index) => (
+              {currentReports.map(([groupname, value], index) => (
                 <tr
                   key={index}
                   className={
-                    index < 3 ? styles[`rank${index+1+(currentPage-1)*reportsPerPage}`] : styles.standardRow
+                    index < 3
+                      ? styles[
+                          `rank${
+                            index + 1 + (currentPage - 1) * reportsPerPage
+                          }`
+                        ]
+                      : styles.standardRow
                   }
                 >
                   <td className={styles.rankCell}>
-                    {index+1+(currentPage-1)*reportsPerPage<= 3 && (
+                    {index + 1 + (currentPage - 1) * reportsPerPage <= 3 && (
                       <CrownOutlined
-                        className={crownColors[index+1+(currentPage-1)*reportsPerPage]}
+                        className={
+                          crownColors[
+                            index + 1 + (currentPage - 1) * reportsPerPage
+                          ]
+                        }
                         style={{ fontSize: "25px", marginRight: "5px" }}
                       />
                     )}
-                    {index+1+(currentPage-1)*reportsPerPage}
+                    {index + 1 + (currentPage - 1) * reportsPerPage}
                   </td>
                   <td className={styles.nameCell}>{groupname}</td>
                   <td className={styles.cell}>{value.solved}</td>
