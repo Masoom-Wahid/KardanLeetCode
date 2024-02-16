@@ -1,26 +1,117 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import Reports from "../../Dashboard/ManageContests/Reports/Reports";
 import "./LeaderboardPage.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSync, faRedo } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
+
 
 const LeaderboardPage = ({ contestData }) => {
+  const navigate = useNavigate();
+  const [data,setData] = useState([])
+  const [reloadLoading,setReloadLoading] = useState(false)
+  const [refreshLoading,setRefreshLoading] = useState(false)
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}contest/${contestData.id}?results=True`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
+
+      const response_data = await response.json();
+      if (!response.ok) {
+        // 401 means unauthorized , 403 means unauthorized, so the user is either using an old token or is
+        // either bypassing
+        if (response.status === 401 || response.status === 403) {
+          localStorage.removeItem("accessToken");
+          navigate("/");
+        }
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      setData(Object.entries(response_data));
+      // Process the data
+    } catch (error) {
+      // Handle errors
+      console.error(error);
+    }finally{
+      setReloadLoading(false)
+      setRefreshLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchData();
+  },[])
+
+  const handleRefresh = async () => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}contest/${contestData.id}?clean_cache=True`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
+      if (!response.ok) {
+        // 401 means unauthorized , 403 means unauthorized, so the user is either using an old token or is
+        // either bypassing
+        if (response.status === 401 || response.status === 403) {
+          localStorage.removeItem("accessToken");
+          navigate("/");
+        }
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      await fetchData();
+      // Process the data
+    } catch (error) {
+      // Handle errors
+      console.error(error);
+    }
+  }
+
   return (
     <div className="leaderboard-page">
       <div variant="h4" className="leaderboard-title">
         Leaderboard
       </div>
-      <div className="leaderboard-buttons">
-        <button className="reload">
-          <FontAwesomeIcon icon={faRedo} style={{ marginRight: "8px" }} />
-          Reload
-        </button>
-        <button className="refresh">
-          <FontAwesomeIcon icon={faSync} style={{ marginRight: "8px" }} />
-          Refresh
-        </button>
-      </div>
-      <Reports contestData={contestData} />
+      {
+        contestData.starred && contestData.started && !contestData.finished && (
+          <div className="leaderboard-buttons">
+            <button className="reload" title="Reloads The LeaderBoard Data , This Should Be Used Regularly" 
+            onClick={() =>  {
+                setReloadLoading(true)
+                fetchData()}
+                } >
+              <FontAwesomeIcon icon={faRedo} style={{ marginRight: "8px" }} />
+              {reloadLoading ? "Reloading...."  : "Reload"}
+            </button>
+            <button className="refresh" 
+            title="Use This If U Think The Leaderboard data Is Stuck and reload is not working. SHOULD NOT BE USED REGULARLY"
+            onClick={() => {
+              setRefreshLoading(true)
+              handleRefresh()
+              }}>
+              <FontAwesomeIcon icon={faSync} style={{ marginRight: "8px" }} />
+              {refreshLoading ? "Refreshing...." : "Refresh"}
+            </button>
+          </div>
+        )
+      }
+      {
+        data && (
+          <Reports 
+          contestData={contestData}
+          data={data}
+          setData={setData} />
+        )
+      }
     </div>
   );
 };
