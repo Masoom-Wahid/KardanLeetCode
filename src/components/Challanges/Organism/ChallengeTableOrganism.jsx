@@ -35,13 +35,10 @@ const ChallengeTableOrganism = () => {
         }
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      /*
-      Filter Out All Of The Challenges Except For The One We Are Deleting Right Now
-      Idk If There Is  A Better Way , Probbably Is
-      */
+
       setChallenges((prevChallenges) =>
-        prevChallenges.filter((challenge) => challenge.id !== id)
-      );
+      prevChallenges.filter((challenge) => challenge.id !== id))
+
       // Process the data
     } catch (error) {
       // Handle errors
@@ -66,9 +63,7 @@ const ChallengeTableOrganism = () => {
         }
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
-      console.log(data.data);
-      setChallenges((prevChallenges) => [...prevChallenges, ...data.data]);
+      setChallenges(data.data);
       setTotalPages(data.available_pages || 1);
       setCurrentItems(data.data);
     } catch (error) {
@@ -101,7 +96,7 @@ const ChallengeTableOrganism = () => {
           <ChallengeHeaderMolecule />
           {challenges && (
             <TableBody>
-              {currentItems.map((challenge, index) => (
+              {challenges.map((challenge, index) => (
                 <ChallengeRowMolecule
                   key={challenge.id}
                   challenge={challenge}
