@@ -20,7 +20,7 @@ const LeaderboardPage = ({ contestData }) => {
   const [data, setData] = useState([]);
   const [reloadLoading, setReloadLoading] = useState(false);
   const [refreshLoading, setRefreshLoading] = useState(false);
-  const [timeRemaining, setTimeRemaining] = useState(3600);
+  const [timeRemaining, setTimeRemaining] = useState();
 
   const fetchData = async () => {
     try {
@@ -44,7 +44,8 @@ const LeaderboardPage = ({ contestData }) => {
         }
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      setData(Object.entries(response_data));
+      setData(Object.entries(response_data.data));
+      setTimeRemaining(response_data.time)
       // Process the data
     } catch (error) {
       // Handle errors

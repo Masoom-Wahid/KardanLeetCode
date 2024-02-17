@@ -6,6 +6,7 @@ import {
   faBan,
   faStar,
   faStarHalfAlt,
+  faRefresh,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./AdvanceSetting.module.css"; 
 import PurgeModal from "./PurgeModal";
@@ -56,6 +57,8 @@ const AdvanceSetting = ({contestData,setContestData}) => {
         }
         throw new Error(`HTTP error! status: ${response.status}`);
       }
+      if (type === "reset") navigate("/contests")
+
       setContestData(prev => {
         return {
           ...prev, // Spread the previous state to create a new object
@@ -100,7 +103,12 @@ const AdvanceSetting = ({contestData,setContestData}) => {
               End Contest
             </button> : <></>
           }
-
+          <button className={styles.button}  
+          onClick={() =>  handleActions("do","reset","")}
+           title="Delete Users and submissins of the contest except the contest the itself">
+            <FontAwesomeIcon icon={faRefresh} className={styles.icon} />
+            Reset Contest
+          </button>
           <button className={styles.button} onClick={openPurgeModal}>
             <FontAwesomeIcon icon={faBan} className={styles.icon} />
             Purge Contest

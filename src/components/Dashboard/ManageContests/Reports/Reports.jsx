@@ -132,7 +132,7 @@ const Reports = ({ data, setData }) => {
                     Time{" "}
                   </SortableHeader>
                 </th>
-                <th className={styles.header}>Action</th>
+                {/* <th className={styles.header}>Action</th> */}
               </tr>
             </thead>
             <tbody>
@@ -173,11 +173,11 @@ const Reports = ({ data, setData }) => {
                     <ClockCircleOutlined className="pr-1" />
                     {value.time}
                   </td>
-                  <td className={styles.cell}>
+                  {/* <td className={styles.cell}>
                     <button className={styles.analyticsButton}>
                       View Analytics
                     </button>
-                  </td>
+                  </td> */}
                 </tr>
               ))}
             </tbody>

@@ -27,6 +27,7 @@ const ChallengesGrid = () => {
         
         // 423 means that the contest is finished
         if (response.status === 423) {
+          localStorage.removeItem("accessToken")
           navigate("/home")
         }
         const data = await response.json();

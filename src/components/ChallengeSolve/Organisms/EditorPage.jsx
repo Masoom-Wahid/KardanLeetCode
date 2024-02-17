@@ -51,7 +51,6 @@ const EditorPage = () => {
 
         const data = await response.json();
         if (!response.ok) {
-          console.log(response.status);
           // 401 means unauthorized , 403 means unauthorized, so the user is either using an old token or is
           // either bypassing
           if (response.status === 401 || response.status === 403) {

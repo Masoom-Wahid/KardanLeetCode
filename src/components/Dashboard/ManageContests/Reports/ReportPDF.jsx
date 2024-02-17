@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect,useState } from "react";
 import {
   Document,
   Image,
@@ -7,52 +7,6 @@ import {
   View,
   StyleSheet,
 } from "@react-pdf/renderer";
-
-// Sample Data (Replace with your actual competition data)
-const competitionData = [
-  {
-    rank: 1,
-    name: "alpha",
-    correct: 9,
-    incorrect: 1,
-    attempts: 10,
-    tabSwitches: 0,
-    score: 90,
-    lastSubmission: "10:15 AM",
-  },
-  {
-    rank: 2,
-    name: "alpha",
-    correct: 9,
-    incorrect: 1,
-    attempts: 10,
-    tabSwitches: 0,
-    score: 90,
-    lastSubmission: "10:15 AM",
-  },
-  {
-    rank: 3,
-    name: "alpha",
-    correct: 9,
-    incorrect: 1,
-    attempts: 10,
-    tabSwitches: 0,
-    score: 90,
-    lastSubmission: "10:15 AM",
-  },
-  {
-    rank: 4,
-    name: "alpha",
-    correct: 9,
-    incorrect: 1,
-    attempts: 10,
-    tabSwitches: 0,
-    score: 90,
-    lastSubmission: "10:15 AM",
-  },
-
-  // ... add more participants
-];
 
 const styles = StyleSheet.create({
   container: {
@@ -203,7 +157,49 @@ const styles = StyleSheet.create({
   },
 });
 
-const ReportPDF = () => (
+const ReportPDF = ({type,contestData}) => {
+  const [creds,setCreds] = useState([])
+  const [subs,setSubs] = useState([])
+  const fetchData = async() => {
+    let url = type ==="creds" 
+    ? `${process.env.REACT_APP_API_URL}auth/users/getcredentials?contest=${contestData.name}&all=True`
+    : `${process.env.REACT_APP_API_URL}contest/${contestData.id}?results=True`
+    try {
+      const response = await fetch(
+        url
+        , {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        // 401 means unauthorized , 403 means unauthorized, so the user is either using an old token or is
+        // either bypassing
+        if (response.status === 401 || response.status === 403) {
+          localStorage.removeItem("accessToken");
+        }
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      if (type==="creds") {
+        setCreds(Object.entries(data.result));
+      }else{
+        setSubs(Object.entries(data.data));
+      }
+      // Process the data
+    } catch (error) {
+      // Handle errors
+      console.error(error);
+    }
+  }
+  useEffect(() => {
+    fetchData()
+  },[])
+
+  return (
   <Document>
     <Page size="A3" style={styles.container} orientation="landscape">
       <View
@@ -225,40 +221,67 @@ const ReportPDF = () => (
       </View>
 
       <View style={styles.table}>
+        {
+          type === "creds" ? 
         <View style={styles.tableHeader}>
-          <Text style={styles.column}>Rank</Text>
-          <Text style={styles.column}>Team Name</Text>
-          <Text style={styles.column}>Correct</Text>
-          <Text style={styles.column}>Incorrect</Text>
-          <Text style={styles.column}>Attempts</Text>
-          <Text style={styles.column}>Tab Switches</Text>
-          <Text style={styles.column}>Score</Text>
-          <Text style={styles.column}>Time</Text>
-        </View>
+          <Text style={styles.column}>Username</Text>
+          <Text style={styles.column}>Password</Text>
+        </View> 
+        :
+        <View style={styles.tableHeader}>
+        <Text style={styles.column}>Rank</Text>
+        <Text style={styles.column}>Team Name</Text>
+        <Text style={styles.column}>Correct</Text>
+        <Text style={styles.column}>Incorrect</Text>
+        <Text style={styles.column}>Attempts</Text>
+        <Text style={styles.column}>Tab Switches</Text>
+        <Text style={styles.column}>Score</Text>
+        <Text style={styles.column}>Time</Text>
+        <Text style={styles.column}>Penalty</Text>
+      </View> 
 
-        {competitionData.map((participant, index) => (
-          <View
-            style={[
-              styles.tableRow,
-              participant.rank === 1 && styles.rank1,
-              participant.rank === 3 && styles.rank3,
-              participant.rank === 2 && styles.rank2,
-            ]}
-            key={index}
-          >
-            <Text style={styles.column}>{participant.rank}</Text>
-            <Text style={styles.column}>{participant.name}</Text>
-            <Text style={styles.column}>{participant.correct}</Text>
-            <Text style={styles.column}>{participant.incorrect}</Text>
-            <Text style={styles.column}>{participant.attempts}</Text>
-            <Text style={styles.column}>{participant.tabSwitches}</Text>
-            <Text style={styles.column}>{participant.score}</Text>
-            <Text style={styles.column}>{participant.lastSubmission}</Text>
-          </View>
-        ))}
+        }
+        {
+          creds && (
+            type === "creds" ? 
+            creds.map(([username,password], index) => (
+              <View
+                style={[
+                  styles.tableRow,
+                ]}
+                key={index}
+              >
+                <Text style={styles.column}>{username}</Text>
+                <Text style={styles.column}>{password}</Text>
+              </View>
+            )) : 
+            subs.map(([groupname,value], index) => (
+              <View
+                style={[
+                  styles.tableRow,
+                  index+1 === 1 && styles.rank1,
+                  index+1 === 3 && styles.rank3,
+                  index+1 === 2 && styles.rank2,
+                ]}
+                key={index}
+              >
+                <Text style={styles.column}>{index+1}</Text>
+                <Text style={styles.column}>{groupname}</Text>
+                <Text style={styles.column}>{value.solved}</Text>
+                <Text style={styles.column}>{value.unsolved}</Text>
+                <Text style={styles.column}>{value.total}</Text>
+                <Text style={styles.column}>{value.tabswitch}</Text>
+                <Text style={styles.column}>{value.point}</Text>
+                <Text style={styles.column}>{value.time}</Text>
+                <Text style={styles.column}>{value.penalty}</Text>
+              </View>
+            ))
+          )
+        }
       </View>
     </Page>
   </Document>
-);
+  )
+};
 
 export default ReportPDF;
