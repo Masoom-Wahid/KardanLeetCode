@@ -18,24 +18,28 @@ const Users = ({contestData}) => {
       <div className={styles.container}>
         <div className={styles.usersContainer}>
           <h1 className={styles.title}>Users</h1>
-          <button
-            className={styles.addButton}
-            onClick={() => navigate(`/createContestant/${contestData.id}`)}
-          >
-            <FontAwesomeIcon icon={faPlus} />
-            Add New
-          </button>
-          <div className={styles.addButton}>
-            <PDFDownloadLink
-              document={<ReportPDF type={"creds"} contestData={contestData} />}
-              fileName={`${contestData.name}__creds.pdf`}
+          <div className={styles.addButtonsContainer}>
+            <button
+              className={styles.addButton}
+              onClick={() => navigate(`/createContestant/${contestData.id}`)}
             >
-              {({ loading }) => (
-                <button className={styleCss.addButton} disabled={loading}>
-                  Expot Credentials
-                </button>
-              )}
-            </PDFDownloadLink>
+              <FontAwesomeIcon icon={faPlus} />
+              Add New
+            </button>
+            <div className={styles.exportButton}>
+              <PDFDownloadLink
+                document={
+                  <ReportPDF type={"creds"} contestData={contestData} />
+                }
+                fileName={`${contestData.name}__creds.pdf`}
+              >
+                {({ loading }) => (
+                  <button className={styleCss.addButton} disabled={loading}>
+                    <FontAwesomeIcon icon={faDownload} /> Export Credentials
+                  </button>
+                )}
+              </PDFDownloadLink>
+            </div>
           </div>
           <SubmissionsList
             className={styles.submit}
@@ -47,5 +51,6 @@ const Users = ({contestData}) => {
     </>
   );
 };
+
 
 export default Users;

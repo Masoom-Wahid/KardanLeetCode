@@ -23,6 +23,35 @@
   font-weight: 600;
 }
 
+.addButtonsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.addButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the start (left) */
+}
+
+.exportButton {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.exportButton:hover {
+  background-color: #006adb;
+}
+
 .addButton {
   padding: 10px 20px;
   background-color: #28a745;
@@ -34,7 +63,6 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 1rem;
   transition: background-color 0.2s, transform 0.1s;
 }
 
