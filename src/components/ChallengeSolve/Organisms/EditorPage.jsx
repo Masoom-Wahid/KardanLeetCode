@@ -97,8 +97,10 @@ const EditorPage = () => {
       */
       if (response.status === 423) {
         setContestFinished(true);
+        localStorage.clear()
+        navigate("/")
       } else if (response.status === 412) {
-        localStorage.removeItem("accessToken");
+        localStorage.clear()
         navigate("/");
       } else {
         const data = await response.json();

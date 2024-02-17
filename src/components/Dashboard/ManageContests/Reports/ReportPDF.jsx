@@ -225,6 +225,7 @@ const ReportPDF = ({type,contestData}) => {
           type === "creds" ? 
         <View style={styles.tableHeader}>
           <Text style={styles.column}>Username</Text>
+          <Text style={styles.column}>Team Name</Text>
           <Text style={styles.column}>Password</Text>
         </View> 
         :
@@ -244,7 +245,7 @@ const ReportPDF = ({type,contestData}) => {
         {
           creds && (
             type === "creds" ? 
-            creds.map(([username,password], index) => (
+            creds.map(([username,value], index) => (
               <View
                 style={[
                   styles.tableRow,
@@ -252,7 +253,8 @@ const ReportPDF = ({type,contestData}) => {
                 key={index}
               >
                 <Text style={styles.column}>{username}</Text>
-                <Text style={styles.column}>{password}</Text>
+                <Text style={styles.column}>{value.alias}</Text>
+                <Text style={styles.column}>{value.password}</Text>
               </View>
             )) : 
             subs.map(([groupname,value], index) => (

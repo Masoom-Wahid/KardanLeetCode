@@ -110,7 +110,16 @@ const SubmissionsList = ({ usersTab, contestData }) => {
         }
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
+      setUsers((prev) => {
+        const updatedArray = prev.map((subArray) => {
+          if (subArray[0] === overlayIndex) {
+            return [overlayIndex, { ...subArray[1], alias: newUsername }];
+          }
+          return subArray;
+        });
+      
+        return updatedArray;
+      });
       // Handle the response from the backend
     } catch (error) {
       // Handle errors
@@ -139,6 +148,14 @@ const SubmissionsList = ({ usersTab, contestData }) => {
               className={styles.headerItem} // Pass the style class to SortableHeader
             >
               Username
+            </SortableHeader>
+            <SortableHeader
+              columnKey="teamName"
+              onSort={sortData}
+              sortConfig={sortConfig}
+              className={styles.headerItem} // Pass the style class to SortableHeader
+            >
+              Team Name
             </SortableHeader>
             <SortableHeader
               columnKey="password"
@@ -174,10 +191,11 @@ const SubmissionsList = ({ usersTab, contestData }) => {
           </div>
         )}
         {usersTab
-          ? users.map(([user, password], index) => (
+          ? users.map(([user, value], index) => (
               <div key={index} className={styles.row}>
                 <div>{user}</div>
-                <div className={styles.passwordItem}>{password}</div>
+                <div>{value.alias}</div>
+                <div className={styles.passwordItem}>{value.password}</div>
                 <button
                   className={styles.aliasButton}
                   onClick={() => handleAliasClick(user)}

@@ -170,8 +170,8 @@ const Reports = ({ data, setData }) => {
                   <td className={styles.cell}>{value.penalty}</td>
                   <td className={styles.cell}>{value.point}</td>
                   <td className={styles.cell}>
-                    <ClockCircleOutlined className="pr-1" />
-                    {value.time}
+                    {/* <ClockCircleOutlined className="pr-1" /> */}
+                    {`${value.time} s`}
                   </td>
                   {/* <td className={styles.cell}>
                     <button className={styles.analyticsButton}>

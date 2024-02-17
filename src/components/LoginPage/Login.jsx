@@ -119,7 +119,7 @@ const Login = () => {
             </button>
           </div>
           <button type="submit" className="login-button">
-            {loading ? "Logging in..." : "Log In"}
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
       </div>
