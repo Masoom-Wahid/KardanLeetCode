@@ -17,7 +17,6 @@ const stats = [
   { label: "Fall2024", date: "2024-7-15" },
 ];
 
-const id = 1;
 
 const StatsCard = ({ label, date }) => (
   <div className="stats-card">

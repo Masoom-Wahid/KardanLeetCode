@@ -5,12 +5,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSync, faRedo } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
+const formatTime = (seconds) => {
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const remainingSeconds = seconds % 60;
+
+  const pad = (value) => (value < 10 ? `0${value}` : value);
+
+  return `${pad(hours)}:${pad(minutes)}:${pad(remainingSeconds)}`;
+};
 
 const LeaderboardPage = ({ contestData }) => {
   const navigate = useNavigate();
-  const [data,setData] = useState([])
-  const [reloadLoading,setReloadLoading] = useState(false)
-  const [refreshLoading,setRefreshLoading] = useState(false)
+  const [data, setData] = useState([]);
+  const [reloadLoading, setReloadLoading] = useState(false);
+  const [refreshLoading, setRefreshLoading] = useState(false);
+  const [timeRemaining, setTimeRemaining] = useState(3600);
+
   const fetchData = async () => {
     try {
       const response = await fetch(
@@ -38,15 +49,25 @@ const LeaderboardPage = ({ contestData }) => {
     } catch (error) {
       // Handle errors
       console.error(error);
-    }finally{
-      setReloadLoading(false)
-      setRefreshLoading(false)
+    } finally {
+      setReloadLoading(false);
+      setRefreshLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
     fetchData();
-  },[])
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (timeRemaining > 0) {
+        setTimeRemaining(timeRemaining - 1);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [timeRemaining]);
 
   const handleRefresh = async () => {
     try {
@@ -74,44 +95,47 @@ const LeaderboardPage = ({ contestData }) => {
       // Handle errors
       console.error(error);
     }
-  }
+  };
 
   return (
     <div className="leaderboard-page">
       <div variant="h4" className="leaderboard-title">
         Leaderboard
       </div>
-      {
-        contestData.starred && contestData.started && !contestData.finished && (
+      {contestData?.starred && contestData.started && !contestData.finished && (
+        <>
           <div className="leaderboard-buttons">
-            <button className="reload" title="Reloads The LeaderBoard Data , This Should Be Used Regularly" 
-            onClick={() =>  {
-                setReloadLoading(true)
-                fetchData()}
-                } >
+            <button
+              className="reload"
+              title="Reloads The LeaderBoard Data , This Should Be Used Regularly"
+              onClick={() => {
+                setReloadLoading(true);
+                fetchData();
+              }}
+            >
               <FontAwesomeIcon icon={faRedo} style={{ marginRight: "8px" }} />
-              {reloadLoading ? "Reloading...."  : "Reload"}
+              {reloadLoading ? "Reloading...." : "Reload"}
             </button>
-            <button className="refresh" 
-            title="Use This If U Think The Leaderboard data Is Stuck and reload is not working. SHOULD NOT BE USED REGULARLY"
-            onClick={() => {
-              setRefreshLoading(true)
-              handleRefresh()
-              }}>
+            <button
+              className="refresh"
+              title="Use This If U Think The Leaderboard data Is Stuck and reload is not working. SHOULD NOT BE USED REGULARLY"
+              onClick={() => {
+                setRefreshLoading(true);
+                handleRefresh();
+              }}
+            >
               <FontAwesomeIcon icon={faSync} style={{ marginRight: "8px" }} />
               {refreshLoading ? "Refreshing...." : "Refresh"}
             </button>
           </div>
-        )
-      }
-      {
-        data && (
-          <Reports 
-          contestData={contestData}
-          data={data}
-          setData={setData} />
-        )
-      }
+          <div className="time-remaining">
+            Time Remaining: {formatTime(timeRemaining)}
+          </div>
+        </>
+      )}
+      {data && (
+        <Reports contestData={contestData} data={data} setData={setData} />
+      )}
     </div>
   );
 };

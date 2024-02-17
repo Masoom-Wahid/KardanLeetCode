@@ -1,0 +1,98 @@
+.submissionsCard {
+  border: none;
+  border-radius: 0.5rem;
+  transition: box-shadow 1s ease-in-out;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  width: 70dvw;
+  margin: 0px auto;
+}
+
+.submissionsCard:hover {
+  box-shadow: 0 2px 12px 8px rgba(0, 0, 0, 0.2);
+}
+
+.submissionsCardHeader {
+  padding: 10px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.submissionsCardTitle {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #32325d;
+}
+
+.submissionsCardBody {
+  height: 400px;
+  padding: 1rem;
+  position: relative;
+}
+
+.totalUsers {
+  font-size: 3rem;
+  color: #525f7f;
+  font-weight: bold;
+}
+
+.submissionsButtons {
+  display: flex;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  margin-top: 1rem;
+}
+
+.submissionsChartButtonGroup {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.submissionsButton {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.submissionsButton:hover,
+.submissionsButton:active,
+.submissionsButton.active {
+  background-color: #95A4FC;
+  color: #fff;
+}
+
+.submissionsButton:hover,
+.submissionsButton:active {
+  background-color: #95A4FC;
+  color: #fff;
+}
+
+.submissionsButton:not(:first-child) {
+  border-left: none; /* Prevent double borders between buttons */
+}
+
+.submissionsChartButtonGroup {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Tooltip styles for Nivo bar */
+.nivoTooltip {
+  padding: 12px;
+  color: #fff;
+  background: #222222;
+  border-radius: 4px;
+}
+
+/* Styles for legends */
+.legend {
+  font-size: 0.875rem;
+  color: #32325d;
+}

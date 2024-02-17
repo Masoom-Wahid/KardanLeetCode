@@ -1,10 +1,10 @@
 .leaderboard-page {
   .leaderboard-title {
     color: #1565c0; 
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-  font-size: 2.5rem;
-  margin-top: 40px;
-  margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    font-size: 2.5rem;
+    margin-top: 40px;
+    margin-bottom: 20px;
   }
 
   .leaderboard-buttons {
@@ -42,5 +42,18 @@
     &:hover {
       background-color: #1e7b41;
     }
+  }
+
+  .time-remaining {
+    font-size: 20px;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+    padding: 5px 15px;
+    background-color: #808080;
+    width: 23%;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: 10px;
   }
 }

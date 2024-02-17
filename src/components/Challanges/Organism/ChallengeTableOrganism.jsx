@@ -13,7 +13,7 @@ const BASE_URL = process.env.REACT_APP_API_URL;
 const ChallengeTableOrganism = () => {
   const [challenges, setChallenges] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState();
+  const [totalPages, setTotalPages] = useState(1);
 
   const navigate = useNavigate();
 
@@ -25,77 +25,57 @@ const ChallengeTableOrganism = () => {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
       });
+
       if (!response.ok) {
-        // 401 means unauthorized , 403 means unauthorized, so the user is either using an old token or is
-        // either bypassing
         if (response.status === 401 || response.status === 403) {
           localStorage.removeItem("accessToken");
           navigate("/");
         }
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      /*
-      Filter Out All Of The Challenges Except For The One We Are Deleting Right Now
-      Idk If There Is  A Better Way , Probbably Is
-      */
+
+      // Filter out the challenge with the deleted id
       setChallenges((prevChallenges) =>
         prevChallenges.filter((challenge) => challenge.id !== id)
       );
-      // Process the data
     } catch (error) {
-      // Handle errors
+      console.error(error);
+    }
+  };
+
+  const fetchData = async (page = 1) => {
+    try {
+      const response = await fetch(`${BASE_URL}questions?page=${page}`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      });
+
+      if (!response.ok) {
+        if (response.status === 401 || response.status === 403) {
+          localStorage.removeItem("accessToken");
+          navigate("/");
+        }
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setChallenges(data.data || []);
+      setTotalPages(data.total_pages || 1);
+    } catch (error) {
       console.error(error);
     }
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`${BASE_URL}questions/`, {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        });
-
-        const data = await response.json();
-        if (!response.ok) {
-          if (response.status === 401 || response.status === 403) {
-            localStorage.removeItem("accessToken");
-            navigate("/");
-          }
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        console.log(data.data)
-        setChallenges(data.data);
-        setTotalPages(data.available_pages || 1); // Adjust according to your API response
-
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData(); // eslint-disable-next-line
-  }, []);
-
-  //This is according to backend DO NOT CHANGE
-  const itemsPerPage = 8;
+    fetchData(currentPage);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPage]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
-
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = challenges.data
-    ? challenges.data.slice(indexOfFirstItem, indexOfLastItem)
-    : Array.from({ length: itemsPerPage }, (_, index) => ({
-        id: index + 1,
-        title: `Challenge ${index + 1}`,
-        lvl: `Level ${index + 1}`,
-        point: Math.floor(Math.random() * 100) + 1,
-        time_limit: `${Math.floor(Math.random() * 60) + 1} min`,
-      }));
 
   return (
     <div>

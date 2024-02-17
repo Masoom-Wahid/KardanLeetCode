@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { ResponsiveBar } from "@nivo/bar";
 import { CCard, CCardBody, CCardHeader, CCol, CRow } from "@coreui/react";
 import DataTableView from "./DataTable";
-import styles from "./NivoBar.module.css";
+import styles from "./SubmissionsReport.module.css";
 import { patternLinesDef } from "@nivo/core";
 
 const SubmissionsReport = () => {
@@ -61,7 +61,7 @@ const SubmissionsReport = () => {
     return barData;
   };
 
-  const barData = generateBarData(5);
+  const barData = generateBarData(10);
 
   const processDataForBarChart = (submissionsData) => {
     return submissionsData.map((questionItem) => {
@@ -198,18 +198,20 @@ const SubmissionsReport = () => {
 
   return (
     <>
-      <CCard className={styles.card}>
-        <CCardHeader className={styles.cardHeader}>
+      <CCard className={styles.submissionsCard}>
+        <CCardHeader className={styles.submissionsCardHeader}>
           <CRow>
             <CCol sm={6}>
-              <h4 className={styles.cardTitle}>Total Submissions Stats</h4>
+              <h4 className={styles.submissionsCardTitle}>
+                Total Submissions Stats
+              </h4>
             </CCol>
-            <div className={styles.buttons}>
+            <div className={styles.submissionsButtons}>
               {viewType === "Graph" && (
-                <div className={styles.chartButtonGroup}>
+                <div className={styles.submissionsChartButtonGroup}>
                   {view.map((value) => (
                     <button
-                      className={`${styles.button} ${
+                      className={`${styles.submissionsButton} ${
                         vertOrHor === value.horizontal ? styles.active : ""
                       }`}
                       onClick={() => setVertOrHor(value.horizontal)}
@@ -224,7 +226,7 @@ const SubmissionsReport = () => {
             </div>
           </CRow>
         </CCardHeader>
-        <CCardBody className={styles.cardBody}>
+        <CCardBody className={styles.submissionsCardBody}>
           {viewType === "Graph" ? (
             <MyResponsiveBar
               data={processDataForBarChart(barData)}
@@ -238,4 +240,5 @@ const SubmissionsReport = () => {
     </>
   );
 };
+
 export default SubmissionsReport;

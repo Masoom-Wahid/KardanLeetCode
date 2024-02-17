@@ -28,6 +28,8 @@ import ServicesSection from "./components/Developers/Services";
 import TabChangeCounter from "./components/TabChangeComponent/TabChangeComponent";
 import Reports from "./components/Dashboard/ManageContests/Reports/Reports";
 import AdminSignUp from "./components/Dashboard/Admin/AdminSignUp";
+import LangPieChart from "./components/Dashboard/ManageContests/Analytics/LangPieChart";
+import ErrorBoundary from "./components/ErrorBoundry/ErrorBoundry";
 
 const OriginalResizeObserver = window.ResizeObserver;
 
@@ -69,127 +71,130 @@ function App() {
     <Router>
       <div className="App">
         <TabChangeCounter />
-        <Routes>
-          <Route path="/" element={<Login setEmail={setEmail} />} />
+        <ErrorBoundary>
+          <Routes>
+            <Route path="/" element={<Login setEmail={setEmail} />} />
 
-          <Route path="/contest" element={<ChallengesGrid />} />
-          <Route path="/leaderboard" element={<LeaderboardPage />} />
-          <Route path="/contest/:id" element={<EditorPage />} />
-          <Route path="/editor" element={<EditorPage />} />
-          <Route path="/home" element={<HomePage email={email} />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/report" element={<Reports />} />
-          <Route path="/submission/:id" element={<SubmissionDetail />} />
-          <Route path="/manage" element={<ManageContest />} />
-          <Route
-            path="/admin"
-            element={
-              <Layout>
-                <Dashboard />
-              </Layout>
-            }
-          />
+            <Route path="/contest" element={<ChallengesGrid />} />
+            <Route path="/leaderboard" element={<LeaderboardPage />} />
+            <Route path="/contest/:id" element={<EditorPage />} />
+            <Route path="/editor" element={<EditorPage />} />
+            <Route path="/home" element={<HomePage email={email} />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/report" element={<Reports />} />
+            <Route path="/submission/:id" element={<SubmissionDetail />} />
+            <Route path="/manage" element={<ManageContest />} />
+            <Route path="/pie" element={<LangPieChart />} />
+            <Route
+              path="/admin"
+              element={
+                <Layout>
+                  <Dashboard />
+                </Layout>
+              }
+            />
 
-          <Route
-            path="/createchallenge"
-            element={
-              <Layout>
-                <CreateChallenge />
-              </Layout>
-            }
-          />
-          <Route
-            path="/challenges/:id"
-            element={
-              <Layout>
-                <ParentComponent />
-              </Layout>
-            }
-          />
-          <Route
-            path="/createcontest"
-            element={
-              <Layout>
-                <CreateContest />
-              </Layout>
-            }
-          />
-          <Route
-            path="/challenges"
-            element={
-              <Layout>
-                <ProtectedRoute
-                  component={ContestChallenges}
-                  isAuthenticated={isAuthenticated}
-                />
-              </Layout>
-            }
-          />
-          <Route
-            path="/createUser"
-            element={
-              <Layout>
-                <CreateUser />
-              </Layout>
-            }
-          />
-          <Route
-            path="/users"
-            element={
-              <Layout>
-                <Users />
-              </Layout>
-            }
-          />
-          <Route
-            path="/submissions/:id"
-            element={
-              <Layout>
-                <Submissions />
-              </Layout>
-            }
-          />
-          <Route
-            path="/contests"
-            element={
-              <Layout>
-                <ManageContests />
-              </Layout>
-            }
-          />
-          <Route
-            path="/analytics"
-            element={
-              <Layout>
-                <ManageContest />
-              </Layout>
-            }
-          />
-          <Route
-            path="/createContestant/:id"
-            element={
-              <Layout>
-                <CreateContestant />
-              </Layout>
-            }
-          />
-          <Route
-            path="/contests/:id"
-            element={
-              <Layout>
-                <ManageContestsParentComponent />
-              </Layout>
-            }
-          />
-          <Route
-            path="/adminSignUp"
-            element={
-              <Layout>
-                <AdminSignUp />
-              </Layout>
-            }
-          />
-        </Routes>
+            <Route
+              path="/createchallenge"
+              element={
+                <Layout>
+                  <CreateChallenge />
+                </Layout>
+              }
+            />
+            <Route
+              path="/challenges/:id"
+              element={
+                <Layout>
+                  <ParentComponent />
+                </Layout>
+              }
+            />
+            <Route
+              path="/createcontest"
+              element={
+                <Layout>
+                  <CreateContest />
+                </Layout>
+              }
+            />
+            <Route
+              path="/challenges"
+              element={
+                <Layout>
+                  <ProtectedRoute
+                    component={ContestChallenges}
+                    isAuthenticated={isAuthenticated}
+                  />
+                </Layout>
+              }
+            />
+            <Route
+              path="/createUser"
+              element={
+                <Layout>
+                  <CreateUser />
+                </Layout>
+              }
+            />
+            <Route
+              path="/users"
+              element={
+                <Layout>
+                  <Users />
+                </Layout>
+              }
+            />
+            <Route
+              path="/submissions/:id"
+              element={
+                <Layout>
+                  <Submissions />
+                </Layout>
+              }
+            />
+            <Route
+              path="/contests"
+              element={
+                <Layout>
+                  <ManageContests />
+                </Layout>
+              }
+            />
+            <Route
+              path="/analytics"
+              element={
+                <Layout>
+                  <ManageContest />
+                </Layout>
+              }
+            />
+            <Route
+              path="/createContestant/:id"
+              element={
+                <Layout>
+                  <CreateContestant />
+                </Layout>
+              }
+            />
+            <Route
+              path="/contests/:id"
+              element={
+                <Layout>
+                  <ManageContestsParentComponent />
+                </Layout>
+              }
+            />
+            <Route
+              path="/adminSignUp"
+              element={
+                <Layout>
+                  <AdminSignUp />
+                </Layout>
+              }
+            />
+          </Routes>
+        </ErrorBoundary>
       </div>
     </Router>
   );

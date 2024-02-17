@@ -1,0 +1,71 @@
+.card {
+  width: 70vw;
+  margin: 0px auto;
+  padding: 20px;
+  transition: box-shadow 1s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 2px 12px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  
+}
+
+.title {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.buttons{
+  display: flex;
+  justify-content: flex-start; /* Adjusted to align buttons to the left */
+  direction: ltr;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  justify-items: left;
+  margin-top: 1rem;
+}
+
+.chartButtonGroup {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.button {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button:hover,
+.button:active,
+.button.active {
+  background-color: #95A4FC;
+  color: #fff;
+}
+
+.button:hover,
+.button:active {
+  background-color: #95A4FC;
+  color: #fff;
+}
+
+.button:not(:first-child) {
+  border-left: none; /* Prevent double borders between buttons */
+}
+
+.chartWrapper {
+  height: 400px;
+}

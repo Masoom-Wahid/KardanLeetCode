@@ -4,6 +4,8 @@ import Reports from "./Reports";
 import { useNavigate } from "react-router-dom";
 import styleCss from "./ReportsPage.module.css";
 import ReportPDF from "./ReportPDF";
+import LangPieChart from "../Analytics/LangPieChart";
+import SubmissionsReport from "../Analytics/SubmissionsReport";
 
 const ReportsPage = ({ contestData }) => {
   const [data, setData] = useState([]);
@@ -44,24 +46,36 @@ const ReportsPage = ({ contestData }) => {
   };
 
   useEffect(() => {
+    const timeout = setTimeout(() => {
+      document.querySelector(".container").classList.add("loaded");
+    }, 500); // 500 milliseconds delay
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  useEffect(() => {
     fetchData();
   }, []);
 
   return (
     <div className={styleCss.container}>
       <h1 className={styleCss.title}>Reports</h1>
-      <PDFDownloadLink
-        document={<ReportPDF data={data} />}
-        fileName="report.pdf"
-      >
-        {({ loading }) => (
-          <button className={styleCss.exportButton} disabled={loading}>
-            Export PDF
-          </button>
-        )}
-      </PDFDownloadLink>
+      <div className={styleCss.exportButtonContainer}>
+        <PDFDownloadLink
+          document={<ReportPDF data={data} />}
+          fileName="report.pdf"
+        >
+          {({ loading }) => (
+            <button className={styleCss.exportButton} disabled={loading}>
+              Export PDF
+            </button>
+          )}
+        </PDFDownloadLink>
+      </div>
       <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
         <Reports contestData={contestData} data={data} setData={setData} />
+        <LangPieChart />
+        <SubmissionsReport />
       </div>
     </div>
   );
