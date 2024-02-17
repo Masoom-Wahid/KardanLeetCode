@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlus,
@@ -32,6 +32,40 @@ const StatsCard = ({ label, date }) => (
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const [contestData,setContestData] = useState([])
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}contest/getLastContest/`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          }
+        );
+
+        const data = await response.json();
+        if (!response.ok) {
+          // 401 means unauthorized , 403 means unauthorized, so the user is either using an old token or is
+          // either bypassing
+          if (response.status === 401 || response.status === 403) {
+            localStorage.removeItem("accessToken");
+            navigate("/");
+          }
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        setContestData(data);
+        // Process the data
+      } catch (error) {
+        // Handle errors
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <div className="dashboard-container">
       <main className="main-content">
@@ -71,8 +105,8 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="stats-cards">
-          {stats.map((stat) => (
-            <StatsCard label={stat.label} date={stat.date} />
+          {contestData.map((stat) => (
+            <StatsCard label={stat.name} date={stat.created_at} />
           ))}
         </div>
       </main>

@@ -9,13 +9,14 @@ import SubmissionsReport from "../Analytics/SubmissionsReport";
 
 const ReportsPage = ({ contestData }) => {
   const [data, setData] = useState([]);
+  const [langStats,setLangStats] = useState([])
   const [reloadLoading, setReloadLoading] = useState(false);
   const [refreshLoading, setRefreshLoading] = useState(false);
   const navigate = useNavigate();
   const fetchData = async () => {
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}contest/${contestData.id}?results=True`,
+        `${process.env.REACT_APP_API_URL}contest/${contestData.id}?results=True&lang=True`,
         {
           method: "GET",
           headers: {
@@ -34,7 +35,8 @@ const ReportsPage = ({ contestData }) => {
         }
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      setData(Object.entries(response_data));
+      setData(Object.entries(response_data.data))
+      setLangStats(response_data.lang_stats)
       // Process the data
     } catch (error) {
       // Handle errors
@@ -62,7 +64,7 @@ const ReportsPage = ({ contestData }) => {
       <h1 className={styleCss.title}>Reports</h1>
       <div className={styleCss.exportButtonContainer}>
         <PDFDownloadLink
-          document={<ReportPDF data={data} />}
+          document={<ReportPDF type={"subs"} contestData={contestData} />}
           fileName="report.pdf"
         >
           {({ loading }) => (
@@ -74,8 +76,8 @@ const ReportsPage = ({ contestData }) => {
       </div>
       <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
         <Reports contestData={contestData} data={data} setData={setData} />
-        <LangPieChart />
-        <SubmissionsReport />
+        <LangPieChart data={langStats} />
+        {/* <SubmissionsReport /> */}
       </div>
     </div>
   );

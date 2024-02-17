@@ -121,19 +121,35 @@ const ManageContestsParentComponent = () => {
       {contestData && (
         <>
           <div className={uniqueStyles.uniqueContentArea}>
-            <ManageContestsTabsComponent
+            {
+              // Final Report Should only be shown when the contest is finished
+              contestData.started && contestData.finished ?
+              <ManageContestsTabsComponent
+                uniqueTabs={[
+                  { id: "Details", label: "Details" },
+                  { id: "Challenges", label: "Challenges" },
+                  { id: "Leaderboard", label: "Leaderboard" },
+                  { id: "Users", label: "Users" },
+                  { id: "Submissions", label: "Submissions" },
+                  { id: "FinalReport", label: "Final Report" },
+                  { id: "AdvanceSetting", label: "Advance Setting" },
+                ]}
+                activeUniqueTab={activeUniqueTab}
+                setActiveUniqueTab={setActiveUniqueTab}
+              />:
+              <ManageContestsTabsComponent
               uniqueTabs={[
                 { id: "Details", label: "Details" },
                 { id: "Challenges", label: "Challenges" },
                 { id: "Leaderboard", label: "Leaderboard" },
                 { id: "Users", label: "Users" },
                 { id: "Submissions", label: "Submissions" },
-                { id: "FinalReport", label: "Final Report" },
                 { id: "AdvanceSetting", label: "Advance Setting" },
               ]}
               activeUniqueTab={activeUniqueTab}
               setActiveUniqueTab={setActiveUniqueTab}
             />
+            }
             {renderUniqueTabContent(activeUniqueTab)}
           </div>
         </>

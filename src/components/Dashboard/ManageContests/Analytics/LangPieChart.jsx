@@ -13,40 +13,43 @@ import {
 import DataTableView from "./DataTable";
 import styles from "./LangPieChart.module.css";
 
-const LangPieChart = () => {
+const LangPieChart = ({data}) => {
+  console.log(data)
   const [viewType, setViewType] = useState("Graph");
   const [pieOrDonut, setPieOrDonut] = useState("Pie");
 
   const pieData = [
-    { id: "python", label: "Python", value: 20, color: "hsl(120, 70%, 50%)" },
-    { id: "rust", label: "Rust", value: 15, color: "hsl(240, 70%, 50%)" },
-    { id: "java", label: "Java", value: 18, color: "hsl(60, 70%, 50%)" },
-    { id: "c++", label: "C++", value: 12, color: "hsl(180, 70%, 50%)" },
-    { id: "c#", label: "C#", value: 10, color: "hsl(300, 70%, 50%)" },
+    { id: "python", label: "Python", value: data.python, color: "hsl(120, 70%, 50%)" },
+    { id: "rust", label: "Rust", value: data.rust, color: "hsl(240, 70%, 50%)" },
+    { id: "java", label: "Java", value: data.java, color: "hsl(60, 70%, 50%)" },
+    { id: "c", label: "C", value: data.c, color: "hsl(300, 70%, 50%)" },
+    { id: "c++", label: "C++", value: data.cpp, color: "hsl(180, 70%, 50%)" },
+    { id: "c#", label: "C#", value: data.csharp, color: "hsl(300, 70%, 50%)" },
     {
       id: "javascript",
       label: "JavaScript",
-      value: 25,
+      value: data.js,
       color: "hsl(30, 70%, 50%)",
     },
     {
       id: "typescript",
       label: "TypeScript",
-      value: 22,
+      value: data.ts,
       color: "hsl(210, 70%, 50%)",
     },
-    { id: "php", label: "PHP", value: 8, color: "hsl(90, 70%, 50%)" },
+    { id: "php", label: "PHP", value: data.php, color: "hsl(90, 70%, 50%)" },
   ];
 
   const dataTableData = [
-    { label: "Python", UsagePercentage: 20, color: "#ff7f0e" },
-    { label: "Rust", UsagePercentage: 15, color: "#2ca02c" },
-    { label: "Java", UsagePercentage: 18, color: "#1f77b4" },
-    { label: "C++", UsagePercentage: 12, color: "#d62728" },
-    { label: "C#", UsagePercentage: 10, color: "#9467bd" },
-    { label: "JavaScript", UsagePercentage: 25, color: "#1f77b4" },
-    { label: "TypeScript", UsagePercentage: 22, color: "#393b79" },
-    { label: "PHP", UsagePercentage: 8, color: "#ffbb78" },
+    { label: "Python", UsagePercentage: data.python, color: "#ff7f0e" },
+    { label: "Rust", UsagePercentage: data.rust, color: "#2ca02c" },
+    { label: "Java", UsagePercentage: data.java, color: "#1f77b4" },
+    { label: "C++", UsagePercentage: data.cpp, color: "#d62728" },
+    { label: "C", UsagePercentage: data.c, color: "#d62728" },
+    { label: "C#", UsagePercentage: data.csharp, color: "#9467bd" },
+    { label: "JavaScript", UsagePercentage: data.js, color: "#1f77b4" },
+    { label: "TypeScript", UsagePercentage: data.ts, color: "#393b79" },
+    { label: "PHP", UsagePercentage: data.php, color: "#ffbb78" },
   ];
 
   const MyResponsivePie = ({ data, pieType }) => (
