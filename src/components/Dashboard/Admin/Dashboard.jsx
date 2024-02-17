@@ -12,14 +12,13 @@ import { useNavigate } from "react-router-dom";
 
 
 const stats = [
-  { label: "Winter2023", date: "2023-11-1" },
-  { label: "Spring2024", date: "2024-2-10" },
-  { label: "Fall2024", date: "2024-7-15" },
+  { id: 1, label: "Winter2023", date: "2023-11-1" },
+  { id: 2, label: "Spring2024", date: "2024-2-10" },
+  { id: 3, label: "Fall2024", date: "2024-7-15" },
 ];
 
-
-const StatsCard = ({ label, date }) => (
-  <div className="stats-card">
+const StatsCard = ({ id, label, date }) => (
+  <div className="stats-card" key={id}>
     <div className="column-align">
       <FontAwesomeIcon icon={faUserCircle} className="stats-icon " />
       <div className="stats-labels">
@@ -72,7 +71,7 @@ const Dashboard = () => {
         </div>
         <div className="stats-cards">
           {stats.map((stat) => (
-            <StatsCard label={stat.label} date={stat.date} />
+            <StatsCard key={stat.id} label={stat.label} date={stat.date} />
           ))}
         </div>
       </main>

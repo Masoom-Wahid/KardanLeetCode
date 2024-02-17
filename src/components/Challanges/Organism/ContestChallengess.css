@@ -38,7 +38,7 @@
   margin-right: auto;
 }
 
-.contest-challenges button {
+.contest-challenges .add-button {
   position: fixed; /* Keeps the button fixed during scroll */
   right: 20px; /* Distance from the right edge of the viewport */
   bottom: 20px; /* Distance from the bottom edge of the viewport */
@@ -47,13 +47,13 @@
   color: white; /* Text color inside the border: none; No border by default */
 }
 
-.contest-challenges button:hover {
+.contest-challenges .add-button:hover {
   background-color: #0056b3; /* Darker shade on hover */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Larger shadow on hover for a 'lifted' effect */
   transform: translateY(-2px); /* Slightly raise the button on hover */
 }
 
-.contest-challenges button:active {
+.contest-challenges .add-button:active {
   transform: translateY(1px); /* Pushes the button down a bit when clicked */
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Smaller shadow to simulate 'pressing' */
 }

@@ -13,7 +13,8 @@ const BASE_URL = process.env.REACT_APP_API_URL;
 const ChallengeTableOrganism = () => {
   const [challenges, setChallenges] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  const [totalPages, setTotalPages] = useState();
+  const [currentItems, setCurrentItems] = useState([]);
 
   const navigate = useNavigate();
 
@@ -25,33 +26,39 @@ const ChallengeTableOrganism = () => {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
       });
-
       if (!response.ok) {
+        // 401 means unauthorized , 403 means unauthorized, so the user is either using an old token or is
+        // either bypassing
         if (response.status === 401 || response.status === 403) {
           localStorage.removeItem("accessToken");
           navigate("/");
         }
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
-      // Filter out the challenge with the deleted id
+      /*
+      Filter Out All Of The Challenges Except For The One We Are Deleting Right Now
+      Idk If There Is  A Better Way , Probbably Is
+      */
       setChallenges((prevChallenges) =>
         prevChallenges.filter((challenge) => challenge.id !== id)
       );
+      // Process the data
     } catch (error) {
+      // Handle errors
       console.error(error);
     }
   };
 
-  const fetchData = async (page = 1) => {
+  const fetchData = async (page) => {
     try {
-      const response = await fetch(`${BASE_URL}questions?page=${page}`, {
+      const response = await fetch(`${BASE_URL}questions/?page=${page}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
       });
 
+      const data = await response.json();
       if (!response.ok) {
         if (response.status === 401 || response.status === 403) {
           localStorage.removeItem("accessToken");
@@ -60,22 +67,32 @@ const ChallengeTableOrganism = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const data = await response.json();
-      setChallenges(data.data || []);
-      setTotalPages(data.total_pages || 1);
+      console.log(data.data);
+      setChallenges((prevChallenges) => [...prevChallenges, ...data.data]);
+      setTotalPages(data.available_pages || 1);
+      setCurrentItems(data.data);
     } catch (error) {
       console.error(error);
     }
   };
 
   useEffect(() => {
-    fetchData(currentPage);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPage]);
+    setChallenges([]); // Clear existing challenges when changing pages
+    setCurrentPage(1); // Reset to the first page when changing pages
+    fetchData(1); // Fetch data for the first page
+    // eslint-disable-next-line
+  }, []);
+
+  //This is according to backend DO NOT CHANGE
+  const itemsPerPage = 8;
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
+    fetchData(page);
   };
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
   return (
     <div>
@@ -84,7 +101,7 @@ const ChallengeTableOrganism = () => {
           <ChallengeHeaderMolecule />
           {challenges && (
             <TableBody>
-              {challenges.map((challenge, index) => (
+              {currentItems.map((challenge, index) => (
                 <ChallengeRowMolecule
                   key={challenge.id}
                   challenge={challenge}

@@ -19,9 +19,12 @@ const ContestChallenges = () => {
           desired location.
         </p>
         <div className="challenge-table-container">
-          <ChallengeTableOrganism  />
+          <ChallengeTableOrganism />
         </div>
-        <button onClick={() => navigate("/createchallenge")}>
+        <button
+          onClick={() => navigate("/createchallenge")}
+          className="add-button"
+        >
           Add Challenge
         </button>
       </div>
