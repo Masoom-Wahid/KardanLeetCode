@@ -70,7 +70,8 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <TabChangeCounter />
+        <ErrorBoundary>
+          <TabChangeCounter />
           <Routes>
             <Route path="/" element={<Login setEmail={setEmail} />} />
 
@@ -164,7 +165,7 @@ function App() {
               }
             />
           </Routes>
-
+        </ErrorBoundary>
       </div>
     </Router>
   );

@@ -30,6 +30,7 @@ const StatsCard = ({ label, date }) => (
 );
 
 const Dashboard = () => {
+
   const navigate = useNavigate();
   const [contestData, setContestData] = useState([]);
   useEffect(() => {

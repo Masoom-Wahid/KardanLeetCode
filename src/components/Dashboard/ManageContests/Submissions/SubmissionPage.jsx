@@ -1,7 +1,8 @@
+import React from "react";
 import styles from "./SubmissionPage.module.css";
 import SubmissionsList from "./SubmissionsList";
 
-const SubmissionPage = ({contestData}) => {
+const SubmissionPage = ({ contestData }) => {
   return (
     <>
       <div className={styles.container}>

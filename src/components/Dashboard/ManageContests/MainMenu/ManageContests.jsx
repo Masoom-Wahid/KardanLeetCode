@@ -53,7 +53,6 @@ const ManageContests = () => {
 
   return (
     <div className={styles.manageContests}>
-      <Sidebar />
       <div className={styles.content}>
         {contestData && (
           <>
