@@ -44,6 +44,7 @@ const Login = () => {
       }
 
       const data = await response.json();
+      localStorage.clear()
       localStorage.setItem("accessToken", data.access);
       localStorage.setItem("refreshToken", data.refresh);
       // Just Parse The Data and set it to local storage
