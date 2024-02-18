@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import parseJwt from "./JWTParser";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
 
@@ -72,10 +72,10 @@ const Login = () => {
               The most popular programming contest in Afghanistan.
             </p>
           </div>
-          <button className="read-more-button">
-            <a href="https://kardan.edu.af/" target="__blank">
-              Read More
-            </a>
+          <button className="read-more-button" onClick={() => navigate("/about")}>
+            
+              Meet The Creators
+            
           </button>
         </div>
       </div>
