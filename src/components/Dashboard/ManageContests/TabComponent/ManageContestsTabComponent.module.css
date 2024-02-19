@@ -20,7 +20,7 @@
 }
 
 .active {
-  background-color: #007bff; /* Blue background for active tab */
-  color: white; /* White text for active tab */
-  border-color: #007bff; /* Blue border for active tab */
+  background-color: #007bff;
+  color: white; 
+  border-color: #007bff;
 }

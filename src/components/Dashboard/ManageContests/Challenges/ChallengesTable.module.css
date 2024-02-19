@@ -1,16 +1,16 @@
 /* ChallengesTable.module.css */
 .title {
   text-align: center;
-  margin-bottom: 32px;
-  font-size: 2rem;
+  margin-bottom: 2vw; /* Adjust margin for smaller screens */
+  font-size: 2.5vw; /* Adjust font size for smaller screens */
   color: #333;
 }
 
 .challengesTable {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2vw; /* Adjust margin for smaller screens */
+  box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.1); /* Adjust box shadow for smaller screens */
 }
 
 .challengesTable thead {
@@ -21,8 +21,8 @@
 .challengesTable th,
 .challengesTable td {
   text-align: left;
-  padding: 12px 15px;
-  border-bottom: 1px solid #ddd;
+  padding: 1vw 1.5vw; /* Adjust padding for smaller screens */
+  border-bottom: 0.1vw solid #ddd; /* Adjust border bottom for smaller screens */
 }
 
 .challengesTable th {
@@ -34,9 +34,8 @@
   background-color: #f9f9f9;
 }
 
-
 .actionIcon :first-child {
-  margin: 0 5px;
+  margin: 0 0.5vw; /* Adjust margin for smaller screens */
   cursor: pointer;
   transition: color 0.2s ease-in-out;
 }
@@ -60,37 +59,43 @@
 .addButton {
   background-color: #007BFF;
   color: #fff;
-  padding: 10px 20px;
+  padding: 1vw 2vw; /* Adjust padding for smaller screens */
   border: none;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.5vw; /* Adjust font size for smaller screens */
   font-weight: bold;
   outline: none;
   transition: background-color 0.2s ease-in-out;
   position: fixed; /* Fixed position regardless of the scroll position */
-  bottom: 20px; /* 20px from the bottom */
-  right: 20px; /* 20px from the right */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: adds shadow for better visibility */
+  bottom: 2vw; /* Adjust bottom spacing for smaller screens */
+  right: 2vw; /* Adjust right spacing for smaller screens */
+  box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.2); /* Optional: adds shadow for better visibility */
 }
 
 .addButton:hover {
   background-color: #026bdc;
 }
 
-
-/* Additional styles for overall aesthetics */
 .challengesTableContainer {
-  padding: 20px;
-  border-radius: 8px;
+  padding: 2vw;
+  border-radius: 2vw; /* Adjust border radius for smaller screens */
   background: #fff;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3vw 5vw rgba(0, 0, 0, 0.1); /* Adjust box shadow for smaller screens */
 }
 
-/* Style for responsiveness */
 @media (max-width: 768px) {
+  .challengesTableContainer {
+    padding: 2vw; /* Adjust padding for smaller screens */
+  }
+
   .challengesTable,
   .challengesTableContainer {
-    width: auto;
+    width: calc(100% - 4vw); /* Adjust width for smaller screens */
     overflow-x: auto;
+  }
+
+  .addButton {
+    bottom: 2vw; /* Adjust bottom spacing for smaller screens */
+    right: 2vw; /* Adjust right spacing for smaller screens */
   }
 }

@@ -1,55 +1,65 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:wght@300&family=Raleway:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:wght@300&family=Raleway:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 .dashboard-container {
   display: flex;
+  flex-direction: column;
   height: 100vh;
-  font-family: 'Raleway' ,'Roboto', sans-serif;
+  font-family: 'Raleway', 'Roboto', sans-serif;
 }
 
 .admin-title {
-  font-size: 58px;
+  font-size: 4vw;
   font-weight: 800;
   text-align: left;
   direction: ltr;
   color: #343a40;
-  margin-bottom: 20px;
-  margin-top: 10px;
+  margin-bottom: 2vw; /* Use vw for margin */
 }
 
 .main-content {
   flex-grow: 1;
-  padding: 20px;
+  padding: 2vw;
   background-color: #e1e5ea;
 }
 
 .welcome-card {
   background-color: #0E43AB;
   color: white;
-  height: 370px;
-  padding: 30px 0px 0px 30px;
-  border-radius: 20px 0px 0px 20px;
+  height: auto;
+  padding: 3vw 2vw; /* Adjust padding for smaller screens */
+  border-radius: 2vw; /* Adjust border-radius */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
+  margin-bottom: 2vw;
 }
+
+@media only screen and (max-width: 768px) {
+  .welcome-card {
+    padding: 3vw 1vw; /* Adjust padding for smaller screens */
+  }
+}
+
 
 
 .welcome-title {
   width: auto;
   direction: ltr;
   text-align: left;
-  font-size: 45px;
+  font-size: 2.5vw; /* Adjust font size */
   font-weight: bolder;
-  margin-bottom: 25px;
+  margin-bottom: 1.5vw; /* Use vw for margin */
 }
 
 .welcome-description {
   width: 60%;
   direction: ltr;
   text-align: left;
-  font-size: 15px;
+  font-size: 1.5vw; /* Adjust font size */
   font-weight: 300;
-  margin-bottom: 80px;
+  margin-bottom: 4vw; /* Use vw for margin */
 }
 
 
@@ -57,23 +67,24 @@
 .card-buttons {
   display: flex;
   justify-content: flex-start;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 1vw; /* Use vw for gap */
+  margin-top: 2vw; /* Use vw for margin */
 }
+
 
 .card-button {
   background-color: #2965FF;
   color: white;
   border: none;
-  padding: 10px 15px;
-  border-radius: 20px;
+  padding: 1vw 1.5vw; /* Adjust padding for smaller screens */
+  border-radius: 2vw;
   cursor: pointer;
   display: flex;
   align-items: center;
 }
 
 .card-button svg {
-  margin-right: 10px;
+  margin-right: 1vw;
 }
 
 .card-button:hover {
@@ -86,16 +97,16 @@
 
 .stats-card {
   font-family: 'Poppins';
-  height: 180px;
-  width: 25%; /* Adjusted width to 20% */
+  height: 16vw; /* Adjusted height to 20vw */
+  width: calc(25% - 1vw); /* Adjusted width to 25% with some spacing */
   background: linear-gradient(145deg, #3971fe 0%, #4d62ea 100%);
   color: white;
-  padding: 20px;
-  border-radius: 8px;
+  padding: 1vw;
+  border-radius: 2vw;
   display: flex;
-  margin-right: 20px;
-  justify-content: center; 
-  align-items: center; 
+  margin-bottom: 1vw;
+  justify-content: center;
+  align-items: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -104,101 +115,19 @@
 }
 
 .stats-icon {
-  font-size: 3rem;
-  margin-bottom: 10px;
+  font-size: 3vw; /* Adjusted font size */
+  margin-bottom: 1vw; /* Use vw for margin */
 }
 
 .stats-labels {
-  font-size: 2rem;
-  justify-content: center; 
-  align-items: center; 
-  margin-bottom: 5px;
+  font-size: 2vw; /* Adjusted font size */
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5vw; /* Use vw for margin */
 }
 
 .stats-number {
   text-align: center;
-  font-size: 20px;
+  font-size: 1.5vw; /* Adjusted font size */
   font-weight: bold;
 }
-
-
-/* Responsive styling for tablets and small laptops */
-@media (max-width: 1024px) {
-  .admin-title {
-    font-size: 48px; /* Slightly smaller font size for smaller screens */
-  }
-
-  .welcome-title {
-    font-size: 35px;
-  }
-
-  .welcome-description {
-    width: 80%; /* Adjust width for smaller screens */
-    margin-bottom: 0px;
-  }
-
-  .stats-card {
-    width: 40%; /* Adjust the width of the stats card for better fit */
-  }
-}
-
-/* Responsive styling for large laptops */
-@media (max-width: 1440px) {
-  .admin-title {
-    font-size: 52px;
-  }
-
-  .welcome-title {
-    font-size: 40px;
-  }
-
-  .welcome-description {
-    width: 70%;
-    margin-bottom: 0px;
-  }
-
-  .stats-card {
-    width: 30%;
-  }
-}
-
-@media (max-width: 825px) {
-  .welcome-description{
-    font-size: 13px;
-  }
-}
-
-/* Existing responsive styling for tablets and mobile devices */
-@media (max-width: 768px) {
-  .dashboard-container {
-    flex-direction: column;
-  }
-
-
-  .main-content {
-    padding: 10px;
-  }
-
-  .card-buttons {
-    flex-direction: column;
-  }
-
-  .card-button {
-    width: 100%;
-  }
-
-  /* Additional adjustments for smaller screens */
-  .welcome-card {
-    height: auto; /* Make the card's height flexible */
-  }
-
-  .stats-card {
-    width: 100%; /* Full width for the stats cards */
-    margin-right: 0; /* Remove margin */
-    margin-bottom: 20px; /* Add bottom margin */
-  }
-}
-
-
-
-/* Add any additional styles and breakpoints as needed */

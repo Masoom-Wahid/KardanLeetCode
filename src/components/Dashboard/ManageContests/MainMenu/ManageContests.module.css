@@ -101,3 +101,21 @@
 .continueButton:hover {
   background-color: #0056b3;
 }
+
+
+@media only screen and (max-width: 1018px) {
+  .cardsContainer {
+    grid-template-columns: 1fr; /* Set to one column for smaller screens */
+  }
+  .continueButton {
+      align-self: flex-end; /* Align button to the right */
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 35px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    
+  }
+}

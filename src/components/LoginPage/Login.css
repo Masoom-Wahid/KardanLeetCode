@@ -147,8 +147,8 @@
 }
 
 .read-more-button {
-  width: 140px;
-  height: 37px;
+  width: 190px;
+  height: 42px;
   border-radius: 30px;
   border: none;
   color: white;
@@ -169,23 +169,7 @@
   font-weight: 600;
 }
   
-.input-group .faUser, .input-group .faLock {
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  }
-  
-.visibility-toggle {
-  position: absolute;
-  right: 30px;
-  top: 55%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: #333;
-  cursor: pointer;
-}
+
   
 .login-button {
   width: 100%;
@@ -262,6 +246,7 @@
   width: calc(100% - 20px); 
   padding-left: 40px; 
   transition: border-color 0.3s;
+  
   }
   
   .input-group .inputField:focus {

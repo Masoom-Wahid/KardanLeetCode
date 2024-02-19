@@ -5,11 +5,7 @@ import parseJwt from "./JWTParser";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
-
-
-const BASE_URL = process.env.REACT_APP_API_URL
-
-
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -18,15 +14,14 @@ const Login = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const navigate = useNavigate();
-   useEffect(() => {
-      let accessToken = localStorage.getItem("accessToken")
+  useEffect(() => {
+    let accessToken = localStorage.getItem("accessToken");
 
-      if (accessToken !== null){
-        let parsed_data = parseJwt(accessToken);
-        parsed_data.is_superuser ? navigate("/admin") : navigate("/home");
-      }
-
-    })
+    if (accessToken !== null) {
+      let parsed_data = parseJwt(accessToken);
+      parsed_data.is_superuser ? navigate("/admin") : navigate("/home");
+    }
+  });
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
@@ -48,7 +43,6 @@ const Login = () => {
       localStorage.setItem("refreshToken", data.refresh);
       // Just Parse The Data and set it to local storage
       let parsed_data = parseJwt(data.access);
-
       localStorage.setItem("username", parsed_data.username);
       localStorage.setItem("is_su", parsed_data.is_superuser);
       // naviagate depending on the user's token
@@ -60,65 +54,70 @@ const Login = () => {
     }
   };
 
-
   return (
-    <div className="login-page">
-      <div className="left-panel">
+    <div className="flex flex-col md:flex-row h-screen font-sans">
+      <div className="bg-gradient-to-r from-blue-900 to-blue-500 font-bebas-neue flex justify-center items-center flex-col text-white p-6 md:p-10 box-border md:w-1/2">
         <div className="content-login">
           <div className="contents">
-            <h1 className="title left-title">Kardan Contest</h1>
-            <p className="description left-description">
+            <h1 className="title text-5xl font-bold">Kardan Contest</h1>
+            <p className="description text-xl">
               The most popular programming contest in Afghanistan.
             </p>
           </div>
-          <button className="read-more-button">
-            <a href="https://kardan.edu.af/" target="__blank">
-              Read More
-            </a>
+          <button
+            className="read-more-button text-white w-40 whitespace-nowrap"
+            onClick={() => navigate("/about")}
+          >
+            Meet the team
           </button>
         </div>
       </div>
-      <div className="right-panel">
-        <img src="/logo.png" alt="Kardan University Logo" className="logo" />
+      <div className="flex-1 flex justify-center items-center flex-col p-6 md:p-10 box-border">
+        <img
+          src="/logo.png"
+          alt="Kardan University Logo"
+          className="logo w-32 h-32 mb-8 mt-2"
+        />
         <div className="welcome-content">
-          <h2 className="welcome-header">Hello Again!</h2>
-          <p className="welcome-back">Welcome Back</p>
+          <h2 className="welcome-header text-2xl font-bold">Hello Again!</h2>
+          <p className="welcome-back text-xl">Welcome Back</p>
         </div>
-        <form onSubmit={handleSubmit} className="login-form">
-          <div className="input-group">
-            <FontAwesomeIcon icon={faUser} className="faUserIcon" />
+        <form onSubmit={handleSubmit} className="login-form max-w-sm w-full">
+          <div className="input-group relative mb-4 mt-8">
+            <FontAwesomeIcon
+              icon={faUser}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"
+            />
             <input
-              type="text"
               placeholder="User Name"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
-              className="username inputField"
+              className="inputField pl-10"
             />
           </div>
-          <div
-            className="
-    
-    input-group"
-          >
-            <FontAwesomeIcon icon={faLock} className="faLockIcon" />
+          <div className="input-group relative mb-4">
+            <FontAwesomeIcon
+              icon={faLock}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"
+            />
             <input
               type={isPasswordVisible ? "text" : "password"}
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="password inputField"
+              className="inputField pl-10"
             />
             <button
               type="button"
               onClick={() => setIsPasswordVisible(!isPasswordVisible)}
-              className="visibility-toggle"
+              className="absolute right-7 top-1/2 transform -translate-y-1/2 bg-none border-none text-gray-500 cursor-pointer"
             >
               {isPasswordVisible ? "Hide" : "Show"}
             </button>
           </div>
-          <button type="submit" className="login-button">
+          <button type="submit" className="login-button w-full">
             {loading ? "Logging in..." : "Login"}
           </button>
         </form>
