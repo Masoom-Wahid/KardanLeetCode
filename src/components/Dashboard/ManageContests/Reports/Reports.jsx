@@ -42,7 +42,9 @@ const Reports = ({ data, setData }) => {
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
-                <th className={styles.header}>
+                <th
+                  className={`${styles.header} text-left font-normal p-2 bg-gray-200 text-gray-700 cursor-pointer`}
+                >
                   <SortableHeader
                     columnKey="rank"
                     onSort={sortData}
@@ -52,7 +54,9 @@ const Reports = ({ data, setData }) => {
                     Rank
                   </SortableHeader>
                 </th>
-                <th className={styles.header}>
+                <th
+                  className={`${styles.header} text-left font-normal p-2 bg-gray-200 text-gray-700 cursor-pointer`}
+                >
                   <SortableHeader
                     columnKey="name"
                     onSort={sortData}
@@ -62,7 +66,9 @@ const Reports = ({ data, setData }) => {
                     Contestant Name
                   </SortableHeader>
                 </th>
-                <th className={styles.header}>
+                <th
+                  className={`${styles.header} text-left font-normal p-2 bg-gray-200 text-gray-700 cursor-pointer`}
+                >
                   <SortableHeader
                     columnKey="correct"
                     onSort={sortData}
@@ -72,7 +78,9 @@ const Reports = ({ data, setData }) => {
                     Correct
                   </SortableHeader>
                 </th>
-                <th className={styles.header}>
+                <th
+                  className={`${styles.header} text-left font-normal p-2 bg-gray-200 text-gray-700 cursor-pointer`}
+                >
                   <SortableHeader
                     columnKey="incorrect"
                     onSort={sortData}
@@ -82,7 +90,9 @@ const Reports = ({ data, setData }) => {
                     Incorrect
                   </SortableHeader>
                 </th>
-                <th className={styles.header}>
+                <th
+                  className={`${styles.header} text-left font-normal p-2 bg-gray-200 text-gray-700 cursor-pointer`}
+                >
                   <SortableHeader
                     columnKey="attempts"
                     onSort={sortData}
@@ -92,7 +102,9 @@ const Reports = ({ data, setData }) => {
                     Attempts{" "}
                   </SortableHeader>
                 </th>
-                <th className={styles.header}>
+                <th
+                  className={`${styles.header} text-left font-normal p-2 bg-gray-200 text-gray-700 cursor-pointer`}
+                >
                   <SortableHeader
                     columnKey="tabSwitches"
                     onSort={sortData}
@@ -102,7 +114,9 @@ const Reports = ({ data, setData }) => {
                     Tab Switch{" "}
                   </SortableHeader>
                 </th>
-                <th className={styles.header}>
+                <th
+                  className={`${styles.header} text-left font-normal p-2 bg-gray-200 text-gray-700 cursor-pointer`}
+                >
                   <SortableHeader
                     columnKey="penalty"
                     onSort={sortData}
@@ -112,7 +126,9 @@ const Reports = ({ data, setData }) => {
                     Penalty{" "}
                   </SortableHeader>
                 </th>
-                <th className={styles.header}>
+                <th
+                  className={`${styles.header} text-left font-normal p-2 bg-gray-200 text-gray-700 cursor-pointer`}
+                >
                   <SortableHeader
                     columnKey="score"
                     onSort={sortData}
@@ -122,7 +138,9 @@ const Reports = ({ data, setData }) => {
                     Score{" "}
                   </SortableHeader>
                 </th>
-                <th className={styles.header}>
+                <th
+                  className={`${styles.header} text-left font-normal p-3 bg-gray-200 text-gray-700 cursor-pointer`}
+                >
                   <SortableHeader
                     columnKey="time"
                     onSort={sortData}
