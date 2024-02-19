@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import parseJwt from "./JWTParser";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const BASE_URL = process.env.REACT_APP_API_URL;
@@ -39,6 +39,7 @@ const Login = () => {
       }
 
       const data = await response.json();
+      localStorage.clear()
       localStorage.setItem("accessToken", data.access);
       localStorage.setItem("refreshToken", data.refresh);
       // Just Parse The Data and set it to local storage
@@ -64,11 +65,10 @@ const Login = () => {
               The most popular programming contest in Afghanistan.
             </p>
           </div>
-          <button
-            className="read-more-button text-white w-40 whitespace-nowrap"
-            onClick={() => navigate("/about")}
-          >
-            Meet the team
+          <button className="read-more-button" onClick={() => navigate("/about")}>
+            
+              Meet The Creators
+            
           </button>
         </div>
       </div>

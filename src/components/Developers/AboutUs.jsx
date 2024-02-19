@@ -65,7 +65,7 @@ const AboutUs = () => {
           className="absolute w-full h-full object-cover"
         />
         <div className="z-10 text-center">
-          <h1 className="text-7xl font-bold mb-4">Meet The Creators</h1>
+          <h1 className="text-6xl font-bold mb-4">Nucleus Web Studios</h1>
           {/* <p className="text-xl mx-auto leading-relaxed max-w-md">
             Empowering your digital presence with bespoke solutions and
             unparalleled innovation.
@@ -108,7 +108,9 @@ const AboutUs = () => {
         <ServicesSection />
 
         <div className="container mx-auto px-4 py-16">
-          <h2 className="text-4xl font-bold text-center mb-12">Developers</h2>
+          <h2 className="text-4xl font-bold text-center mb-12">
+            Meet Our Founders
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <CoFounderCard
               imagePath="/masoom.jpg"

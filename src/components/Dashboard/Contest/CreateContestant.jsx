@@ -40,7 +40,7 @@ const CreateContestant = () => {
         }
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      navigate("/admin")
+      navigate(`/contests/${id}`)
       // Handle the response from the backend
     } catch (error) {
       // Handle errors

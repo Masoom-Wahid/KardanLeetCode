@@ -117,10 +117,7 @@ function App() {
               path="/challenges"
               element={
                 <Layout>
-                  <ProtectedRoute
-                    component={ContestChallenges}
-                    isAuthenticated={isAuthenticated}
-                  />
+                  <ContestChallenges/>
                 </Layout>
               }
             />
