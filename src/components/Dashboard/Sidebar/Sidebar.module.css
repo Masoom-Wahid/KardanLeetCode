@@ -1,144 +1,144 @@
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 200px; /* Your sidebar width */
-  height: 100vh; /* Full viewport height */
-  background-color: #f0f2f5; /* Example background color */
-  padding: 20 15px ;
-  z-index: 1000; /* Ensure it's above other content */
-  box-shadow: 3px 0 15px rgba(0,0,0,0.2); /* Soft shadow for depth */
-  transition: width 0.5s ease, background-color 0.25s ease; /* Smooth transitions for responsive behavior */
-  overflow-y: auto; /* Improved scrolling */
-  overflow-x: hidden;
-}
-
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.logoDashboard {
-  width: 200px; /* Adjust as necessary */
-  margin-bottom: 40px;
-  margin-top: 10px;
-}
-
-@keyframes breathing {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-}
-
-.logoDashboard:hover {
-  animation: breathing 2s ease-in-out infinite;
-}
-
-.navItem {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px; /* Reduced margin for compact appearance */
-  padding: 10px; /* Padding for better touch target */
-  padding-right: 5px;
-  border-radius: 8px; /* Rounded corners for modern look */
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions for interactions */
-}
-
-.navitem.collapsed {
-  justify-self: center;
-}
-
-.navItem:hover {
-  background-color: var(--sidebar-hover-bg-color, #7c7c7c); /* Customizable hover background */
-  cursor: pointer;
-  transform: translateX(5px);
-  color: #fff;
-}
-
-.navItem svg {
-  margin-right: 15px; /* Adjusted spacing for icon and text */
-  min-width: 20px; /* Ensure uniform icon width */
-}
-
-
-.logoutButton {
-  position: absolute; /* Position the button absolutely within the sidebar */
-  bottom: 10px; /* 10px from the bottom of the sidebar */
-  left: 10px; /* Adjust if you want it more to the center */
-  background: #007bff;
-  justify-content: center;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 13px;
-  cursor: pointer;
-  display: flex;
-}
-
-
-.sidebar.unCollapse {
-  .logoutButton{
-    animation: fadeIn 0.8s ease-in-out;
-  }
-  
-}
-
-.logoutButton svg {
-  margin-right: 10px;
-}
-
-
-
-.sidebar.collapsed {
-  width: 80px; /* Adjust the width for collapsed state */
-  .logoDashboard{
-    display: none;
-  }
-  .navItems {
-    margin-top: 20px;
-  }
-  .toggleButton {
-    margin-top: 60px;
-  }
-  .logoutButton {
-    margin-top: 290px;
-  }
-}
-
-.sidebar.collapsed .navItem {
-  justify-content: center; /* Center icons in collapsed state */
-}
-
-.toggleButton {
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 3px;
-}
-
-/* Adjust styles for nav-item and logout-button for collapsed state */
-.navItem, .logoutButton {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-@media (max-width: 768px) {
   .sidebar {
-    width: 170px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px; /* Your sidebar width */
+    height: 100vh; /* Full viewport height */
+    background-color: #f0f2f5; /* Example background color */
+    padding: 20 15px ;
+    z-index: 1000; /* Ensure it's above other content */
+    box-shadow: 3px 0 15px rgba(0,0,0,0.2); /* Soft shadow for depth */
+    transition: width 0.5s ease, background-color 0.25s ease; /* Smooth transitions for responsive behavior */
+    overflow-y: auto; /* Improved scrolling */
+    overflow-x: hidden;
   }
-  /* You might want to adjust the positioning of the toggleButton here as well */
-}
+
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .logoDashboard {
+    width: 200px; /* Adjust as necessary */
+    margin-bottom: 40px;
+    margin-top: 10px;
+  }
+
+  @keyframes breathing {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  .logoDashboard:hover {
+    animation: breathing 2s ease-in-out infinite;
+  }
+
+  .navItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; /* Reduced margin for compact appearance */
+    padding: 10px; /* Padding for better touch target */
+    padding-right: 5px;
+    border-radius: 8px; /* Rounded corners for modern look */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions for interactions */
+  }
+
+  .navitem.collapsed {
+    justify-self: center;
+  }
+
+  .navItem:hover {
+    background-color: var(--sidebar-hover-bg-color, #7c7c7c); /* Customizable hover background */
+    cursor: pointer;
+    transform: translateX(5px);
+    color: #fff;
+  }
+
+  .navItem svg {
+    margin-right: 15px; /* Adjusted spacing for icon and text */
+    min-width: 20px; /* Ensure uniform icon width */
+  }
+
+
+  .logoutButton {
+    position: absolute; /* Position the button absolutely within the sidebar */
+    bottom: 10px; /* 10px from the bottom of the sidebar */
+    left: 10px; /* Adjust if you want it more to the center */
+    background: #007bff;
+    justify-content: center;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 13px;
+    cursor: pointer;
+    display: flex;
+  }
+
+
+  .sidebar.unCollapse {
+    .logoutButton{
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    
+  }
+
+  .logoutButton svg {
+    margin-right: 10px;
+  }
+
+
+
+  .sidebar.collapsed {
+    width: 80px; /* Adjust the width for collapsed state */
+    .logoDashboard{
+      display: none;
+    }
+    .navItems {
+      margin-top: 20px;
+    }
+    .toggleButton {
+      margin-top: 60px;
+    }
+    .logoutButton {
+      margin-top: 290px;
+    }
+  }
+
+  .sidebar.collapsed .navItem {
+    justify-content: center; /* Center icons in collapsed state */
+  }
+
+  .toggleButton {
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 3px;
+  }
+
+  /* Adjust styles for nav-item and logout-button for collapsed state */
+  .navItem, .logoutButton {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 170px;
+    }
+    /* You might want to adjust the positioning of the toggleButton here as well */
+  }
